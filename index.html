@@ -31,12 +31,12 @@
   --ink-soft: #5D5470;
   --ink-faint: #8A839A;
 
-  --purple-primary: #6B4FFF;
-  --purple-deep: #4B2FCC;
-  --purple-soft: #A395FF;
-  --purple-glow: rgba(107, 79, 255, 0.18);
-  --purple-bg: #1F1545;
-  --purple-bg-deep: #15102E;
+  --purple-primary: #9475C4;
+  --purple-deep: #6F4FA3;
+  --purple-soft: #B7A4D5;
+  --purple-glow: rgba(148, 117, 196, 0.20);
+  --purple-bg: #2D2042;
+  --purple-bg-deep: #1F1430;
 
   --sage-cta: #7FB069;
   --sage-deep: #5C8A4B;
@@ -356,14 +356,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 #packages { background: var(--cream-base); }
 .packages-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 28px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-@media (max-width: 1200px) {
-  .packages-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
-}
+.pkg-card-hf { aspect-ratio: 4 / 5; }
+/* Staggered editorial layout — smaller / bigger / bigger / smaller */
+.pkg-card-hf:nth-child(1) { aspect-ratio: 1 / 1; margin-top: 0; }
+.pkg-card-hf:nth-child(2) { aspect-ratio: 4 / 5; margin-top: 56px; }
+.pkg-card-hf:nth-child(3) { aspect-ratio: 4 / 5; margin-top: -32px; }
+.pkg-card-hf:nth-child(4) { aspect-ratio: 1 / 1; margin-top: 24px; }
 @media (max-width: 600px) {
   .packages-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 22px; }
+  .pkg-card-hf:nth-child(n) { aspect-ratio: 4 / 5; margin-top: 0; }
 }
 .pkg-card {
   position: relative;
@@ -1470,8 +1477,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* FOOTER */
 .footer {
-  background: var(--ink-deep);
-  color: rgba(255, 255, 255, 0.7);
+  background: var(--purple-bg-deep);
+  color: rgba(255, 255, 255, 0.72);
   padding: 80px 0 32px;
 }
 .footer-grid {
@@ -1484,10 +1491,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 .footer-brand img {
-  height: 48px;
-  margin-bottom: 20px;
-  filter: brightness(0) invert(1);
-  opacity: 0.92;
+  height: 64px;
+  margin-bottom: 22px;
+  opacity: 1;
+  filter: brightness(1.55) saturate(0.85);
 }
 .footer-brand p {
   font-size: 14px;
@@ -1703,10 +1710,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
     <!-- Residential / Commercial install gallery -->
     <div class="gallery gallery-9">
-      <div class="gallery-item fade-in">
-        <img src="images/install-eyre-1.jpg" alt="Eyre Peninsula install" loading="lazy" />
-        <div class="gallery-caption">Eyre Peninsula</div>
-      </div>
       <div class="gallery-item fade-in">
         <img src="images/install-byrn-lightview.jpg" alt="Byrn 50kW GoodWe at Lightview" loading="lazy" />
         <div class="gallery-caption">Byrn &middot; 50kW GoodWe &middot; Lightview</div>
