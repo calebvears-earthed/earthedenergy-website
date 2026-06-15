@@ -357,20 +357,31 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .packages-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px 28px;
-  align-items: start;
-  max-width: 1100px;
+  gap: 22px;
+  align-items: stretch;
+  justify-items: center;
+  max-width: 820px;
   margin: 0 auto;
 }
-.pkg-card-hf { aspect-ratio: 4 / 5; }
-/* Staggered editorial layout — smaller / bigger / bigger / smaller */
-.pkg-card-hf:nth-child(1) { aspect-ratio: 1 / 1; margin-top: 0; }
-.pkg-card-hf:nth-child(2) { aspect-ratio: 4 / 5; margin-top: 56px; }
-.pkg-card-hf:nth-child(3) { aspect-ratio: 4 / 5; margin-top: -32px; }
-.pkg-card-hf:nth-child(4) { aspect-ratio: 1 / 1; margin-top: 24px; }
+.pkg-card-hf {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 380px;
+}
+/* Product image sits INSIDE the card with breathing room */
+.pkg-card-hf .pkg-bg {
+  inset: 14px;
+  border-radius: 14px;
+}
+.pkg-card-hf .pkg-bg-contain {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center 42% !important;
+  background-color: #0D0820;
+}
 @media (max-width: 600px) {
-  .packages-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 22px; }
-  .pkg-card-hf:nth-child(n) { aspect-ratio: 4 / 5; margin-top: 0; }
+  .packages-grid { grid-template-columns: 1fr; max-width: 380px; gap: 18px; }
+  .pkg-card-hf { aspect-ratio: 1 / 1; max-width: 100%; }
 }
 .pkg-card {
   position: relative;
@@ -741,6 +752,64 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 @media (max-width: 460px) {
   .gallery-9 { grid-template-columns: 1fr; }
+}
+
+/* SPREAD GALLERY — bigger gaps, purple bordering, breathing room */
+.gallery-spread {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 18px;
+}
+.gallery-spread .gallery-item {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  border: 1.5px solid rgba(147, 117, 196, 0.35);
+  box-shadow:
+    0 4px 18px rgba(26, 21, 48, 0.08),
+    0 0 0 1px rgba(183, 164, 213, 0.12);
+  transition: all 380ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-spread .gallery-item:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(147, 117, 196, 0.65);
+  box-shadow:
+    0 14px 40px rgba(26, 21, 48, 0.14),
+    0 0 0 1px rgba(147, 117, 196, 0.30),
+    0 0 50px rgba(147, 117, 196, 0.22);
+}
+/* Subtle staggered offset — every second item drops 28px */
+.gallery-spread .gallery-item:nth-child(2n) { transform: translateY(28px); }
+.gallery-spread .gallery-item:nth-child(2n):hover { transform: translateY(22px) scale(1.015); }
+@media (max-width: 980px) {
+  .gallery-spread { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+}
+@media (max-width: 560px) {
+  .gallery-spread { grid-template-columns: 1fr; gap: 18px; max-width: 380px; margin: 18px auto 0; }
+  .gallery-spread .gallery-item:nth-child(2n) { transform: none; }
+  .gallery-spread .gallery-item:nth-child(2n):hover { transform: translateY(-6px) scale(1.015); }
+}
+
+/* BESS DIVIDER — quiet "beyond residential" rule */
+.bess-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 60px 0 24px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--purple-soft);
+}
+.bess-divider::before, .bess-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--purple-glow) 50%, transparent 100%);
 }
 
 /* BESS HERO — special HV crossover tile */
@@ -1660,7 +1729,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       <div class="process-step fade-in">
         <span class="process-num">02 &middot; Design</span>
-        <h4>Home Assessment, Roof Type, Electrical Audit, Design Recommended System</h4>
+        <h4>Home Assessment</h4>
         <p>Tailored to your needs with finance options explained. It's our mission to be clear on each step and the processes we take to assist you.</p>
       </div>
       <div class="process-step fade-in">
@@ -1671,7 +1740,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <div class="process-step fade-in">
         <span class="process-num">04 &middot; Install</span>
         <h4>Installation Day</h4>
-        <p>Our project manager (Caleb or Troy) meets the install crew in the morning to walk through job requirements. A safety pre-start runs first and a safe zone is established, with constant communication kept with the client throughout. Brief power outages may be required where necessary.</p>
+        <p>Our project manager (Caleb or Troy) meets the install crew in the morning to walk through job requirements. Constant communication is kept with the client throughout. Brief power outages may be required where necessary.</p>
       </div>
       <div class="process-step fade-in">
         <span class="process-num">05 &middot; Live</span>
@@ -1690,26 +1759,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       <p>Every photo here is from a system we designed, installed, and commissioned ourselves &mdash; across Adelaide, Yorke Peninsula, and the West Coast.</p>
     </div>
 
-    <!-- BESS Hero — special HV crossover tile -->
-    <a href="https://earthedhv.au" class="bess-hero fade-in" target="_blank" rel="noopener">
-      <div class="bess-bg" style="background-image: url('images/install-bess-portwakefield.jpg');"></div>
-      <div class="bess-content">
-        <div class="bess-eyebrow">Earthed High Voltage Project</div>
-        <h3 class="bess-title">5MW BESS &middot; Port Wakefield</h3>
-        <div class="bess-specs">
-          <div class="bess-spec"><div class="num">5MW</div><div class="lbl">Capacity</div></div>
-          <div class="bess-spec"><div class="num">33kV</div><div class="lbl">Grid Connection</div></div>
-          <div class="bess-spec"><div class="num">SAPN</div><div class="lbl">Accredited</div></div>
-        </div>
+    <!-- Residential / Commercial install gallery — spread out, purple-bordered -->
+    <div class="gallery gallery-spread">
+      <div class="gallery-item fade-in">
+        <img src="images/install-fowlers-bay.jpg" alt="Fowlers Bay rooftop install" loading="lazy" />
+        <div class="gallery-caption">Fowlers Bay &middot; Coastal Residential</div>
       </div>
-      <span class="bess-cta">
-        See it at Earthed High Voltage
-        <span class="bess-arrow">&rarr;</span>
-      </span>
-    </a>
-
-    <!-- Residential / Commercial install gallery -->
-    <div class="gallery gallery-9">
+      <div class="gallery-item fade-in">
+        <img src="images/install-solax-offgrid.jpg" alt="Solax Offgrid battery stack" loading="lazy" />
+        <div class="gallery-caption">Solax Offgrid &middot; Triple Power Stack</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-trina-475.jpg" alt="Trina 475 panels with Solax inverter" loading="lazy" />
+        <div class="gallery-caption">Trina 475 &middot; Commercial Solax</div>
+      </div>
       <div class="gallery-item fade-in">
         <img src="images/install-byrn-lightview.jpg" alt="Byrn 50kW GoodWe at Lightview" loading="lazy" />
         <div class="gallery-caption">Byrn &middot; 50kW GoodWe &middot; Lightview</div>
@@ -1743,6 +1806,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         <div class="gallery-caption">Backup Circuit Wiring</div>
       </div>
     </div>
+
+    <!-- BESS Hero — special HV crossover tile (positioned below residential gallery) -->
+    <div class="bess-divider fade-in">
+      <span>Beyond residential</span>
+    </div>
+    <a href="https://earthedhv.au" class="bess-hero fade-in" target="_blank" rel="noopener">
+      <div class="bess-bg" style="background-image: url('images/install-bess-portwakefield.jpg');"></div>
+      <div class="bess-content">
+        <div class="bess-eyebrow">Earthed High Voltage Project</div>
+        <h3 class="bess-title">5MW BESS &middot; Port Wakefield</h3>
+        <div class="bess-specs">
+          <div class="bess-spec"><div class="num">5MW</div><div class="lbl">Capacity</div></div>
+          <div class="bess-spec"><div class="num">33kV</div><div class="lbl">Grid Connection</div></div>
+          <div class="bess-spec"><div class="num">SAPN</div><div class="lbl">Accredited</div></div>
+        </div>
+      </div>
+      <span class="bess-cta">
+        See it at Earthed High Voltage
+        <span class="bess-arrow">&rarr;</span>
+      </span>
+    </a>
   </div>
 </section>
 
