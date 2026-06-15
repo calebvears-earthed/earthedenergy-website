@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Purple Earth — A Curated Wellness Marketplace</title>
+<meta name="description" content="A curated marketplace of wellness, recovery, and sleep — chosen for the way it feels, not just what it does. Designed in Adelaide. Shipping Australia-wide." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PURPLE EARTH — v1.0 Launch Site
+   Curated wellness marketplace · Adelaide
+   Aesop / Le Labo / Glossier editorial wellness aesthetic
+   ============================================================ */
+
+:root {
+  --aubergine-deep: #1A0F2E;
+  --aubergine: #2A1B47;
+  --aubergine-soft: #3E2A5C;
+  --plum: #5C3D7A;
+  --lavender: #B8A9D9;
+  --lavender-soft: #DDD2EE;
+  --mauve-wash: #F2EDF8;
+  --cream: #F8F4ED;
+  --cream-warm: #F0E9DC;
+  --paper: #FCFAF6;
+  --ink: #1A0F2E;
+  --ink-mid: #4A3D5C;
+  --ink-soft: #7A6D8C;
+  --gold-spark: #C9A86A;
+  --white-soft: rgba(252, 250, 246, 0.92);
+
+  --shadow-soft: 0 4px 24px rgba(26, 15, 46, 0.06);
+  --shadow-lift: 0 12px 48px rgba(26, 15, 46, 0.10);
+  --shadow-deep: 0 24px 80px rgba(26, 15, 46, 0.18);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--aubergine); text-decoration: none; transition: color 200ms ease; }
+a:hover { color: var(--plum); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 768px) { .container, .container-narrow { padding: 0 20px; } }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 16px;
+}
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.display-lg {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.display-md {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(26px, 3.2vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.body-lg { font-size: 19px; line-height: 1.7; color: var(--ink-mid); }
+.body { font-size: 17px; line-height: 1.65; color: var(--ink-mid); }
+.mono { font-family: var(--font-mono); font-weight: 500; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 36px;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  white-space: nowrap;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-light {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.btn-light:hover {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--paper);
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 22px 0;
+  background: rgba(252, 250, 246, 0.82);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(26, 15, 46, 0.06);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.nav-logo span { color: var(--plum); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.nav-links a {
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: color 200ms ease;
+}
+.nav-links a:hover { color: var(--plum); }
+.nav-cart {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-cart-count {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  background: var(--aubergine);
+  color: var(--paper);
+  padding: 2px 8px;
+  border-radius: 999px;
+  min-width: 22px;
+  text-align: center;
+}
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-logo { font-size: 20px; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--aubergine-deep);
+  background-image: url('images/hero-1.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 15, 46, 0.20) 0%,
+    rgba(26, 15, 46, 0.40) 60%,
+    rgba(26, 15, 46, 0.55) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+}
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 32px;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--lavender);
+  vertical-align: middle;
+  margin: 0 14px;
+  opacity: 0.6;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(48px, 8vw, 108px);
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+  margin-bottom: 28px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--lavender);
+  font-weight: 400;
+}
+.hero-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.5;
+  color: rgba(252, 250, 246, 0.85);
+  margin-bottom: 48px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   BRAND THESIS
+   ============================================================ */
+.thesis {
+  padding: 140px 0;
+  background: var(--paper);
+  text-align: center;
+}
+.thesis .eyebrow {
+  display: inline-block;
+}
+.thesis h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 36px;
+  font-style: italic;
+}
+.thesis p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  margin-bottom: 20px;
+}
+.thesis-signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--plum);
+  margin-top: 36px;
+}
+
+/* ============================================================
+   CATEGORIES — five tiles
+   ============================================================ */
+.categories {
+  padding: 100px 0 140px;
+  background: var(--cream);
+}
+.cat-head {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.cat-head h2 { margin-bottom: 20px; }
+.cat-head p { max-width: 560px; margin: 0 auto; color: var(--ink-mid); font-size: 18px; }
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+@media (max-width: 980px) { .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+@media (max-width: 500px) { .cat-grid { grid-template-columns: 1fr; } }
+.cat-card {
+  position: relative;
+  aspect-ratio: 3/5;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--aubergine);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cat-card:hover { transform: translateY(-4px); }
+.cat-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 700ms ease;
+}
+.cat-card:hover .cat-card-bg { transform: scale(1.06); }
+.cat-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26, 15, 46, 0.15) 0%, rgba(26, 15, 46, 0.65) 100%);
+  z-index: 1;
+}
+.cat-card-text {
+  position: absolute;
+  bottom: 32px;
+  left: 28px;
+  right: 28px;
+  z-index: 2;
+  color: var(--paper);
+}
+.cat-card-num {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: rgba(252, 250, 246, 0.65);
+  margin-bottom: 10px;
+}
+.cat-card-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+}
+.cat-card-arrow {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(252, 250, 246, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  font-size: 14px;
+  border: 1px solid rgba(252, 250, 246, 0.30);
+  transition: all 240ms ease;
+}
+.cat-card:hover .cat-card-arrow {
+  background: var(--paper);
+  color: var(--ink);
+  transform: translateX(3px);
+}
+
+/* ============================================================
+   FEATURED PRODUCTS
+   ============================================================ */
+.featured {
+  padding: 140px 0;
+  background: var(--paper);
+}
+.feat-head {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.feat-head h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+}
+@media (max-width: 980px) { .feat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .feat-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
+.product-card {
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+.product-card:hover { transform: translateY(-4px); }
+.product-img {
+  aspect-ratio: 1/1;
+  background: var(--mauve-wash);
+  overflow: hidden;
+  margin-bottom: 22px;
+  position: relative;
+}
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+.product-card:hover .product-img img { transform: scale(1.04); }
+.product-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--mauve-wash) 0%, var(--lavender-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--plum);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+}
+.product-cat {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.product-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.product-price {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ink);
+}
+.product-price .from {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-right: 8px;
+}
+
+.feat-cta {
+  text-align: center;
+  margin-top: 64px;
+}
+
+/* ============================================================
+   LIFESTYLE INTERLUDE
+   ============================================================ */
+.interlude {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--aubergine-deep);
+  background-image: url('images/lifestyle-2.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: 120px 0;
+}
+.interlude::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(26, 15, 46, 0.55) 0%, rgba(26, 15, 46, 0.20) 100%);
+  z-index: 1;
+}
+.interlude-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+}
+.interlude h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.2;
+  color: var(--paper);
+  margin-bottom: 28px;
+}
+.interlude p {
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(252, 250, 246, 0.86);
+  margin-bottom: 36px;
+}
+
+/* ============================================================
+   LOYALTY — Earth Points
+   ============================================================ */
+.loyalty {
+  padding: 140px 0;
+  background: var(--mauve-wash);
+}
+.loyalty-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 880px) { .loyalty-grid { grid-template-columns: 1fr; gap: 56px; } }
+.loyalty-photo {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--aubergine);
+  background-image: url('images/loyalty-4.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.loyalty-text .eyebrow { color: var(--plum); }
+.loyalty-text h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  margin-bottom: 24px;
+}
+.loyalty-text p {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 24px;
+}
+.loyalty-tiers {
+  display: flex;
+  gap: 12px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.loyalty-tier {
+  flex: 1 1 130px;
+  padding: 22px 18px;
+  background: var(--paper);
+  border: 1px solid rgba(26, 15, 46, 0.08);
+  text-align: center;
+}
+.loyalty-tier .pts {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--aubergine);
+  letter-spacing: -0.01em;
+}
+.loyalty-tier .lbl {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 6px;
+}
+
+/* ============================================================
+   DIVIDER — botanical visual
+   ============================================================ */
+.divider {
+  height: 50vh;
+  background-color: var(--lavender-soft);
+  background-image: url('images/divider-5.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* ============================================================
+   PROMISE — three pillars
+   ============================================================ */
+.promise {
+  padding: 140px 0;
+  background: var(--paper);
+}
+.promise-head {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.promise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+@media (max-width: 880px) { .promise-grid { grid-template-columns: 1fr; gap: 56px; max-width: 480px; margin: 0 auto; } }
+.promise-card {
+  text-align: center;
+  padding: 0 12px;
+}
+.promise-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 36px;
+  color: var(--plum);
+  margin-bottom: 16px;
+}
+.promise-card h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.promise-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-mid);
+}
+
+/* ============================================================
+   NEWSLETTER
+   ============================================================ */
+.newsletter {
+  padding: 120px 0;
+  background: var(--aubergine);
+  color: var(--paper);
+  text-align: center;
+}
+.newsletter .eyebrow { color: var(--lavender); }
+.newsletter h2 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+.newsletter p {
+  color: rgba(252, 250, 246, 0.78);
+  margin-bottom: 36px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 17px;
+}
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  max-width: 520px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.newsletter-form input {
+  flex: 1 1 280px;
+  padding: 16px 20px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  background: rgba(252, 250, 246, 0.06);
+  border: 1px solid rgba(252, 250, 246, 0.20);
+  color: var(--paper);
+  outline: none;
+  transition: all 200ms ease;
+}
+.newsletter-form input::placeholder { color: rgba(252, 250, 246, 0.45); }
+.newsletter-form input:focus {
+  background: rgba(252, 250, 246, 0.10);
+  border-color: var(--lavender);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--aubergine-deep);
+  color: rgba(252, 250, 246, 0.62);
+  padding: 80px 0 32px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 56px;
+}
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+.footer-brand span { color: var(--lavender); }
+.footer-tag {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(252, 250, 246, 0.50);
+  max-width: 320px;
+  line-height: 1.6;
+}
+.footer-col h5 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: rgba(252, 250, 246, 0.58);
+  margin-bottom: 10px;
+  transition: color 200ms ease;
+}
+.footer-col a:hover { color: var(--paper); }
+.footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid rgba(252, 250, 246, 0.10);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: rgba(252, 250, 246, 0.35);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   FADE-IN
+   ============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav-wrap">
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="nav-logo">Purple <span>Earth</span></a>
+      <div class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#loyalty">Earth Points</a>
+        <a href="#story">Our Story</a>
+      </div>
+      <a href="#cart" class="nav-cart">Cart <span class="nav-cart-count">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow">A Curated Wellness Marketplace</div>
+    <h1>Quietly,<br/><em>everything you need.</em></h1>
+    <p class="hero-sub">A considered collection of recovery, sleep, and ritual — chosen for the way it feels, not just what it does.</p>
+    <div class="hero-ctas">
+      <a href="#shop" class="btn btn-light">Browse The Shop</a>
+      <a href="#story" class="btn btn-ghost" style="color:var(--paper); border-color: rgba(252,250,246,0.5);">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND THESIS -->
+<section class="thesis" id="story">
+  <div class="container-narrow fade-in">
+    <div class="eyebrow">Our Why</div>
+    <h2>Wellness shouldn't shout.<br/>It should arrive quietly, in objects you reach for again and again.</h2>
+    <p>Purple Earth began with a feeling — that the things we surround ourselves with shape how we move through a day. The mat we step onto first thing. The bottle we carry. The eye mask that ends the noise.</p>
+    <p>We curate a marketplace of premium-feeling, beautifully-considered wellness objects, brought from the makers we trust to a single space designed for the way you actually live.</p>
+    <p>Adelaide-led. Australia-shipped. Nothing here is loud.</p>
+    <div class="thesis-signature">— Purple Earth</div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="shop">
+  <div class="container">
+    <div class="cat-head fade-in">
+      <div class="eyebrow">Five Considered Collections</div>
+      <h2 class="display-lg">Where would you like to begin?</h2>
+      <p>Five curated worlds — designed to live together, designed to live alone.</p>
+    </div>
+
+    <div class="cat-grid">
+      <a href="/collections/grounding" class="cat-card fade-in">
+        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #3E2A5C 0%, #5C3D7A 100%);"></div>
+        <div class="cat-card-arrow">&rarr;</div>
+        <div class="cat-card-text">
+          <div class="cat-card-num">01 &middot; 12 Items</div>
+          <div class="cat-card-name">Grounding<br/>&amp; Recovery</div>
+        </div>
+      </a>
+
+      <a href="/collections/strength" class="cat-card fade-in">
+        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #2A1B47 0%, #4A3066 100%);"></div>
+        <div class="cat-card-arrow">&rarr;</div>
+        <div class="cat-card-text">
+          <div class="cat-card-num">02 &middot; 14 Items</div>
+          <div class="cat-card-name">Strength<br/>&amp; Mobility</div>
+        </div>
+      </a>
+
+      <a href="/collections/hydration" class="cat-card fade-in">
+        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #5C3D7A 0%, #7A56A0 100%);"></div>
+        <div class="cat-card-arrow">&rarr;</div>
+        <div class="cat-card-text">
+          <div class="cat-card-num">03 &middot; 10 Items</div>
+          <div class="cat-card-name">Hydration<br/>&amp; Vessels</div>
+        </div>
+      </a>
+
+      <a href="/collections/audio" class="cat-card fade-in">
+        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #1A0F2E 0%, #2A1B47 100%);"></div>
+        <div class="cat-card-arrow">&rarr;</div>
+        <div class="cat-card-text">
+          <div class="cat-card-num">04 &middot; 10 Items</div>
+          <div class="cat-card-name">Audio<br/>Wellness</div>
+        </div>
+      </a>
+
+      <a href="/collections/sleep" class="cat-card fade-in">
+        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #4A3066 0%, #6B4A8A 100%);"></div>
+        <div class="cat-card-arrow">&rarr;</div>
+        <div class="cat-card-text">
+          <div class="cat-card-num">05 &middot; 11 Items</div>
+          <div class="cat-card-name">Sleep<br/>&amp; Ambient</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured">
+  <div class="container">
+    <div class="feat-head fade-in">
+      <div class="eyebrow">A Few Quiet Favourites</div>
+      <h2 class="display-lg"><em>Curated this week.</em></h2>
+    </div>
+
+    <div class="feat-grid">
+
+      <a href="/products/grounding-mat-medium" class="product-card fade-in">
+        <div class="product-img"><div class="product-placeholder">Purple Earth Grounding Mat</div></div>
+        <div class="product-cat">Grounding &amp; Recovery</div>
+        <div class="product-name">The Grounding Mat</div>
+        <div class="product-price"><span class="from">From</span>$79.00</div>
+      </a>
+
+      <a href="/products/silk-eye-mask" class="product-card fade-in">
+        <div class="product-img"><div class="product-placeholder">Silk Eye Mask</div></div>
+        <div class="product-cat">Sleep &amp; Ambient</div>
+        <div class="product-name">Mulberry Silk Eye Mask</div>
+        <div class="product-price">$39.00</div>
+      </a>
+
+      <a href="/products/insulated-bottle-750" class="product-card fade-in">
+        <div class="product-img"><div class="product-placeholder">Insulated Bottle 750ml</div></div>
+        <div class="product-cat">Hydration &amp; Vessels</div>
+        <div class="product-name">The Insulated Bottle</div>
+        <div class="product-price"><span class="from">From</span>$39.00</div>
+      </a>
+
+      <a href="/products/kettlebell-12kg" class="product-card fade-in">
+        <div class="product-img"><div class="product-placeholder">Purple-Coated Kettlebell</div></div>
+        <div class="product-cat">Strength &amp; Mobility</div>
+        <div class="product-name">The Coated Kettlebell</div>
+        <div class="product-price"><span class="from">From</span>$69.00</div>
+      </a>
+
+      <a href="/products/weighted-blanket-9kg" class="product-card fade-in">
+        <div class="product-img"><div class="product-placeholder">Weighted Blanket 9kg</div></div>
+        <div class="product-cat">Sleep &amp; Ambient</div>
+        <div class="product-name">The Weighted Blanket</div>
+        <div class="product-price"><span class="from">From</span>$129.00</div>
+      </a>
+
+      <a href="/products/wireless-headphones-aurora" class="product-card fade-in">
+        <div class="product-img"><div class="product-placeholder">Aurora Headphones</div></div>
+        <div class="product-cat">Audio Wellness</div>
+        <div class="product-name">Aurora Over-Ear Headphones</div>
+        <div class="product-price">$199.00</div>
+      </a>
+
+    </div>
+
+    <div class="feat-cta fade-in">
+      <a href="#shop" class="btn btn-ghost">View All Collections</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE INTERLUDE -->
+<section class="interlude">
+  <div class="container">
+    <div class="interlude-inner fade-in">
+      <div class="eyebrow" style="color: var(--lavender);">A Quieter Practice</div>
+      <h2>The smallest rituals<br/>shape the largest days.</h2>
+      <p>What you reach for first thing — what you carry through it, what you return to at night — these aren't accessories. They're the structure underneath a settled day.</p>
+      <a href="#shop" class="btn btn-light">Explore Sleep &amp; Ambient</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOYALTY -->
+<section class="loyalty" id="loyalty">
+  <div class="container">
+    <div class="loyalty-grid">
+      <div class="loyalty-photo fade-in"></div>
+      <div class="loyalty-text fade-in">
+        <div class="eyebrow">Earth Points</div>
+        <h2>A loyalty programme<br/>made of small acts.</h2>
+        <p>Earth Points reward the ritual, not the spend. Every purchase, review, referral, and birthday quietly grows your balance — redeemed against future orders, samples, or early access to limited drops.</p>
+        <p>Three tiers. No expiry. No catches.</p>
+
+        <div class="loyalty-tiers">
+          <div class="loyalty-tier">
+            <div class="pts">100 pts</div>
+            <div class="lbl">Welcome</div>
+          </div>
+          <div class="loyalty-tier">
+            <div class="pts">500 pts</div>
+            <div class="lbl">Quiet</div>
+          </div>
+          <div class="loyalty-tier">
+            <div class="pts">1500 pts</div>
+            <div class="lbl">Considered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<section class="divider" aria-hidden="true"></section>
+
+<!-- PROMISE -->
+<section class="promise">
+  <div class="container">
+    <div class="promise-head fade-in">
+      <div class="eyebrow">The Purple Earth Promise</div>
+      <h2 class="display-lg"><em>Three things, always.</em></h2>
+    </div>
+    <div class="promise-grid">
+      <div class="promise-card fade-in">
+        <div class="promise-num">i.</div>
+        <h3>Curated, not cluttered.</h3>
+        <p>Every product earns its place — chosen for material, finish, and how it sits in a home. If it wouldn't flatlay on dark linen, it doesn't make the catalogue.</p>
+      </div>
+      <div class="promise-card fade-in">
+        <div class="promise-num">ii.</div>
+        <h3>Australia-shipped.</h3>
+        <p>Free shipping across Australia on orders over $99. Tracked, calmly packaged, and returnable for 30 days if it's not for you.</p>
+      </div>
+      <div class="promise-card fade-in">
+        <div class="promise-num">iii.</div>
+        <h3>Quietly considered.</h3>
+        <p>No retargeting noise. No urgency banners. The marketplace stays calm, on purpose — the way wellness should feel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="container-narrow fade-in">
+    <div class="eyebrow">Stay Close</div>
+    <h2>The occasional letter.<br/>Not the daily noise.</h2>
+    <p>New collections, considered drops, and the occasional reflection. No more than twice a month, ever.</p>
+    <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+      <input type="email" name="email" placeholder="Your email address" required />
+      <button type="submit" class="btn btn-light">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Purple <span>Earth</span></div>
+        <p class="footer-tag">A curated wellness marketplace.<br/>Adelaide-led, Australia-shipped.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <a href="#shop">Grounding &amp; Recovery</a>
+        <a href="#shop">Strength &amp; Mobility</a>
+        <a href="#shop">Hydration &amp; Vessels</a>
+        <a href="#shop">Audio Wellness</a>
+        <a href="#shop">Sleep &amp; Ambient</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#story">Our Story</a>
+        <a href="#loyalty">Earth Points</a>
+        <a href="#">Curation Process</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="mailto:hello@purpleearth.com.au">hello@purpleearth.com.au</a>
+        <a href="#">Shipping &amp; Returns</a>
+        <a href="#">FAQ</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 Purple Earth &middot; Adelaide, South Australia</div>
+      <div>Made quietly.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sleep &amp; Ambient — Purple Earth</title>
+<meta name="description" content="The Sleep &amp; Ambient collection — silk eye masks, weighted blankets, sunrise alarms, and the considered objects that close a day." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<style>
+/* COLLECTION-PAGE STYLES */
+.collection-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+  padding: 80px 0 140px;
+}
+@media (max-width: 980px) {
+  .collection-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+.filters {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+.filter-group {
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(26, 15, 46, 0.08);
+}
+.filter-group:last-child { border-bottom: none; }
+.filter-group h4 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.filter-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--ink-mid);
+  cursor: pointer;
+  font-weight: 400;
+  transition: color 180ms ease;
+}
+.filter-group label:hover { color: var(--ink); }
+.filter-group input[type="checkbox"] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(26, 15, 46, 0.30);
+  background: var(--paper);
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+.filter-group input[type="checkbox"]:checked {
+  background: var(--aubergine);
+  border-color: var(--aubergine);
+}
+.filter-group .count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-left: auto;
+}
+
+.coll-grid-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(26, 15, 46, 0.08);
+}
+.coll-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.coll-sort {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid rgba(26, 15, 46, 0.18);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.coll-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 28px;
+}
+@media (max-width: 980px) { .coll-products { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .coll-products { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
+.product-card {
+  cursor: pointer;
+  transition: transform 300ms ease;
+}
+.product-card:hover { transform: translateY(-4px); }
+.product-img {
+  aspect-ratio: 1/1;
+  background: var(--mauve-wash);
+  overflow: hidden;
+  margin-bottom: 22px;
+  position: relative;
+}
+.product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease; }
+.product-card:hover .product-img img { transform: scale(1.04); }
+.product-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--mauve-wash) 0%, var(--lavender-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--plum);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  padding: 24px;
+  text-align: center;
+}
+.product-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(252, 250, 246, 0.92);
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--aubergine);
+}
+.product-cat { font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+.product-name { font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.2; color: var(--ink); margin-bottom: 8px; }
+.product-price { font-family: var(--font-mono); font-weight: 500; font-size: 16px; color: var(--ink); }
+.product-price .from { font-family: var(--font-body); font-weight: 400; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav-wrap">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">Purple <span>Earth</span></a>
+      <div class="nav-links">
+        <a href="index.html#shop">Shop</a>
+        <a href="index.html#loyalty">Earth Points</a>
+        <a href="index.html#story">Our Story</a>
+      </div>
+      <a href="#cart" class="nav-cart">Cart <span class="nav-cart-count">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container-narrow">
+    <div class="crumb"><a href="index.html">Purple Earth</a> &middot; <a href="index.html#shop">Shop</a> &middot; Sleep &amp; Ambient</div>
+    <h1>Sleep &amp; Ambient</h1>
+    <p>The bedroom edit — silk, weight, light, scent. The objects that quietly close a day.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section>
+  <div class="container">
+    <div class="collection-layout">
+
+      <!-- Sidebar filters -->
+      <aside class="filters">
+        <div class="filter-group">
+          <h4>Category</h4>
+          <label><input type="checkbox" checked> Eye Masks <span class="count">3</span></label>
+          <label><input type="checkbox"> Weighted Blankets <span class="count">3</span></label>
+          <label><input type="checkbox"> Light &amp; Alarm <span class="count">2</span></label>
+          <label><input type="checkbox"> Bedding <span class="count">2</span></label>
+          <label><input type="checkbox"> Scent &amp; Topical <span class="count">3</span></label>
+          <label><input type="checkbox"> Sleep Tracking <span class="count">1</span></label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Price</h4>
+          <label><input type="checkbox"> Under $50 <span class="count">4</span></label>
+          <label><input type="checkbox"> $50–$100 <span class="count">5</span></label>
+          <label><input type="checkbox"> $100–$200 <span class="count">3</span></label>
+          <label><input type="checkbox"> $200+ <span class="count">2</span></label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Made In</h4>
+          <label><input type="checkbox"> Australia <span class="count">5</span></label>
+          <label><input type="checkbox"> Imported <span class="count">9</span></label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Earth Points</h4>
+          <label><input type="checkbox"> Welcome (1.5×) <span class="count">14</span></label>
+          <label><input type="checkbox"> Considered Tier early access <span class="count">3</span></label>
+        </div>
+      </aside>
+
+      <!-- Product grid -->
+      <main>
+        <div class="coll-grid-head">
+          <div class="coll-count">14 items &middot; curated this season</div>
+          <button class="coll-sort">Sort: Featured &darr;</button>
+        </div>
+
+        <div class="coll-products">
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img">
+              <div class="product-placeholder">Silk Eye Mask</div>
+              <div class="product-badge">Editor's Pick</div>
+            </div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Mulberry Silk Eye Mask</div>
+            <div class="product-price">$39.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Weighted Blanket</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">The Weighted Blanket</div>
+            <div class="product-price"><span class="from">From</span>$129.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Sunrise Alarm</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Sunrise Alarm Clock</div>
+            <div class="product-price">$79.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Essential Oil Diffuser</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Glass &amp; Ceramic Diffuser</div>
+            <div class="product-price">$59.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Linen Pillowcase</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Lilac Linen Pillowcase Pair</div>
+            <div class="product-price">$59.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img">
+              <div class="product-placeholder">Lavender Pillow Mist</div>
+              <div class="product-badge">Made in AU</div>
+            </div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Lavender Pillow Mist 300ml</div>
+            <div class="product-price">$29.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img">
+              <div class="product-placeholder">Magnesium Spray</div>
+              <div class="product-badge">Made in AU</div>
+            </div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Topical Magnesium Spray</div>
+            <div class="product-price">$34.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Blackout Curtain Set</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Blackout Sleep Curtain Set</div>
+            <div class="product-price">$79.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Smart Sleep Ring</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Sleep Tracker Ring</div>
+            <div class="product-price">$179.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Smart Bulb Pair</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Purple-Tunable Smart Bulbs</div>
+            <div class="product-price">$49.00</div>
+          </a>
+
+          <a href="product.html" class="product-card fade-in">
+            <div class="product-img"><div class="product-placeholder">Salt Lamp Cluster</div></div>
+            <div class="product-cat">Sleep &amp; Ambient</div>
+            <div class="product-name">Himalayan Salt Lamp Cluster</div>
+            <div class="product-price">$79.00</div>
+          </a>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Purple <span>Earth</span></div>
+        <p class="footer-tag">A curated wellness marketplace.<br/>Adelaide-led, Australia-shipped.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <a href="collection.html">Grounding &amp; Recovery</a>
+        <a href="collection.html">Strength &amp; Mobility</a>
+        <a href="collection.html">Hydration &amp; Vessels</a>
+        <a href="collection.html">Audio Wellness</a>
+        <a href="collection.html">Sleep &amp; Ambient</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="index.html#story">Our Story</a>
+        <a href="index.html#loyalty">Earth Points</a>
+        <a href="#">Curation Process</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="mailto:hello@purpleearth.com.au">hello@purpleearth.com.au</a>
+        <a href="#">Shipping &amp; Returns</a>
+        <a href="#">FAQ</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 Purple Earth &middot; Adelaide, South Australia</div>
+      <div>Made quietly.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
