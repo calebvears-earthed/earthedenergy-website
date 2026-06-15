@@ -3,40 +3,56 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Purple Earth — A Curated Wellness Marketplace</title>
-<meta name="description" content="A curated marketplace of wellness, recovery, and sleep — chosen for the way it feels, not just what it does. Designed in Adelaide. Shipping Australia-wide." />
+<title>Earthed Energy — Adelaide's Boutique Energy Installers</title>
+<meta name="description" content="Designed, delivered, and commissioned by Adelaide's renewable energy specialists. Solar, batteries, EV charging, and SAPN underground services — not a sales company that subcontracts your install." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   PURPLE EARTH — v1.0 Launch Site
-   Curated wellness marketplace · Adelaide
-   Aesop / Le Labo / Glossier editorial wellness aesthetic
+   EARTHED ENERGY — v3.0 BOUJEE CALM
+   Spec: Higgsfield card aesthetic. Lots of transparent white,
+   cream backgrounds, soft glassmorphism, gentle motion.
+   Warm. Calm. Excited. Intrigued.
    ============================================================ */
 
 :root {
-  --aubergine-deep: #1A0F2E;
-  --aubergine: #2A1B47;
-  --aubergine-soft: #3E2A5C;
-  --plum: #5C3D7A;
-  --lavender: #B8A9D9;
-  --lavender-soft: #DDD2EE;
-  --mauve-wash: #F2EDF8;
-  --cream: #F8F4ED;
-  --cream-warm: #F0E9DC;
-  --paper: #FCFAF6;
-  --ink: #1A0F2E;
-  --ink-mid: #4A3D5C;
-  --ink-soft: #7A6D8C;
-  --gold-spark: #C9A86A;
-  --white-soft: rgba(252, 250, 246, 0.92);
+  /* Palette — locked */
+  --cream-base: #FAF7F2;
+  --cream-warm: #F4EFE7;
+  --white-pure: #FFFFFF;
+  --white-soft: rgba(255, 255, 255, 0.72);
+  --white-glass: rgba(255, 255, 255, 0.92);
+  --lavender-wash: #F4F1FF;
+  --lavender-deep: #EDE7FF;
 
-  --shadow-soft: 0 4px 24px rgba(26, 15, 46, 0.06);
-  --shadow-lift: 0 12px 48px rgba(26, 15, 46, 0.10);
-  --shadow-deep: 0 24px 80px rgba(26, 15, 46, 0.18);
+  --ink-deep: #1A1530;
+  --ink-mid: #3D3654;
+  --ink-soft: #5D5470;
+  --ink-faint: #8A839A;
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --purple-primary: #6B4FFF;
+  --purple-deep: #4B2FCC;
+  --purple-soft: #A395FF;
+  --purple-glow: rgba(107, 79, 255, 0.18);
+  --purple-bg: #1F1545;
+  --purple-bg-deep: #15102E;
+
+  --sage-cta: #7FB069;
+  --sage-deep: #5C8A4B;
+  --sage-glow: rgba(127, 176, 105, 0.25);
+
+  --amber-spark: #E8A546;
+
+  /* Shadows — soft, layered */
+  --card-soft: 0 4px 24px rgba(26, 21, 48, 0.06);
+  --card-lift: 0 12px 48px rgba(26, 21, 48, 0.10);
+  --card-deep: 0 24px 80px rgba(26, 21, 48, 0.14);
+  --glow-purple: 0 8px 40px rgba(107, 79, 255, 0.20);
+  --glow-sage: 0 8px 40px rgba(127, 176, 105, 0.28);
+
+  /* Type */
+  --font-display: 'Sora', system-ui, -apple-system, sans-serif;
   --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 }
@@ -47,56 +63,50 @@ body {
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.65;
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--ink-deep);
+  background: var(--cream-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 img { display: block; max-width: 100%; height: auto; }
-a { color: var(--aubergine); text-decoration: none; transition: color 200ms ease; }
-a:hover { color: var(--plum); }
+a { color: var(--purple-primary); text-decoration: none; transition: color 200ms ease; }
+a:hover { color: var(--purple-deep); }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
-.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
-.container-narrow { max-width: 880px; margin: 0 auto; padding: 0 32px; }
-@media (max-width: 768px) { .container, .container-narrow { padding: 0 20px; } }
+.container { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 768px) { .container { padding: 0 20px; } }
 
 .eyebrow {
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.28em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--plum);
+  color: var(--purple-primary);
   margin-bottom: 16px;
 }
 .display-xl {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 1.0;
-  letter-spacing: -0.015em;
-  color: var(--ink);
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--ink-deep);
 }
 .display-lg {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(36px, 5vw, 60px);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: var(--ink);
+  font-weight: 700;
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink-deep);
 }
-.display-md {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(26px, 3.2vw, 36px);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--ink);
+.body-lg {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--ink-mid);
 }
-.body-lg { font-size: 19px; line-height: 1.7; color: var(--ink-mid); }
-.body { font-size: 17px; line-height: 1.65; color: var(--ink-mid); }
 .mono { font-family: var(--font-mono); font-weight: 500; }
 
 /* Buttons */
@@ -106,57 +116,73 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   justify-content: center;
   gap: 10px;
   padding: 18px 36px;
-  border-radius: 0;
+  border-radius: 999px;
   font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.01em;
   transition: all 280ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   white-space: nowrap;
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: var(--paper);
 }
-.btn:hover {
-  background: var(--paper);
-  color: var(--ink);
+.btn-sage {
+  background: var(--sage-cta);
+  color: var(--white-pure);
+  box-shadow: var(--glow-sage);
+}
+.btn-sage:hover {
+  background: var(--sage-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 50px rgba(127, 176, 105, 0.40);
+  color: var(--white-pure);
+}
+.btn-purple {
+  background: var(--purple-primary);
+  color: var(--white-pure);
+  box-shadow: var(--glow-purple);
+}
+.btn-purple:hover {
+  background: var(--purple-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 50px rgba(107, 79, 255, 0.32);
+  color: var(--white-pure);
 }
 .btn-ghost {
   background: transparent;
-  color: var(--ink);
-  border-color: var(--ink);
+  color: var(--ink-deep);
+  border: 1.5px solid rgba(26, 21, 48, 0.18);
 }
 .btn-ghost:hover {
-  background: var(--ink);
-  color: var(--paper);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: var(--ink-deep);
+  transform: translateY(-2px);
+  color: var(--ink-deep);
 }
-.btn-light {
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--paper);
+.btn-cream {
+  background: var(--cream-base);
+  color: var(--ink-deep);
+  padding: 20px 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
-.btn-light:hover {
-  background: transparent;
-  color: var(--paper);
-  border-color: var(--paper);
+.btn-cream:hover {
+  background: var(--white-pure);
+  color: var(--ink-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.20);
 }
 
-/* ============================================================
-   NAV
-   ============================================================ */
+/* NAV */
 .nav-wrap {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 22px 0;
-  background: rgba(252, 250, 246, 0.82);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(26, 15, 46, 0.06);
+  padding: 20px 0;
+  background: rgba(250, 247, 242, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(26, 21, 48, 0.06);
 }
 .nav {
   display: flex;
@@ -164,71 +190,58 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   justify-content: space-between;
   gap: 32px;
 }
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 24px;
-  letter-spacing: 0.04em;
-  color: var(--ink);
+.nav-logo img {
+  height: 56px;
+  width: auto;
+  display: block;
 }
-.nav-logo span { color: var(--plum); }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 36px;
 }
 .nav-links a {
-  color: var(--ink);
+  color: var(--ink-deep);
   font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 15px;
   transition: color 200ms ease;
 }
-.nav-links a:hover { color: var(--plum); }
-.nav-cart {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.nav-cart-count {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 12px;
-  background: var(--aubergine);
-  color: var(--paper);
-  padding: 2px 8px;
+.nav-links a:hover { color: var(--purple-primary); }
+.nav-cta {
+  background: var(--sage-cta);
+  color: var(--white-pure);
+  padding: 12px 22px;
   border-radius: 999px;
-  min-width: 22px;
-  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 16px rgba(127, 176, 105, 0.30);
+  transition: all 240ms ease;
+}
+.nav-cta:hover {
+  background: var(--sage-deep);
+  color: var(--white-pure);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(127, 176, 105, 0.40);
 }
 @media (max-width: 860px) {
   .nav-links { display: none; }
-  .nav-logo { font-size: 20px; }
+  .nav-cta { padding: 10px 18px; font-size: 13px; }
+  .nav-logo img { height: 44px; }
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* HERO */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 0 80px;
+  padding: 140px 0 80px;
   overflow: hidden;
 }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-color: var(--aubergine-deep);
-  background-image: url('images/hero-1.jpg');
+  background-image: url('images/residential-install-hero.jpg');
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -239,59 +252,49 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(26, 15, 46, 0.20) 0%,
-    rgba(26, 15, 46, 0.40) 60%,
-    rgba(26, 15, 46, 0.55) 100%
+    rgba(250, 247, 242, 0.20) 0%,
+    rgba(250, 247, 242, 0.35) 40%,
+    rgba(250, 247, 242, 0.55) 100%
   );
 }
 .hero-content {
   position: relative;
   z-index: 2;
   width: 100%;
+}
+.hero-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: rgba(250, 247, 242, 0.78);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 32px;
+  padding: 56px 56px 48px;
+  box-shadow: var(--card-deep);
   text-align: center;
 }
-.hero-eyebrow {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--lavender);
-  margin-bottom: 32px;
-}
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content: '';
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--lavender);
-  vertical-align: middle;
-  margin: 0 14px;
-  opacity: 0.6;
-}
-.hero h1 {
+.hero-card .eyebrow { color: var(--purple-primary); }
+.hero-card h1 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(48px, 8vw, 108px);
-  line-height: 1.0;
-  letter-spacing: -0.015em;
-  color: var(--paper);
-  margin-bottom: 28px;
+  font-weight: 700;
+  font-size: clamp(34px, 5.2vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ink-deep);
+  margin-bottom: 24px;
 }
-.hero h1 em {
-  font-style: italic;
-  color: var(--lavender);
-  font-weight: 400;
+.hero-card h1 em {
+  font-style: normal;
+  color: var(--purple-primary);
+  font-weight: 700;
 }
-.hero-sub {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(18px, 2vw, 22px);
-  line-height: 1.5;
-  color: rgba(252, 250, 246, 0.85);
-  margin-bottom: 48px;
-  max-width: 620px;
+.hero-card .sub {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-mid);
+  margin-bottom: 36px;
+  max-width: 560px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -300,799 +303,1689 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.hero-trust {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 28px;
+  border-top: 1px solid rgba(26, 21, 48, 0.08);
+}
+.hero-trust span {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-trust span::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage-cta);
+}
+@media (max-width: 640px) {
+  .hero-card { padding: 40px 28px 36px; border-radius: 24px; }
+  .hero-card h1 { font-size: 32px; }
+  .hero-card .sub { font-size: 16px; }
+  .hero-trust { gap: 16px; }
+  .hero-trust span { font-size: 12px; }
 }
 
-/* ============================================================
-   BRAND THESIS
-   ============================================================ */
-.thesis {
-  padding: 140px 0;
-  background: var(--paper);
+/* SECTIONS */
+.section { padding: 120px 0; }
+.section-sm { padding: 80px 0; }
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .section-sm { padding: 48px 0; }
+}
+.section-head {
   text-align: center;
+  max-width: 680px;
+  margin: 0 auto 64px;
 }
-.thesis .eyebrow {
-  display: inline-block;
-}
-.thesis h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(32px, 4.5vw, 52px);
-  line-height: 1.25;
-  letter-spacing: -0.005em;
-  color: var(--ink);
-  margin-bottom: 36px;
-  font-style: italic;
-}
-.thesis p {
-  font-size: 18px;
-  line-height: 1.8;
-  color: var(--ink-mid);
-  margin-bottom: 20px;
-}
-.thesis-signature {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--plum);
-  margin-top: 36px;
-}
+.section-head h2 { margin-bottom: 20px; }
+.section-head p { font-size: 18px; color: var(--ink-mid); line-height: 1.65; }
 
-/* ============================================================
-   CATEGORIES — five tiles
-   ============================================================ */
-.categories {
-  padding: 100px 0 140px;
-  background: var(--cream);
-}
-.cat-head {
-  text-align: center;
-  margin-bottom: 72px;
-}
-.cat-head h2 { margin-bottom: 20px; }
-.cat-head p { max-width: 560px; margin: 0 auto; color: var(--ink-mid); font-size: 18px; }
-.cat-grid {
+/* PACKAGES — Higgsfield card style */
+#packages { background: var(--cream-base); }
+.packages-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
-@media (max-width: 980px) { .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
-@media (max-width: 500px) { .cat-grid { grid-template-columns: 1fr; } }
-.cat-card {
+@media (max-width: 1200px) {
+  .packages-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+}
+@media (max-width: 600px) {
+  .packages-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 22px; }
+}
+.pkg-card {
   position: relative;
-  aspect-ratio: 3/5;
+  border-radius: 28px;
   overflow: hidden;
+  height: 520px;
+  background: var(--ink-deep);
   cursor: pointer;
-  background: var(--aubergine);
-  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 400ms ease;
+  box-shadow:
+    0 4px 24px rgba(26, 21, 48, 0.08),
+    0 0 0 1px rgba(107, 79, 255, 0.04);
+  text-decoration: none;
+  display: block;
 }
-.cat-card:hover { transform: translateY(-4px); }
-.cat-card-bg {
+.pkg-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 30px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(107, 79, 255, 0) 0%, rgba(107, 79, 255, 0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 4;
+  pointer-events: none;
+  transition: background 500ms ease;
+}
+.pkg-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 24px 60px rgba(26, 21, 48, 0.18),
+    0 0 80px rgba(107, 79, 255, 0.35),
+    0 0 0 1px rgba(107, 79, 255, 0.20);
+}
+.pkg-card:hover::after {
+  background: linear-gradient(135deg, rgba(163, 149, 255, 0.85) 0%, rgba(107, 79, 255, 0.4) 50%, rgba(163, 149, 255, 0.85) 100%);
+}
+.pkg-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: transform 700ms ease;
+  transition: transform 600ms ease;
 }
-.cat-card:hover .cat-card-bg { transform: scale(1.06); }
-.cat-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(26, 15, 46, 0.15) 0%, rgba(26, 15, 46, 0.65) 100%);
-  z-index: 1;
+.pkg-card:hover .pkg-bg { transform: scale(1.04); }
+.pkg-bg-contain {
+  background-size: cover !important;
+  background-position: center !important;
+  background-color: #0D0820;
 }
-.cat-card-text {
+
+/* HIGGSFIELD AD-CARD VARIANT — Family Estate */
+.pkg-card-hf::before { display: none; }
+.pkg-card-hf {
+  background: #0D0820;
+}
+.hf-logo-overlay {
   position: absolute;
-  bottom: 32px;
+  top: 22px;
+  left: 22px;
+  z-index: 3;
+  padding: 6px 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 6px;
+}
+.hf-logo-overlay img {
+  height: 22px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+.hf-price-overlay {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  z-index: 3;
+  text-align: right;
+  color: var(--white-pure);
+  max-width: 70%;
+}
+.hf-arrow-corner {
+  position: absolute;
+  bottom: 28px;
   left: 28px;
-  right: 28px;
-  z-index: 2;
-  color: var(--paper);
-}
-.cat-card-num {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: rgba(252, 250, 246, 0.65);
-  margin-bottom: 10px;
-}
-.cat-card-name {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--paper);
-}
-.cat-card-arrow {
-  position: absolute;
-  top: 28px;
-  right: 28px;
-  z-index: 2;
-  width: 36px;
-  height: 36px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(252, 250, 246, 0.18);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--paper);
-  font-size: 14px;
-  border: 1px solid rgba(252, 250, 246, 0.30);
-  transition: all 240ms ease;
+  font-size: 18px;
+  color: var(--white-pure);
+  transition: all 280ms ease;
 }
-.cat-card:hover .cat-card-arrow {
-  background: var(--paper);
-  color: var(--ink);
+.pkg-card-hf:hover .hf-arrow-corner {
+  background: var(--purple-primary);
+  border-color: var(--purple-primary);
   transform: translateX(3px);
+  box-shadow: 0 6px 20px rgba(107, 79, 255, 0.40);
 }
-
-/* ============================================================
-   FEATURED PRODUCTS
-   ============================================================ */
-.featured {
-  padding: 140px 0;
-  background: var(--paper);
+.hf-price-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 6px;
 }
-.feat-head {
-  text-align: center;
-  margin-bottom: 80px;
-}
-.feat-head h2 {
+.hf-price-big {
   font-family: var(--font-display);
-  font-style: italic;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--white-pure);
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+@media (min-width: 1200px) {
+  .hf-price-big { font-size: 32px; }
+  .hf-price-sub { font-size: 12px !important; }
+}
+.hf-price-star {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 4px;
+}
+.hf-price-sub {
+  font-family: var(--font-body);
   font-weight: 400;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 10px;
+  letter-spacing: 0.01em;
+}
+.hf-email-bar { display: none; }
+.pkg-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 21, 48, 0.0) 0%,
+    rgba(26, 21, 48, 0.05) 40%,
+    rgba(26, 21, 48, 0.45) 100%
+  );
+  z-index: 1;
+}
+.pkg-glass {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 24px 26px 22px;
+  z-index: 2;
+}
+.pkg-glass .eyebrow { color: var(--purple-primary); margin-bottom: 8px; font-size: 11px; }
+.pkg-glass h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--ink-deep);
+  margin-bottom: 8px;
+}
+.pkg-glass p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
   margin-bottom: 16px;
 }
-.feat-grid {
+.pkg-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid rgba(26, 21, 48, 0.08);
+}
+.pkg-price-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+.pkg-price {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--ink-deep);
+  letter-spacing: -0.01em;
+}
+.pkg-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--purple-primary);
+  color: var(--white-pure);
+  font-size: 18px;
+  transition: all 240ms ease;
+}
+.pkg-card:hover .pkg-arrow {
+  background: var(--purple-deep);
+  transform: translateX(4px);
+}
+.pkg-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--ink-deep);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.pkg-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage-cta);
+}
+
+/* PROCESS */
+#process { background: var(--cream-warm); }
+.process-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px 32px;
-}
-@media (max-width: 980px) { .feat-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 580px) { .feat-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
-.product-card {
-  cursor: pointer;
-  transition: transform 300ms ease;
-}
-.product-card:hover { transform: translateY(-4px); }
-.product-img {
-  aspect-ratio: 1/1;
-  background: var(--mauve-wash);
-  overflow: hidden;
-  margin-bottom: 22px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
   position: relative;
 }
-.product-img img {
+@media (max-width: 980px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (max-width: 540px) {
+  .process-grid { grid-template-columns: 1fr; }
+}
+.process-step {
+  position: relative;
+  padding: 36px 24px;
+  background: var(--white-pure);
+  border-radius: 24px;
+  text-align: left;
+  box-shadow: var(--card-soft);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.process-step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-lift);
+}
+.process-num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--purple-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+  display: block;
+}
+.process-step h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink-deep);
+  margin-bottom: 12px;
+  min-height: 62px;
+}
+.process-step p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* GALLERY */
+#installs { background: var(--cream-base); }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.gallery-item {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--card-soft);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms ease;
+}
+.gallery-item:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--card-lift);
+}
+.gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 600ms ease;
 }
-.product-card:hover .product-img img { transform: scale(1.04); }
-.product-placeholder {
+.gallery-item:hover img { transform: scale(1.04); }
+.g1 { grid-column: span 6; grid-row: span 2; aspect-ratio: 4/5; }
+.g2 { grid-column: span 6; aspect-ratio: 16/9; }
+.g3 { grid-column: span 3; aspect-ratio: 1/1; }
+.g4 { grid-column: span 3; aspect-ratio: 1/1; }
+.g5 { grid-column: span 4; aspect-ratio: 4/3; }
+.g6 { grid-column: span 4; aspect-ratio: 4/3; }
+.g7 { grid-column: span 4; aspect-ratio: 4/3; }
+@media (max-width: 768px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .g1, .g2, .g3, .g4, .g5, .g6, .g7 { grid-column: span 1; grid-row: auto; aspect-ratio: 4/5; }
+}
+.gallery-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-deep);
+}
+
+/* Uniform 9-tile gallery (under the BESS hero) */
+.gallery-9 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+.gallery-9 .gallery-item {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  aspect-ratio: 4/5;
+}
+@media (max-width: 768px) {
+  .gallery-9 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+@media (max-width: 460px) {
+  .gallery-9 { grid-template-columns: 1fr; }
+}
+
+/* BESS HERO — special HV crossover tile */
+.bess-hero {
+  position: relative;
+  display: block;
+  border-radius: 28px;
+  overflow: hidden;
+  text-decoration: none;
+  aspect-ratio: 21/9;
+  background: #14104A;
+  box-shadow:
+    0 12px 48px rgba(26, 21, 48, 0.18),
+    0 0 0 2px rgba(147, 110, 255, 0.45),
+    0 0 60px rgba(147, 110, 255, 0.25);
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms ease;
+}
+.bess-hero:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 24px 80px rgba(26, 21, 48, 0.28),
+    0 0 0 2px rgba(178, 142, 255, 0.85),
+    0 0 100px rgba(147, 110, 255, 0.50);
+}
+.bess-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--mauve-wash) 0%, var(--lavender-soft) 100%);
+  background-size: cover;
+  background-position: center;
+  transition: transform 600ms ease;
+}
+.bess-hero:hover .bess-bg { transform: scale(1.04); }
+.bess-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(20, 16, 74, 0.85) 0%, rgba(20, 16, 74, 0.30) 50%, rgba(20, 16, 74, 0.55) 100%);
+  z-index: 1;
+}
+.bess-content {
+  position: absolute;
+  top: 50%;
+  left: 48px;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 480px;
+}
+.bess-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: #C4A7FF;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  background: rgba(147, 110, 255, 0.18);
+  border: 1px solid rgba(147, 110, 255, 0.35);
+  border-radius: 999px;
+}
+.bess-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white-pure);
+  margin-bottom: 24px;
+}
+.bess-specs {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.bess-spec .num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--white-pure);
+  letter-spacing: -0.01em;
+}
+.bess-spec .lbl {
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 4px;
+}
+.bess-cta {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: linear-gradient(135deg, #8A6BFF 0%, #6B4FFF 100%);
+  border-radius: 999px;
+  color: var(--white-pure);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 32px rgba(138, 107, 255, 0.45);
+  transition: all 280ms ease;
+}
+.bess-hero:hover .bess-cta {
+  background: linear-gradient(135deg, #A38CFF 0%, #8264FF 100%);
+  box-shadow: 0 12px 44px rgba(138, 107, 255, 0.65);
+  padding-right: 26px;
+}
+.bess-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 14px;
+  transition: transform 240ms ease;
+}
+.bess-hero:hover .bess-arrow { transform: translateX(3px); }
+@media (max-width: 860px) {
+  .bess-hero { aspect-ratio: 4/3; }
+  .bess-content { left: 24px; right: 24px; max-width: none; }
+  .bess-cta { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 13px; }
+  .bess-specs { gap: 18px; }
+  .bess-spec .num { font-size: 18px; }
+}
+
+/* WHY */
+#why { background: var(--lavender-wash); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 980px) { .why-grid { grid-template-columns: 1fr; } }
+.why-card {
+  background: var(--white-pure);
+  border-radius: 24px;
+  padding: 40px 32px;
+  box-shadow: var(--card-soft);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-lift);
+}
+.why-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--lavender-deep);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--plum);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
+  margin-bottom: 24px;
 }
-.product-cat {
+.why-icon svg { width: 26px; height: 26px; stroke: var(--purple-primary); fill: none; stroke-width: 1.8; }
+.why-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--ink-deep);
+  margin-bottom: 14px;
+}
+.why-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-mid);
+}
+
+/* REBATES SECTION */
+.rebates-section {
+  background:
+    radial-gradient(ellipse at top right, rgba(127, 176, 105, 0.10) 0%, transparent 60%),
+    var(--lavender-wash);
+  position: relative;
+  overflow: hidden;
+}
+.rebates-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 980px) { .rebates-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+.rebate-card {
+  position: relative;
+  background: var(--white-pure);
+  border-radius: 24px;
+  padding: 36px 32px 32px;
+  box-shadow: var(--card-soft);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.rebate-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-lift);
+}
+.rebate-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  background: rgba(127, 176, 105, 0.14);
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.rebate-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage-cta);
+}
+.rebate-tag-optional {
+  color: var(--purple-deep);
+  background: rgba(107, 79, 255, 0.10);
+}
+.rebate-tag-optional::before { background: var(--purple-primary); }
+.rebate-eyebrow {
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 11px;
   letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+.rebate-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.015em;
+  color: var(--ink-deep);
+  margin-bottom: 14px;
+}
+.rebate-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+.rebate-card .mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--purple-primary);
+  background: rgba(107, 79, 255, 0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.rebates-footnote {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 13px;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* AUDIT CTA */
+.audit-cta {
+  padding: 100px 0;
+  background:
+    radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(255, 255, 255, 0.10) 0%, transparent 60%),
+    linear-gradient(135deg, #8FC07A 0%, #6FA058 100%);
+  position: relative;
+  overflow: hidden;
+}
+.audit-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 4%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 4%);
+  pointer-events: none;
+}
+.audit-inner {
+  position: relative;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.audit-cta .eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 24px;
+}
+.audit-cta h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--white-pure);
+  margin-bottom: 24px;
+}
+.audit-cta p {
+  font-size: 19px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 40px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ENQUIRY FORM */
+.enquiry-form {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 28px;
+  padding: 44px 44px 36px;
+  text-align: left;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+  max-width: 760px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .enquiry-form { padding: 32px 24px 28px; border-radius: 20px; }
+}
+.enquiry-form .form-legend {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--purple-primary);
+  margin-bottom: 14px;
+  display: block;
+  padding: 0;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+  border: none;
+  padding: 0;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 18px;
+  border-radius: 999px;
+  background: var(--cream-warm);
+  border: 1.5px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  cursor: pointer;
+  transition: all 200ms ease;
+  user-select: none;
+}
+.chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.chip:hover {
+  background: var(--lavender-deep);
+  color: var(--ink-deep);
+}
+.chip:has(input:checked) {
+  background: var(--purple-primary);
+  color: var(--white-pure);
+  border-color: var(--purple-primary);
+  box-shadow: 0 4px 16px rgba(107, 79, 255, 0.30);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+  margin-bottom: 28px;
+}
+@media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; }
+.field-full { grid-column: 1 / -1; }
+.field label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-bottom: 8px;
 }
-.product-name {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 1.2;
-  color: var(--ink);
-  margin-bottom: 10px;
-}
-.product-price {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--ink);
-}
-.product-price .from {
+.field input,
+.field textarea {
   font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--ink-deep);
+  background: var(--cream-base);
+  border: 1.5px solid rgba(26, 21, 48, 0.10);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all 200ms ease;
+  outline: none;
+  width: 100%;
   font-weight: 400;
+}
+.field textarea { resize: vertical; min-height: 88px; font-family: var(--font-body); }
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--purple-primary);
+  background: var(--white-pure);
+  box-shadow: 0 0 0 4px rgba(107, 79, 255, 0.12);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+.btn-submit {
+  width: 100%;
+  padding: 18px 36px;
+  font-size: 16px;
+}
+.form-fineprint {
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+/* HV CROSSOVER */
+.hv-crossover {
+  background:
+    radial-gradient(ellipse at top, rgba(147, 110, 255, 0.22) 0%, transparent 60%),
+    linear-gradient(135deg, #251F6E 0%, #14104A 100%);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  color: var(--white-pure);
+}
+.hv-crossover::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(147, 110, 255, 0.28) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+/* HV Intro band */
+.hv-intro {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 72px;
+  position: relative;
+  z-index: 1;
+}
+.hv-intro .eyebrow { color: var(--purple-soft); }
+.hv-intro h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--white-pure);
+  margin-bottom: 20px;
+}
+.hv-intro h2 em {
+  font-style: normal;
+  background: linear-gradient(135deg, #C4A7FF 0%, #8A6BFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hv-intro p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 680px;
+  margin: 0 auto 28px;
+}
+
+.hv-stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  flex-wrap: wrap;
+}
+.hv-stat .num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--white-pure);
+  letter-spacing: -0.01em;
+}
+.hv-stat .label {
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-right: 8px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 4px;
 }
-
-.feat-cta {
-  text-align: center;
-  margin-top: 64px;
-}
-
-/* ============================================================
-   LIFESTYLE INTERLUDE
-   ============================================================ */
-.interlude {
-  position: relative;
-  min-height: 80vh;
-  display: flex;
+.hv-cta {
+  display: inline-flex;
   align-items: center;
-  background-color: var(--aubergine-deep);
-  background-image: url('images/lifestyle-2.jpg');
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  padding: 120px 0;
+  gap: 12px;
+  padding: 18px 32px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--white-pure);
+  font-weight: 600;
+  font-size: 15px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 280ms ease;
 }
-.interlude::after {
+.hv-cta:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: var(--white-pure);
+  transform: translateY(-2px);
+}
+.hv-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--purple-primary);
+  transition: transform 240ms ease;
+}
+.hv-cta:hover .hv-cta-arrow { transform: translateX(4px); }
+
+/* TEAM GRID — Caleb / Troy / Virtue */
+.hv-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 56px;
+}
+@media (max-width: 980px) { .hv-team-grid { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; } }
+.team-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  transition: transform 300ms ease, border-color 300ms ease, background 300ms ease;
+}
+.team-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(156, 177, 255, 0.22);
+}
+.team-photo {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #2A2370 0%, #1A1450 100%);
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+.team-photo::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(26, 15, 46, 0.55) 0%, rgba(26, 15, 46, 0.20) 100%);
+  background: linear-gradient(180deg, transparent 60%, rgba(12, 15, 56, 0.6) 100%);
+  pointer-events: none;
+}
+/* Placeholder for Troy (no photo yet) */
+.team-photo-placeholder { position: relative; }
+.team-photo-placeholder.no-img { background: linear-gradient(135deg, #2A2370 0%, #1A1450 100%); }
+.placeholder-mono {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 72px;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 4px 24px rgba(91, 109, 255, 0.40);
   z-index: 1;
 }
-.interlude-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 620px;
-}
-.interlude h2 {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1.2;
-  color: var(--paper);
-  margin-bottom: 28px;
-}
-.interlude p {
-  font-size: 19px;
-  line-height: 1.7;
-  color: rgba(252, 250, 246, 0.86);
-  margin-bottom: 36px;
-}
-
-/* ============================================================
-   LOYALTY — Earth Points
-   ============================================================ */
-.loyalty {
-  padding: 140px 0;
-  background: var(--mauve-wash);
-}
-.loyalty-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-@media (max-width: 880px) { .loyalty-grid { grid-template-columns: 1fr; gap: 56px; } }
-.loyalty-photo {
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  background: var(--aubergine);
-  background-image: url('images/loyalty-4.jpg');
-  background-size: cover;
-  background-position: center;
-}
-.loyalty-text .eyebrow { color: var(--plum); }
-.loyalty-text h2 {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(36px, 4.5vw, 52px);
-  line-height: 1.1;
-  letter-spacing: -0.005em;
-  margin-bottom: 24px;
-}
-.loyalty-text p {
-  font-size: 18px;
-  line-height: 1.75;
-  color: var(--ink-mid);
-  margin-bottom: 24px;
-}
-.loyalty-tiers {
+.team-photo-placeholder.no-img .placeholder-mono { display: flex; }
+/* Virtue glyph (no photo — abstract coordination network mark) */
+.team-photo-virtue {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(91, 109, 255, 0.30) 0%, transparent 60%),
+    linear-gradient(135deg, #1B204D 0%, #0F1238 100%);
   display: flex;
-  gap: 12px;
-  margin-top: 36px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 14px;
 }
-.loyalty-tier {
-  flex: 1 1 130px;
-  padding: 22px 18px;
-  background: var(--paper);
-  border: 1px solid rgba(26, 15, 46, 0.08);
-  text-align: center;
+.virtue-svg {
+  width: 200px;
+  height: 130px;
+  display: block;
 }
-.loyalty-tier .pts {
+.virtue-cities {
   font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 22px;
-  color: var(--aubergine);
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.55);
 }
-.loyalty-tier .lbl {
+.team-body {
+  padding: 26px 26px 28px;
+}
+.team-role {
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 6px;
+  color: var(--purple-soft);
+  margin-bottom: 10px;
 }
-
-/* ============================================================
-   DIVIDER — botanical visual
-   ============================================================ */
-.divider {
-  height: 50vh;
-  background-color: var(--lavender-soft);
-  background-image: url('images/divider-5.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-/* ============================================================
-   PROMISE — three pillars
-   ============================================================ */
-.promise {
-  padding: 140px 0;
-  background: var(--paper);
-}
-.promise-head {
-  text-align: center;
-  margin-bottom: 80px;
-}
-.promise-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-}
-@media (max-width: 880px) { .promise-grid { grid-template-columns: 1fr; gap: 56px; max-width: 480px; margin: 0 auto; } }
-.promise-card {
-  text-align: center;
-  padding: 0 12px;
-}
-.promise-num {
+.team-body h3 {
   font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--white-pure);
+  margin-bottom: 12px;
+}
+.team-body p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 10px;
+}
+.team-personal {
   font-style: italic;
-  font-weight: 400;
-  font-size: 36px;
-  color: var(--plum);
-  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.58) !important;
+  border-left: 2px solid rgba(156, 177, 255, 0.40);
+  padding-left: 12px;
+  margin-top: 14px !important;
 }
-.promise-card h3 {
-  font-family: var(--font-display);
+.virtue-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-family: var(--font-mono);
   font-weight: 500;
-  font-size: 24px;
-  line-height: 1.25;
-  color: var(--ink);
-  margin-bottom: 14px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #9CB1FF;
+  transition: color 200ms ease;
 }
-.promise-card p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--ink-mid);
-}
+.virtue-link:hover { color: var(--white-pure); }
 
-/* ============================================================
-   NEWSLETTER
-   ============================================================ */
-.newsletter {
-  padding: 120px 0;
-  background: var(--aubergine);
-  color: var(--paper);
+/* CTA wrap */
+.hv-cta-wrap {
   text-align: center;
-}
-.newsletter .eyebrow { color: var(--lavender); }
-.newsletter h2 {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(32px, 4vw, 48px);
-  line-height: 1.15;
-  color: var(--paper);
-  margin-bottom: 16px;
-}
-.newsletter p {
-  color: rgba(252, 250, 246, 0.78);
-  margin-bottom: 36px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 17px;
-}
-.newsletter-form {
-  display: flex;
-  gap: 8px;
-  max-width: 520px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-.newsletter-form input {
-  flex: 1 1 280px;
-  padding: 16px 20px;
-  font-family: var(--font-body);
-  font-size: 15px;
-  background: rgba(252, 250, 246, 0.06);
-  border: 1px solid rgba(252, 250, 246, 0.20);
-  color: var(--paper);
-  outline: none;
-  transition: all 200ms ease;
-}
-.newsletter-form input::placeholder { color: rgba(252, 250, 246, 0.45); }
-.newsletter-form input:focus {
-  background: rgba(252, 250, 246, 0.10);
-  border-color: var(--lavender);
+  position: relative;
+  z-index: 1;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* ACCREDITATIONS */
+#accred { background: var(--cream-base); padding: 80px 0; }
+.accred-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+@media (max-width: 768px) {
+  .accred-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .accred-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.accred-tile {
+  background: var(--white-pure);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  border: 1px solid rgba(26, 21, 48, 0.04);
+  transition: all 280ms ease;
+}
+.accred-tile:hover {
+  color: var(--purple-primary);
+  border-color: var(--purple-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--card-soft);
+}
+.accred-tile .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  display: block;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* FOOTER */
 .footer {
-  background: var(--aubergine-deep);
-  color: rgba(252, 250, 246, 0.62);
+  background: var(--ink-deep);
+  color: rgba(255, 255, 255, 0.7);
   padding: 80px 0 32px;
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 56px;
-  margin-bottom: 56px;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 60px;
 }
 @media (max-width: 880px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
-.footer-brand {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 28px;
-  color: var(--paper);
-  margin-bottom: 16px;
+.footer-brand img {
+  height: 48px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
 }
-.footer-brand span { color: var(--lavender); }
-.footer-tag {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 15px;
-  color: rgba(252, 250, 246, 0.50);
-  max-width: 320px;
-  line-height: 1.6;
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 280px;
 }
 .footer-col h5 {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--paper);
+  color: var(--white-pure);
   margin-bottom: 20px;
 }
 .footer-col a {
   display: block;
   font-size: 14px;
-  color: rgba(252, 250, 246, 0.58);
+  color: rgba(255, 255, 255, 0.62);
   margin-bottom: 10px;
   transition: color 200ms ease;
 }
-.footer-col a:hover { color: var(--paper); }
+.footer-col a:hover { color: var(--white-pure); }
 .footer-bottom {
-  padding-top: 28px;
-  border-top: 1px solid rgba(252, 250, 246, 0.10);
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  font-size: 12px;
-  color: rgba(252, 250, 246, 0.35);
-  letter-spacing: 0.04em;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
 }
 
-/* ============================================================
-   FADE-IN
-   ============================================================ */
+/* FADE-IN */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 900ms ease, transform 900ms ease;
+  transition: opacity 800ms ease, transform 800ms ease;
 }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <header class="nav-wrap">
   <div class="container">
     <nav class="nav">
-      <a href="#" class="nav-logo">Purple <span>Earth</span></a>
+      <a href="#" class="nav-logo">
+        <img src="images/logo-purple.png" alt="Earthed Energy" />
+      </a>
       <div class="nav-links">
-        <a href="#shop">Shop</a>
-        <a href="#loyalty">Earth Points</a>
-        <a href="#story">Our Story</a>
+        <a href="#packages">Packages</a>
+        <a href="#process">Process</a>
+        <a href="#why">About</a>
       </div>
-      <a href="#cart" class="nav-cart">Cart <span class="nav-cart-count">0</span></a>
+      <a href="#audit" class="nav-cta">Free Home Energy Audit</a>
     </nav>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="container hero-content">
-    <div class="hero-eyebrow">A Curated Wellness Marketplace</div>
-    <h1>Quietly,<br/><em>everything you need.</em></h1>
-    <p class="hero-sub">A considered collection of recovery, sleep, and ritual — chosen for the way it feels, not just what it does.</p>
-    <div class="hero-ctas">
-      <a href="#shop" class="btn btn-light">Browse The Shop</a>
-      <a href="#story" class="btn btn-ghost" style="color:var(--paper); border-color: rgba(252,250,246,0.5);">Our Story</a>
-    </div>
-  </div>
-</section>
-
-<!-- BRAND THESIS -->
-<section class="thesis" id="story">
-  <div class="container-narrow fade-in">
-    <div class="eyebrow">Our Why</div>
-    <h2>Wellness shouldn't shout.<br/>It should arrive quietly, in objects you reach for again and again.</h2>
-    <p>Purple Earth began with a feeling — that the things we surround ourselves with shape how we move through a day. The mat we step onto first thing. The bottle we carry. The eye mask that ends the noise.</p>
-    <p>We curate a marketplace of premium-feeling, beautifully-considered wellness objects, brought from the makers we trust to a single space designed for the way you actually live.</p>
-    <p>Adelaide-led. Australia-shipped. Nothing here is loud.</p>
-    <div class="thesis-signature">— Purple Earth</div>
-  </div>
-</section>
-
-<!-- CATEGORIES -->
-<section class="categories" id="shop">
-  <div class="container">
-    <div class="cat-head fade-in">
-      <div class="eyebrow">Five Considered Collections</div>
-      <h2 class="display-lg">Where would you like to begin?</h2>
-      <p>Five curated worlds — designed to live together, designed to live alone.</p>
-    </div>
-
-    <div class="cat-grid">
-      <a href="/collections/grounding" class="cat-card fade-in">
-        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #3E2A5C 0%, #5C3D7A 100%);"></div>
-        <div class="cat-card-arrow">&rarr;</div>
-        <div class="cat-card-text">
-          <div class="cat-card-num">01 &middot; 12 Items</div>
-          <div class="cat-card-name">Grounding<br/>&amp; Recovery</div>
-        </div>
-      </a>
-
-      <a href="/collections/strength" class="cat-card fade-in">
-        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #2A1B47 0%, #4A3066 100%);"></div>
-        <div class="cat-card-arrow">&rarr;</div>
-        <div class="cat-card-text">
-          <div class="cat-card-num">02 &middot; 14 Items</div>
-          <div class="cat-card-name">Strength<br/>&amp; Mobility</div>
-        </div>
-      </a>
-
-      <a href="/collections/hydration" class="cat-card fade-in">
-        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #5C3D7A 0%, #7A56A0 100%);"></div>
-        <div class="cat-card-arrow">&rarr;</div>
-        <div class="cat-card-text">
-          <div class="cat-card-num">03 &middot; 10 Items</div>
-          <div class="cat-card-name">Hydration<br/>&amp; Vessels</div>
-        </div>
-      </a>
-
-      <a href="/collections/audio" class="cat-card fade-in">
-        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #1A0F2E 0%, #2A1B47 100%);"></div>
-        <div class="cat-card-arrow">&rarr;</div>
-        <div class="cat-card-text">
-          <div class="cat-card-num">04 &middot; 10 Items</div>
-          <div class="cat-card-name">Audio<br/>Wellness</div>
-        </div>
-      </a>
-
-      <a href="/collections/sleep" class="cat-card fade-in">
-        <div class="cat-card-bg" style="background-image: linear-gradient(135deg, #4A3066 0%, #6B4A8A 100%);"></div>
-        <div class="cat-card-arrow">&rarr;</div>
-        <div class="cat-card-text">
-          <div class="cat-card-num">05 &middot; 11 Items</div>
-          <div class="cat-card-name">Sleep<br/>&amp; Ambient</div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURED -->
-<section class="featured">
-  <div class="container">
-    <div class="feat-head fade-in">
-      <div class="eyebrow">A Few Quiet Favourites</div>
-      <h2 class="display-lg"><em>Curated this week.</em></h2>
-    </div>
-
-    <div class="feat-grid">
-
-      <a href="/products/grounding-mat-medium" class="product-card fade-in">
-        <div class="product-img"><div class="product-placeholder">Purple Earth Grounding Mat</div></div>
-        <div class="product-cat">Grounding &amp; Recovery</div>
-        <div class="product-name">The Grounding Mat</div>
-        <div class="product-price"><span class="from">From</span>$79.00</div>
-      </a>
-
-      <a href="/products/silk-eye-mask" class="product-card fade-in">
-        <div class="product-img"><div class="product-placeholder">Silk Eye Mask</div></div>
-        <div class="product-cat">Sleep &amp; Ambient</div>
-        <div class="product-name">Mulberry Silk Eye Mask</div>
-        <div class="product-price">$39.00</div>
-      </a>
-
-      <a href="/products/insulated-bottle-750" class="product-card fade-in">
-        <div class="product-img"><div class="product-placeholder">Insulated Bottle 750ml</div></div>
-        <div class="product-cat">Hydration &amp; Vessels</div>
-        <div class="product-name">The Insulated Bottle</div>
-        <div class="product-price"><span class="from">From</span>$39.00</div>
-      </a>
-
-      <a href="/products/kettlebell-12kg" class="product-card fade-in">
-        <div class="product-img"><div class="product-placeholder">Purple-Coated Kettlebell</div></div>
-        <div class="product-cat">Strength &amp; Mobility</div>
-        <div class="product-name">The Coated Kettlebell</div>
-        <div class="product-price"><span class="from">From</span>$69.00</div>
-      </a>
-
-      <a href="/products/weighted-blanket-9kg" class="product-card fade-in">
-        <div class="product-img"><div class="product-placeholder">Weighted Blanket 9kg</div></div>
-        <div class="product-cat">Sleep &amp; Ambient</div>
-        <div class="product-name">The Weighted Blanket</div>
-        <div class="product-price"><span class="from">From</span>$129.00</div>
-      </a>
-
-      <a href="/products/wireless-headphones-aurora" class="product-card fade-in">
-        <div class="product-img"><div class="product-placeholder">Aurora Headphones</div></div>
-        <div class="product-cat">Audio Wellness</div>
-        <div class="product-name">Aurora Over-Ear Headphones</div>
-        <div class="product-price">$199.00</div>
-      </a>
-
-    </div>
-
-    <div class="feat-cta fade-in">
-      <a href="#shop" class="btn btn-ghost">View All Collections</a>
-    </div>
-  </div>
-</section>
-
-<!-- LIFESTYLE INTERLUDE -->
-<section class="interlude">
-  <div class="container">
-    <div class="interlude-inner fade-in">
-      <div class="eyebrow" style="color: var(--lavender);">A Quieter Practice</div>
-      <h2>The smallest rituals<br/>shape the largest days.</h2>
-      <p>What you reach for first thing — what you carry through it, what you return to at night — these aren't accessories. They're the structure underneath a settled day.</p>
-      <a href="#shop" class="btn btn-light">Explore Sleep &amp; Ambient</a>
-    </div>
-  </div>
-</section>
-
-<!-- LOYALTY -->
-<section class="loyalty" id="loyalty">
-  <div class="container">
-    <div class="loyalty-grid">
-      <div class="loyalty-photo fade-in"></div>
-      <div class="loyalty-text fade-in">
-        <div class="eyebrow">Earth Points</div>
-        <h2>A loyalty programme<br/>made of small acts.</h2>
-        <p>Earth Points reward the ritual, not the spend. Every purchase, review, referral, and birthday quietly grows your balance — redeemed against future orders, samples, or early access to limited drops.</p>
-        <p>Three tiers. No expiry. No catches.</p>
-
-        <div class="loyalty-tiers">
-          <div class="loyalty-tier">
-            <div class="pts">100 pts</div>
-            <div class="lbl">Welcome</div>
-          </div>
-          <div class="loyalty-tier">
-            <div class="pts">500 pts</div>
-            <div class="lbl">Quiet</div>
-          </div>
-          <div class="loyalty-tier">
-            <div class="pts">1500 pts</div>
-            <div class="lbl">Considered</div>
-          </div>
-        </div>
+    <div class="hero-card fade-in">
+      <div class="eyebrow">Adelaide &middot; Boutique Energy Installations</div>
+      <h1>Solar, batteries, and the <em>quiet kind</em> of power.</h1>
+      <p class="sub">Designed, delivered, and commissioned by South Australia's renewable energy specialists. Not a sales company that subcontracts your install.</p>
+      <div class="hero-ctas">
+        <a href="#audit" class="btn btn-sage">Book Your Free Energy Audit</a>
+        <a href="#packages" class="btn btn-ghost">See Our Packages</a>
+      </div>
+      <div class="hero-trust">
+        <span>CEC Accredited</span>
+        <span>Licensed Electrical Contractor</span>
+        <span>Adelaide Owned &middot; ACN 691 065 460</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DIVIDER -->
-<section class="divider" aria-hidden="true"></section>
-
-<!-- PROMISE -->
-<section class="promise">
+<section id="packages" class="section">
   <div class="container">
-    <div class="promise-head fade-in">
-      <div class="eyebrow">The Purple Earth Promise</div>
-      <h2 class="display-lg"><em>Three things, always.</em></h2>
+    <div class="section-head fade-in">
+      <div class="eyebrow">Four Ways To Get Earthed</div>
+      <h2 class="display-lg">Pick the system that fits your home.</h2>
+      <p>From a single-storey courtyard cottage to a commercial site running 24/7 &mdash; we build to suit, never one-size-fits-all.</p>
     </div>
-    <div class="promise-grid">
-      <div class="promise-card fade-in">
-        <div class="promise-num">i.</div>
-        <h3>Curated, not cluttered.</h3>
-        <p>Every product earns its place — chosen for material, finish, and how it sits in a home. If it wouldn't flatlay on dark linen, it doesn't make the catalogue.</p>
+
+    <div class="packages-grid">
+      <a href="#audit" class="pkg-card pkg-card-hf fade-in">
+        <div class="pkg-bg pkg-bg-contain" style="background-image: url('images/hf-card-homes-clean.jpg');"></div>
+        <div class="hf-logo-overlay">
+          <img src="images/logo-white.png" alt="Earthed Energy" />
+        </div>
+        <div class="hf-price-overlay">
+          <div class="hf-price-eyebrow">Small Residential</div>
+          <div class="hf-price-big">$13,999<span class="hf-price-star">*</span></div>
+          <div class="hf-price-sub">6.6kW Solar + 25kWh Battery</div>
+        </div>
+        <span class="hf-arrow-corner">&rarr;</span>
+      </a>
+
+      <a href="#audit" class="pkg-card pkg-card-hf fade-in">
+        <div class="pkg-bg pkg-bg-contain" style="background-image: url('images/hf-card-battery-stack-clean.jpg');"></div>
+        <div class="hf-logo-overlay">
+          <img src="images/logo-white.png" alt="Earthed Energy" />
+        </div>
+        <div class="hf-price-overlay">
+          <div class="hf-price-eyebrow">Large Residential</div>
+          <div class="hf-price-big">$19,999<span class="hf-price-star">*</span></div>
+          <div class="hf-price-sub">10kW Solar + 50kWh Battery</div>
+        </div>
+        <span class="hf-arrow-corner">&rarr;</span>
+      </a>
+
+      <a href="#audit" class="pkg-card pkg-card-hf fade-in">
+        <div class="pkg-bg pkg-bg-contain" style="background-image: url('images/hf-card-ev-clean.jpg');"></div>
+        <div class="hf-logo-overlay">
+          <img src="images/logo-white.png" alt="Earthed Energy" />
+        </div>
+        <div class="hf-price-overlay">
+          <div class="hf-price-eyebrow">Smart EV Charging</div>
+          <div class="hf-price-big">$2,999<span class="hf-price-star">*</span></div>
+          <div class="hf-price-sub">Single or 3-Phase &middot; GoodWe, Tesla &amp; more</div>
+        </div>
+        <span class="hf-arrow-corner">&rarr;</span>
+      </a>
+
+      <a href="#audit" class="pkg-card pkg-card-hf fade-in">
+        <div class="pkg-bg pkg-bg-contain" style="background-image: url('images/hf-card-whes-clean.jpg');"></div>
+        <div class="hf-logo-overlay">
+          <img src="images/logo-white.png" alt="Earthed Energy" />
+        </div>
+        <div class="hf-price-overlay">
+          <div class="hf-price-eyebrow">Commercial Cabinet</div>
+          <div class="hf-price-big">POA</div>
+          <div class="hf-price-sub">WHES PC G1 &middot; up to 233kWh</div>
+        </div>
+        <span class="hf-arrow-corner">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="section">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="eyebrow">Our Approach</div>
+      <h2 class="display-lg">Five calm steps. No hard sell.</h2>
+      <p>You wouldn't let a stranger build your roof. We don't think you should let one build your energy system either.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step fade-in">
+        <span class="process-num">01 &middot; Listen</span>
+        <h4>Free Energy Audit</h4>
+        <p>We assess your power bill with your current situation, future requirements and budget. No pressure &mdash; we just listen to how you use power.</p>
       </div>
-      <div class="promise-card fade-in">
-        <div class="promise-num">ii.</div>
-        <h3>Australia-shipped.</h3>
-        <p>Free shipping across Australia on orders over $99. Tracked, calmly packaged, and returnable for 30 days if it's not for you.</p>
+      <div class="process-step fade-in">
+        <span class="process-num">02 &middot; Design</span>
+        <h4>Home Assessment, Roof Type, Electrical Audit, Design Recommended System</h4>
+        <p>Tailored to your needs with finance options explained. It's our mission to be clear on each step and the processes we take to assist you.</p>
       </div>
-      <div class="promise-card fade-in">
-        <div class="promise-num">iii.</div>
-        <h3>Quietly considered.</h3>
-        <p>No retargeting noise. No urgency banners. The marketplace stays calm, on purpose — the way wellness should feel.</p>
+      <div class="process-step fade-in">
+        <span class="process-num">03 &middot; Approve</span>
+        <h4>Grid &amp; Rebate Paperwork</h4>
+        <p>SAPN application, STC paperwork, CHB rebate &mdash; we lodge it all so you don't have to chase a single form.</p>
+      </div>
+      <div class="process-step fade-in">
+        <span class="process-num">04 &middot; Install</span>
+        <h4>Installation Day</h4>
+        <p>Our project manager (Caleb or Troy) meets the install crew in the morning to walk through job requirements. A safety pre-start runs first and a safe zone is established, with constant communication kept with the client throughout. Brief power outages may be required where necessary.</p>
+      </div>
+      <div class="process-step fade-in">
+        <span class="process-num">05 &middot; Live</span>
+        <h4>Commissioning &amp; Care</h4>
+        <p>System tested, app paired. From our VPP customers to our regular customers, full technical support is on hand &mdash; we're a phone call away.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <div class="container-narrow fade-in">
-    <div class="eyebrow">Stay Close</div>
-    <h2>The occasional letter.<br/>Not the daily noise.</h2>
-    <p>New collections, considered drops, and the occasional reflection. No more than twice a month, ever.</p>
-    <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
-      <input type="email" name="email" placeholder="Your email address" required />
-      <button type="submit" class="btn btn-light">Subscribe</button>
+<section id="installs" class="section">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="eyebrow">Recent Adelaide Installs</div>
+      <h2 class="display-lg">Real homes. Real work.</h2>
+      <p>Every photo here is from a system we designed, installed, and commissioned ourselves &mdash; across Adelaide, Yorke Peninsula, and the West Coast.</p>
+    </div>
+
+    <!-- BESS Hero — special HV crossover tile -->
+    <a href="https://earthedhv.au" class="bess-hero fade-in" target="_blank" rel="noopener">
+      <div class="bess-bg" style="background-image: url('images/install-bess-portwakefield.jpg');"></div>
+      <div class="bess-content">
+        <div class="bess-eyebrow">Earthed High Voltage Project</div>
+        <h3 class="bess-title">5MW BESS &middot; Port Wakefield</h3>
+        <div class="bess-specs">
+          <div class="bess-spec"><div class="num">5MW</div><div class="lbl">Capacity</div></div>
+          <div class="bess-spec"><div class="num">33kV</div><div class="lbl">Grid Connection</div></div>
+          <div class="bess-spec"><div class="num">SAPN</div><div class="lbl">Accredited</div></div>
+        </div>
+      </div>
+      <span class="bess-cta">
+        See it at Earthed High Voltage
+        <span class="bess-arrow">&rarr;</span>
+      </span>
+    </a>
+
+    <!-- Residential / Commercial install gallery -->
+    <div class="gallery gallery-9">
+      <div class="gallery-item fade-in">
+        <img src="images/install-eyre-1.jpg" alt="Eyre Peninsula install" loading="lazy" />
+        <div class="gallery-caption">Eyre Peninsula</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-byrn-lightview.jpg" alt="Byrn 50kW GoodWe at Lightview" loading="lazy" />
+        <div class="gallery-caption">Byrn &middot; 50kW GoodWe &middot; Lightview</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-victor-whes.jpg" alt="Victor Harbor WHES solar and battery" loading="lazy" />
+        <div class="gallery-caption">Victor Harbor &middot; WHES Solar + Battery</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-eyre-2.jpg" alt="Eyre Peninsula install" loading="lazy" />
+        <div class="gallery-caption">Eyre Peninsula</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-victor-solar.jpg" alt="Victor Harbor solar" loading="lazy" />
+        <div class="gallery-caption">Victor Harbor &middot; Solar</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-sigen-reynella.jpg" alt="Sigen at Reynella" loading="lazy" />
+        <div class="gallery-caption">Sigen &middot; Reynella</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-foxess-paralowie.jpg" alt="Foxess at Paralowie" loading="lazy" />
+        <div class="gallery-caption">Foxess &middot; Paralowie</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-sigen-aldinga.jpg" alt="Sigen at Aldinga" loading="lazy" />
+        <div class="gallery-caption">Sigen &middot; Aldinga</div>
+      </div>
+      <div class="gallery-item fade-in">
+        <img src="images/install-backup-wiring.jpg" alt="Backup circuit wiring precision" loading="lazy" />
+        <div class="gallery-caption">Backup Circuit Wiring</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="section">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="eyebrow">Why Choose Earthed</div>
+      <h2 class="display-lg">Three things our customers say.</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Hand-picked, hands-on team.</h3>
+        <p>Caleb and Troy lead every job &mdash; supported by a tight crew of trusted specialists who work to the Earthed standard, every install monitored through eProfiling. No call-centre brand. No revolving door of subbies.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Warranties you can actually claim.</h3>
+        <p>Only premium-tier products with Australian-based warranty service. Trina, GoodWe, Tesla, WHES &mdash; names that don't disappear in three years.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Fair pricing.</h3>
+        <p>We may not be cheaper than the national solar bonanza Facebook ads &mdash; but at least you'll have a specialist team you can trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rebates" class="section rebates-section">
+  <div class="container">
+    <div class="section-head fade-in">
+      <div class="eyebrow">Government Rebates &middot; 2026</div>
+      <h2 class="display-lg">What South Australia takes off the price.</h2>
+      <p>You don't lodge anything &mdash; we apply every eligible rebate straight off your invoice. The prices on our packages already reflect what you'll actually pay.</p>
+    </div>
+
+    <div class="rebates-grid">
+      <div class="rebate-card fade-in">
+        <div class="rebate-tag">Auto-applied</div>
+        <div class="rebate-eyebrow">Federal &middot; Solar</div>
+        <h3>STC Rebate</h3>
+        <p>Small-scale Technology Certificates &mdash; we register your install with the Clean Energy Regulator and discount the certificate value off your invoice. Currently <span class="mono">~$400/kW</span> for SA Zone 3, 5-year deeming.</p>
+      </div>
+
+      <div class="rebate-card fade-in">
+        <div class="rebate-tag">Auto-applied</div>
+        <div class="rebate-eyebrow">Federal &middot; Battery</div>
+        <h3>Cheaper Home Batteries</h3>
+        <p>The new federal battery rebate &mdash; <span class="mono">~$315/kWh</span> indicative on eligible battery systems. Applied straight to your quote. Available on systems installed from 1 July 2025 onward.</p>
+      </div>
+
+      <div class="rebate-card fade-in">
+        <div class="rebate-tag rebate-tag-optional">Optional</div>
+        <div class="rebate-eyebrow">SA Power Networks</div>
+        <h3>Virtual Power Plant Bonus</h3>
+        <p>Opt-in for the SAPN VPP program with a compatible battery and earn additional annual credits on top of your bill savings. Ask us which inverter / battery combos qualify.</p>
+      </div>
+    </div>
+
+    <div class="rebates-footnote fade-in">
+      <span>Rebate values are indicative for residential installs in SA Zone 3, 2026. Final discount confirmed on quote.</span>
+    </div>
+  </div>
+</section>
+
+<section id="audit" class="audit-cta">
+  <div class="container audit-inner fade-in">
+    <div class="eyebrow">Complimentary &middot; No Obligation</div>
+    <h2>Book Your Free Home Energy Audit.</h2>
+    <p>One of us &mdash; not a salesperson &mdash; sits with you, reviews your bills and your roof, and gives you the honest answer on what your home actually needs.</p>
+    <form class="enquiry-form fade-in" action="https://formsubmit.co/support@earthedenergy.au" method="POST">
+      <input type="hidden" name="_subject" value="New Earthed Energy Enquiry" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://earthedenergy.au/?thanks=1" />
+
+      <span class="form-legend">What are you looking for?</span>
+      <fieldset class="chips">
+        <label class="chip"><input type="radio" name="Looking for" value="Solar" /> Solar</label>
+        <label class="chip"><input type="radio" name="Looking for" value="Battery" /> Battery</label>
+        <label class="chip"><input type="radio" name="Looking for" value="Solar + Battery" checked /> Solar + Battery</label>
+        <label class="chip"><input type="radio" name="Looking for" value="EV Charger" /> EV Charger</label>
+        <label class="chip"><input type="radio" name="Looking for" value="Energy Audit Only" /> Energy Audit Only</label>
+      </fieldset>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="Name" type="text" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="Phone" type="tel" required autocomplete="tel" placeholder="04XX XXX XXX" />
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="Email" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="f-suburb">Suburb</label>
+          <input id="f-suburb" name="Suburb" type="text" required autocomplete="address-level2" placeholder="e.g. Wattle Park" />
+        </div>
+        <div class="field field-full">
+          <label for="f-bill">Average quarterly bill</label>
+          <input id="f-bill" name="Quarterly bill" type="text" placeholder="e.g. $850 / quarter" />
+        </div>
+        <div class="field field-full">
+          <label for="f-notes">Anything we should know? (optional)</label>
+          <textarea id="f-notes" name="Notes" rows="3" placeholder="Roof type, EV plans, off-peak schedule, anything that helps us prep."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-sage btn-submit">Send My Enquiry</button>
+      <p class="form-fineprint">We reply within one business day. Your details stay with Earthed &mdash; never shared.</p>
     </form>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="hv-crossover">
+  <div class="container">
+
+    <!-- Intro band -->
+    <div class="hv-intro fade-in">
+      <div class="eyebrow">Earthed High Voltage</div>
+      <h2>The same hands that connect Adelaide's <em>wind farms</em> connect Adelaide's homes.</h2>
+      <p>Earthed Energy is the residential and commercial wing of Earthed High Voltage &mdash; the renewable energy contractor behind some of South Australia's biggest wind farms, BESS sites, and substation works. That pedigree shows up on your roof.</p>
+    </div>
+
+    <!-- Team + partnership trio -->
+    <div class="hv-team-grid">
+
+      <!-- Caleb — smaller now -->
+      <div class="team-card fade-in">
+        <div class="team-photo">
+          <img src="images/caleb-windfarm.jpg" alt="Caleb Vears at a South Australian wind farm" />
+        </div>
+        <div class="team-body">
+          <div class="team-role">Founder &middot; Director</div>
+          <h3>Caleb Vears</h3>
+          <p>Caleb's knowledge and skillset come from 12 years of constant movement through every corner of South Australia's renewable industry. He partners with the trade's finest specialists and brings genuine empathy to every install &mdash; focused on making the client experience one to remember. Always smiling.</p>
+          <p class="team-personal">When he's not pushing the renewable movement, Caleb's in nature with his dog Koda &mdash; or keeping up with the world of basketball.</p>
+        </div>
+      </div>
+
+      <!-- Troy — new card -->
+      <div class="team-card fade-in">
+        <div class="team-photo team-photo-placeholder">
+          <img src="images/troy.jpg" alt="Troy Hooker, Head of Electrical" onerror="this.style.display='none';this.parentElement.classList.add('no-img');" />
+          <div class="placeholder-mono">TH</div>
+        </div>
+        <div class="team-body">
+          <div class="team-role">Head of Electrical</div>
+          <h3>Troy Hooker</h3>
+          <p>CEC-accredited specialist with 30+ years in South Australia's solar and battery sector, paired with a transmission powerline ticket. Troy brings a deep technical knowledge base to every job &mdash; walking each client through the steps for top electrical compliance and quality.</p>
+          <p class="team-personal">Off-shift, you'll find Troy at the sidelines watching his twin sons play soccer &mdash; or close to home with family and friends.</p>
+        </div>
+      </div>
+
+      <!-- Virtue Innovations partnership -->
+      <div class="team-card team-card-virtue fade-in">
+        <div class="team-photo team-photo-virtue">
+          <svg class="virtue-svg" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="vNode" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="100%" stop-color="#9CB1FF" />
+              </radialGradient>
+              <filter id="vGlow"><feGaussianBlur stdDeviation="2.5" /></filter>
+            </defs>
+            <!-- network lines -->
+            <line x1="20" y1="25" x2="180" y2="25" stroke="rgba(156,177,255,0.4)" stroke-width="1" />
+            <line x1="20" y1="25" x2="100" y2="105" stroke="rgba(156,177,255,0.5)" stroke-width="1" />
+            <line x1="180" y1="25" x2="100" y2="105" stroke="rgba(156,177,255,0.5)" stroke-width="1" />
+            <!-- nodes -->
+            <circle cx="20" cy="25" r="7" fill="url(#vNode)" filter="url(#vGlow)" opacity="0.6" />
+            <circle cx="20" cy="25" r="5" fill="#FFFFFF" />
+            <circle cx="180" cy="25" r="7" fill="url(#vNode)" filter="url(#vGlow)" opacity="0.6" />
+            <circle cx="180" cy="25" r="5" fill="#FFFFFF" />
+            <circle cx="100" cy="105" r="10" fill="url(#vNode)" filter="url(#vGlow)" opacity="0.7" />
+            <circle cx="100" cy="105" r="7" fill="#9CB1FF" />
+          </svg>
+          <div class="virtue-cities">ADELAIDE &middot; BOSTON &middot; CHICAGO</div>
+        </div>
+        <div class="team-body">
+          <div class="team-role">Strategic Partner</div>
+          <h3>Virtue Innovations</h3>
+          <p>An international coordination intelligence network of operators, engineers, scientists and project managers solving complex problems across energy, climate and industrials. Virtue brings structured rigour and cross-disciplinary depth to every project they touch.</p>
+          <p class="team-personal">Strategic teams operating across Adelaide, Boston and Chicago &mdash; overseeing legal and technical coordination on Earthed's larger commercial and PPA work.</p>
+          <a href="https://www.virtueinnovations.com.au/" target="_blank" rel="noopener" class="virtue-link">virtueinnovations.com.au &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="hv-cta-wrap fade-in">
+      <a href="https://earthedhv.au" class="hv-cta">
+        Visit Earthed High Voltage
+        <span class="hv-cta-arrow">&rarr;</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div>
-        <div class="footer-brand">Purple <span>Earth</span></div>
-        <p class="footer-tag">A curated wellness marketplace.<br/>Adelaide-led, Australia-shipped.</p>
+      <div class="footer-brand">
+        <img src="images/logo-energy.png" alt="Earthed Energy" />
+        <p>Adelaide's boutique energy installer. Designed, delivered, and commissioned by Earthed High Voltage's renewable energy team.</p>
       </div>
       <div class="footer-col">
-        <h5>Shop</h5>
-        <a href="#shop">Grounding &amp; Recovery</a>
-        <a href="#shop">Strength &amp; Mobility</a>
-        <a href="#shop">Hydration &amp; Vessels</a>
-        <a href="#shop">Audio Wellness</a>
-        <a href="#shop">Sleep &amp; Ambient</a>
+        <h5>Packages</h5>
+        <a href="#packages">Small Residential</a>
+        <a href="#packages">Large Residential</a>
+        <a href="#packages">Smart EV Charging</a>
+        <a href="#packages">Commercial Cabinet</a>
       </div>
       <div class="footer-col">
         <h5>Company</h5>
-        <a href="#story">Our Story</a>
-        <a href="#loyalty">Earth Points</a>
-        <a href="#">Curation Process</a>
-        <a href="#">Press</a>
+        <a href="#why">About</a>
+        <a href="#process">Our Process</a>
+        <a href="#installs">Recent Installs</a>
+        <a href="https://earthedhv.au">Earthed High Voltage</a>
       </div>
       <div class="footer-col">
-        <h5>Support</h5>
-        <a href="mailto:hello@purpleearth.com.au">hello@purpleearth.com.au</a>
-        <a href="#">Shipping &amp; Returns</a>
-        <a href="#">FAQ</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+        <h5>Contact</h5>
+        <a href="mailto:support@earthedenergy.au">support@earthedenergy.au</a>
+        <a href="tel:0433839284">0433 839 284</a>
+        <a href="#">26 Wanbrow Ave, Wattle Park</a>
+        <a href="#">ACN 691 065 460</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>&copy; 2026 Purple Earth &middot; Adelaide, South Australia</div>
-      <div>Made quietly.</div>
+      <div>&copy; 2026 Earthed Energy Co Pty Ltd &middot; A subsidiary of Earthed High Voltage Pty Ltd</div>
+      <div>Adelaide, South Australia</div>
     </div>
   </div>
 </footer>
