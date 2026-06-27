@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#F5F1E8">
+<title>Earthed Energy — An Energy Broker That Cares</title>
+<meta name="description" content="Design, install, and ongoing management. Cash, financed, or Earthed Power Pass. A small list of South Australian homes, on purpose.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Earthed Energy — An energy broker that cares.">
+<meta property="og:description" content="Design, install, and ongoing management — walked through with you. Cash, financed, or Earthed Power Pass. A handful of clients each cycle.">
+<meta property="og:image" content="hero-install.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+body {
+  background: #FAF7EF;
+  color: #2D1B47;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+/* Faint panels photo backing — heavy cream wash on top */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(250, 247, 239, 0.96) 0%, rgba(250, 247, 239, 0.98) 60%, rgba(250, 247, 239, 1) 100%),
+    url('hero-panels.jpg') center / cover no-repeat;
+  background-attachment: fixed, fixed;
+}
+/* Subtle paper grain on top */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.18 0 0 0 0 0.57 0 0 0 0.045 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+}
+.topbar, .hero, .why, .gallery, .quote, .footer { position: relative; z-index: 2; background: transparent; }
+
+/* TOP META BAR */
+.topbar {
+  padding: 32px 24px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+}
+.topbar img { height: 88px; width: auto; }
+@media (min-width: 768px) {
+  .topbar { padding: 44px 24px 12px; }
+  .topbar img { height: 116px; }
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  padding: 16px 24px 8px;
+  overflow: hidden;
+}
+.hero-content { position: relative; z-index: 2; max-width: 920px; }
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: #5D2E91;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-eyebrow .dot { opacity: 0.5; margin: 0 0.6em; }
+
+.hero-title {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(38px, 6.5vw, 64px);
+  line-height: 1.02;
+  color: #2D1B47;
+  margin-bottom: 24px;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .hero-title { white-space: normal; }
+}
+.hero-title .dropcap {
+  font-size: 84px;
+  color: #5D2E91;
+  font-weight: 600;
+  display: inline-block;
+  line-height: 0.8;
+  margin-right: 4px;
+  vertical-align: -8px;
+}
+.hero-title .accent { color: #5D2E91; }
+
+.hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #5D4870;
+  margin-bottom: 36px;
+  padding: 0 8px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-primary {
+  display: inline-block;
+  background: #5D2E91;
+  color: #F5F1E8;
+  padding: 20px 44px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+}
+.cta-primary:hover, .cta-primary:active {
+  background: #4A2475;
+  transform: translateY(-1px);
+}
+.cta-meta {
+  margin-top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #8A7A9E;
+  text-transform: uppercase;
+}
+
+.compliance-row {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  color: #5D2E91;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.compliance-row span { white-space: nowrap; }
+.compliance-row .dot { opacity: 0.4; }
+
+/* WHY EARTHED */
+.why {
+  padding: 16px 24px 64px;
+  border-top: 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.why-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: #5D2E91;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.why-title {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1.1;
+  color: #2D1B47;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: -0.025em;
+}
+.why-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+.why-card {
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 0.5px solid rgba(93, 46, 145, 0.18);
+  border-radius: 4px;
+  border-left: 2px solid #5D2E91;
+}
+.why-card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: #5D2E91;
+  margin-bottom: 12px;
+}
+.why-card-title {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(20px, 2.2vw, 26px);
+  color: #2D1B47;
+  margin-bottom: 14px;
+  line-height: 1.15;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 540px) { .why-card-title { white-space: normal; } }
+.why-card-body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5D4870;
+}
+
+/* GALLERY */
+.gallery {
+  padding: 0;
+  margin: 0;
+  border-top: 0.5px solid rgba(93, 46, 145, 0.15);
+  background: #F5F1E8;
+}
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+/* QUOTE FORM */
+.quote {
+  padding: 80px 24px 64px;
+  border-top: 0.5px solid rgba(93, 46, 145, 0.15);
+  max-width: 560px;
+  margin: 0 auto;
+}
+.quote-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: #5D2E91;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.quote-title {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.1;
+  color: #2D1B47;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: -0.01em;
+}
+
+.progress-track {
+  height: 2px;
+  background: rgba(93, 46, 145, 0.15);
+  border-radius: 1px;
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: #5D2E91;
+  width: 20%;
+  transition: width 0.4s ease;
+}
+
+.step { display: none; animation: fadeIn 0.4s ease; }
+.step.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: #8A7A9E;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.step-question {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.15;
+  color: #2D1B47;
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+
+.options { display: grid; gap: 12px; margin-bottom: 24px; }
+.option {
+  display: block;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(93, 46, 145, 0.2);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #2D1B47;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: left;
+  width: 100%;
+  -webkit-appearance: none;
+  position: relative;
+}
+.option:hover, .option:active {
+  border-color: #5D2E91;
+  background: rgba(255, 255, 255, 0.85);
+}
+.option.selected {
+  border-color: #5D2E91;
+  background: #5D2E91;
+  color: #F5F1E8;
+}
+.option.selected::after {
+  content: '✓';
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 500;
+}
+
+.input-group { margin-bottom: 22px; }
+.input-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #5D2E91;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.input-field {
+  width: 100%;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(93, 46, 145, 0.25);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #2D1B47;
+  -webkit-appearance: none;
+  outline: none;
+  transition: border-color 0.18s ease;
+}
+.input-field:focus {
+  border-color: #5D2E91;
+  background: rgba(255, 255, 255, 0.85);
+}
+.input-error {
+  display: none;
+  font-size: 12px;
+  color: #B83E3E;
+  margin-top: 6px;
+}
+.input-error.show { display: block; }
+
+.nav-row { display: flex; gap: 12px; margin-top: 18px; }
+.btn-back, .btn-next {
+  flex: 1;
+  padding: 18px 22px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+}
+.btn-back {
+  background: transparent;
+  color: #5D2E91;
+  border: 1px solid rgba(93, 46, 145, 0.3);
+  flex: 0 0 auto;
+  padding: 18px 26px;
+}
+.btn-back:hover { background: rgba(93, 46, 145, 0.05); }
+.btn-next { background: #5D2E91; color: #F5F1E8; }
+.btn-next:hover, .btn-next:active { background: #4A2475; }
+.btn-next:disabled { background: rgba(93, 46, 145, 0.3); cursor: not-allowed; }
+
+/* THANKS */
+.thanks { display: none; padding: 80px 24px; text-align: center; max-width: 540px; margin: 0 auto; }
+.thanks.active { display: block; animation: fadeIn 0.5s ease; }
+.thanks-icon {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-size: 90px;
+  color: #5D2E91;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.thanks-title {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 1.15;
+  color: #2D1B47;
+  margin-bottom: 24px;
+  letter-spacing: -0.025em;
+}
+.thanks-body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #5D4870;
+  margin-bottom: 36px;
+}
+.thanks-signoff {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #5D2E91;
+  margin-bottom: 32px;
+  line-height: 1.3;
+}
+.thanks-contacts {
+  border-top: 0.5px solid rgba(93, 46, 145, 0.2);
+  padding-top: 26px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #5D4870;
+  line-height: 2;
+}
+
+/* FOOTER */
+.footer {
+  padding: 36px 24px 44px;
+  border-top: 0.5px solid rgba(93, 46, 145, 0.15);
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  color: #8A7A9E;
+  text-transform: uppercase;
+  line-height: 1.9;
+}
+.footer-tag {
+  font-family: 'DM Serif Display', 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: #5D2E91;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-bottom: 12px;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .hero { min-height: 86vh; padding: 72px 24px 80px; }
+  .hero-title .dropcap { font-size: 110px; }
+  .hero-sub { font-size: 17px; }
+  .why { padding: 24px 24px 80px; }
+  .why-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .why-title { font-size: 46px; }
+  .quote-title { font-size: 44px; }
+  .step-question { font-size: 34px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <img src="ee-logo.png" alt="Earthed Energy">
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">EARTHED ENERGY<span class="dot">·</span>SOUTH AUSTRALIA</div>
+    <h1 class="hero-title">An <span class="accent">energy</span> broker that cares.</h1>
+    <p class="hero-sub">Design, install, and ongoing management walked through with you. Own it outright, finance it, or roll it into an Earthed Power Pass. We take on a small number of clients, with one job: designing the system that actually fits your home, then managing it to get the most out of it.</p>
+    <button class="cta-primary" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Start the walkthrough</button>
+    <div class="compliance-row">
+      <span>CEC ACCREDITED</span>
+      <span class="dot">·</span>
+      <span>SAA SWITCHING</span>
+      <span class="dot">·</span>
+      <span>SAPN APPROVED</span>
+      <span class="dot">·</span>
+      <span>NETCC APPROVED SELLER</span>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-eyebrow">THE EARTHED DIFFERENCE</div>
+  <h2 class="why-title">Engineered specifically for your home.</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-card-num">01</div>
+      <div class="why-card-title">Designed, not sold.</div>
+      <div class="why-card-body">We don't sell what's on the shelf. Each design starts with your roof, your bill, your future — then matches the right hardware to that brief. Tesla, Sungrow, GoodWe, Trina, Risen. The system fits you, not the other way around.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">02</div>
+      <div class="why-card-title">Three ways to own it.</div>
+      <div class="why-card-body">Pay outright. Spread it across finance. Or roll it into an Earthed Power Pass — a managed agreement where you keep the energy benefit without the upfront. Pick the path that suits your cash flow, not ours.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-card-num">03</div>
+      <div class="why-card-title">A short list by design.</div>
+      <div class="why-card-body">A handful of clients each cycle. Every system gets the same hand-built install, the same compliance pack, the same person answering the phone six months later. Boutique by choice — never by accident.</div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <img src="collage.jpg" alt="">
+</section>
+
+<section class="quote" id="quote">
+  <div class="quote-eyebrow">FIVE QUESTIONS · 30 SECONDS</div>
+  <h2 class="quote-title">Let's start the walkthrough.</h2>
+
+  <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+
+  <form id="quoteForm" action="https://formspree.io/f/xlgybzag" method="POST">
+    <input type="text" name="_gotcha" style="display:none">
+    <input type="hidden" name="_subject" value="New Earthed Energy walkthrough request">
+
+    <div class="step active" data-step="1">
+      <div class="step-meta">01 / 05 · POWER BILL</div>
+      <h3 class="step-question">What's your average quarterly power bill?</h3>
+      <div class="options">
+        <button type="button" class="option" data-val="$300–$600 / quarter">$300 – $600</button>
+        <button type="button" class="option" data-val="$600–$900 / quarter">$600 – $900</button>
+        <button type="button" class="option" data-val="$900–$1,500 / quarter">$900 – $1,500</button>
+        <button type="button" class="option" data-val="$1,500+ / quarter">$1,500 or more</button>
+        <button type="button" class="option" data-val="Not sure">Not sure</button>
+      </div>
+      <input type="hidden" name="01_power_bill" id="ans1">
+      <div class="nav-row">
+        <button type="button" class="btn-next" id="next1" disabled onclick="nextStep(1)">Continue</button>
+      </div>
+    </div>
+
+    <div class="step" data-step="2">
+      <div class="step-meta">02 / 05 · WHAT YOU'RE AFTER</div>
+      <h3 class="step-question">What are you looking at?</h3>
+      <div class="options">
+        <button type="button" class="option" data-val="Solar + battery (new system)">Solar + battery (new system)</button>
+        <button type="button" class="option" data-val="Battery only (already have solar)">Battery only (already have solar)</button>
+        <button type="button" class="option" data-val="Replacing an old system">Replacing an old system</button>
+        <button type="button" class="option" data-val="Earthed Power Pass · managed">Earthed Power Pass · managed</button>
+        <button type="button" class="option" data-val="Just looking">Just having a look</button>
+      </div>
+      <input type="hidden" name="02_interest" id="ans2">
+      <div class="nav-row">
+        <button type="button" class="btn-back" onclick="prevStep(2)">←</button>
+        <button type="button" class="btn-next" id="next2" disabled onclick="nextStep(2)">Continue</button>
+      </div>
+    </div>
+
+    <div class="step" data-step="3">
+      <div class="step-meta">03 / 05 · ROOF</div>
+      <h3 class="step-question">What kind of roof?</h3>
+      <div class="options">
+        <button type="button" class="option" data-val="Tin / metal">Tin / metal</button>
+        <button type="button" class="option" data-val="Tile">Tile</button>
+        <button type="button" class="option" data-val="Flat / low-pitch">Flat / low-pitch</button>
+        <button type="button" class="option" data-val="Mixed / not sure">Mixed or not sure</button>
+      </div>
+      <input type="hidden" name="03_roof" id="ans3">
+      <div class="nav-row">
+        <button type="button" class="btn-back" onclick="prevStep(3)">←</button>
+        <button type="button" class="btn-next" id="next3" disabled onclick="nextStep(3)">Continue</button>
+      </div>
+    </div>
+
+    <div class="step" data-step="4">
+      <div class="step-meta">04 / 05 · LOCATION</div>
+      <h3 class="step-question">What's your postcode?</h3>
+      <div class="input-group">
+        <label class="input-label">SA POSTCODE</label>
+        <input type="tel" inputmode="numeric" pattern="5[0-9]{3}" maxlength="4" class="input-field" name="04_postcode" id="ans4" placeholder="e.g. 5066" oninput="validatePostcode()">
+        <div class="input-error" id="err4">SA postcodes only — must start with 5</div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn-back" onclick="prevStep(4)">←</button>
+        <button type="button" class="btn-next" id="next4" disabled onclick="nextStep(4)">Continue</button>
+      </div>
+    </div>
+
+    <div class="step" data-step="5">
+      <div class="step-meta">05 / 05 · CONTACT</div>
+      <h3 class="step-question">How should we reach you?</h3>
+      <div class="input-group">
+        <label class="input-label">FIRST NAME</label>
+        <input type="text" class="input-field" name="05_name" id="ansName" placeholder="Your first name" oninput="validateContact()" autocomplete="given-name">
+      </div>
+      <div class="input-group">
+        <label class="input-label">EMAIL</label>
+        <input type="email" class="input-field" name="05_email" id="ansEmail" placeholder="you@email.com" oninput="validateContact()" autocomplete="email">
+      </div>
+      <div class="input-group">
+        <label class="input-label">MOBILE</label>
+        <input type="tel" class="input-field" name="05_phone" id="ansPhone" placeholder="04XX XXX XXX" oninput="validateContact()" autocomplete="tel">
+        <div class="input-error" id="errContact">Please fill all three so we can get back to you.</div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn-back" onclick="prevStep(5)">←</button>
+        <button type="submit" class="btn-next" id="submitBtn" disabled>Send walkthrough request</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="thanks" id="thanks">
+    <div class="thanks-icon">✓</div>
+    <h2 class="thanks-title">Walkthrough requested.</h2>
+    <p class="thanks-body">We've got your details. The next step is a call to talk through the right system for your home — no rush, no quota.</p>
+    <p class="thanks-signoff">Caleb or Troy will be in touch within 24 hours.<br>Industry's tight — we're different.</p>
+    <div class="thanks-contacts">
+      CALEB · 0433 839 284<br>
+      TROY · 0400 254 124<br>
+      SUPPORT@EARTHEDENERGY.AU
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-tag">An energy broker that cares.</div>
+  EARTHED ENERGY CO PTY LTD · ABN 92 691 065 460<br>
+  CEC ACCREDITED · NETCC APPROVED SELLER · ADELAIDE, SA
+</footer>
+
+<script>
+let current = 1;
+const total = 5;
+const answers = {};
+
+document.querySelectorAll('.option').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const step = this.closest('.step').dataset.step;
+    this.closest('.options').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+    document.getElementById('ans' + step).value = this.dataset.val;
+    answers[step] = this.dataset.val;
+    document.getElementById('next' + step).disabled = false;
+  });
+});
+
+function nextStep(from) {
+  if (from < total) {
+    document.querySelector('.step[data-step="' + from + '"]').classList.remove('active');
+    current = from + 1;
+    document.querySelector('.step[data-step="' + current + '"]').classList.add('active');
+    updateProgress();
+    window.scrollTo({top: document.getElementById('quote').offsetTop - 20, behavior: 'smooth'});
+  }
+}
+function prevStep(from) {
+  if (from > 1) {
+    document.querySelector('.step[data-step="' + from + '"]').classList.remove('active');
+    current = from - 1;
+    document.querySelector('.step[data-step="' + current + '"]').classList.add('active');
+    updateProgress();
+    window.scrollTo({top: document.getElementById('quote').offsetTop - 20, behavior: 'smooth'});
+  }
+}
+function updateProgress() {
+  document.getElementById('progress').style.width = (current / total * 100) + '%';
+}
+function validatePostcode() {
+  const val = document.getElementById('ans4').value;
+  const err = document.getElementById('err4');
+  const btn = document.getElementById('next4');
+  if (/^5[0-9]{3}$/.test(val)) { err.classList.remove('show'); btn.disabled = false; }
+  else { if (val.length >= 4) err.classList.add('show'); btn.disabled = true; }
+}
+function validateContact() {
+  const name = document.getElementById('ansName').value.trim();
+  const email = document.getElementById('ansEmail').value.trim();
+  const phone = document.getElementById('ansPhone').value.trim();
+  const btn = document.getElementById('submitBtn');
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validPhone = phone.replace(/\s/g, '').length >= 8;
+  const validName = name.length >= 2;
+  btn.disabled = !(validEmail && validPhone && validName);
+}
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  if (form.action.includes('YOUR_FORM_ID')) { showThanks(); return; }
+  fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+    .then(r => showThanks()).catch(err => { console.error(err); showThanks(); });
+});
+function showThanks() {
+  document.getElementById('quoteForm').style.display = 'none';
+  document.querySelector('.progress-track').style.display = 'none';
+  document.querySelector('.quote-eyebrow').style.display = 'none';
+  document.querySelector('.quote-title').style.display = 'none';
+  document.getElementById('thanks').classList.add('active');
+  window.scrollTo({top: document.getElementById('quote').offsetTop - 20, behavior: 'smooth'});
+}
+</script>
+
+</body>
+</html>
