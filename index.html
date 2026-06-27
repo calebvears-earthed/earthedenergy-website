@@ -2086,5 +2086,62 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
+<!-- ── STICKY FLOATING WALKTHROUGH CTA ─────────────────────────────────────── -->
+<style>
+  .floating-walkthrough-cta {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    background: #5D2E91;
+    color: #F5F1E8;
+    padding: 16px 24px;
+    border-radius: 999px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 12px 32px rgba(93, 46, 145, 0.35), 0 4px 12px rgba(0, 0, 0, 0.12);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    animation: floatingPulse 2.5s ease-in-out infinite;
+  }
+  .floating-walkthrough-cta:hover {
+    background: #4A2475;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(93, 46, 145, 0.45), 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  .floating-walkthrough-cta::after {
+    content: '→';
+    font-size: 18px;
+    transition: transform 0.2s ease;
+  }
+  .floating-walkthrough-cta:hover::after { transform: translateX(3px); }
+
+  @keyframes floatingPulse {
+    0%, 100% { box-shadow: 0 12px 32px rgba(93, 46, 145, 0.35), 0 4px 12px rgba(0, 0, 0, 0.12); }
+    50% { box-shadow: 0 12px 32px rgba(93, 46, 145, 0.5), 0 4px 18px rgba(0, 0, 0, 0.18); }
+  }
+
+  @media (max-width: 640px) {
+    .floating-walkthrough-cta {
+      bottom: 16px;
+      right: 16px;
+      padding: 14px 20px;
+      font-size: 12.5px;
+    }
+  }
+</style>
+
+<a href="/walkthrough/" class="floating-walkthrough-cta" aria-label="Start the walkthrough">
+  Start the walkthrough
+</a>
+
 </body>
 </html>
