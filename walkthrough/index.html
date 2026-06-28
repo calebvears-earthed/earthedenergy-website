@@ -26,7 +26,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
-/* Faint panels photo backing — heavy cream wash on top */
+/* Layered backing — panels photo (more visible now) + warm radial gradient depth */
 body::before {
   content: '';
   position: fixed;
@@ -34,9 +34,14 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background:
-    linear-gradient(180deg, rgba(250, 247, 239, 0.96) 0%, rgba(250, 247, 239, 0.98) 60%, rgba(250, 247, 239, 1) 100%),
+    /* Soft warm radial gradient — sandstone fade from corners */
+    radial-gradient(ellipse at top left, rgba(232, 215, 187, 0.42) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(228, 211, 180, 0.38) 0%, transparent 50%),
+    radial-gradient(ellipse at center, rgba(250, 247, 239, 0.6) 0%, transparent 70%),
+    /* Cream wash over the panels photo — 85% now (was 96%) */
+    linear-gradient(180deg, rgba(250, 247, 239, 0.85) 0%, rgba(250, 247, 239, 0.9) 60%, rgba(250, 247, 239, 0.95) 100%),
     url('hero-panels.jpg') center / cover no-repeat;
-  background-attachment: fixed, fixed;
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
 /* Subtle paper grain on top */
 body::after {
