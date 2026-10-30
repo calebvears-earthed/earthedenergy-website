@@ -487,7 +487,7 @@ def local_business():
             "addressCountry": "AU",
         },
         "areaServed": ["Adelaide", "Adelaide Hills", "Mount Barker", "Yorke Peninsula", "Eyre Peninsula"],
-        "parentOrganization": {"@type": "Organization", "name": "Earthed High Voltage", "url": "https://earthedhv.au"},
+        "parentOrganization": {"@type": "Organization", "name": "Earthed High Voltage", "url": "https://www.earthedhv.au"},
         "founder": {"@type": "Person", "name": "Caleb Vears"},
         "identifier": {"@type": "PropertyValue", "name": "SA electrical contractor licence", "value": LICENCE},
     }
@@ -496,7 +496,7 @@ def local_business():
 def shell(title, description, path, body, active="", robots=None, jsonld=None, og_type="website", preload_hero=False):
     canonical = BASE + (path if path != "/" else "/")
     robots_tag = f'<meta name="robots" content="{esc(robots)}">' if robots else ""
-    hero = '<link rel="preload" as="image" href="/images/hero-home-800.webp" imagesrcset="/images/hero-home-800.webp 800w, /images/hero-home.webp 1600w" imagesizes="(max-width: 980px) 100vw, 50vw" fetchpriority="high">' if preload_hero else ""
+    hero = '<link rel="preload" as="image" href="/images/hero-home-800.webp" imagesrcset="/images/hero-home-800.webp 800w, /images/hero-home.webp 1600w" imagesizes="100vw" fetchpriority="high">' if preload_hero else ""
     ld = ""
     if jsonld:
         if isinstance(jsonld, list):
@@ -511,64 +511,58 @@ def shell(title, description, path, body, active="", robots=None, jsonld=None, o
         ("/#packages", "Packages", "packages"),
         ("/knowledge.html", "Guides", "guides"),
         ("/solarcare/", "SolarCare", "solarcare"),
-        ("/get-a-quote.html", "Quote", "quote"),
-        ("https://earthedhv.au/", "High Voltage", "hv"),
+        ("/contact.html", "Contact", "contact"),
     ]
     links = []
+    panel_links = []
     for href, label, key in nav:
         current = ' aria-current="page"' if key == active else ""
-        extra = ' rel="noopener"' if href.startswith("http") else ""
-        links.append(f'<a href="{href}"{current}{extra}>{label}</a>')
-    links.append('<a class="btn" href="/get-a-quote.html">Book an audit</a>')
+        links.append(f'<a href="{href}"{current}>{label}</a>')
+        panel_links.append(f'<a href="{href}"{current}>{label}</a>')
+    solid = " is-solid" if path != "/" else ""
+    solid_attr = "always" if path != "/" else "scroll"
     footer = f"""
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <img class="footer-logo" src="/assets/logo-white.png" alt="Earthed Energy" width="240" height="78">
-        <p>Residential solar and battery for Adelaide, the Adelaide Hills and Mount Barker. Designed and commissioned by the same people who build Earthed High Voltage projects.</p>
-        <p class="licence">SA electrical contractor licence {LICENCE}</p>
-      </div>
-      <div>
-        <h2>Visit</h2>
-        <ul>
-          <li><a href="/#packages">Packages</a></li>
-          <li><a href="/knowledge.html">Guides</a></li>
-          <li><a href="/solarcare/">SolarCare</a></li>
-          <li><a href="/walkthrough/">Walkthrough</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Company</h2>
-        <ul>
-          <li><a href="/about-earthed-energy.html">About</a></li>
-          <li><a href="/about-caleb-vears.html">Caleb Vears</a></li>
-          <li><a href="/about-troy-hooker.html">Troy Hooker</a></li>
-          <li><a href="/credentials-and-licences.html">Licences</a></li>
-          <li><a href="https://earthedhv.au/" rel="noopener">Earthed High Voltage</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Contact</h2>
-        <ul>
-          <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-          <li><a href="tel:0433839284">{PHONE}</a></li>
-          <li>26 Wanbrow Ave, Wattle Park</li>
-          <li>ACN 691 065 460 · ABN 92 691 065 460</li>
-        </ul>
-      </div>
+  <div class="wrap-wide footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="/" aria-label="Earthed Energy, home"><img src="/assets/logo-white.png" alt="" width="150" height="40"></a>
+      <p>Residential solar and battery for Adelaide, the Adelaide Hills and Mount Barker. Designed and commissioned in-house.</p>
     </div>
-    <div class="footer-base">
-      <div>© 2026 Earthed Energy Co Pty Ltd · A subsidiary of Earthed High Voltage Pty Ltd</div>
-      <div>Adelaide, South Australia</div>
+    <div>
+      <p class="footer-title">Navigate</p>
+      <ul>
+        <li><a href="/#packages">Packages</a></li>
+        <li><a href="/knowledge.html">Guides</a></li>
+        <li><a href="/solarcare/">SolarCare</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
     </div>
-    <div class="sister">
-      <span>Part of the Earthed group</span>
-      <a href="https://earthedhv.au/" rel="noopener">High voltage, wind and BESS · earthedhv.au</a>
+    <div>
+      <p class="footer-title">Contact</p>
+      <ul>
+        <li><a href="tel:0433839284">{PHONE}</a></li>
+        <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
+        <li>26 Wanbrow Ave, Wattle Park</li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">The group</p>
+      <ul>
+        <li><a href="https://www.earthedhv.au">Earthed High Voltage<span class="vh"> (high voltage electrical)</span></a></li>
+        <li>Part of the Earthed group</li>
+        <li>High voltage electrical</li>
+      </ul>
     </div>
   </div>
-</footer>"""
+  <div class="wrap-wide footer-base">
+    <p class="licence">SA electrical contractor licence {LICENCE}<span aria-hidden="true"> · </span><span class="vh">. </span>ABN 92 691 065 460<span aria-hidden="true"> · </span><span class="vh">. </span>ACN 691 065 460</p>
+    <p>© 2026 Earthed Energy Co Pty Ltd</p>
+  </div>
+</footer>
+<div class="mobile-bar">
+  <a href="tel:0433839284">Call</a>
+  <a href="/get-a-quote.html">Request a quote</a>
+</div>"""
     return f"""<!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -588,25 +582,44 @@ def shell(title, description, path, body, active="", robots=None, jsonld=None, o
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="Earthed Energy">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#553A66">
+<meta name="theme-color" content="#160E1E">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/josefin-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/open-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 {hero}
+<link rel="stylesheet" href="/design-system/tokens.css">
+<link rel="stylesheet" href="/design-system/components.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 {ld}
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header{solid}" data-solid="{solid_attr}">
   <div class="header-inner">
-    <a class="logo" href="/" aria-label="Earthed Energy home"><img src="/assets/logo-purple.webp" alt="" width="128" height="42"></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>Menu</button>
-    <nav id="site-nav" class="nav-panel" aria-label="Primary" data-nav-panel>
+    <a class="logo" href="/" aria-label="Earthed Energy, home"><img src="/assets/logo-white.png" alt="" width="150" height="42"></a>
+    <nav class="nav-links" aria-label="Primary">
       {''.join(links)}
     </nav>
+    <a class="nav-sister" href="https://www.earthedhv.au">Earthed High Voltage</a>
+    <a class="btn btn-light header-cta" href="/get-a-quote.html">Request a quote</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
   </div>
 </header>
+<div class="nav-panel" id="mobile-nav" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <button class="nav-close" type="button" aria-label="Close menu"><span aria-hidden="true">×</span></button>
+  <nav aria-label="Mobile">
+    {''.join(panel_links)}
+    <a class="panel-sister" href="https://www.earthedhv.au">Earthed High Voltage · High voltage electrical</a>
+  </nav>
+  <div class="panel-actions">
+    <a class="btn btn-light" href="tel:0433839284">Call {PHONE}</a>
+    <a class="btn btn-ghost" href="/get-a-quote.html">Request a quote</a>
+  </div>
+</div>
 <main id="main">
 {body}
 </main>
@@ -640,7 +653,7 @@ def enquiry_form():
     <div class="field field-full"><label for="f-bill">Average quarterly bill</label><input id="f-bill" name="Quarterly bill" type="text" placeholder="e.g. $850 / quarter"></div>
     <div class="field field-full"><label for="f-notes">Anything we should know? <span class="fine">(optional)</span></label><textarea id="f-notes" name="Notes" rows="3" placeholder="Roof type, EV plans, backup, anything that helps us prepare."></textarea></div>
   </div>
-  <p><button class="btn" type="submit">Send my enquiry</button></p>
+  <p><button class="btn btn-primary" type="submit">Send my enquiry</button></p>
   <p class="fine">We reply within one business day. Your details stay with Earthed.</p>
   <p class="licence">SA electrical contractor licence {LICENCE}</p>
 </form>"""
@@ -684,7 +697,7 @@ def home_body():
     figures = []
     for src, alt, cap in gallery:
         figures.append(
-            f'<figure class="reveal"><img src="/{src}" alt="{esc(alt)}" loading="lazy" decoding="async"{wh(src)}><figcaption>{esc(cap)}</figcaption></figure>'
+            f'<figure><div class="shot"><img src="/{src}" alt="{esc(alt)}" loading="lazy" decoding="async"{wh(src)}></div><figcaption>{esc(cap)}</figcaption></figure>'
         )
     guides = [
         ("/what-solar-does.html", "The basics", "What solar actually does"),
@@ -700,50 +713,56 @@ def home_body():
     )
     return f"""
 <section class="hero">
+  <div class="hero-media">
+    <img src="/images/hero-home-800.webp" srcset="/images/hero-home-800.webp 800w, /images/hero-home.webp 1600w" sizes="100vw" alt="Rooftop solar on coastal homes at Fowlers Bay, installed by Earthed Energy" width="1600" height="600" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-frame" aria-hidden="true"></div>
   <div class="hero-copy">
-    <p class="eyebrow">Adelaide Hills · Mount Barker · Residential solar and battery</p>
-    <h1>Solar, batteries, and the quiet kind of power.</h1>
-    <p class="lede">Designed, delivered, and commissioned by South Australia's renewable energy specialists. Not a sales company that subcontracts your install.</p>
+    <p class="eyebrow">Adelaide Hills · Mount Barker</p>
+    <h1>Solar, batteries, and the <em>quiet kind</em> of power.</h1>
+    <p class="hero-deck">Designed, delivered, and commissioned by South Australia's renewable energy specialists. Not a sales company that subcontracts your install.</p>
     <div class="hero-actions">
-      <a class="btn" href="#audit">Book a free energy audit</a>
+      <a class="btn btn-light" href="#audit">Book a free energy audit</a>
       <a class="btn btn-ghost" href="#packages">See the packages</a>
     </div>
-    <ul class="trust">
-      <li>CEC accredited</li>
-      <li>SA electrical contractor {LICENCE}</li>
-      <li>GoodWe ESA</li>
-      <li>Adelaide owned · ACN 691 065 460</li>
-    </ul>
-  </div>
-  <div class="hero-media">
-    <img src="/images/hero-home-800.webp" srcset="/images/hero-home-800.webp 800w, /images/hero-home.webp 1600w" sizes="(max-width: 980px) 100vw, 50vw" alt="Rooftop solar on coastal homes at Fowlers Bay, installed by Earthed Energy" width="1600" height="600" fetchpriority="high" decoding="async">
   </div>
 </section>
+<dl class="cred-bar">
+  <div><dt>Licence</dt><dd>PGE 336477</dd></div>
+  <div><dt>Accreditation</dt><dd>CEC accredited</dd></div>
+  <div><dt>Equipment</dt><dd>GoodWe ESA</dd></div>
+  <div><dt>Company</dt><dd>ACN 691 065 460</dd></div>
+</dl>
 
-<section class="section" id="packages">
+<section class="section light-surface" id="packages">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head">
       <p class="eyebrow">Packages</p>
       <h2>Pick the system that fits your home.</h2>
       <p>From a single-storey courtyard cottage to a commercial site running all day. We build to the house, not to a brochure.</p>
     </div>
     <div class="pkg-grid">
-      <article class="pkg reveal">
-        <img src="/images/card-small.webp" alt="A home battery and inverter installed in a garage" loading="lazy"{wh("images/card-small.webp")}>
-        <div class="pkg-body"><h3 class="pkg-name">Small residential</h3>{price("$13,999", "6.6kW solar + 25kWh battery")}</div>
-      </article>
-      <article class="pkg reveal">
-        <img src="/images/card-large.webp" alt="A stacked home battery system" loading="lazy"{wh("images/card-large.webp")}>
-        <div class="pkg-body"><h3 class="pkg-name">Large residential</h3>{price("$19,999", "10kW solar + 50kWh battery")}</div>
-      </article>
-      <article class="pkg reveal">
-        <img src="/images/card-ev.webp" alt="A wall-mounted home EV charger" loading="lazy"{wh("images/card-ev.webp")}>
-        <div class="pkg-body"><h3 class="pkg-name">Smart EV charging</h3>{price("$2,999", "Single or three-phase · GoodWe, Tesla and others")}</div>
-      </article>
-      <article class="pkg reveal">
-        <img src="/images/card-commercial.webp" alt="A commercial battery cabinet" loading="lazy"{wh("images/card-commercial.webp")}>
-        <div class="pkg-body"><h3 class="pkg-name">Commercial cabinet</h3><p class="pkg-price"><a href="/commercial.html">POA</a></p><p class="pkg-spec">WHES PC G1 · up to 233kWh</p></div>
-      </article>
+      <a class="media-card" href="#package-terms">
+        <img src="/images/card-small.webp" alt="" width="880" height="492" loading="lazy">
+        <div class="scrim"></div>
+        <div class="media-card-body"><span class="idx">01</span><h3>Small residential</h3><p>$13,999*. 6.6kW solar + 25kWh battery</p></div>
+      </a>
+      <a class="media-card" href="#package-terms">
+        <img src="/images/card-large.webp" alt="" width="396" height="700" loading="lazy">
+        <div class="scrim"></div>
+        <div class="media-card-body"><span class="idx">02</span><h3>Large residential</h3><p>$19,999*. 10kW solar + 50kWh battery</p></div>
+      </a>
+      <a class="media-card" href="#package-terms">
+        <img src="/images/card-ev.webp" alt="" width="396" height="700" loading="lazy">
+        <div class="scrim"></div>
+        <div class="media-card-body"><span class="idx">03</span><h3>Smart EV charging</h3><p>$2,999*. Single or three-phase</p></div>
+      </a>
+      <a class="media-card" href="/commercial.html">
+        <img src="/images/card-commercial.webp" alt="" width="880" height="458" loading="lazy">
+        <div class="scrim"></div>
+        <div class="media-card-body"><span class="idx">04</span><h3>Commercial cabinet</h3><p>POA. WHES PC G1, up to 233kWh</p></div>
+      </a>
     </div>
     {TERMS}
   </div>
@@ -789,7 +808,7 @@ def home_body():
         <li><strong>33kV</strong><span>Grid connection</span></li>
         <li><strong>SAPN</strong><span>Accredited</span></li>
       </ul>
-      <a class="btn btn-on-dark" href="https://earthedhv.au/" rel="noopener">See it at Earthed High Voltage</a>
+      <a class="btn btn-light" href="https://www.earthedhv.au/" rel="noopener">See it at Earthed High Voltage</a>
     </div>
   </div>
 </section>
@@ -832,7 +851,7 @@ def home_body():
       <p>Plain-language notes on bills, export limits, batteries and the Hills. Written from the installs, not from a brochure.</p>
     </div>
     <div class="guides">{cards}</div>
-    <p style="margin-top:1.5rem"><a class="btn btn-ghost" href="/knowledge.html">All guides</a></p>
+    <p style="margin-top:1.5rem"><a class="btn btn-line" href="/knowledge.html">All guides</a></p>
   </div>
 </section>
 
@@ -888,7 +907,7 @@ def solarcare_body():
     <p class="lede">Every SolarCare visit is a pure-water panel clean plus a licensed electrician's health assessment of your system. No cleaning company in Adelaide can offer the second half.</p>
     <p>Panel cleaning. Bird proofing. And with every full service, a home energy audit, free for our first thirty customers.</p>
     <div class="hero-actions">
-      <a class="btn" href="tel:0433839284">Call Caleb · {PHONE}</a>
+      <a class="btn btn-light" href="tel:0433839284">Call Caleb · {PHONE}</a>
       <a class="btn btn-ghost" href="mailto:{EMAIL}">{EMAIL}</a>
     </div>
     <p class="fine">No call centre. No sales script. You speak to the electrician who does the work.</p>
@@ -926,7 +945,7 @@ def solarcare_body():
     <h2>Book a clean and bird-proofing together, and we will audit your whole home's energy, free.</h2>
     <p>While we are on your roof, a licensed electrician walks your switchboard, your tariff, your usage and your appliances, and tells you plainly where the money is going and what is worth changing. No obligation follows it.</p>
     <p>The audit is free for our first 30 full-service customers. After that, it is quoted like everything else.</p>
-    <a class="btn btn-on-dark" href="tel:0433839284">Claim one of the thirty · {PHONE}</a>
+    <a class="btn btn-light" href="tel:0433839284">Claim one of the thirty · {PHONE}</a>
   </div>
 </section>
 <section class="section" id="pricing">
@@ -1020,7 +1039,7 @@ def contact_body():
       <p>26 Wanbrow Ave, Wattle Park SA 5066</p>
       <p>Earthed Energy Co Pty Ltd<br>ACN 691 065 460 · ABN 92 691 065 460</p>
       <p class="licence">SA electrical contractor licence {LICENCE}</p>
-      <p><a href="https://earthedhv.au/" rel="noopener">Utility, wind and BESS enquiries · earthedhv.au</a></p>
+      <p><a href="https://www.earthedhv.au/" rel="noopener">Utility, wind and BESS enquiries · earthedhv.au</a></p>
     </div>
     {enquiry_form()}
   </div>
@@ -1036,7 +1055,7 @@ def thanks_body():
     <h1>Assessment request received.</h1>
     <p class="lede">Thank you for getting in touch. We'll review your property details and be in contact within one business day.</p>
     <p>In the meantime, call us on <a href="tel:0433839284">{PHONE}</a>.</p>
-    <p><a class="btn" href="/">Back to Earthed Energy</a></p>
+    <p><a class="btn btn-light" href="/">Back to Earthed Energy</a></p>
   </div>
 </section>
 """
@@ -1049,7 +1068,7 @@ def missing_body():
     <p class="eyebrow">404</p>
     <h1>Page not found.</h1>
     <p class="lede">That address isn't on this site. The guides are indexed, if you were looking for one.</p>
-    <p><a class="btn" href="/">Back to Earthed Energy</a> <a class="btn btn-ghost" href="/knowledge.html">Browse the guides</a></p>
+    <p><a class="btn btn-light" href="/">Back to Earthed Energy</a> <a class="btn btn-ghost" href="/knowledge.html">Browse the guides</a></p>
   </div>
 </section>
 """
@@ -1057,12 +1076,12 @@ def missing_body():
 
 def walkthrough_body():
     return f"""
-<section class="walk-hero">
+<section class="page-hero walk-hero">
   <div class="wrap">
     <p class="eyebrow">Earthed Energy · South Australia</p>
     <h1>An energy broker that cares.</h1>
     <p class="lede">Design, install, and ongoing management walked through with you. Own it outright, finance it, or roll it into an Earthed Power Pass. We take on a small number of clients, with one job: designing the system that actually fits your home, then managing it to get the most out of it.</p>
-    <p><a class="btn" href="#quote">Start the walkthrough</a></p>
+    <p><a class="btn btn-light" href="#quote">Start the walkthrough</a></p>
     <ul class="trust">
       <li>CEC accredited</li>
       <li>SAA switching</li>
@@ -1326,6 +1345,10 @@ def knowledge_body(catalog):
       </div>
       <div class="filters" role="group" aria-label="Filter by category">{''.join(filter_buttons)}</div>
     </div>
+  </div>
+</section>
+<section class="section light-surface kb-body">
+  <div class="wrap">
     <p class="kb-empty fine" data-kb-empty>No guides match that search. Try a shorter word, or show all.</p>
     {''.join(groups_html)}
   </div>
@@ -1409,7 +1432,7 @@ def main():
     pages = {
         "index.html": ("/", "Earthed Energy — Adelaide's Boutique Energy Installers", "Residential solar and battery for Adelaide, the Adelaide Hills and Mount Barker. Designed and commissioned by Earthed Energy, not subcontracted.", home_body(), "", local_business(), True),
         "knowledge.html": ("/knowledge.html", "Guides — Earthed Energy", "Plain-language guides to solar, batteries, SA Power Networks export limits, rebates and backup for South Australian homes.", knowledge_body(catalog), "guides", None, False),
-        "contact.html": ("/contact.html", "Contact — Earthed Energy", "Call Caleb Vears on 0433 839 284 or email calebvears@earthedhv.au. SA electrical contractor licence PGE 336477. Wattle Park, Adelaide.", contact_body(), "quote", local_business(), False),
+        "contact.html": ("/contact.html", "Contact — Earthed Energy", "Call Caleb Vears on 0433 839 284 or email calebvears@earthedhv.au. SA electrical contractor licence PGE 336477. Wattle Park, Adelaide.", contact_body(), "contact", local_business(), False),
         "get-a-quote.html": ("/get-a-quote.html", "Get a quote — Earthed Energy", "Book a free home energy audit. Indicative packages from $13,999 and $19,999 with the terms beside the price. Licence PGE 336477.", quote_body(quote_article), "quote", local_business(), False),
         "thanks.html": ("/thanks.html", "Thank you — Earthed Energy", "Your Earthed Energy enquiry has been received.", thanks_body(), "", None, False),
         "404.html": ("/404.html", "Page not found — Earthed Energy", "That page is not on the Earthed Energy site.", missing_body(), "", None, False),
