@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://earthedenergy.au/sitemap.xml
+Disallow: /thanks.html
+
+Sitemap: https://www.earthedenergy.au/sitemap.xml
