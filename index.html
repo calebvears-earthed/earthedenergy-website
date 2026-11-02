@@ -49,12 +49,14 @@
 }
 .skip-link:focus { top: 12px; }
 
-html { scroll-padding-top: 5.75rem; }
-h1, h2, [data-screen-label] { scroll-margin-top: 5.75rem; }
+body.page-home { scroll-padding-top: 5.75rem; }
+body.page-home h1,
+body.page-home h2,
+body.page-home [data-screen-label] { scroll-margin-top: 5.75rem; }
 [data-screen-label]:not(#top) { padding-top: 88px !important; }
 
 .ee-header {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 40;
   display: flex;
@@ -169,8 +171,7 @@ html.js [data-reveal].is-in { transform: none; }
   body.page-home [data-hero-copy] { top: 34% !important; }
   .ee-header { display: none; }
   .ee-mob {
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 50;
     display: flex;
     align-items: center;
@@ -181,6 +182,7 @@ html.js [data-reveal].is-in { transform: none; }
     color: #fff;
     backdrop-filter: blur(12px);
   }
+  body.page-home .ee-mob { position: sticky; top: 0; }
   .ee-mob a { color: #fff; text-decoration: none; }
   .ee-mob-logo { width: 120px; display: block; }
   .ee-mob-logo img { width: 100%; height: auto; display: block; }
@@ -644,7 +646,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #C9A6F2;outline-offset:3p
       </div>
       <div style="background:#513963;color:#F5F1E8;padding:28px 36px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(81,57,99,.25)">
         <span aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at left,rgba(138,91,181,.4) 0%,transparent 60%);pointer-events:none"></span>
-        <div style="display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;min-width:260px;flex:1"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;color:#E8C560;text-transform:uppercase">Claim &amp; lock in</span><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:24px;font-weight:500;line-height:1.2">Summer Sale ends 11 Dec 2026 · install before the summer peak</span><span style="font-family:'Open Sans',sans-serif;font-size:14px;letter-spacing:.08em;color:#E8C560;margin-top:4px"><span data-countdown="2026-12-11T23:59:59+10:30">39 days · 07 h · 43 m · 35 s</span></span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;min-width:260px;flex:1"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;color:#E8C560;text-transform:uppercase">Claim &amp; lock in</span><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:24px;font-weight:500;line-height:1.2">Summer Sale ends 11 Dec 2026 · install before the summer peak</span><span style="font-family:'Open Sans',sans-serif;font-size:14px;letter-spacing:.08em;color:#E8C560;margin-top:4px"><span data-countdown="2026-12-11T23:59:59+10:30">39 days · 07 h · 00 m · 12 s</span></span></div>
         <a href="/get-a-quote.html?path=battery" style="background:#D4A838;color:#1E1A2F;padding:16px 28px;border-radius:8px;font-weight:700;font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;position:relative;z-index:1;transition:background .18s,transform .18s" style-hover="background:#E8C560;color:#1E1A2F;transform:translateY(-2px)">Claim your deal</a>
       </div>
       <div style="border-top:1px solid #D8D0C0;padding-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px 40px;font-size:12px;line-height:1.55;color:#6B6378">
