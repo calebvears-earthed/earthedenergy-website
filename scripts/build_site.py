@@ -197,6 +197,58 @@ def mark_motion(body: str) -> str:
     return body
 
 
+PIXEL = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+KEEP_SRC = (
+    "hero-coastal-daynight",
+    "earthed-energy-logo",
+    "goodwe-4stack-cut",
+    "sigenstor-cut",
+)
+IMAGE_LOADER = """<script>
+(function () {
+  function load() {
+    var nodes = document.querySelectorAll("img[data-src]");
+    for (var i = 0; i < nodes.length; i++) {
+      var img = nodes[i];
+      img.decoding = "async";
+      img.setAttribute("fetchpriority", "low");
+      img.src = img.getAttribute("data-src");
+      img.removeAttribute("data-src");
+    }
+  }
+  window.addEventListener("load", function () {
+    if ("requestIdleCallback" in window) requestIdleCallback(load, { timeout: 1200 });
+    else load();
+  });
+})();
+</script>"""
+
+
+def defer_noncritical_images(html: str) -> str:
+    """Keep the hero (and its two product cut-outs) on the first load. Everything else waits."""
+
+    def repl(match: re.Match) -> str:
+        tag = match.group(0)
+        if any(token in tag for token in KEEP_SRC) or "data-src=" in tag:
+            return tag
+        src = re.search(r'\ssrc="([^"]+)"', tag)
+        if not src or src.group(1).startswith("data:"):
+            return tag
+        url = src.group(1)
+        swapped = tag.replace(f' src="{url}"', f' data-src="{url}" src="{PIXEL}"', 1)
+        return swapped + f'<noscript><img src="{url}" alt=""></noscript>'
+
+    return re.sub(r"<img\b[^>]*>", repl, html)
+
+
+def split_keyframes(css: str) -> tuple[str, str]:
+    blocks = re.findall(r"@keyframes\s+[^{]+\{(?:[^{}]|\{[^{}]*\})*\}", css)
+    rest = css
+    for block in blocks:
+        rest = rest.replace(block, "")
+    return rest, "\n".join(blocks)
+
+
 def shell(
     *,
     title: str,
@@ -218,7 +270,8 @@ def shell(
         classes.append("page-quote")
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
     ld = f'<script type="application/ld+json">{json_ld}</script>\n' if json_ld else ""
-    main = body if quote else body
+    fonts_css = (ROOT / "assets/css/fonts.css").read_text(encoding="utf-8")
+    ee_css = (ROOT / "assets/css/ee.css").read_text(encoding="utf-8")
     return f"""<!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -236,9 +289,9 @@ def shell(
 <meta name="theme-color" content="#2B1550">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
-{preload}<link rel="stylesheet" href="/assets/css/fonts.css">
-<link rel="stylesheet" href="/assets/css/ee.css">
-<style>
+{preload}<style>
+{fonts_css}
+{ee_css}
 {css}
 </style>
 {ld}</head>
@@ -247,7 +300,7 @@ def shell(
 {header_html(section, home=home)}
 {mobile_nav_html(section)}
 <main id="main">
-{main}
+{body}
 {footer}
 </main>
 {"" if quote else sticky_cta_html()}
@@ -332,12 +385,13 @@ def main() -> None:
             footer = re.sub(r"<img (?![^>]*\bloading=)", '<img loading="lazy" decoding="async" ', footer)
         if strict:
             body = mark_motion(body)
+        extra_motion = ""
         if page["outFile"] == "index.html":
             canonical = BASE + "/"
             preload = '<link rel="preload" as="image" href="/images/hero-coastal-daynight-960.webp" fetchpriority="high">\n'
             body = body.replace(
                 '<picture style="display:contents"><img src="/images/hero-coastal-daynight.webp"',
-                '<picture style="position:absolute;inset:0;display:block"><img loading="eager" decoding="sync" src="/images/hero-coastal-daynight-960.webp"',
+                '<picture style="position:absolute;inset:0;display:block"><img loading="eager" decoding="sync" fetchpriority="high" src="/images/hero-coastal-daynight-960.webp"',
                 1,
             )
             body = body.replace(
@@ -345,10 +399,33 @@ def main() -> None:
                 'style="width:100%;height:100%;object-fit:cover;object-position:50% 70%;display:block"',
                 1,
             )
+            body = body.replace(' width="2400" height="1797"', ' width="960" height="719"', 1)
             body = body.replace(
                 'aria-label="Summer sale: start your battery quote, 45 seconds" ',
                 "",
             )
+            for marker in ("equipment", "how", "cost"):
+                body = body.replace(
+                    f'<div data-reveal="" id="{marker}"',
+                    f'<div data-reveal="" class="ee-fold" id="{marker}"',
+                    1,
+                )
+            if footer:
+                footer = footer.replace(
+                    '<div style="position:relative;z-index:1;overflow:hidden">',
+                    '<div class="ee-fold" style="position:relative;z-index:1;overflow:hidden">',
+                    1,
+                )
+            page["css"], motion_css = split_keyframes(page["css"])
+            if motion_css:
+                extra_motion = (
+                    '<style media="print" id="ee-motion">' + motion_css + "</style>"
+                    '<script>document.getElementById("ee-motion").media="all"</script>'
+                )
+            else:
+                extra_motion = ""
+            body = defer_noncritical_images(body)
+            footer = defer_noncritical_images(footer) if footer else footer
         elif page["design"]:
             canonical = BASE + "/" + page["outFile"]
             preload = ""
@@ -363,6 +440,8 @@ def main() -> None:
             script = apply_compliance(page["script"], strict=True)
             main_body = f'<div id="ee-app">{body}</div>\n<template id="ee-template">{template}</template>\n<script type="text/plain" id="ee-logic">{script}</script>'
             extra = '<script type="module" src="/assets/js/hydrate.js"></script>'
+        if page["outFile"] == "index.html":
+            extra = extra_motion + IMAGE_LOADER
         home_ld = ""
         if page["outFile"] == "index.html":
             home_ld = json.dumps({

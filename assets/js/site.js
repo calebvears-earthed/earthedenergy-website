@@ -21,6 +21,13 @@
     });
   }
 
+  function whenIdle(fn) {
+    if ("requestIdleCallback" in window) requestIdleCallback(fn, { timeout: 1200 });
+    else window.addEventListener("load", fn);
+  }
+  whenIdle(startPage);
+
+  function startPage() {
   document.querySelectorAll("[style-hover]").forEach(function (el) {
     var extra = el.getAttribute("style-hover") || "";
     if (reduce) extra = extra.replace(/transform:[^;]+;?/gi, "");
@@ -195,5 +202,6 @@
     }
     kw.addEventListener("input", paintRebate);
     bat.addEventListener("input", paintRebate);
+  }
   }
 })();

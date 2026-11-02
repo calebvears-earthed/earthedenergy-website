@@ -80,9 +80,10 @@ html.js [data-reveal].is-in { transform: none; }
 [data-step] { transition: box-shadow 0.35s ease; border-radius: 12px; }
 [data-step].is-active { box-shadow: inset 3px 0 0 #c9a6f2; }
 
+.ee-fold,
 [data-collage] {
   content-visibility: auto;
-  contain-intrinsic-size: auto 720px;
+  contain-intrinsic-size: auto 880px;
 }
 [data-collage] a > div { transition: opacity 0.35s ease; }
 [data-collage] a:hover > div,
