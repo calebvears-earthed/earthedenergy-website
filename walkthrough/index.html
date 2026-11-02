@@ -33,7 +33,7 @@
   <div class="header-inner">
     <a class="logo" href="/" aria-label="Earthed Energy, home"><img src="/assets/logo-white.png" alt="" width="150" height="42"></a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="/#packages">Packages</a><a href="/knowledge.html">Guides</a><a href="/solarcare/">SolarCare</a><a href="/contact.html">Contact</a>
+      <a href="/residential.html">Residential</a><a href="/knowledge.html">Guides</a><a href="/solarcare/">SolarCare</a><a href="/contact.html">Contact</a>
     </nav>
     <a class="nav-sister" href="https://www.earthedhv.au">Earthed High Voltage</a>
     <a class="btn btn-light header-cta" href="/get-a-quote.html">Request a quote</a>
@@ -47,7 +47,7 @@
 <div class="nav-panel" id="mobile-nav" hidden role="dialog" aria-modal="true" aria-label="Menu">
   <button class="nav-close" type="button" aria-label="Close menu"><span aria-hidden="true">×</span></button>
   <nav aria-label="Mobile">
-    <a href="/#packages">Packages</a><a href="/knowledge.html">Guides</a><a href="/solarcare/">SolarCare</a><a href="/contact.html">Contact</a>
+    <a href="/residential.html">Residential</a><a href="/knowledge.html">Guides</a><a href="/solarcare/">SolarCare</a><a href="/contact.html">Contact</a>
     <a class="panel-sister" href="https://www.earthedhv.au">Earthed High Voltage · High voltage electrical</a>
   </nav>
   <div class="panel-actions">
@@ -65,9 +65,8 @@
     <p><a class="btn btn-light" href="#quote">Start the walkthrough</a></p>
     <ul class="trust">
       <li>licensed electrical contractor</li>
-      <li>SAA switching</li>
-      <li>SAPN approved</li>
-      <li>NETCC approved seller</li>
+      <li>SAA designer on the credentials page</li>
+      <li>designs to SAPN requirements</li>
       <li>SA electrical contractor PGE 336477</li>
     </ul>
   </div>
@@ -89,7 +88,7 @@
     <p class="quote-eyebrow eyebrow">Five questions · 30 seconds</p>
     <h2 class="quote-title">Let's start the walkthrough.</h2>
     <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
-    <form id="quoteForm" action="https://formspree.io/f/xlgybzag" method="POST">
+    <form id="quoteForm" action="https://formspree.io/f/mvkzjdwe" method="POST">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="hidden" name="_subject" value="New Earthed Energy walkthrough request">
       <div class="step-pane active" data-step="1">
@@ -147,6 +146,8 @@
         <div class="field"><label class="input-label" for="ansEmail">Email</label><input class="input-field" type="email" name="05_email" id="ansEmail" autocomplete="email" oninput="validateContact()"></div>
         <div class="field"><label class="input-label" for="ansPhone">Mobile</label><input class="input-field" type="tel" name="05_phone" id="ansPhone" autocomplete="tel" oninput="validateContact()"><p class="input-error" id="errContact">Please fill all three so we can get back to you.</p></div>
         <div class="nav-row"><button type="button" class="btn-back" onclick="prevStep(5)">Back</button><button type="submit" class="btn-next" id="submitBtn" disabled>Send walkthrough request</button></div>
+        <p class="fine">We email this to calebvears@earthedhv.au. <a href="/privacy.html">Privacy</a>.</p>
+        <p id="sendError" hidden>That did not send. Call <a href="tel:0433839284">0433 839 284</a>.</p>
       </div>
     </form>
     <div class="thanks-pane" id="thanks">
@@ -209,8 +210,15 @@ document.getElementById('quoteForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const form = e.target;
   const data = new FormData(form);
+  data.set('form', 'walkthrough');
+  data.set('email', document.getElementById('ansEmail').value.trim());
+  data.set('name', document.getElementById('ansName').value.trim());
+  data.set('phone', document.getElementById('ansPhone').value.trim());
+  const err = document.getElementById('sendError');
+  if (err) err.hidden = true;
   fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
-    .then(() => showThanks()).catch(() => showThanks());
+    .then(function (res) { if (!res.ok) throw new Error(String(res.status)); showThanks(); })
+    .catch(function () { if (err) err.hidden = false; });
 });
 function showThanks() {
   document.getElementById('quoteForm').style.display = 'none';
@@ -232,7 +240,7 @@ function showThanks() {
     <div>
       <p class="footer-title">Navigate</p>
       <ul>
-        <li><a href="/#packages">Packages</a></li>
+        <li><a href="/residential.html">Residential</a></li>
         <li><a href="/knowledge.html">Guides</a></li>
         <li><a href="/solarcare/">SolarCare</a></li>
         <li><a href="/contact.html">Contact</a></li>
@@ -243,7 +251,7 @@ function showThanks() {
       <ul>
         <li><a href="tel:0433839284">0433 839 284</a></li>
         <li><a href="mailto:calebvears@earthedhv.au">calebvears@earthedhv.au</a></li>
-        <li>26 Wanbrow Ave, Wattle Park</li>
+        <li>PO Box 4111, Norwood South SA 5067</li>
       </ul>
     </div>
     <div>
@@ -256,8 +264,8 @@ function showThanks() {
     </div>
   </div>
   <div class="wrap-wide footer-base">
-    <p class="licence">SA electrical contractor licence PGE 336477<span aria-hidden="true"> · </span><span class="vh">. </span>ABN 92 691 065 460<span aria-hidden="true"> · </span><span class="vh">. </span>ACN 691 065 460</p>
-    <p>© 2026 Earthed Energy Co Pty Ltd</p>
+    <p class="licence">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co. SA electrical contractor licence PGE 336477.</p>
+    <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
   </div>
 </footer>
 <div class="mobile-bar">

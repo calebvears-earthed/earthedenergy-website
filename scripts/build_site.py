@@ -296,7 +296,14 @@ def shell(
     if quote:
         classes.append("page-quote")
     robots = '<meta name="robots" content="noindex">\n' if noindex else ""
-    ld = f'<script type="application/ld+json">{json_ld}</script>\n' if json_ld else ""
+    if isinstance(json_ld, list):
+        ld = "".join(
+            f'<script type="application/ld+json">{item}</script>\n' for item in json_ld if item
+        )
+    elif json_ld:
+        ld = f'<script type="application/ld+json">{json_ld}</script>\n'
+    else:
+        ld = ""
     fonts_css = (ROOT / "assets/css/fonts.css").read_text(encoding="utf-8")
     ee_css = (ROOT / "assets/css/ee.css").read_text(encoding="utf-8")
     return f"""<!DOCTYPE html>
@@ -313,6 +320,11 @@ def shell(
 <meta property="og:url" content="{esc(canonical)}">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="Earthed Energy">
+<meta property="og:image" content="{BASE}/images/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{BASE}/images/og-home.jpg">
 <meta name="theme-color" content="#2B1550">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -365,6 +377,9 @@ def write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if "<img" in text:
         text = ensure_dims(text)
+    rel = path.relative_to(ROOT).as_posix()
+    if not rel.startswith("design/"):
+        text = polish(text, out_file=path.name)
     path.write_text(text, encoding="utf-8")
 
 
@@ -374,6 +389,423 @@ def sitemap(urls: list[str]) -> str:
         for url in urls
     )
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "\n</urlset>\n"
+
+
+FORMSPREE = "https://formspree.io/f/mvkzjdwe"
+LEAD_ERROR = (
+    '<p class="ee-form-status" data-ee-err hidden>That did not send. '
+    f'Call <a href="tel:{PHONE_TEL}">0433 839 284</a> and we will take it from here.</p>'
+)
+LEAD_OK = '<p class="ee-form-status" data-ee-ok hidden>Sent. Caleb replies within one business day.</p>'
+PRIVACY_NOTE = (
+    f'<p class="ee-form-note">We email this to {EMAIL} so we can reply. '
+    'Read the <a href="/privacy.html">privacy page</a>.</p>'
+)
+
+SHORT_TITLES = {
+    "index.html": "Solar and battery in South Australia · Earthed Energy",
+    "about-earthed-energy.html": "About Earthed Energy · South Australia",
+    "aircon-hot-water.html": "Aircon and heat pump hot water · Earthed Energy",
+    "battery-sizing.html": "Battery sizing for your home · Earthed Energy",
+    "battery-storage.html": "Batteries we install · Earthed Energy",
+    "bushfire-prone-areas.html": "Solar in bushfire prone areas · Earthed Energy",
+    "commissioning-and-handover.html": "Commissioning and handover · Earthed Energy",
+    "credentials-and-licences.html": "Credentials and licences · Earthed Energy",
+    "ev-charging.html": "EV charging at home · Earthed Energy",
+    "federal-rebates-explained.html": "Federal solar and battery rebates · Earthed Energy",
+    "finance-options.html": "Finance options · Earthed Energy",
+    "how-much-you-save.html": "How much you save · Earthed Energy",
+    "installation-day.html": "Installation day · Earthed Energy",
+    "inverters.html": "Inverters we install · Earthed Energy",
+    "monitoring-apps.html": "Monitoring apps · Earthed Energy",
+    "off-grid-vs-grid-connect.html": "Off-grid vs grid-connect · Earthed Energy",
+    "outage-backup.html": "Outage backup · Earthed Energy",
+    "racking-and-cable.html": "Racking and cable · Earthed Energy",
+    "reading-your-power-bill.html": "Reading your power bill · Earthed Energy",
+    "residential.html": "Residential solar and battery · Earthed Energy",
+    "sa-export-limits.html": "SA export limits · Earthed Energy",
+    "sapn-flexible-export.html": "SAPN Flexible Exports · Earthed Energy",
+    "shade-and-roof-orientation.html": "Shade and roof orientation · Earthed Energy",
+    "solar-panels.html": "Solar panels we install · Earthed Energy",
+    "swer-lines.html": "SWER lines and solar · Earthed Energy",
+    "three-phase-vs-single-phase.html": "Three-phase vs single-phase · Earthed Energy",
+    "warranty-and-aftercare.html": "Warranty and aftercare · Earthed Energy",
+    "what-a-battery-does.html": "What a battery does · Earthed Energy",
+    "what-solar-does.html": "What solar does · Earthed Energy",
+    "what-we-install.html": "What we install · Earthed Energy",
+    "whole-home-backup-explained.html": "Whole-home backup · Earthed Energy",
+    "why-we-do-this.html": "Why we do this · Earthed Energy",
+}
+
+QUOTE_SUBMIT = """  submit = () => {
+    if (this.leadInvalid() || this.state.sending) return;
+    const c = this.calc(), s = this.state;
+    const payload = { postcode: s.postcode, type: s.ptype, quarterlyBill: s.billQ, recommended: `${c.kw}kW + ${c.bat}kWh`, price: c.price, finance: s.finance, firstName: s.name, phone: s.phone, email: s.email, timestamp: new Date().toISOString(), utm: this.utm || {} };
+    const summary = `Quote request, ${s.name}, ${s.postcode}, $${c.price}, ${s.finance}, ${c.kw}kW + ${c.bat}kWh`;
+    this.setState({ sending: true });
+    const err = document.getElementById('ee-lead-error');
+    if (err) err.hidden = true;
+    const body = new FormData();
+    body.append('form', 'quote');
+    body.append('email', s.email);
+    body.append('name', s.name);
+    body.append('phone', s.phone);
+    body.append('_subject', 'Earthed Energy quote request');
+    body.append('message', summary + '\\n' + JSON.stringify(payload, null, 2));
+    const endpoint = (window.EE_LEAD || 'https://formspree.io/f/mvkzjdwe');
+    fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' } })
+      .then((res) => { if (!res.ok) throw new Error(String(res.status)); this.setState({ sending: false }); this.go(8, 1); })
+      .catch(() => { this.setState({ sending: false }); if (err) err.hidden = false; });
+  };"""
+
+
+def fit_title(out_file: str, title: str) -> str:
+    title = SHORT_TITLES.get(out_file, title)
+    if len(title) > 60:
+        raise SystemExit(f"Title too long ({len(title)}): {title}")
+    return title
+
+
+def local_business_ld() -> str:
+    return json.dumps({
+        "@context": "https://schema.org",
+        "@type": ["Electrician", "LocalBusiness"],
+        "@id": BASE + "/#business",
+        "name": "Earthed Energy",
+        "legalName": "Earthed High Voltage Pty Ltd",
+        "url": BASE + "/",
+        "logo": BASE + "/images/earthed-energy-logo-purple.webp",
+        "image": BASE + "/images/og-home.jpg",
+        "email": EMAIL,
+        "telephone": "+61433839284",
+        "address": {
+            "@type": "PostalAddress",
+            "postOfficeBoxNumber": "4111",
+            "addressLocality": "Norwood South",
+            "addressRegion": "SA",
+            "postalCode": "5067",
+            "addressCountry": "AU",
+        },
+        "areaServed": {"@type": "AdministrativeArea", "name": "South Australia"},
+        "parentOrganization": {
+            "@type": "Organization",
+            "name": "Earthed High Voltage",
+            "url": "https://earthedhv.au",
+        },
+    }, ensure_ascii=False)
+
+
+def breadcrumb_ld(page_name: str, page_url: str, section: str) -> str:
+    section_names = {
+        "residential": ("Residential", "/residential.html"),
+        "commercial": ("Commercial", "/commercial.html"),
+        "knowledge": ("Knowledge", "/knowledge.html"),
+        "about": ("About", "/about-earthed-energy.html"),
+        "quote": ("Calculate savings", "/get-a-quote.html"),
+    }
+    items = [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": BASE + "/",
+    }]
+    parent = section_names.get(section)
+    if parent and parent[1] != page_url.replace(BASE, ""):
+        items.append({
+            "@type": "ListItem",
+            "position": 2,
+            "name": parent[0],
+            "item": BASE + parent[1],
+        })
+    items.append({
+        "@type": "ListItem",
+        "position": len(items) + 1,
+        "name": page_name,
+        "item": page_url if page_url.startswith("http") else BASE + page_url,
+    })
+    if len(items) < 2:
+        return ""
+    return json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": items,
+    }, ensure_ascii=False)
+
+
+def align_claims(text: str) -> str:
+    swaps = [
+        (
+            ">10 yrs</span><span style=\"font-size:14px;line-height:1.45;color:#3A2947\">Workmanship warranty on every install</span>",
+            ">7 yrs</span><span style=\"font-size:14px;line-height:1.45;color:#3A2947\">Workmanship warranty on every install</span>",
+        ),
+        ("Inverter (GoodWe or Sigenergy)", "Inverter, GoodWe"),
+        (
+            ">10 years</td>",
+            ">10 years</td>",
+        ),
+        (
+            "Battery (Lynx or SigenStor)",
+            "Battery, GoodWe Lynx",
+        ),
+        (
+            "10-year inverter and battery",
+            "GoodWe 10-year inverter and battery, Sigenergy 12-year inverter and 15-year battery",
+        ),
+        (
+            "GoodWe Lynx and Sigenergy SigenStor modules. LFP, modular, 10 years to 70 percent.",
+            "GoodWe Lynx, 10 years to 70 percent. Sigenergy SigenStor, 15 years.",
+        ),
+        (
+            "<td style=\"padding:12px 14px;border-bottom:1px solid #D8D0C0;vertical-align:top\">10 yr inverter, 10 yr battery</td><td style=\"padding:12px 14px;border-bottom:1px solid #D8D0C0;vertical-align:top\">10 yr inverter, 10 yr battery</td>",
+            "<td style=\"padding:12px 14px;border-bottom:1px solid #D8D0C0;vertical-align:top\">10 yr inverter, 10 yr battery</td><td style=\"padding:12px 14px;border-bottom:1px solid #D8D0C0;vertical-align:top\">12 yr inverter, 15 yr battery</td>",
+        ),
+        ("CEC-approved off-grid", "Dedicated off-grid"),
+        ("CEC-approved. ", ""),
+        ("Selectronic · Melbourne-made · world-class", "Selectronic · Melbourne-made"),
+        ("The world’s best off-grid inverter.", "An Australian-made off-grid inverter."),
+        ("The world's best off-grid inverter.", "An Australian-made off-grid inverter."),
+        ("widely regarded as the world’s best off-grid inverter by industry reviewers.", "built in Australia for properties that need a dedicated off-grid inverter."),
+        ("It is considered the world’s best off-grid inverter by expert industry reviewers.", "It is made in Melbourne for off-grid properties."),
+        ("widely regarded as the world's best off-grid inverter by industry reviewers.", "built in Australia for properties that need a dedicated off-grid inverter."),
+        (
+            "<strong style=\"color:#2b1550\">$0 upfront at $333 per month for 24 months*</strong>",
+            "Finance options are on the <a href=\"/finance-options.html\">finance page</a>. We do not quote a monthly repayment here. The comparison rate depends on the lender and the term, and we will not publish one we cannot source.",
+        ),
+        ("Get a quote · 45 seconds", "Calculate savings"),
+        ("Now get your full indicative price · 45 seconds", "Calculate savings"),
+        ('href="/warranty-and-aftercare.html"', 'href="/warranty-and-aftercare.html"'),
+    ]
+    for old, new in swaps:
+        text = text.replace(old, new)
+    text = re.sub(
+        r'href="/warranty-and-aftercare.html"([^>]*)>Full terms',
+        r'href="/terms.html"\1>Full terms',
+        text,
+    )
+    # Split the warranty table: the GoodWe inverter cell stays 10 years.
+    # Insert a Sigenergy inverter row and a SigenStor battery row by rewriting the two generic rows once.
+    text = text.replace(
+        "Inverter, GoodWe",
+        "Inverter, GoodWe",
+    )
+    cell = 'style="padding:12px 14px;border-bottom:1px solid #D8D0C0;vertical-align:top"'
+    strong = 'style="padding:12px 14px;border-bottom:1px solid #D8D0C0;vertical-align:top;font-weight:600"'
+    if "Inverter, Sigenergy" not in text and "Inverter, GoodWe" in text:
+        text = text.replace(
+            f'<td {strong}>Battery, GoodWe Lynx</td>',
+            (
+                f'<td {strong}>Inverter, Sigenergy</td>'
+                f'<td {cell}>12 years</td>'
+                f'<td {cell}>Inverter failure, firmware, transfer switch</td>'
+                f'<td {cell}>Manufacturer, we handle the claim and the swap</td></tr><tr>'
+                f'<td {strong}>Battery, GoodWe Lynx</td>'
+            ),
+            1,
+        )
+        text = text.replace(
+            f'<td {cell}>10 years to 70% capacity</td><td {cell}>Module failure, capacity below 70%</td><td {cell}>Manufacturer, we handle the claim and the swap</td></tr>',
+            (
+                f'<td {cell}>10 years to 70% capacity</td><td {cell}>Module failure, capacity below 70%</td><td {cell}>Manufacturer, we handle the claim and the swap</td></tr><tr>'
+                f'<td {strong}>Battery, Sigenergy SigenStor</td>'
+                f'<td {cell}>15 years</td>'
+                f'<td {cell}>Module failure, capacity below 70%</td>'
+                f'<td {cell}>Manufacturer, we handle the claim and the swap</td></tr>'
+            ),
+            1,
+        )
+    return text
+
+
+def fix_heading_order(document: str) -> str:
+    parts = []
+    cursor = 0
+    last = 0
+    for match in re.finditer(r"<h([1-6])\b([^>]*)>(.*?)</h\1>", document, flags=re.S):
+        parts.append(document[cursor:match.start()])
+        level = int(match.group(1))
+        if last and level > last + 1:
+            level = last + 1
+        parts.append(f"<h{level}{match.group(2)}>{match.group(3)}</h{level}>")
+        last = level
+        cursor = match.end()
+    parts.append(document[cursor:])
+    return "".join(parts)
+
+
+def designed_panel(title: str, note: str, ratio: str = "21 / 9") -> str:
+    return (
+        f'<div class="ee-panel" style="aspect-ratio:{ratio}" role="img" aria-label="{esc(title)}">'
+        '<p class="ee-panel-kicker">Photograph to come</p>'
+        f'<p class="ee-panel-title">{esc(title)}</p>'
+        f'<p class="ee-panel-note">{esc(note)}</p>'
+        "</div>"
+    )
+
+
+PLACEHOLDER_COPY = {
+    "Caleb on site": ("Caleb on site", "A portrait goes here when Caleb has one he wants on the page."),
+    "Troy on site": ("Troy on site", "A portrait goes here when there is a photo of Troy he is happy to publish."),
+    "Caleb on the first Earthed job": ("The first Earthed job", "A wide photo of that job will replace this panel."),
+    "Early site photo": ("Early site", "Goyder South or Port Wakefield, when a photo from the job is ready."),
+    "Real dashboard screenshots": ("Monitoring apps", "SEMS and mySigen screenshots will sit here. No mock dashboard."),
+    "Anonymised SA power bill": ("Your power bill", "An anonymised SA bill, with the five numbers marked, will sit here."),
+    "Drone shot · commercial": ("Commercial rooftop", "A drone photo of a commercial roof will replace this panel."),
+    "Drone shot · remote": ("Off-grid site", "A photo of a remote install will replace this panel."),
+}
+
+
+def replace_placeholders(text: str) -> str:
+    def ee_ph(match: re.Match) -> str:
+        inner = re.sub(r"<[^>]+>", " ", match.group(0))
+        inner = re.sub(r"\s+", " ", inner)
+        ratio = "16 / 7" if "aspect-ratio:16/7" in match.group(0) else "21 / 9"
+        for key, (title, note) in PLACEHOLDER_COPY.items():
+            if key in inner:
+                return designed_panel(title, note, ratio)
+        return designed_panel("Photograph to come", "This space stays empty until there is a real photo.", ratio)
+
+    text = re.sub(r'<div class="ee-ph"[\s\S]*?</div>', ee_ph, text)
+
+    def picture(match: re.Match) -> str:
+        alt = re.search(r'alt="([^"]*)"', match.group(0))
+        label = alt.group(1) if alt else ""
+        for key, (title, note) in PLACEHOLDER_COPY.items():
+            if key in label or key in match.group(0):
+                return designed_panel(title, note)
+        return match.group(0)
+
+    text = re.sub(r'<picture\b[^>]*>[\s\S]*?Caleb to add[\s\S]*?</picture>', picture, text)
+    return text
+
+
+def footer_links(text: str) -> str:
+    legal = f">{LEGAL}</span>"
+    links = (
+        f">{LEGAL}</span>"
+        '<span style="display:flex;gap:16px;font-size:12.5px">'
+        '<a href="/privacy.html" style="color:#5E2D89">Privacy</a>'
+        '<a href="/terms.html" style="color:#5E2D89">Terms</a>'
+        "</span>"
+    )
+    if legal in text and "/privacy.html" not in text:
+        text = text.replace(legal, links, 1)
+    text = re.sub(r'<img[^>]*partner-nec-seller\.webp[^>]*>', "", text)
+    return text
+
+
+def contrast_and_chrome(text: str) -> str:
+    text = text.replace("rgba(43,21,80,.55)", "rgba(43,21,80,.9)")
+    text = text.replace("rgba(43,21,80,0.55)", "rgba(43,21,80,.9)")
+    text = text.replace("rgba(43,21,80,.62)", "rgba(43,21,80,.9)")
+    text = text.replace("rgba(43,21,80,.4)", "rgba(43,21,80,.78)")
+    text = text.replace("rgba(107,79,187,.35)", "rgba(75,40,120,.78)")
+    text = text.replace("top:96px", "top:16px")
+    text = text.replace('<div aria-label="Progress"', '<div aria-hidden="true"')
+    return text
+
+
+def prioritise_lcp(text: str, src: str) -> str:
+    def repl(match: re.Match) -> str:
+        tag = match.group(0)
+        tag = re.sub(r'\sloading="lazy"', "", tag)
+        tag = re.sub(r'\sdecoding="async"', "", tag)
+        if "fetchpriority=" not in tag:
+            tag = tag.replace("<img ", '<img fetchpriority="high" decoding="sync" loading="eager" ', 1)
+        return tag
+
+    return re.sub(rf"<img\b[^>]*{re.escape(src)}[^>]*>", repl, text)
+
+
+def patch_quote(text: str) -> str:
+    text = re.sub(r"submit = \(\) => \{.*?\n  \};", QUOTE_SUBMIT, text, count=1, flags=re.S)
+    text = text.replace(
+        '<button onClick="{{ goCal }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:\'Open Sans\',sans-serif;font-size:14px;color:#5E2D89;text-decoration:underline;text-underline-offset:3px">Or reserve a time for a free energy assessment in our live calendar →</button>',
+        f'<a href="/contact.html">Book a call</a> or <a href="tel:{PHONE_TEL}">0433 839 284</a>',
+    )
+    text = text.replace(
+        '<a href="https://calendly.com/earthedenergy/15min" target="_blank" rel="noopener" style="padding:14px 20px;border-radius:10px;border:1px solid #2b1550;color:#2b1550;font-size:15px;font-weight:600" style-hover="background:#ffffff;color:#2b1550">Book a call</a>',
+        f'<a href="/contact.html" style="padding:14px 20px;border-radius:10px;border:1px solid #2b1550;color:#2b1550;font-size:15px;font-weight:600">Book a call</a>'
+        f'<a href="tel:{PHONE_TEL}" style="padding:14px 20px;border-radius:10px;border:1px solid #2b1550;color:#2b1550;font-size:15px;font-weight:600">0433 839 284</a>',
+    )
+    text = re.sub(
+        r'<div style="border:1px solid #D8D0C0;border-radius:14px;overflow:hidden;background:#F5F1E8;min-height:560px">\s*<iframe src="\{\{ calUrl \}\}"[\s\S]*?</iframe>\s*</div>',
+        (
+            '<div style="border:1px solid #D8D0C0;border-radius:14px;background:#F5F1E8;padding:28px;display:flex;flex-direction:column;gap:12px">'
+            '<p style="margin:0;font-size:17px;line-height:1.5;color:#2b1550">There is no online booking calendar yet. Send the quote, or call.</p>'
+            f'<a href="/contact.html">Book a call</a><a href="tel:{PHONE_TEL}">0433 839 284</a>'
+            "</div>"
+        ),
+        text,
+        count=1,
+    )
+    if "ee-lead-error" not in text:
+        text = text.replace(
+            "<span>{{ submitLabel }}</span>\n        </button>",
+            "<span>{{ submitLabel }}</span>\n        </button>\n"
+            '<p id="ee-lead-error" hidden style="margin:0;font-size:14px;line-height:1.45;color:#8C2F2F">That did not send. Call <a href="tel:0433839284">0433 839 284</a>.</p>\n'
+            f'<p style="margin:0;font-size:13px;line-height:1.45;color:#3A2947">We email this to {EMAIL}. <a href="/privacy.html">Privacy</a>.</p>',
+            1,
+        )
+    text = text.replace(
+        'src="/images/hf-20260615-150951-1b5883ca-ca70-4757-934c-e12ff4c502c4.webp"',
+        'src="/images/quote-backdrop-960.webp"',
+    )
+    text = text.replace(
+        'quote-backdrop-960.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2400" height="1357"',
+        'quote-backdrop-960.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="960" height="543"',
+    )
+    text = text.replace(
+        "calUrl: (this.props.calendarUrl ?? 'https://calendly.com/earthedenergy/energy-assessment') + '?hide_gdpr_banner=1&primary_color=5e2d89&background_color=f5f1e8&text_color=2b1550'",
+        "calUrl: '/contact.html'",
+    )
+    return text
+
+
+def polish(text: str, *, out_file: str) -> str:
+    text = align_claims(text)
+    text = contrast_and_chrome(text)
+    text = replace_placeholders(text)
+    text = footer_links(text)
+    if out_file == "residential.html":
+        text = text.replace(
+            'data-screen-label="Commercial solar Adelaide · utility-grade design and install"',
+            'data-screen-label="Residential solar and battery across South Australia"',
+        )
+    if out_file == "off-grid.html":
+        text = text.replace(
+            'data-screen-label="Commercial solar Adelaide · utility-grade design and install"',
+            'data-screen-label="Off-grid solar and battery"',
+        )
+    if out_file in {"get-a-quote.html"} or "calendly.com" in text or "submit = () =>" in text:
+        text = patch_quote(text)
+    if out_file == "commercial.html":
+        text = prioritise_lcp(text, "/images/quote-backdrop-960.webp")
+    if "quote-backdrop-960.webp" in text:
+        text = prioritise_lcp(text, "quote-backdrop-960.webp")
+    if 'data-ee-input="bat"' in text and "ee-estimate" not in text:
+        text = text.replace(
+            '<a href="/get-a-quote.html" style="grid-column:1 / -1;display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:6px;background:#2A1B4A;color:#F1EDF9;font-size:15px;font-weight:600" style-hover="background:#5E2D89;color:#F1EDF9">Calculate savings</a>',
+            ESTIMATE_FORM
+            + '<a href="/get-a-quote.html" style="grid-column:1 / -1;display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:6px;background:#2A1B4A;color:#F1EDF9;font-size:15px;font-weight:600">Calculate savings</a>',
+            1,
+        )
+    text = fix_heading_order(text)
+    return text
+
+
+ESTIMATE_FORM = f"""<form class="ee-form" data-ee-lead data-ee-estimate style="grid-column:1 / -1;display:flex;flex-direction:column;gap:12px;padding:8px 0 4px" action="{FORMSPREE}" method="POST">
+<input type="hidden" name="form" value="rebate-estimate">
+<input type="hidden" name="_subject" value="Earthed Energy rebate estimate">
+<input type="hidden" name="message" value="">
+<p style="margin:0;font-size:16px;line-height:1.45;color:#2b1550">Send me this estimate</p>
+<label>Name<input name="name" type="text" required autocomplete="name"></label>
+<label>Phone<input name="phone" type="tel" required autocomplete="tel"></label>
+<label>Email<input name="email" type="email" required autocomplete="email"></label>
+{PRIVACY_NOTE}
+<button type="submit">Send me this estimate</button>
+{LEAD_OK}
+{LEAD_ERROR}
+</form>"""
 
 
 def scrub_legacy() -> None:
@@ -403,7 +835,10 @@ def main() -> None:
         description = page["description"] or f"{page['name']} from the Earthed Energy design archive."
         if page["name"] == "Get a Quote" and not page["title"]:
             title = "Get a quote · Earthed Energy"
-            description = "Let's see what solar can do for you. Takes 45 seconds. No signup. Nothing to install."
+            description = "See what solar can do for your home. Takes 45 seconds. No signup."
+        if not page["design"]:
+            description = align_claims(description)
+            title = fit_title(page["outFile"], title)
         body = apply_compliance(page["body"], strict=strict)
         footer = apply_compliance(page["footer"], strict=strict) if page["footer"] else ""
         footer = add_ehv_card(footer)
@@ -470,27 +905,15 @@ def main() -> None:
             extra = '<script type="module" src="/assets/js/hydrate.js"></script>'
         if page["outFile"] == "index.html":
             extra = extra_motion + IMAGE_LOADER
-        home_ld = ""
-        if page["outFile"] == "index.html":
-            home_ld = json.dumps({
-                "@context": "https://schema.org",
-                "@type": ["Electrician", "LocalBusiness"],
-                "name": "Earthed Energy",
-                "legalName": "Earthed High Voltage Pty Ltd",
-                "url": BASE + "/",
-                "email": EMAIL,
-                "telephone": "+61433839284",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "PO Box 4111",
-                    "addressLocality": "Norwood South",
-                    "addressRegion": "SA",
-                    "postalCode": "5067",
-                    "addressCountry": "AU",
-                },
-                "areaServed": ["Adelaide", "Adelaide Hills", "Mount Barker", "South Australia"],
-                "parentOrganization": {"@type": "Organization", "name": "Earthed High Voltage", "url": "https://earthedhv.au"},
-            }, ensure_ascii=False)
+        ld_blocks = []
+        if not page["design"]:
+            ld_blocks.append(local_business_ld())
+            if page["outFile"] != "index.html":
+                crumb = breadcrumb_ld(page["name"], canonical, page["section"])
+                if crumb:
+                    ld_blocks.append(crumb)
+        if page["outFile"] == "get-a-quote.html":
+            preload = '<link rel="preload" as="image" href="/images/quote-backdrop-960.webp" fetchpriority="high">\n'
         doc = ensure_dims(shell(
             title=title,
             description=description,
@@ -504,27 +927,42 @@ def main() -> None:
             noindex=page["design"],
             preload=preload,
             extra=extra,
-            json_ld=home_ld,
+            json_ld=ld_blocks,
         ))
         write(ROOT / page["outFile"], doc)
 
     quote_footer = shared_footer
+    how_body = """
+<h2>The 45-second price is not the quote</h2>
+<p>Calculate savings asks for a South Australian postcode, the kind of property, and a quarterly bill. It returns an indicative system and price from the same bands published on this site. Treat that number as a starting point. The written proposal replaces it.</p>
+<h2>Site assessment</h2>
+<p>Caleb or Troy visits. We look at the roof, the shade, the switchboard, whether the supply is single-phase or three-phase, and any solar already on the house. If backup during an outage matters, say so then. It changes the battery, the inverter and the switchboard work. Troy signs the design. The STC rebate and the Cheaper Home Batteries rebate both need that sign-off.</p>
+<h2>Single line diagram</h2>
+<p>The design pack includes a single line diagram. It shows how the panels, inverter, battery and switchboard connect, and it is what we lodge when SA Power Networks needs the connection application. We design to their requirements. The proposal does not say the company is accredited by SA Power Networks.</p>
+<h2>OSW pricing</h2>
+<p>Equipment on the proposal is priced from our wholesaler list (OSW), not a retail shelf price. The proposal separates the equipment, the installation and the rebate deduction. We do not add a line after you sign for something that was already in the scope.</p>
+<h2>Rebate maths</h2>
+<p>Small-scale Technology Certificates and the Cheaper Home Batteries rebate are worked out and shown as a deduction on the proposal, assigned to Earthed. The method, including the deeming period and the battery tiers, is the one on the <a href="/federal-rebates-explained.html">federal rebates</a> page. The proposal uses the certificate price current when we write it. This page does not add a second set of figures.</p>
+<h2>The written proposal</h2>
+<p>You receive a proposal you can sign. It names the equipment, the warranties (7-year Earthed workmanship, plus the manufacturer terms on the <a href="/warranty-and-aftercare.html">warranty page</a>), and what is included. Finance, where someone wants it, is the lenders on the <a href="/finance-options.html">finance page</a>. We do not put a monthly repayment on this page, because the comparison rate belongs to the lender.</p>
+"""
     how = shell(
         title="How we quote · Earthed Energy",
-        description="How Earthed Energy prepares a quote. The full guide is still being written.",
+        description="How a quote is built: indicative price, site assessment, single line diagram, OSW pricing, rebate maths, written proposal.",
         canonical=BASE + "/how-we-quote.html",
         css=sample_css,
         body=article(
             "How we work",
             "Process → How we quote",
             "How we quote",
-            "Content coming. Caleb is writing this guide.",
-            "<p class=\"ee-note\">The step-by-step of a quote, from the first phone call to the written design, is on its way. The link stays here so the knowledge hub does not dead-end.</p>"
-            f"<p class=\"ee-note\">Call <a href=\"tel:{PHONE_TEL}\">0433 839 284</a> or email <a href=\"mailto:{EMAIL}\">{EMAIL}</a>. Or start with the 45-second price.</p>"
-            '<p><a class="ee-btn" href="/get-a-quote.html">Get a quote</a></p>',
+            "From the 45-second price to a proposal you can sign.",
+            how_body
+            + f'<p class="ee-note">Call <a href="tel:{PHONE_TEL}">0433 839 284</a> or email <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>'
+            + '<p><a class="ee-btn" href="/get-a-quote.html">Calculate savings</a></p>',
         ),
         footer=quote_footer,
         section="knowledge",
+        json_ld=[local_business_ld(), breadcrumb_ld("How we quote", "/how-we-quote.html", "knowledge")],
     )
     write(ROOT / "how-we-quote.html", how)
     urls.append("/how-we-quote.html")
@@ -544,20 +982,23 @@ def main() -> None:
             f"<p class=\"ee-note\">{LEGAL}</p>"
             "<p class=\"ee-note\">SA electrical contractor licence PGE 336477</p>"
             "<p class=\"ee-note\"><a href=\"https://earthedhv.au\">Utility and high voltage work · Earthed High Voltage</a></p>"
-            f"""<form class="ee-form" action="https://formsubmit.co/{EMAIL}" method="POST">
-<input type="hidden" name="_subject" value="New Earthed Energy enquiry">
-<input type="hidden" name="_next" value="{BASE}/thanks.html">
-<input type="hidden" name="_captcha" value="false">
+            f"""<form class="ee-form" data-ee-lead action="{FORMSPREE}" method="POST">
+<input type="hidden" name="form" value="contact">
+<input type="hidden" name="_subject" value="Earthed Energy enquiry">
 <label>Name<input name="name" type="text" required autocomplete="name"></label>
 <label>Phone<input name="phone" type="tel" required autocomplete="tel"></label>
 <label>Email<input name="email" type="email" required autocomplete="email"></label>
 <label>Suburb<input name="suburb" type="text" required autocomplete="address-level2"></label>
 <label>What do you need?<textarea name="message" required></textarea></label>
+{PRIVACY_NOTE}
 <button type="submit">Send</button>
+{LEAD_OK}
+{LEAD_ERROR}
 </form>""",
         ),
         footer=shared_footer,
         section="",
+        json_ld=[local_business_ld(), breadcrumb_ld("Contact", "/contact.html", "")],
     )
     write(ROOT / "contact.html", contact)
     urls.append("/contact.html")
@@ -623,6 +1064,60 @@ def main() -> None:
         noindex=True,
     )
     write(ROOT / "design" / "index.html", design_index)
+
+    legal_pages = [
+        (
+            "privacy.html",
+            "Privacy · Earthed Energy",
+            "How Earthed Energy handles personal information.",
+            "Privacy",
+            "How we handle personal information.",
+            f"""
+<h2>Who we are</h2>
+<p>{LEGAL}. Postal address: PO Box 4111, Norwood South SA 5067. Email <a href="mailto:{EMAIL}">{EMAIL}</a>. Phone <a href="tel:{PHONE_TEL}">0433 839 284</a>.</p>
+<h2>What we collect</h2>
+<p>If you use a form, call, or email, we collect the details you give us: name, phone, email, suburb, and what you tell us about your bill, roof and the system you want. The quote tool also stores the postcode, property type and indicative price you asked us to send.</p>
+<h2>Why</h2>
+<p>We use that information to reply, prepare a quote, design and install a system, and handle warranty calls. We do not sell lists.</p>
+<h2>Who else sees it</h2>
+<p>Form messages are sent through Formspree to {EMAIL}. Formspree processes the submission so it can be delivered. We do not run analytics and we do not set advertising cookies. A Google Business profile is not linked from this site, because none has been confirmed.</p>
+<h2>Access and correction</h2>
+<p>Email {EMAIL} to ask what we hold, or to correct it. If you are not happy with the reply, you can contact the Office of the Australian Information Commissioner. We handle personal information in line with the Australian Privacy Principles.</p>
+""",
+        ),
+        (
+            "terms.html",
+            "Terms · Earthed Energy",
+            "Terms for using the Earthed Energy site and for quotes.",
+            "Terms",
+            "The site, the indicative price, and the written proposal.",
+            f"""
+<h2>The business</h2>
+<p>{LEGAL}. PO Box 4111, Norwood South SA 5067. <a href="mailto:{EMAIL}">{EMAIL}</a>. <a href="tel:{PHONE_TEL}">0433 839 284</a>. SA electrical contractor licence PGE 336477.</p>
+<h2>The indicative price</h2>
+<p>Calculate savings and the scenario pages are guides. They are not an offer. The written proposal is the document that sets the equipment, the price and what is included. Nothing on this website adds a cost after you sign for work that was already in that proposal.</p>
+<h2>Warranties</h2>
+<p>Earthed workmanship is 7 years, as described on the <a href="/warranty-and-aftercare.html">warranty page</a>. Panel, inverter and battery warranties are the manufacturer terms named there: Trina, GoodWe and Sigenergy are not the same length.</p>
+<h2>Finance</h2>
+<p>Where a page mentions finance, the lender sets the rate and the comparison rate. We do not publish a monthly repayment unless that lender's rate is the source.</p>
+<h2>The site</h2>
+<p>These pages are general information for South Australia. They are not a connection approval and not personal advice. South Australian law applies. Questions go to {EMAIL}.</p>
+""",
+        ),
+    ]
+    for filename, title, description, h1, lede, inner in legal_pages:
+        page = shell(
+            title=title,
+            description=description,
+            canonical=BASE + "/" + filename,
+            css=sample_css,
+            body=article("Legal", h1, h1, lede, inner),
+            footer=shared_footer,
+            section="",
+            json_ld=[local_business_ld(), breadcrumb_ld(h1, "/" + filename, "")],
+        )
+        write(ROOT / filename, page)
+        urls.append("/" + filename)
 
     urls.extend(["/solarcare/", "/walkthrough/"])
     write(ROOT / "sitemap.xml", sitemap(sorted(set(urls), key=lambda item: (item != "/", item))))

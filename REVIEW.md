@@ -1,8 +1,13 @@
 # Live site review
 
-Reviewed 2 November 2026 against production at https://www.earthedenergy.au (all 45 sitemap URLs returned 200) and the matching source. Desktop and mobile were checked on Home, About, Residential, Knowledge, and SolarCare.
+The items below were the 2 November 2026 findings. They are implemented on this branch, except two that Caleb asked to leave as notes.
 
-The subpage header change in this branch is the only fix. Everything below is left open.
+Left on purpose:
+
+- No Google Business link. None is confirmed, so the site does not invent one.
+- No analytics and no cookie banner. The privacy page says so. Add both together when a tracker is chosen.
+
+A test POST to Formspree `mvkzjdwe` returned HTTP 200. Caleb may see one message titled as a website form check. The Formspree dashboard is what sets the destination inbox.
 
 Checked and clear on the rebuilt pages (Home and the mockup pages, not SolarCare or the walkthrough): no em dashes, workmanship warranty is 7 years, no "SAPN Accredited" and no "CEC accredited", email is calebvears@earthedhv.au, phone is 0433 839 284, footer legal line is "Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co". Internal links on those pages resolve. `robots.txt` disallows `/design/` and `/thanks.html`. Design explorations stay noindex.
 

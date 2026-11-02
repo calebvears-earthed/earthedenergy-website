@@ -1,6 +1,22 @@
 (function () {
   document.documentElement.classList.add("js");
+  window.EE_LEAD = "https://formspree.io/f/mvkzjdwe";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var legacyToggle = document.querySelector(".nav-toggle");
+  var legacyPanel = document.getElementById("mobile-nav");
+  if (legacyToggle && legacyPanel) {
+    function setLegacy(open) {
+      legacyPanel.hidden = !open;
+      legacyToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    legacyToggle.addEventListener("click", function () { setLegacy(legacyPanel.hidden); });
+    var legacyClose = legacyPanel.querySelector(".nav-close");
+    if (legacyClose) legacyClose.addEventListener("click", function () { setLegacy(false); });
+    legacyPanel.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () { setLegacy(false); });
+    });
+  }
 
   var toggle = document.querySelector("[data-ee-menu]");
   var drawer = document.getElementById("ee-drawer");
@@ -25,6 +41,42 @@
     if ("requestIdleCallback" in window) requestIdleCallback(fn, { timeout: 1200 });
     else window.addEventListener("load", fn);
   }
+  function bindLeadForms(root) {
+    (root || document).querySelectorAll("form[data-ee-lead]").forEach(function (form) {
+      if (form.dataset.eeBound) return;
+      form.dataset.eeBound = "1";
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var ok = form.querySelector("[data-ee-ok]");
+        var err = form.querySelector("[data-ee-err]");
+        var button = form.querySelector("[type=submit]");
+        if (ok) ok.hidden = true;
+        if (err) err.hidden = true;
+        if (form.hasAttribute("data-ee-estimate")) {
+          var bits = ["kwLabel", "batLabel", "stcLine", "chbLine", "totalLine"].map(function (key) {
+            var el = document.querySelector('[data-ee-val="' + key + '"]');
+            return key + ": " + (el ? el.textContent.trim() : "");
+          });
+          var message = form.querySelector('[name="message"]');
+          if (message) message.value = "Rebate estimate\n" + bits.join("\n");
+        }
+        if (button) button.disabled = true;
+        fetch(window.EE_LEAD, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        }).then(function (res) {
+          if (!res.ok) throw new Error(String(res.status));
+          if (ok) ok.hidden = false;
+        }).catch(function () {
+          if (err) err.hidden = false;
+          if (button) button.disabled = false;
+        });
+      });
+    });
+  }
+  bindLeadForms();
+
   whenIdle(startPage);
 
   function startPage() {
