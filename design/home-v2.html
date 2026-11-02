@@ -49,6 +49,10 @@
 }
 .skip-link:focus { top: 12px; }
 
+html { scroll-padding-top: 5.75rem; }
+h1, h2, [data-screen-label] { scroll-margin-top: 5.75rem; }
+[data-screen-label]:not(#top) { padding-top: 88px !important; }
+
 .ee-header {
   position: sticky;
   top: 0;
@@ -58,9 +62,9 @@
   justify-content: flex-end;
   gap: clamp(12px, 1.8vw, 32px);
   padding: 14px clamp(16px, 3vw, 48px);
-  background: #f5f1e8;
+  background: transparent;
   color: #2b1550;
-  border-bottom: 1px solid rgba(43, 21, 80, 0.12);
+  border-bottom: 0;
   font-family: "Open Sans", sans-serif;
   font-size: 11px;
   font-weight: 600;
@@ -93,15 +97,51 @@ body.page-home .ee-header {
   position: absolute;
   left: 0;
   right: 0;
-  background: #2b1550;
+  background: transparent;
   color: #fff;
-  border-bottom-color: transparent;
+  text-shadow: 0 1px 10px rgba(25, 10, 40, 0.75);
 }
-body.page-home .ee-sister { color: #e9ddff; }
 body.page-home .ee-logo { display: none; }
 body.page-home .ee-cta:hover,
-body.page-home .ee-links a:hover,
-body.page-home .ee-sister:hover { color: #e9ddff; }
+body.page-home .ee-links a:hover { color: #e9ddff; }
+body.page-home #top > a[aria-label="Earthed Energy home"] { top: 16% !important; }
+body.page-home [data-hero-copy] { top: 36% !important; }
+#solar picture, #battery picture, #ev picture, #aircon picture, #heatpump picture,
+#solar img, #battery img, #ev img, #aircon img, #heatpump img {
+  background: transparent !important;
+}
+.ee-ehv-logo {
+  width: min(240px, 78%);
+  height: auto;
+  display: block;
+  margin-bottom: 4px;
+}
+.ee-ehv-card {
+  grid-area: 1 / 1;
+  align-self: start;
+  justify-self: start;
+  z-index: 2;
+  margin: 28px 32px;
+  max-width: min(420px, calc(100% - 64px));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: #2b1550;
+  color: #fff;
+  text-decoration: none;
+}
+.ee-ehv-kicker {
+  font: 600 11px/1 "Open Sans", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ee-ehv-line {
+  font: 400 15px/1.45 "Open Sans", sans-serif;
+  color: rgba(255, 255, 255, 0.92);
+}
 body.page-quote .ee-sticky-cta { display: none; }
 body.page-quote { padding-bottom: 0; }
 
@@ -125,10 +165,8 @@ html.js [data-reveal].is-in { transform: none; }
 [data-collage] a:hover > div,
 [data-collage] a:focus-visible > div { opacity: 1 !important; }
 
-@media (max-width: 1100px) {
-  .ee-links a:nth-child(n+4) { display: none; }
-}
 @media (max-width: 720px) {
+  body.page-home [data-hero-copy] { top: 34% !important; }
   .ee-header { display: none; }
   .ee-mob {
     position: sticky;
@@ -290,8 +328,8 @@ a:hover{color:#5b21b6}
 </head>
 <body class="page">
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="ee-header"><a class="ee-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-purple.webp" alt="" width="1234" height="329"></a><nav class="ee-links" aria-label="Primary"><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/off-grid.html">Off-grid</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a></nav><a class="ee-sister" href="https://earthedhv.au">Earthed High Voltage</a><a class="ee-cta" href="/get-a-quote.html">Get a quote</a></header>
-<nav class="ee-mob" aria-label="Primary mobile"><a class="ee-mob-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-white.webp" alt="" width="1234" height="329"></a><div class="ee-mob-tools"><a class="ee-iconbtn" href="tel:0433839284" aria-label="Call 0433 839 284">☎</a><button class="ee-iconbtn" type="button" data-ee-menu aria-expanded="false" aria-controls="ee-drawer">MENU</button></div><div class="ee-drawer" id="ee-drawer" hidden><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/off-grid.html">Off-grid</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a><a href="https://earthedhv.au">Earthed High Voltage</a><a href="/get-a-quote.html">Get a quote</a></div></nav>
+<header class="ee-header"><a class="ee-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-purple.webp" alt="" width="1234" height="329"></a><nav class="ee-links" aria-label="Primary"><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a></nav><a class="ee-cta" href="/get-a-quote.html">Calculate savings</a></header>
+<nav class="ee-mob" aria-label="Primary mobile"><a class="ee-mob-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-white.webp" alt="" width="1234" height="329"></a><div class="ee-mob-tools"><a class="ee-iconbtn" href="tel:0433839284" aria-label="Call 0433 839 284">☎</a><button class="ee-iconbtn" type="button" data-ee-menu aria-expanded="false" aria-controls="ee-drawer">MENU</button></div><div class="ee-drawer" id="ee-drawer" hidden><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a><a href="/get-a-quote.html">Calculate savings</a></div></nav>
 <main id="main">
 
 
@@ -1143,7 +1181,7 @@ a:hover{color:#5b21b6}
 
 
 </main>
-<div class="ee-sticky-cta"><a href="tel:0433839284">Call</a><a href="/get-a-quote.html">Get my price · 45 sec</a></div>
+<div class="ee-sticky-cta"><a href="tel:0433839284">Call</a><a href="/get-a-quote.html">Calculate savings</a></div>
 <script src="/assets/js/site.js" defer></script>
 
 </body>

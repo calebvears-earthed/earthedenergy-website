@@ -23,10 +23,11 @@ PHONE_TEL = "0433839284"
 NAV = [
     ("residential", "/residential.html", "Residential"),
     ("commercial", "/commercial.html", "Commercial"),
-    ("off-grid", "/off-grid.html", "Off-grid"),
     ("knowledge", "/knowledge.html", "Knowledge"),
     ("about", "/about-earthed-energy.html", "About"),
 ]
+CTA_LABEL = "Calculate savings"
+CTA_HREF = "/get-a-quote.html"
 
 
 def esc(value: str) -> str:
@@ -34,7 +35,7 @@ def esc(value: str) -> str:
 
 
 def header_html(section: str, *, home: bool) -> str:
-    """Desktop header: right-aligned links, sister site, bordered quote, like earthedhv.au."""
+    """Four section links and the savings CTA. The sister site lives in the footer."""
     links = []
     for key, href, label in NAV:
         current = ' aria-current="page"' if key == section else ""
@@ -47,21 +48,19 @@ def header_html(section: str, *, home: bool) -> str:
     return (
         f'<header class="ee-header">{logo}'
         f'<nav class="ee-links" aria-label="Primary">{"".join(links)}</nav>'
-        f'<a class="ee-sister" href="https://earthedhv.au">Earthed High Voltage</a>'
-        f'<a class="ee-cta" href="/get-a-quote.html"{quote_current}>Get a quote</a>'
+        f'<a class="ee-cta" href="{CTA_HREF}"{quote_current}>{CTA_LABEL}</a>'
         f"</header>"
     )
 
 
 def mobile_nav_html(section: str) -> str:
-    """Sticky mobile bar from the mockups, with the sister-site link in the drawer."""
+    """Sticky mobile bar. Same four pages and savings CTA as the desktop bar."""
     items = []
     for key, href, label in NAV:
         current = ' aria-current="page"' if key == section else ""
         items.append(f'<a href="{href}"{current}>{label}</a>')
-    items.append('<a href="https://earthedhv.au">Earthed High Voltage</a>')
     quote_current = ' aria-current="page"' if section == "quote" else ""
-    items.append(f'<a href="/get-a-quote.html"{quote_current}>Get a quote</a>')
+    items.append(f'<a href="{CTA_HREF}"{quote_current}>{CTA_LABEL}</a>')
     return (
         '<nav class="ee-mob" aria-label="Primary mobile">'
         '<a class="ee-mob-logo" href="/" aria-label="Earthed Energy home">'
@@ -79,9 +78,37 @@ def sticky_cta_html() -> str:
     return (
         '<div class="ee-sticky-cta">'
         f'<a href="tel:{PHONE_TEL}">Call</a>'
-        '<a href="/get-a-quote.html">Get my price · 45 sec</a>'
+        f'<a href="{CTA_HREF}">{CTA_LABEL}</a>'
         "</div>"
     )
+
+
+def add_ehv_card(footer: str) -> str:
+    """Logo card for Earthed High Voltage on the dusk footer render."""
+    if not footer or "ehv-logo.webp" in footer:
+        return footer
+    logo = (
+        '<img class="ee-ehv-logo" src="/images/ehv-logo.webp" alt="" width="520" height="135" '
+        'loading="lazy" decoding="async">'
+    )
+    pill = (
+        "<span style=\"align-self:flex-start;font-family:'Open Sans',sans-serif;font-size:11px;"
+        "font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;"
+        "border-radius:999px;border:1px solid rgba(255,255,255,.5)\">Earthed High Voltage</span>"
+    )
+    if pill in footer:
+        return footer.replace(pill, logo + pill, 1)
+    card = (
+        '<a class="ee-ehv-card" href="https://earthedhv.au">'
+        f"{logo}"
+        '<span class="ee-ehv-kicker">Earthed High Voltage</span>'
+        '<span class="ee-ehv-line">Wind, battery and grid connections</span>'
+        "</a>"
+    )
+    needle = 'grid-area:1/1"><div style="grid-area:1/1;align-self:end;'
+    if needle in footer:
+        return footer.replace(needle, 'grid-area:1/1">' + card + '<div style="grid-area:1/1;align-self:end;', 1)
+    return footer + card
 
 
 def partner_strip_html() -> str:
@@ -364,7 +391,7 @@ def main() -> None:
     subprocess.check_call(["node", str(ROOT / "scripts" / "expand_all.mjs")], cwd=ROOT)
     pages = load_pages()
     about = next(page for page in pages if page["name"] == "About Caleb Vears")
-    shared_footer = apply_compliance(about["footer"], strict=True)
+    shared_footer = add_ehv_card(apply_compliance(about["footer"], strict=True))
     if "partner-solar-accred" not in shared_footer:
         shared_footer += partner_strip_html()
     sample_css = utility_css(about["css"])
@@ -379,6 +406,7 @@ def main() -> None:
             description = "Let's see what solar can do for you. Takes 45 seconds. No signup. Nothing to install."
         body = apply_compliance(page["body"], strict=strict)
         footer = apply_compliance(page["footer"], strict=strict) if page["footer"] else ""
+        footer = add_ehv_card(footer)
         if strict and not footer:
             footer = shared_footer
         if footer:
