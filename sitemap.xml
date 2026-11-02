@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://earthedenergy.au/</loc>
-        <lastmod>2026-06-15</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://earthedenergy.au/#packages</loc>
-        <lastmod>2026-06-15</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://earthedenergy.au/#partners</loc>
-        <lastmod>2026-06-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://earthedenergy.au/#quote</loc>
-        <lastmod>2026-06-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://earthedenergy.au/solarcare/</loc>
-        <lastmod>2026-07-13</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://earthedenergy.au/thanks.html</loc>
-        <lastmod>2026-06-15</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.1</priority>
-    </url>
+<url><loc>https://www.earthedenergy.au/</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+<url><loc>https://www.earthedenergy.au/solarcare/</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/walkthrough/</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/knowledge.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/get-a-quote.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/contact.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/thanks.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://www.earthedenergy.au/about-caleb-vears.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/about-earthed-energy.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/about-troy-hooker.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/aircon-hot-water.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/battery-sizing.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/battery-storage.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/bushfire-prone-areas.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/commercial.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/commissioning-and-handover.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/credentials-and-licences.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/earthed-history.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/ev-charging.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/federal-rebates-explained.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/finance-options.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/goodwe-vs-sigenergy.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/how-much-you-save.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/installation-day.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/inverters.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/monitoring-apps.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/off-grid-vs-grid-connect.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/off-grid.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/outage-backup.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/racking-and-cable.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/reading-your-power-bill.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/residential.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/sa-export-limits.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/sapn-flexible-export.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/shade-and-roof-orientation.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/solar-panels.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/swer-lines.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/three-phase-vs-single-phase.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/typical-timeline.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/warranty-and-aftercare.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/what-a-battery-does.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/what-solar-does.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/what-we-install.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/whole-home-backup-explained.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://www.earthedenergy.au/why-we-do-this.html</loc><lastmod>2026-10-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

@@ -1,0 +1,67 @@
+/*
+  Earthed group design system v1
+  Shared by earthedhv.au and earthedenergy.au.
+  Change tokens here, then mirror the same values on the sister site.
+  Primary brand purple is #553A66. Do not introduce a second brand hue.
+*/
+
+:root {
+  --color-purple: #553a66;
+  --color-purple-deep: #3e294c;
+  --color-purple-ink: #241430;
+  --color-ink: #160e1e;
+  --color-lilac: #c9a7e8;
+  --color-lilac-soft: #e7d9f4;
+  --color-paper: #f6f3ef;
+  --color-paper-2: #ebe6e0;
+  --color-white: #fffcfa;
+  --color-text: #1c1424;
+  --color-muted: #4a4154;
+  --color-muted-on-dark: #e4d4f2;
+  --color-line: rgba(85, 58, 102, 0.18);
+  --color-line-strong: rgba(85, 58, 102, 0.38);
+  --color-line-on-dark: rgba(246, 243, 239, 0.22);
+  --color-danger: #7a1836;
+
+  --font-sans: "Instrument Sans", "Avenir Next", "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: clamp(1.6rem, 2vw, 2rem);
+  --text-2xl: clamp(2.1rem, 3.4vw, 3.25rem);
+  --text-3xl: clamp(2.6rem, 4.6vw, 4.5rem);
+  --text-display: clamp(3.35rem, 7.6vw, 7.15rem);
+
+  --leading-display: 0.9;
+  --leading-tight: 1.05;
+  --leading-body: 1.65;
+  --tracking-eyebrow: 0.16em;
+  --tracking-display: -0.035em;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --header-h: 76px;
+  --wrap: 1180px;
+  --wrap-wide: 1360px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius: 2px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --shadow-card: 0 24px 60px rgba(22, 14, 30, 0.14);
+
+  --z-header: 40;
+  --z-menu: 50;
+  --z-skip: 60;
+}
