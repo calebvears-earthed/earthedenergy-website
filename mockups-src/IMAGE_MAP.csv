@@ -1,0 +1,70 @@
+mockup_path,repo_path,type,kb
+slot-images/img-aircon.webp,images/slot-img-aircon.webp,slot drop-in,10
+slot-images/img-battery.webp,images/slot-img-battery.webp,slot drop-in,10
+slot-images/img-ev.webp,images/slot-img-ev.webp,slot drop-in,16
+slot-images/img-solar.webp,images/slot-img-solar.webp,slot drop-in,17
+slot-images/img-solarcare.webp,images/slot-img-solarcare.webp,slot drop-in,88
+img/battery-transparent.png,images/battery-transparent.webp,product cut-out,46
+img/earthed-energy-hero-nologo-nonav.png,images/earthed-energy-hero-nologo-nonav.webp,logo/partner,157
+img/earthed-energy-hero-nologo.png,images/earthed-energy-hero-nologo.webp,logo/partner,162
+img/earthed-energy-logo-purple.png,images/earthed-energy-logo-purple.webp,logo/partner,10
+img/earthed-energy-logo-white.png,images/earthed-energy-logo-white.webp,logo/partner,5
+img/goodwe-4stack-cut.png,images/goodwe-4stack-cut.webp,product cut-out,6
+img/hero-after-dark-crop.png,images/hero-after-dark-crop.webp,AI render (mockup),54
+img/hero-coastal-daynight.jpg,images/hero-coastal-daynight.webp,AI render (mockup),258
+img/hero-coastal-dusk.jpg,images/hero-coastal-dusk.webp,AI render (mockup),271
+img/hero-goodwe-crop.png,images/hero-goodwe-crop.webp,AI render (mockup),58
+img/partner-28watt.png,images/partner-28watt.webp,logo/partner,12
+img/partner-elevant.png,images/partner-elevant.webp,logo/partner,2
+img/partner-greendeal.png,images/partner-greendeal.webp,logo/partner,14
+img/partner-nec-seller.png,images/partner-nec-seller.webp,logo/partner,37
+img/partner-solar-accred.png,images/partner-solar-accred.webp,logo/partner,6
+img/sigenstor-cut.png,images/sigenstor-cut.webp,product cut-out,18
+uploads/78843149537__82CDADAD-0E4F-41D4-BFF3-B8D3A8684ED1 3.jpeg,images/78843149537-82cdadad-0e4f-41d4-bff3-b8d3a8684ed1-3.webp,real photo (Caleb),136
+uploads/DSC01317.jpg,images/dsc01317.webp,real photo (Caleb),135
+uploads/DSC01402-2.jpg,images/dsc01402-2.webp,real photo (Caleb),173
+uploads/IMG_0145 2.jpeg,images/img-0145-2.webp,real photo (Caleb),440
+uploads/IMG_0146 4.jpeg,images/img-0146-4.webp,real photo (Caleb),458
+uploads/IMG_0169.jpeg,images/img-0169.webp,real photo (Caleb),280
+uploads/IMG_0839 2.jpeg,images/img-0839-2.webp,real photo (Caleb),741
+uploads/IMG_0869.jpeg,images/img-0869.webp,real photo (Caleb),324
+uploads/IMG_0871-330ee8ee.jpeg,images/img-0871-330ee8ee.webp,real photo (Caleb),1044
+uploads/IMG_1095 3-5d4a17a7.jpeg,images/img-1095-3-5d4a17a7.webp,real photo (Caleb),119
+uploads/IMG_1396 3.jpeg,images/img-1396-3.webp,real photo (Caleb),135
+uploads/IMG_1397 3-e4934cc5.jpeg,images/img-1397-3-e4934cc5.webp,real photo (Caleb),88
+uploads/IMG_1399 2.jpeg,images/img-1399-2.webp,real photo (Caleb),423
+uploads/IMG_1567 3.jpeg,images/img-1567-3.webp,real photo (Caleb),468
+uploads/IMG_1604 2.jpeg,images/img-1604-2.webp,real photo (Caleb),376
+uploads/IMG_1675 3.jpeg,images/img-1675-3.webp,real photo (Caleb),639
+uploads/IMG_1713 3.jpeg,images/img-1713-3.webp,real photo (Caleb),531
+uploads/IMG_1718 3-270ad98b.jpeg,images/img-1718-3-270ad98b.webp,real photo (Caleb),280
+uploads/IMG_1721 3.jpeg,images/img-1721-3.webp,real photo (Caleb),213
+uploads/IMG_1723 3.jpeg,images/img-1723-3.webp,real photo (Caleb),261
+uploads/IMG_1900 2 3.jpeg,images/img-1900-2-3.webp,real photo (Caleb),320
+uploads/IMG_1902.jpeg,images/img-1902.webp,real photo (Caleb),847
+uploads/IMG_1929.jpeg,images/img-1929.webp,real photo (Caleb),92
+uploads/IMG_2334.jpeg,images/img-2334.webp,real photo (Caleb),227
+uploads/IMG_2361-f412aab0.jpeg,images/img-2361-f412aab0.webp,real photo (Caleb),266
+uploads/IMG_2361.jpeg,images/img-2361.webp,real photo (Caleb),266
+uploads/IMG_2554.jpeg,images/img-2554.webp,real photo (Caleb),276
+uploads/IMG_2785 3.JPEG,images/img-2785-3.webp,real photo (Caleb),67
+uploads/IMG_8201.jpeg,images/img-8201.webp,real photo (Caleb),279
+uploads/IMG_8209 2.jpeg,images/img-8209-2.webp,real photo (Caleb),335
+uploads/IMG_9860 2.jpeg,images/img-9860-2.webp,real photo (Caleb),253
+uploads/IMG_9864 3.jpeg,images/img-9864-3.webp,real photo (Caleb),226
+uploads/IMG_9870 3.jpeg,images/img-9870-3.webp,real photo (Caleb),635
+uploads/Reclaim-Energy-CO2-Heat-Pump-Hot-Water-System-Product.webp,images/reclaim-energy-co2-heat-pump-hot-water-system-product.webp,product cut-out,40
+uploads/copy_CCB34186-A430-4825-993C-4FD1CDCFDBC6 2.jpeg,images/copy-ccb34186-a430-4825-993c-4fd1cdcfdbc6-2.webp,real photo (Caleb),331
+uploads/hero-goodwe-sigenergy-clean.jpg,images/hero-goodwe-sigenergy-clean.webp,AI render (mockup),320
+uploads/hf_20260615_150951_1b5883ca-ca70-4757-934c-e12ff4c502c4.png,images/hf-20260615-150951-1b5883ca-ca70-4757-934c-e12ff4c502c4.webp,AI render (mockup),191
+uploads/hf_20260826_054652_ec41eb79-c0fb-4fc8-84ae-2dde6e5b3ff5-517604cf.png,images/hf-20260826-054652-ec41eb79-c0fb-4fc8-84ae-2dde6e5b3ff5-517604cf.webp,AI render (mockup),286
+uploads/hf_20260826_203425_2b1951e6-728b-414c-b621-03a071752727-5d0c1039.png,images/hf-20260826-203425-2b1951e6-728b-414c-b621-03a071752727-5d0c1039.webp,AI render (mockup),164
+uploads/hf_20260930_021807_fc02408b-b4e1-4c79-a972-cfad73d4f0d5.png,images/hf-20260930-021807-fc02408b-b4e1-4c79-a972-cfad73d4f0d5.webp,AI render (mockup),454
+uploads/hf_20260930_035759_4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.png,images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp,AI render (mockup),239
+uploads/hf_20260930_041538_f9f74015-db11-4b4d-97f6-df92ce245c66-8008173a.png,images/hf-20260930-041538-f9f74015-db11-4b4d-97f6-df92ce245c66-8008173a.webp,AI render (mockup),373
+uploads/hf_20260930_042542_c98fe976-e01f-49b6-b48f-ae0e71a3c5ad.png,images/hf-20260930-042542-c98fe976-e01f-49b6-b48f-ae0e71a3c5ad.webp,AI render (mockup),163
+uploads/hf_20260930_065624_1ab73458-745b-4fd0-b135-1e2b22d2a9da.png,images/hf-20260930-065624-1ab73458-745b-4fd0-b135-1e2b22d2a9da.webp,AI render (mockup),308
+uploads/hf_20260930_070355_d47d1072-37e2-4b0e-9b79-ad689104ca7e.png,images/hf-20260930-070355-d47d1072-37e2-4b0e-9b79-ad689104ca7e.webp,AI render (mockup),339
+uploads/higgs-01-20261005.png,images/higgs-01-20261005.webp,AI render (mockup),265
+uploads/sg-prod-c-bg.jpeg,images/sg-prod-c-bg.webp,product cut-out,62
+uploads/websitepromax.jpeg,images/websitepromax.webp,real photo (Caleb),594

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#0d0618;color:#efeaf7;font-family:'Open Sans',sans-serif}
+html{scroll-behavior:smooth}
+a{color:#c4a5ff;text-decoration:none}
+a:hover{color:#e2d3ff}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(168,85,247,.65)}70%{box-shadow:0 0 0 14px rgba(168,85,247,0)}100%{box-shadow:0 0 0 0 rgba(168,85,247,0)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+</style>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#2b1550"/><circle cx="100" cy="100" r="46" fill="none" stroke="#c4a5ff" stroke-width="4"/><path d="M100 122V88m0 0c-12 0-20-8-20-18 12 0 20 8 20 18zm0 0c12 0 20-8 20-18-12 0-20 8-20 18z" fill="none" stroke="#c4a5ff" stroke-width="4" stroke-linecap="round"/></svg></template>
+</helmet>
+
+<!-- ================= HERO ================= -->
+<div data-hero="1" style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#0d0618">
+  <img src="uploads/hf_20260822_085839_b1707897-b412-4bcf-956a-3e3eaaa08b85.png" alt="Earthed Energy product line: heat pump, battery, solar panels, air conditioning and EV charger" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+
+  <!-- top nav -->
+  <div style="position:absolute;top:0;left:0;right:0;display:flex;justify-content:flex-end;align-items:center;gap:4px;padding:8px 32px 0;background:linear-gradient(180deg,rgba(13,6,24,.55),rgba(13,6,24,0));z-index:5">
+    <a href="#battery" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#efeaf7;padding:8px 13px;border-radius:999px;border:1px solid rgba(196,165,255,.0)" style-hover="color:#ffffff;background:rgba(124,58,237,.35);border:1px solid rgba(196,165,255,.5)">Battery</a>
+    <a href="#ev" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#efeaf7;padding:8px 13px;border-radius:999px;border:1px solid rgba(196,165,255,.0)" style-hover="color:#ffffff;background:rgba(124,58,237,.35);border:1px solid rgba(196,165,255,.5)">EV</a>
+    <a href="#solar" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#efeaf7;padding:8px 13px;border-radius:999px;border:1px solid rgba(196,165,255,.0)" style-hover="color:#ffffff;background:rgba(124,58,237,.35);border:1px solid rgba(196,165,255,.5)">Solar</a>
+    <a href="#aircon" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#efeaf7;padding:8px 13px;border-radius:999px;border:1px solid rgba(196,165,255,.0)" style-hover="color:#ffffff;background:rgba(124,58,237,.35);border:1px solid rgba(196,165,255,.5)">Aircon</a>
+    <a href="#heatpump" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#efeaf7;padding:8px 13px;border-radius:999px;border:1px solid rgba(196,165,255,.0)" style-hover="color:#ffffff;background:rgba(124,58,237,.35);border:1px solid rgba(196,165,255,.5)">Hot Water</a>
+    <a href="#solarcare" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#efeaf7;padding:8px 13px;border-radius:999px;border:1px solid rgba(196,165,255,.0)" style-hover="color:#ffffff;background:rgba(124,58,237,.35);border:1px solid rgba(196,165,255,.5)">SolarCare+</a>
+    <a href="#quote" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#1a0b2e;background:#f5a04a;padding:9px 18px;border-radius:999px;margin-left:8px" style-hover="background:#ffb968;color:#120722">Get a quote</a>
+  </div>
+
+  <!-- hotspots -->
+  <sc-for list="{{ hotspots }}" as="h" hint-placeholder-count="4">
+    <a href="{{ h.href }}" aria-label="{{ h.label }}" style="position:absolute;left:{{ h.left }};top:{{ h.top }};width:{{ h.w }};height:{{ h.h }};border-radius:14px;border:2px solid rgba(196,165,255,0);z-index:4;display:block" style-hover="border:2px solid rgba(196,165,255,.85);background:rgba(124,58,237,.14);box-shadow:0 0 40px rgba(139,92,246,.45), inset 0 0 30px rgba(139,92,246,.18)">
+      <sc-if value="{{ showHints }}" hint-placeholder-val="{{ true }}">
+        <span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#c4a5ff;border:2px solid #ffffff;animation:pulse 2.4s ease-out infinite;pointer-events:none;opacity:0;transition:opacity .2s" class="hs-dot"></span>
+      </sc-if>
+      <span style="position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-family:'Open Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:rgba(26,11,46,.9);border:1px solid rgba(196,165,255,.5);padding:7px 16px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .18s;pointer-events:none" class="hs-label">{{ h.label }}</span>
+    </a>
+  </sc-for>
+
+  <!-- hero copy -->
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:0 40px 36px;display:flex;justify-content:space-between;align-items:flex-end;background:linear-gradient(0deg,rgba(13,6,24,.72),rgba(13,6,24,0));z-index:3;pointer-events:none">
+    <div style="max-width:560px">
+      <div style="font-family:'Open Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#f5a04a;margin-bottom:10px">Adelaide · South Australia</div>
+      <h1 style="font-family:'Open Sans',sans-serif;font-size:44px;line-height:1.1;font-weight:700;margin:0 0 10px;color:#ffffff;text-wrap:pretty">Your whole home, powered by the sun.</h1>
+      <p style="font-size:17px;line-height:1.55;color:rgba(239,234,247,.85);margin:0">A boutique renewable home studio in the heart of Norwood, using new-school operations and infrastructure thinking to walk you through the perfect equation and delete your energy bills, forever.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(239,234,247,.7);font-size:12px;letter-spacing:.14em;text-transform:uppercase;animation:bob 2.6s ease-in-out infinite">
+      <span>Hover a product</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14m0 0l-6-6m6 6l6-6" stroke="#c4a5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PRODUCT SECTIONS ================= -->
+<sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+  <div id="{{ p.id }}" style="background:{{ p.bg }};padding:96px 40px;scroll-margin-top:0px">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;direction:{{ p.dir }}">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">{{ p.eyebrow }}</span>
+          <span style="height:1px;width:48px;background:rgba(201,106,18,.45)"></span>
+        </div>
+        <h2 style="font-family:'Open Sans',sans-serif;font-size:38px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;text-wrap:pretty">{{ p.title }}</h2>
+        <p style="font-size:17px;line-height:1.65;color:#554a68;margin:0 0 28px;max-width:52ch">{{ p.body }}</p>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px">
+          <sc-for list="{{ p.points }}" as="pt" hint-placeholder-count="3">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.35);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:15.5px;line-height:1.5;color:#443a55">{{ pt }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-family:'Open Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative">
+        <div style="position:absolute;inset:-24px;background:radial-gradient(closest-side,rgba(139,92,246,.1),transparent);pointer-events:none"></div>
+        <image-slot id="{{ p.slot }}" src="{{ p.src }}" fit="{{ p.fit }}" shape="rounded" radius="18" style="width:100%;height:420px;color:#4a3a68;background:{{ p.slotBg }}" placeholder="{{ p.placeholder }}"></image-slot>
+      </div>
+    </div>
+  </div>
+</sc-for>
+
+<!-- ================= GALLERY ================= -->
+<div id="gallery" style="background:#faf7f2;padding:96px 40px 104px">
+  <div style="max-width:1180px;margin:0 auto">
+    <h2 style="font-family:'Open Sans',sans-serif;font-size:38px;font-weight:700;line-height:1.15;margin:0 0 36px;color:#2b1550;text-wrap:pretty">Our System's</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:200px;gap:10px;grid-auto-flow:dense">
+      <img src="uploads/IMG_2361.jpeg" alt="Rooftop solar install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-row:span 2">
+      <img src="uploads/IMG_1900%202%203.jpeg" alt="Happy customer with new home battery" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1721%203.jpeg" alt="Outdoor battery and inverter install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_2785%203.JPEG" alt="Inverter cabling and conduit work" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_0871.jpeg" alt="Earthed Energy vehicles on site" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-column:span 2">
+      <img src="uploads/78843149537__82CDADAD-0E4F-41D4-BFF3-B8D3A8684ED1%203.jpeg" alt="WHES hybrid inverter and battery stack in shed" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1397%203-e4934cc5.jpeg" alt="Solar panel close-up on rooftop" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-row:span 2">
+      <img src="uploads/IMG_0869.jpeg" alt="Sigenergy battery and switchboard install under carport" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-row:span 2">
+      <img src="uploads/IMG_1095%203-5d4a17a7.jpeg" alt="Fox ESS battery and inverter in garage" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_0144%203.jpeg" alt="Roof rails mounted, ready for panels" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1713%203.jpeg" alt="All-black solar array on red corrugated roof" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-column:span 2">
+      <img src="uploads/IMG_1684%203.jpeg" alt="Install detail" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1603%203.jpeg" alt="Completed install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_0145%202.jpeg" alt="Outdoor battery system beside weatherboard home" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1675%203.jpeg" alt="Earthed electrician wiring on site" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-row:span 2">
+      <img src="uploads/IMG_1676%203.jpeg" alt="Switchboard wiring detail" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/copy_CCB34186-A430-4825-993C-4FD1CDCFDBC6%202.jpeg" alt="Battery and inverter install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1718%203-270ad98b.jpeg" alt="PV array DC isolator wiring" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1731%203.jpeg" alt="Rooftop array install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1882%202.jpeg" alt="Modular battery stack on side path" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1891.jpeg" alt="Battery install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-row:span 2">
+      <img src="uploads/IMG_1893.jpeg" alt="Inverter install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_1902.jpeg" alt="GoodWe battery tower install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-row:span 2">
+      <img src="uploads/IMG_1929.jpeg" alt="SolaX Power hybrid inverter" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_2347.jpeg" alt="Coastal rooftops with solar arrays" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;grid-column:span 2">
+      <img src="uploads/IMG_2539.jpeg" alt="Completed system install" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+      <img src="uploads/IMG_2554.jpeg" alt="SolaX inverter and Triple Power battery in garage" style="width:100%;height:100%;object-fit:cover;border-radius:10px;display:block">
+    </div>
+  </div>
+</div>
+
+<!-- ================= QUOTE / FOOTER ================= -->
+<div id="finance" style="background:#f4eefb;padding:96px 40px 104px">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+      <span style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Finance</span>
+      <span style="height:1px;width:48px;background:rgba(201,106,18,.45)"></span>
+    </div>
+    <h2 style="font-family:'Open Sans',sans-serif;font-size:38px;font-weight:700;line-height:1.15;margin:0 0 32px;color:#2b1550;max-width:26ch;text-wrap:pretty">Cash<span style="color:#7c3aed">.</span> Interest-free<span style="color:#7c3aed">.</span> Flexible<span style="color:#7c3aed">.</span> Real options for real homes.</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px">
+      <div style="background:#ffffff;border:2px solid rgba(43,21,80,.1);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="border:2px solid #7c3aed">
+        <div style="font-family:'Open Sans',sans-serif;font-size:21px;font-weight:700;line-height:1.2;color:#2b1550">Cash</div>
+        <p style="font-size:14.5px;line-height:1.55;color:#554a68;margin:0;flex:1">Pay upfront, save with an early-pay discount.</p>
+        <div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;color:#7c3aed">5% DISCOUNT ON FULL PAYMENT AT INVOICE</div>
+      </div>
+      <div style="background:#ffffff;border:2px solid rgba(43,21,80,.1);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="border:2px solid #7c3aed">
+        <div style="font-family:'Open Sans',sans-serif;font-size:21px;font-weight:700;line-height:1.2;color:#2b1550">Elevant</div>
+        <p style="font-size:14.5px;line-height:1.55;color:#554a68;margin:0;flex:1">Small upgrades interest-free. Bigger jobs on flexible terms.</p>
+        <div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;color:#7c3aed">0% ON $2k–$10k · UP TO $50k EXTENDED</div>
+      </div>
+      <div style="background:#ffffff;border:2px solid rgba(43,21,80,.1);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="border:2px solid #7c3aed">
+        <div style="font-family:'Open Sans',sans-serif;font-size:21px;font-weight:700;line-height:1.2;color:#2b1550">PPA</div>
+        <p style="font-size:14.5px;line-height:1.55;color:#554a68;margin:0;flex:1">Solar and battery installed with nothing out-of-pocket.</p>
+        <div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;color:#7c3aed">$0 UPFRONT · DETAILS ON ENQUIRY</div>
+      </div>
+    </div>
+    <p style="font-size:15px;line-height:1.6;color:#554a68;margin:26px 0 0">Not sure which fits? Answer the walkthrough and we'll match you.</p>
+  </div>
+</div>
+
+<div id="approach" style="background:#faf7f2;padding:96px 40px 104px">
+  <div style="max-width:1180px;margin:0 auto">
+    <div style="text-align:center;max-width:640px;margin:0 auto 44px">
+      <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#c96a12;margin-bottom:14px">Our approach</div>
+      <h2 style="font-family:'Open Sans',sans-serif;font-size:38px;font-weight:700;line-height:1.15;margin:0 0 14px;color:#2b1550;text-wrap:pretty">Five calm steps. No hard sell.</h2>
+      <p style="font-size:17px;line-height:1.6;color:#554a68;margin:0">You would not let a stranger build your roof. We do not think you should let one build your energy system either.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:start">
+      <div style="background:#ffffff;border:1px solid rgba(43,21,80,.08);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">01 · Listen</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Free energy audit</div>
+        <p style="font-size:14.5px;line-height:1.6;color:#554a68;margin:0">We sit down with your bill, your usage and your plans. No pressure, just an honest read on what your home actually needs.</p>
+      </div>
+      <div style="background:#ffffff;border:1px solid rgba(43,21,80,.08);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">02 · Design</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Home assessment</div>
+        <p style="font-size:14.5px;line-height:1.6;color:#554a68;margin:0">We design the system around your roof, your budget and your finance options, and explain every step before anything is ordered.</p>
+      </div>
+      <div style="background:#ffffff;border:1px solid rgba(43,21,80,.08);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">03 · Approve</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Grid and rebates</div>
+        <p style="font-size:14.5px;line-height:1.6;color:#554a68;margin:0">SAPN application, STC paperwork and rebate claims are lodged by us. You never chase a single form.</p>
+      </div>
+      <div style="background:#ffffff;border:1px solid rgba(43,21,80,.08);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">04 · Install</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Installation day</div>
+        <p style="font-size:14.5px;line-height:1.6;color:#554a68;margin:0">Caleb or Troy meets the crew on site and walks the job with you. Any brief power outage is flagged well in advance.</p>
+      </div>
+      <div style="background:#ffffff;border:1px solid rgba(43,21,80,.08);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">05 · Live</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Commissioning and care</div>
+        <p style="font-size:14.5px;line-height:1.6;color:#554a68;margin:0">System tested and app paired, then full technical support stays on hand. We are one phone call away, for good.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="quote" style="background:#f4eefb;padding:100px 40px 110px">
+  <div style="max-width:860px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:44px">
+      <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#c96a12;margin-bottom:14px">Complimentary · No obligation</div>
+      <h2 style="font-family:'Open Sans',sans-serif;font-size:38px;font-weight:700;line-height:1.12;margin:0 0 16px;color:#2b1550;white-space:nowrap">Book your free home energy audit.</h2>
+      <p style="font-size:17px;line-height:1.6;color:#554a68;margin:0">One of us, not a salesperson, sits with you, reviews your bills and your roof, and gives you the honest answer on what your home actually needs.</p>
+    </div>
+    <div style="background:#ffffff;border-radius:20px;padding:40px;box-shadow:0 14px 40px rgba(43,21,80,.1);border:1px solid rgba(43,21,80,.07)">
+      <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7c3aed;margin-bottom:16px">What are you looking for?</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px">
+        <sc-for list="{{ interests }}" as="i" hint-placeholder-count="5">
+          <button onClick="{{ i.pick }}" style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid {{ i.border }};background:{{ i.bg }};color:{{ i.color }};cursor:pointer">{{ i.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 20px;margin-bottom:18px">
+        <div><div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#554a68;margin-bottom:8px">Name</div><input type="text" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(43,21,80,.18);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#fbf9f6"></div>
+        <div><div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#554a68;margin-bottom:8px">Phone</div><input type="tel" placeholder="04XX XXX XXX" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(43,21,80,.18);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#fbf9f6"></div>
+        <div><div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#554a68;margin-bottom:8px">Email</div><input type="email" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(43,21,80,.18);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#fbf9f6"></div>
+        <div><div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#554a68;margin-bottom:8px">Suburb</div><input type="text" placeholder="e.g. Wattle Park" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(43,21,80,.18);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#fbf9f6"></div>
+      </div>
+      <div style="margin-bottom:18px"><div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#554a68;margin-bottom:8px">Average quarterly bill</div><input type="text" placeholder="e.g. $850 / quarter" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(43,21,80,.18);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#fbf9f6"></div>
+      <div style="margin-bottom:28px"><div style="font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#554a68;margin-bottom:8px">Anything we should know? (optional)</div><textarea rows="3" placeholder="Roof type, EV plans, off-peak schedule, anything that helps us prep." style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(43,21,80,.18);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#fbf9f6;resize:vertical"></textarea></div>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ send }}" style="width:100%;font-family:'Open Sans',sans-serif;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:17px 32px;border-radius:999px;border:none;cursor:pointer" style-hover="background:#ffb968">Send my enquiry</button>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;font-family:'Open Sans',sans-serif;font-size:16px;font-weight:600;color:#2b7a3f;background:rgba(43,122,63,.1);border:1px solid rgba(43,122,63,.3);padding:16px;border-radius:12px">Thanks — we'll be in touch within one business day.</div>
+      </sc-if>
+      <p style="text-align:center;font-size:13.5px;line-height:1.5;color:#8a7f9c;margin:18px 0 0">We reply within one business day. Your details stay with Earthed. Never shared.</p>
+    </div>
+  </div>
+</div>
+
+<div style="background:#0a0413;padding:72px 40px 0">
+  <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:64px;padding-bottom:56px;border-bottom:1px solid rgba(196,165,255,.14)">
+    <div>
+      <span style="font-family:'Open Sans',sans-serif;font-weight:700;letter-spacing:.12em;color:#c4a5ff;font-size:16px">EARTHED <span style="font-weight:400;color:rgba(239,234,247,.7)">ENERGY</span></span>
+      <p style="font-size:14px;line-height:1.7;color:rgba(239,234,247,.6);margin:18px 0 0;max-width:34ch">Adelaide's boutique energy installer. Designed, delivered, and commissioned by Earthed's in-house renewable energy team and partners.</p>
+    </div>
+    <div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#efeaf7;margin-bottom:20px">Company</div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <a href="#top" style="font-size:14px;color:rgba(239,234,247,.6)" style-hover="color:#c4a5ff">About</a>
+        <a href="#top" style="font-size:14px;color:rgba(239,234,247,.6)" style-hover="color:#c4a5ff">Our Process</a>
+        <a href="#gallery" style="font-size:14px;color:rgba(239,234,247,.6)" style-hover="color:#c4a5ff">Recent Installs</a>
+        <a href="#top" style="font-size:14px;color:rgba(239,234,247,.6)" style-hover="color:#c4a5ff">Earthed High Voltage</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#efeaf7;margin-bottom:20px">Contact</div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <a href="mailto:support@earthedenergy.au" style="font-size:14px;color:rgba(239,234,247,.6)" style-hover="color:#c4a5ff">support@earthedenergy.au</a>
+        <a href="tel:0433839284" style="font-size:14px;color:rgba(239,234,247,.6)" style-hover="color:#c4a5ff">0433 839 284</a>
+        <span style="font-size:14px;color:rgba(239,234,247,.6)">Norwood, South Australia</span>
+        <span style="font-size:14px;color:rgba(239,234,247,.6)">ACN 691 065 460</span>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:26px 0 30px">
+    <span style="font-size:13px;color:rgba(239,234,247,.45)">© 2026 Earthed Energy Co Pty Ltd · A subsidiary of Earthed High Voltage Pty Ltd</span>
+    <span style="font-size:13px;color:rgba(239,234,247,.45)">Adelaide, South Australia</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showHints&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { interest: 'Solar + Battery', sent: false };
+  renderVals() {
+    const showHints = this.props.showHints ?? true;
+    const interests = ['Solar', 'Battery', 'Solar + Battery', 'EV Charger', 'Energy Audit Only'].map(label => {
+      const on = this.state.interest === label;
+      return { label,
+        bg: on ? '#7c3aed' : '#f4f0fb', color: on ? '#ffffff' : '#2b1550',
+        border: on ? '#7c3aed' : 'rgba(43,21,80,.15)',
+        pick: () => this.setState({ interest: label }) };
+    });
+    return {
+      showHints,
+      interests,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      send: () => this.setState({ sent: true }),
+      hotspots: [
+        { href: '#heatpump', label: 'Heat pump hot water', left: '6.5%', top: '28%', w: '15%', h: '60%' },
+        { href: '#battery', label: 'Battery storage', left: '23.5%', top: '21%', w: '17%', h: '63%' },
+        { href: '#solar', label: 'Solar panels', left: '49%', top: '36%', w: '24%', h: '55%' },
+        { href: '#aircon', label: 'Air conditioning', left: '75%', top: '10%', w: '23%', h: '19%' },
+        { href: '#ev', label: 'EV charging', left: '82.5%', top: '40%', w: '7.5%', h: '51%' },
+      ],
+      products: [
+        { id: 'battery', slot: 'img-battery', bg: '#faf7f2', dir: 'ltr', eyebrow: 'Battery storage',
+          title: 'Store your sunshine. Use it after dark.',
+          body: 'A home battery captures the solar you don\u2019t use during the day, so you\u2019re running on your own power through the evening peak, and covered when the grid goes down.',
+          points: ['Blackout protection with automatic backup switchover', 'Stack capacity as your household grows, modular from 10 kWh up', 'Eligible for the federal home battery rebate'],
+          placeholder: 'Drop battery product photo', src: 'uploads/IMG_1095%203.jpeg' },
+        { id: 'ev', slot: 'img-ev', bg: '#f4eefb', dir: 'rtl', eyebrow: 'EV charging',
+          title: 'Charge at home for a fraction of the pump.',
+          body: 'A dedicated 7 kW home charger fills your EV overnight or straight from your solar during the day, smart-scheduled so it charges when power is cheapest or greenest.',
+          points: ['Up to 10\u00d7 faster than a standard power point', 'Solar-aware charging: soak up excess generation automatically', 'Installed and certified by licensed electricians'],
+          placeholder: 'Drop EV charger photo' },
+        { id: 'solar', slot: 'img-solar', bg: '#faf7f2', dir: 'ltr', eyebrow: 'Solar',
+          title: 'Premium panels, engineered for your roof.',
+          body: 'We design every array around your roof, shading and usage pattern, not a one-size-fits-all package. Tier-1 panels with 25-year performance warranties, installed clean.',
+          points: ['Custom system design with production modelling', 'All-black panels that sit flush and look sharp', 'STC rebate handled for you, discounted upfront'],
+          placeholder: 'Drop solar install photo', src: 'uploads/IMG_1731%203.jpeg' },
+        { id: 'aircon', slot: 'img-aircon', bg: '#f4eefb', dir: 'rtl', eyebrow: 'Air conditioning',
+          title: 'Efficient comfort, powered by your panels.',
+          body: 'Modern reverse-cycle systems are the cheapest way to heat and cool an Australian home, especially when they\u2019re running on your own solar. We size, supply and install.',
+          points: ['Split and ducted reverse-cycle systems', 'Sized to the room, no overspend on oversized units', 'Runs near-free on solar through summer afternoons'],
+          placeholder: 'Drop aircon install photo', src: 'uploads/a5c449277dfb6844ac7338a932273bce.jpg' },
+        { id: 'heatpump', slot: 'img-heatpump', bg: '#faf7f2', dir: 'ltr', eyebrow: 'Heat pump hot water',
+          title: 'The cheapest hot water you can run.',
+          body: 'Hot water is roughly a quarter of the average power bill. A heat pump uses about a third of the electricity of an old electric tank, and it can be timed to run on your solar in the middle of the day.',
+          points: ['Emerald Energy heat pumps, around 70% less energy than an electric tank', 'Timed to heat on your own solar, not the grid', 'Federal STC and SA rebates applied to your quote'],
+          placeholder: 'Drop heat pump photo', fit: 'contain', slotBg: '#ede4f8', src: 'uploads/photos-1787386430462-uz9j.png' },
+        { id: 'solarcare', slot: 'img-solarcare', bg: '#f4eefb', dir: 'rtl', eyebrow: 'SolarCare+',
+          title: 'Cleaned by electricians, not window washers.',
+          body: 'Every SolarCare visit is a pure-water panel clean plus a licensed electrician\u2019s health check of your system: isolators, cabling, inverter error logs and a generation reading before and after.',
+          points: ['Bird proofing with stainless clips, no drilling, no warranty risk', 'Soiled panels can cost you up to 30% efficiency across a year', 'Annual or seasonal plans, from $220 + GST'],
+          placeholder: 'Drop panel cleaning photo' },
+      ],
+    };
+  }
+  componentDidMount() {
+    // reveal hover labels (opacity transition needs parent :hover; do it with delegation)
+    this._over = (e) => {
+      const t = e.target;
+      const a = t.closest && t.closest('a[aria-label]');
+      const inHero = !!(t.closest && t.closest('[data-hero]'));
+      document.querySelectorAll('.hs-dot').forEach(el => { el.style.opacity = inHero ? '1' : '0'; });
+      document.querySelectorAll('.hs-label').forEach(el => { el.style.opacity = '0'; });
+      if (a) { const lbl = a.querySelector('.hs-label'); if (lbl) lbl.style.opacity = '1'; }
+    };
+    document.addEventListener('mouseover', this._over);
+  }
+  componentWillUnmount() { document.removeEventListener('mouseover', this._over); }
+}
+</script>
+</body>
+</html>
