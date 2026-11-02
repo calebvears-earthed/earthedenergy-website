@@ -4,17 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get a quote · Earthed Energy</title>
-<meta name="description" content="Let&#x27;s see what solar can do for you. Takes 45 seconds. No signup. Nothing to install.">
+<meta name="description" content="See what solar can do for your home. Takes 45 seconds. No signup.">
 <link rel="canonical" href="https://www.earthedenergy.au/get-a-quote.html">
 <meta property="og:title" content="Get a quote · Earthed Energy">
-<meta property="og:description" content="Let&#x27;s see what solar can do for you. Takes 45 seconds. No signup. Nothing to install.">
+<meta property="og:description" content="See what solar can do for your home. Takes 45 seconds. No signup.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.earthedenergy.au/get-a-quote.html">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="Earthed Energy">
+<meta property="og:image" content="https://www.earthedenergy.au/images/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.earthedenergy.au/images/og-home.jpg">
 <meta name="theme-color" content="#2B1550">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="/images/quote-backdrop-960.webp" fetchpriority="high">
 <style>
 @font-face {
   font-family: "Open Sans";
@@ -48,12 +54,14 @@
 }
 .skip-link:focus { top: 12px; }
 
-html { scroll-padding-top: 5.75rem; }
-h1, h2, [data-screen-label] { scroll-margin-top: 5.75rem; }
+body.page-home { scroll-padding-top: 5.75rem; }
+body.page-home h1,
+body.page-home h2,
+body.page-home [data-screen-label] { scroll-margin-top: 5.75rem; }
 [data-screen-label]:not(#top) { padding-top: 88px !important; }
 
 .ee-header {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 40;
   display: flex;
@@ -147,6 +155,42 @@ body.page-quote { padding-bottom: 0; }
 .ee-mob, .ee-sticky-cta { display: none; }
 
 .ee-ph p { margin: 0; }
+.ee-panel {
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 28px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(43, 21, 80, 0.06), rgba(94, 45, 137, 0.16)),
+    #e7e1d6;
+  color: #2b1550;
+  border: 1px solid rgba(43, 21, 80, 0.14);
+}
+.ee-panel-kicker {
+  margin: 0;
+  font: 600 12px/1.3 "Open Sans", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5e2d89;
+}
+.ee-panel-title {
+  margin: 0;
+  font: 300 clamp(26px, 3vw, 36px)/1.15 "Open Sans", sans-serif;
+  color: #2b1550;
+}
+.ee-panel-note {
+  margin: 0;
+  max-width: 48ch;
+  font: 400 16px/1.5 "Open Sans", sans-serif;
+  color: #3a2947;
+}
+.ee-form-note, .ee-form-status { font: 400 14px/1.5 "Open Sans", sans-serif; color: #3a2947; }
+.ee-form-status { margin: 0; }
+.ee-form [hidden] { display: none !important; }
 
 [data-reveal] { transition: transform 0.6s ease; }
 html.js [data-reveal] { transform: translateY(14px); }
@@ -168,8 +212,7 @@ html.js [data-reveal].is-in { transform: none; }
   body.page-home [data-hero-copy] { top: 34% !important; }
   .ee-header { display: none; }
   .ee-mob {
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 50;
     display: flex;
     align-items: center;
@@ -180,6 +223,7 @@ html.js [data-reveal].is-in { transform: none; }
     color: #fff;
     backdrop-filter: blur(12px);
   }
+  body.page-home .ee-mob { position: sticky; top: 0; }
   .ee-mob a { color: #fff; text-decoration: none; }
   .ee-mob-logo { width: 120px; display: block; }
   .ee-mob-logo img { width: 100%; height: auto; display: block; }
@@ -300,10 +344,10 @@ html.js [data-reveal].is-in { transform: none; }
 .ee-note { font-size: 15px; line-height: 1.6; color: #3a2947; max-width: 62ch; }
 
 /* Mockup meta colours sit under 4.5:1 on cream. Lift them without changing the ink. */
-[style*="rgba(43,21,80,.4)"],
+[style*="rgba(43,21,80,.78)"],
 [style*="rgba(43,21,80,.45)"],
 [style*="rgba(43,21,80,.5)"],
-[style*="rgba(43,21,80,.55)"],
+[style*="rgba(43,21,80,.9)"],
 [style*="#8B6B9E"],
 [style*="#8b6b9e"],
 [style*="#867894"] {
@@ -331,6 +375,8 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 @keyframes ctaPulse{0%,90%,100%{box-shadow:0 0 0 0 rgba(94,45,137,0)}45%{box-shadow:0 0 0 10px rgba(94,45,137,.18)}}
 
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["Electrician", "LocalBusiness"], "@id": "https://www.earthedenergy.au/#business", "name": "Earthed Energy", "legalName": "Earthed High Voltage Pty Ltd", "url": "https://www.earthedenergy.au/", "logo": "https://www.earthedenergy.au/images/earthed-energy-logo-purple.webp", "image": "https://www.earthedenergy.au/images/og-home.jpg", "email": "calebvears@earthedhv.au", "telephone": "+61433839284", "address": {"@type": "PostalAddress", "postOfficeBoxNumber": "4111", "addressLocality": "Norwood South", "addressRegion": "SA", "postalCode": "5067", "addressCountry": "AU"}, "areaServed": {"@type": "AdministrativeArea", "name": "South Australia"}, "parentOrganization": {"@type": "Organization", "name": "Earthed High Voltage", "url": "https://earthedhv.au"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.earthedenergy.au/"}, {"@type": "ListItem", "position": 2, "name": "Get a Quote", "item": "https://www.earthedenergy.au/get-a-quote.html"}]}</script>
 </head>
 <body class="page page-quote">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -339,11 +385,11 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 <main id="main">
 <div id="ee-app">
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#2b1550;position:relative;overflow:hidden">
-  <picture style="display:contents"><img src="/images/hf-20260615-150951-1b5883ca-ca70-4757-934c-e12ff4c502c4.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2400" height="1357" loading="lazy" decoding="async"></picture>
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,21,80,.55) 0%,rgba(43,21,80,.15) 40%,rgba(43,21,80,.45) 100%)"></div>
+  <picture style="display:contents"><img fetchpriority="high" decoding="sync" loading="eager" src="/images/quote-backdrop-960.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></picture>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,21,80,.9) 0%,rgba(43,21,80,.15) 40%,rgba(43,21,80,.45) 100%)"></div>
   <div style="position:relative;z-index:2;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px">
     <a href="/" aria-label="Earthed Energy" style="width:120px;display:block"><picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:100%;height:auto;display:block" width="1234" height="329" loading="lazy" decoding="async"></picture></a>
-    <div aria-label="Progress" style="display:flex;gap:8px;align-items:center;background:rgba(43,21,80,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 14px;border-radius:999px">
+    <div aria-hidden="true" style="display:flex;gap:8px;align-items:center;background:rgba(43,21,80,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 14px;border-radius:999px">
       <span style="width:22px;height:8px;border-radius:999px;background:#ffffff;transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span>
     </div>
   </div>
@@ -404,11 +450,11 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 </div>
 <template id="ee-template">
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#2b1550;position:relative;overflow:hidden">
-  <img src="/images/hf-20260615-150951-1b5883ca-ca70-4757-934c-e12ff4c502c4.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2400" height="1357"><sc-if value="{{ isBattery }}" hint-placeholder-val="{{ false }}"><img src="/images/hf-20260930-041538-f9f74015-db11-4b4d-97f6-df92ce245c66-8008173a.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2400" height="1029"></sc-if><sc-if value="{{ isOriginal }}" hint-placeholder-val="{{ false }}"><img src="/images/hf-20260826-054652-ec41eb79-c0fb-4fc8-84ae-2dde6e5b3ff5-517604cf.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2048" height="1360"></sc-if>
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,21,80,.55) 0%,rgba(43,21,80,.15) 40%,rgba(43,21,80,.45) 100%)"></div>
+  <img fetchpriority="high" decoding="sync" loading="eager" src="/images/quote-backdrop-960.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"><sc-if value="{{ isBattery }}" hint-placeholder-val="{{ false }}"><img src="/images/hf-20260930-041538-f9f74015-db11-4b4d-97f6-df92ce245c66-8008173a.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2400" height="1029"></sc-if><sc-if value="{{ isOriginal }}" hint-placeholder-val="{{ false }}"><img src="/images/hf-20260826-054652-ec41eb79-c0fb-4fc8-84ae-2dde6e5b3ff5-517604cf.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2048" height="1360"></sc-if>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,21,80,.9) 0%,rgba(43,21,80,.15) 40%,rgba(43,21,80,.45) 100%)"></div>
   <div style="position:relative;z-index:2;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px">
     <a href="/" aria-label="Earthed Energy" style="width:120px;display:block"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:100%;height:auto;display:block" width="1234" height="329"></a>
-    <div aria-label="Progress" style="display:flex;gap:8px;align-items:center;background:rgba(43,21,80,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 14px;border-radius:999px">
+    <div aria-hidden="true" style="display:flex;gap:8px;align-items:center;background:rgba(43,21,80,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 14px;border-radius:999px">
       <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6"><span style="width:{{ d.w }};height:8px;border-radius:999px;background:{{ d.bg }};transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span></sc-for>
     </div>
   </div>
@@ -572,7 +618,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
           <span>{{ submitLabel }}</span>
         </button>
         <div style="display:flex;flex-direction:column;gap:10px;text-align:center">
-          <button onClick="{{ goCal }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:'Open Sans',sans-serif;font-size:14px;color:#5E2D89;text-decoration:underline;text-underline-offset:3px">Or reserve a time for a free energy assessment in our live calendar →</button>
+          <a href="/contact.html">Book a call</a> or <a href="tel:0433839284">0433 839 284</a>
         </div>
       </sc-if>
 
@@ -583,9 +629,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
           <h1 style="font-size:clamp(30px,6vw,40px);line-height:1.08;margin:0;color:#2b1550;text-wrap:balance">Pick a time for Caleb to visit.</h1>
           <p style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:17px;line-height:1.35;color:#5E2D89;margin:0">On-site, about 45 minutes, no cost and no obligation.</p>
         </div>
-        <div style="border:1px solid #D8D0C0;border-radius:14px;overflow:hidden;background:#F5F1E8;min-height:560px">
-          <iframe src="{{ calUrl }}" title="Book a free energy assessment" loading="lazy" style="display:block;width:100%;height:620px;border:0"></iframe>
-        </div>
+        <div style="border:1px solid #D8D0C0;border-radius:14px;background:#F5F1E8;padding:28px;display:flex;flex-direction:column;gap:12px"><p style="margin:0;font-size:17px;line-height:1.5;color:#2b1550">There is no online booking calendar yet. Send the quote, or call.</p><a href="/contact.html">Book a call</a><a href="tel:0433839284">0433 839 284</a></div>
         <span style="font-size:13px;color:#6B6378;text-align:center">Prefer the written quote instead? <button onClick="{{ back }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:'Open Sans',sans-serif;font-size:13px;color:#5E2D89;text-decoration:underline;text-underline-offset:3px">Go back</button></span>
       </sc-if>
 
@@ -598,7 +642,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:10px;animation:fadeUp 360ms 400ms both">
             <a href="https://home.earthedenergy.au/demo" target="_blank" rel="noopener" style="padding:14px 20px;border-radius:10px;background:#2b1550;color:#F5F1E8;font-size:15px;font-weight:600" style-hover="background:#5E2D89;color:#F5F1E8">Open your 4D home</a>
-            <a href="https://calendly.com/earthedenergy/15min" target="_blank" rel="noopener" style="padding:14px 20px;border-radius:10px;border:1px solid #2b1550;color:#2b1550;font-size:15px;font-weight:600" style-hover="background:#ffffff;color:#2b1550">Book a call</a>
+            <a href="/contact.html" style="padding:14px 20px;border-radius:10px;border:1px solid #2b1550;color:#2b1550;font-size:15px;font-weight:600">Book a call</a><a href="tel:0433839284" style="padding:14px 20px;border-radius:10px;border:1px solid #2b1550;color:#2b1550;font-size:15px;font-weight:600">0433 839 284</a>
             <a href="/" style="padding:14px 20px;border-radius:10px;color:#5E2D89;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px">Back to earthedenergy.au</a>
           </div>
         </div>
@@ -652,15 +696,26 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
   validPc() { const n = parseInt(this.state.postcode, 10); return /^\d{4}$/.test(this.state.postcode) && n >= 5000 && n <= 5999; }
   pickAndAdvance(patch) { this.setState({ ...patch }); this.later(() => this.go(this.state.step + 1, 1), 220); }
   fmt(n) { return n.toLocaleString('en-AU'); }
-  submit = () => {
+    submit = () => {
     if (this.leadInvalid() || this.state.sending) return;
     const c = this.calc(), s = this.state;
     const payload = { postcode: s.postcode, type: s.ptype, quarterlyBill: s.billQ, recommended: `${c.kw}kW + ${c.bat}kWh`, price: c.price, finance: s.finance, firstName: s.name, phone: s.phone, email: s.email, timestamp: new Date().toISOString(), utm: this.utm || {} };
+    const summary = `Quote request, ${s.name}, ${s.postcode}, $${c.price}, ${s.finance}, ${c.kw}kW + ${c.bat}kWh`;
     this.setState({ sending: true });
-    console.log('Lead payload', payload);
-    // TODO: POST to Resend / Supabase endpoint. Fallback: open mail draft to Caleb.
-    const summary = `New lead · ${s.name} · ${s.postcode} · $${c.price} · ${s.finance} · recommended ${c.kw}kW + ${c.bat}kWh`;
-    this.later(() => { try { window.open(`mailto:calebvears@earthedhv.au?subject=${encodeURIComponent(summary)}&body=${encodeURIComponent(JSON.stringify(payload, null, 2))}`, '_blank'); } catch (e) {} this.setState({ sending: false }); this.go(8, 1); }, 900);
+    const err = document.getElementById('ee-lead-error');
+    if (err) err.hidden = true;
+    const body = new FormData();
+    body.append('form', 'quote');
+    body.append('email', s.email);
+    body.append('name', s.name);
+    body.append('phone', s.phone);
+    body.append('_subject', 'Earthed Energy quote request');
+    body.append('message', summary + '
+' + JSON.stringify(payload, null, 2));
+    const endpoint = (window.EE_LEAD || 'https://formspree.io/f/mvkzjdwe');
+    fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' } })
+      .then((res) => { if (!res.ok) throw new Error(String(res.status)); this.setState({ sending: false }); this.go(8, 1); })
+      .catch(() => { this.setState({ sending: false }); if (err) err.hidden = false; });
   };
   leadInvalid() { const s = this.state; return !(s.name.trim() && /^0[4-5]\d{2}\s?\d{3}\s?\d{3}$/.test(s.phone.trim()) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim())); }
   renderVals() {
@@ -681,7 +736,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     const pcOk = this.validPc(), leadBad = this.leadInvalid();
     return {
       isBattery, isOriginal, step: s.step, slideAnim: s.dir < 0 ? 'slideInL' : 'slideInR', dots,
-      is1: s.step === 1, is2: s.step === 2, is3: s.step === 3, is5load: s.step === 4 && !s.reveal, is5reveal: s.step === 4 && s.reveal, is6: s.step === 5, is7: s.step === 6, isCal: s.step === 7, is8: s.step === 8, goCal: () => this.go(7, 1), calUrl: (this.props.calendarUrl ?? 'https://calendly.com/earthedenergy/energy-assessment') + '?hide_gdpr_banner=1&primary_color=5e2d89&background_color=f5f1e8&text_color=2b1550',
+      is1: s.step === 1, is2: s.step === 2, is3: s.step === 3, is5load: s.step === 4 && !s.reveal, is5reveal: s.step === 4 && s.reveal, is6: s.step === 5, is7: s.step === 6, isCal: s.step === 7, is8: s.step === 8, goCal: () => this.go(7, 1), calUrl: '/contact.html',
       showBack: s.step > 1 && s.step < 8 && !(s.step === 4 && !s.reveal),
       billQ: this.fmt(q), billYear: this.fmt(q * 4), billBand: band, billUp: () => this.setState({ billQ: Math.min(20000, Math.round(q * 1.15 / 10) * 10) }), billDown: () => this.setState({ billQ: Math.max(100, Math.round(q / 1.15 / 10) * 10) }),
       pcRef: this.pcRef, postcode: s.postcode, pcError: s.pcError, pcInvalid: !pcOk, pcBtnBg: pcOk ? '#2b1550' : '#C8C0B4', pcCursor: pcOk ? 'pointer' : 'not-allowed',
@@ -700,7 +755,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     };
   }
 }</script>
-<div style="position:relative;z-index:1;overflow:hidden"><div style="display:grid;grid-template-columns:minmax(0,1fr)"><img loading="lazy" decoding="async" src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery beside a modern house at dusk, solar roof and purple sky" style="width:100%;max-width:100%;min-width:0;height:auto;display:block;grid-area:1/1" width="2400" height="1030"><a class="ee-ehv-card" href="https://earthedhv.au"><img class="ee-ehv-logo" src="/images/ehv-logo.webp" alt="" width="520" height="135" loading="lazy" decoding="async"><span class="ee-ehv-kicker">Earthed High Voltage</span><span class="ee-ehv-line">Wind, battery and grid connections</span></a><div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap"><img loading="lazy" decoding="async" src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329"><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span></div></div><div style="max-width:1280px;margin:0 auto;padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px 48px;align-items:start"><div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start"><a href="/get-a-quote.html" style="display:inline-flex;align-items:center;gap:10px;background:#5E2D89;color:#ffffff;font-size:15px;font-weight:600;padding:14px 22px;border-radius:999px;box-shadow:0 10px 28px rgba(107,79,187,.28);white-space:nowrap" style-hover="background:#5E2D89;color:#ffffff">Get a quote · 45 seconds <span aria-hidden="true">→</span></a><p style="font-size:13.5px;line-height:1.7;color:rgba(43,21,80,.68);margin:0;max-width:40ch">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" target="_blank" style="color:#5E2D89;text-decoration:underline;text-underline-offset:3px">earthedhv.au</a>.</p></div><div style="display:flex;flex-direction:column;font-size:14px"><a href="/residential.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Residential</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">01</span></a><a href="/commercial.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">02</span></a><a href="/knowledge.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">03</span></a><a href="/about-earthed-energy.html" style="color:#2b1550;padding:9px 0;display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>About</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">04</span></a></div><div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(43,21,80,.68)"><div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#2b1550">Company</div><a href="tel:0433839284" style="color:#2b1550;font-weight:600" style-hover="color:#5E2D89">0433 839 284</a><a href="mailto:calebvears@earthedhv.au" style="color:#5E2D89" style-hover="color:#2b1550">calebvears@earthedhv.au</a><span>PO Box 4111<br>Norwood South SA 5067</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(43,21,80,.18)"><span style="font-size:12.5px;color:rgba(43,21,80,.68)">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co</span><div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><img loading="lazy" decoding="async" src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;width:auto;display:block;opacity:.9" width="268" height="78"><img loading="lazy" decoding="async" src="/images/partner-nec-seller.webp" alt="New Energy Tech Approved Seller" style="height:32px;width:auto;display:block;opacity:.95" width="508" height="507"><img loading="lazy" decoding="async" src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;width:auto;display:block;opacity:.9" width="745" height="185"><img loading="lazy" decoding="async" src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;width:auto;display:block;opacity:.9" width="421" height="143"><img loading="lazy" decoding="async" src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;width:auto;display:block;opacity:.9" width="284" height="67"></div></div></div></div>
+<div style="position:relative;z-index:1;overflow:hidden"><div style="display:grid;grid-template-columns:minmax(0,1fr)"><img loading="lazy" decoding="async" src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery beside a modern house at dusk, solar roof and purple sky" style="width:100%;max-width:100%;min-width:0;height:auto;display:block;grid-area:1/1" width="2400" height="1030"><a class="ee-ehv-card" href="https://earthedhv.au"><img class="ee-ehv-logo" src="/images/ehv-logo.webp" alt="" width="520" height="135" loading="lazy" decoding="async"><span class="ee-ehv-kicker">Earthed High Voltage</span><span class="ee-ehv-line">Wind, battery and grid connections</span></a><div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap"><img loading="lazy" decoding="async" src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329"><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span></div></div><div style="max-width:1280px;margin:0 auto;padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px 48px;align-items:start"><div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start"><a href="/get-a-quote.html" style="display:inline-flex;align-items:center;gap:10px;background:#5E2D89;color:#ffffff;font-size:15px;font-weight:600;padding:14px 22px;border-radius:999px;box-shadow:0 10px 28px rgba(107,79,187,.28);white-space:nowrap" style-hover="background:#5E2D89;color:#ffffff">Calculate savings <span aria-hidden="true">→</span></a><p style="font-size:13.5px;line-height:1.7;color:rgba(43,21,80,.68);margin:0;max-width:40ch">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" target="_blank" style="color:#5E2D89;text-decoration:underline;text-underline-offset:3px">earthedhv.au</a>.</p></div><div style="display:flex;flex-direction:column;font-size:14px"><a href="/residential.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Residential</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">01</span></a><a href="/commercial.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">02</span></a><a href="/knowledge.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">03</span></a><a href="/about-earthed-energy.html" style="color:#2b1550;padding:9px 0;display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>About</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">04</span></a></div><div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(43,21,80,.68)"><div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#2b1550">Company</div><a href="tel:0433839284" style="color:#2b1550;font-weight:600" style-hover="color:#5E2D89">0433 839 284</a><a href="mailto:calebvears@earthedhv.au" style="color:#5E2D89" style-hover="color:#2b1550">calebvears@earthedhv.au</a><span>PO Box 4111<br>Norwood South SA 5067</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(43,21,80,.18)"><span style="font-size:12.5px;color:rgba(43,21,80,.68)">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co</span><span style="display:flex;gap:16px;font-size:12.5px"><a href="/privacy.html" style="color:#5E2D89">Privacy</a><a href="/terms.html" style="color:#5E2D89">Terms</a></span><div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><img loading="lazy" decoding="async" src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;width:auto;display:block;opacity:.9" width="268" height="78"><img loading="lazy" decoding="async" src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;width:auto;display:block;opacity:.9" width="745" height="185"><img loading="lazy" decoding="async" src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;width:auto;display:block;opacity:.9" width="421" height="143"><img loading="lazy" decoding="async" src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;width:auto;display:block;opacity:.9" width="284" height="67"></div></div></div></div>
 </x-dc>
 </main>
 

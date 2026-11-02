@@ -13,6 +13,11 @@
 <meta property="og:url" content="https://www.earthedenergy.au/design/sub-page-sample-a.html">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="Earthed Energy">
+<meta property="og:image" content="https://www.earthedenergy.au/images/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.earthedenergy.au/images/og-home.jpg">
 <meta name="theme-color" content="#2B1550">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -49,12 +54,14 @@
 }
 .skip-link:focus { top: 12px; }
 
-html { scroll-padding-top: 5.75rem; }
-h1, h2, [data-screen-label] { scroll-margin-top: 5.75rem; }
+body.page-home { scroll-padding-top: 5.75rem; }
+body.page-home h1,
+body.page-home h2,
+body.page-home [data-screen-label] { scroll-margin-top: 5.75rem; }
 [data-screen-label]:not(#top) { padding-top: 88px !important; }
 
 .ee-header {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 40;
   display: flex;
@@ -148,6 +155,42 @@ body.page-quote { padding-bottom: 0; }
 .ee-mob, .ee-sticky-cta { display: none; }
 
 .ee-ph p { margin: 0; }
+.ee-panel {
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 28px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(43, 21, 80, 0.06), rgba(94, 45, 137, 0.16)),
+    #e7e1d6;
+  color: #2b1550;
+  border: 1px solid rgba(43, 21, 80, 0.14);
+}
+.ee-panel-kicker {
+  margin: 0;
+  font: 600 12px/1.3 "Open Sans", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5e2d89;
+}
+.ee-panel-title {
+  margin: 0;
+  font: 300 clamp(26px, 3vw, 36px)/1.15 "Open Sans", sans-serif;
+  color: #2b1550;
+}
+.ee-panel-note {
+  margin: 0;
+  max-width: 48ch;
+  font: 400 16px/1.5 "Open Sans", sans-serif;
+  color: #3a2947;
+}
+.ee-form-note, .ee-form-status { font: 400 14px/1.5 "Open Sans", sans-serif; color: #3a2947; }
+.ee-form-status { margin: 0; }
+.ee-form [hidden] { display: none !important; }
 
 [data-reveal] { transition: transform 0.6s ease; }
 html.js [data-reveal] { transform: translateY(14px); }
@@ -169,8 +212,7 @@ html.js [data-reveal].is-in { transform: none; }
   body.page-home [data-hero-copy] { top: 34% !important; }
   .ee-header { display: none; }
   .ee-mob {
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 50;
     display: flex;
     align-items: center;
@@ -181,6 +223,7 @@ html.js [data-reveal].is-in { transform: none; }
     color: #fff;
     backdrop-filter: blur(12px);
   }
+  body.page-home .ee-mob { position: sticky; top: 0; }
   .ee-mob a { color: #fff; text-decoration: none; }
   .ee-mob-logo { width: 120px; display: block; }
   .ee-mob-logo img { width: 100%; height: auto; display: block; }

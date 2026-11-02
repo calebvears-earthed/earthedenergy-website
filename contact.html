@@ -12,6 +12,11 @@
 <meta property="og:url" content="https://www.earthedenergy.au/contact.html">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="Earthed Energy">
+<meta property="og:image" content="https://www.earthedenergy.au/images/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.earthedenergy.au/images/og-home.jpg">
 <meta name="theme-color" content="#2B1550">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -48,12 +53,14 @@
 }
 .skip-link:focus { top: 12px; }
 
-html { scroll-padding-top: 5.75rem; }
-h1, h2, [data-screen-label] { scroll-margin-top: 5.75rem; }
+body.page-home { scroll-padding-top: 5.75rem; }
+body.page-home h1,
+body.page-home h2,
+body.page-home [data-screen-label] { scroll-margin-top: 5.75rem; }
 [data-screen-label]:not(#top) { padding-top: 88px !important; }
 
 .ee-header {
-  position: sticky;
+  position: static;
   top: 0;
   z-index: 40;
   display: flex;
@@ -147,6 +154,42 @@ body.page-quote { padding-bottom: 0; }
 .ee-mob, .ee-sticky-cta { display: none; }
 
 .ee-ph p { margin: 0; }
+.ee-panel {
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 28px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(43, 21, 80, 0.06), rgba(94, 45, 137, 0.16)),
+    #e7e1d6;
+  color: #2b1550;
+  border: 1px solid rgba(43, 21, 80, 0.14);
+}
+.ee-panel-kicker {
+  margin: 0;
+  font: 600 12px/1.3 "Open Sans", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5e2d89;
+}
+.ee-panel-title {
+  margin: 0;
+  font: 300 clamp(26px, 3vw, 36px)/1.15 "Open Sans", sans-serif;
+  color: #2b1550;
+}
+.ee-panel-note {
+  margin: 0;
+  max-width: 48ch;
+  font: 400 16px/1.5 "Open Sans", sans-serif;
+  color: #3a2947;
+}
+.ee-form-note, .ee-form-status { font: 400 14px/1.5 "Open Sans", sans-serif; color: #3a2947; }
+.ee-form-status { margin: 0; }
+.ee-form [hidden] { display: none !important; }
 
 [data-reveal] { transition: transform 0.6s ease; }
 html.js [data-reveal] { transform: translateY(14px); }
@@ -168,8 +211,7 @@ html.js [data-reveal].is-in { transform: none; }
   body.page-home [data-hero-copy] { top: 34% !important; }
   .ee-header { display: none; }
   .ee-mob {
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 50;
     display: flex;
     align-items: center;
@@ -180,6 +222,7 @@ html.js [data-reveal].is-in { transform: none; }
     color: #fff;
     backdrop-filter: blur(12px);
   }
+  body.page-home .ee-mob { position: sticky; top: 0; }
   .ee-mob a { color: #fff; text-decoration: none; }
   .ee-mob-logo { width: 120px; display: block; }
   .ee-mob-logo img { width: 100%; height: auto; display: block; }
@@ -300,10 +343,10 @@ html.js [data-reveal].is-in { transform: none; }
 .ee-note { font-size: 15px; line-height: 1.6; color: #3a2947; max-width: 62ch; }
 
 /* Mockup meta colours sit under 4.5:1 on cream. Lift them without changing the ink. */
-[style*="rgba(43,21,80,.4)"],
+[style*="rgba(43,21,80,.78)"],
 [style*="rgba(43,21,80,.45)"],
 [style*="rgba(43,21,80,.5)"],
-[style*="rgba(43,21,80,.55)"],
+[style*="rgba(43,21,80,.9)"],
 [style*="#8B6B9E"],
 [style*="#8b6b9e"],
 [style*="#867894"] {
@@ -329,6 +372,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #C9A6F2;outline-offset:3p
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["Electrician", "LocalBusiness"], "@id": "https://www.earthedenergy.au/#business", "name": "Earthed Energy", "legalName": "Earthed High Voltage Pty Ltd", "url": "https://www.earthedenergy.au/", "logo": "https://www.earthedenergy.au/images/earthed-energy-logo-purple.webp", "image": "https://www.earthedenergy.au/images/og-home.jpg", "email": "calebvears@earthedhv.au", "telephone": "+61433839284", "address": {"@type": "PostalAddress", "postOfficeBoxNumber": "4111", "addressLocality": "Norwood South", "addressRegion": "SA", "postalCode": "5067", "addressCountry": "AU"}, "areaServed": {"@type": "AdministrativeArea", "name": "South Australia"}, "parentOrganization": {"@type": "Organization", "name": "Earthed High Voltage", "url": "https://earthedhv.au"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.earthedenergy.au/"}, {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.earthedenergy.au/contact.html"}]}</script>
 </head>
 <body class="page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -337,22 +382,24 @@ a:focus-visible,button:focus-visible{outline:3px solid #C9A6F2;outline-offset:3p
 <main id="main">
 <div data-screen-label="Talk to Caleb." data-reveal="" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:64px 40px 48px;display:flex;flex-direction:column;gap:16px">
 <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5E2D89">Contact</div>
-<span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(43,21,80,.55)"><a href="/" style="color:rgba(43,21,80,.55)">Home</a> → Contact</span>
+<span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(43,21,80,.9)"><a href="/" style="color:rgba(43,21,80,.9)">Home</a> → Contact</span>
 <h1 style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(34px,4.4vw,56px);line-height:1.05;color:#2b1550;margin:4px 0 0">Talk to Caleb.</h1>
 <p style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:18px;line-height:1.4;color:#4B345B;margin:0;max-width:62ch">Residential solar, batteries and the rest of the house load, anywhere in South Australia.</p>
 </div>
-<div data-reveal="" style="position:relative;z-index:1;padding:56px 40px;border-top:1px solid #D8D0C0"><div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:16px"><p class="ee-note"><a href="mailto:calebvears@earthedhv.au">calebvears@earthedhv.au</a><br><a href="tel:0433839284">0433 839 284</a></p><p class="ee-note">PO Box 4111<br>Norwood South SA 5067</p><p class="ee-note">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co</p><p class="ee-note">SA electrical contractor licence PGE 336477</p><p class="ee-note"><a href="https://earthedhv.au">Utility and high voltage work · Earthed High Voltage</a></p><form class="ee-form" action="https://formsubmit.co/calebvears@earthedhv.au" method="POST">
-<input type="hidden" name="_subject" value="New Earthed Energy enquiry">
-<input type="hidden" name="_next" value="https://www.earthedenergy.au/thanks.html">
-<input type="hidden" name="_captcha" value="false">
+<div data-reveal="" style="position:relative;z-index:1;padding:56px 40px;border-top:1px solid #D8D0C0"><div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:16px"><p class="ee-note"><a href="mailto:calebvears@earthedhv.au">calebvears@earthedhv.au</a><br><a href="tel:0433839284">0433 839 284</a></p><p class="ee-note">PO Box 4111<br>Norwood South SA 5067</p><p class="ee-note">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co</p><p class="ee-note">SA electrical contractor licence PGE 336477</p><p class="ee-note"><a href="https://earthedhv.au">Utility and high voltage work · Earthed High Voltage</a></p><form class="ee-form" data-ee-lead action="https://formspree.io/f/mvkzjdwe" method="POST">
+<input type="hidden" name="form" value="contact">
+<input type="hidden" name="_subject" value="Earthed Energy enquiry">
 <label>Name<input name="name" type="text" required autocomplete="name"></label>
 <label>Phone<input name="phone" type="tel" required autocomplete="tel"></label>
 <label>Email<input name="email" type="email" required autocomplete="email"></label>
 <label>Suburb<input name="suburb" type="text" required autocomplete="address-level2"></label>
 <label>What do you need?<textarea name="message" required></textarea></label>
+<p class="ee-form-note">We email this to calebvears@earthedhv.au so we can reply. Read the <a href="/privacy.html">privacy page</a>.</p>
 <button type="submit">Send</button>
+<p class="ee-form-status" data-ee-ok hidden>Sent. Caleb replies within one business day.</p>
+<p class="ee-form-status" data-ee-err hidden>That did not send. Call <a href="tel:0433839284">0433 839 284</a> and we will take it from here.</p>
 </form></div></div>
-<div style="position:relative;z-index:1;overflow:hidden"><div style="display:grid;grid-template-columns:minmax(0,1fr)"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery beside a modern house at dusk, solar roof and purple sky" style="width:100%;max-width:100%;min-width:0;height:auto;display:block;grid-area:1/1" width="2400" height="1030"><a class="ee-ehv-card" href="https://earthedhv.au"><img class="ee-ehv-logo" src="/images/ehv-logo.webp" alt="" width="520" height="135" loading="lazy" decoding="async"><span class="ee-ehv-kicker">Earthed High Voltage</span><span class="ee-ehv-line">Wind, battery and grid connections</span></a><div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329"><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span></div></div><div style="max-width:1280px;margin:0 auto;padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px 48px;align-items:start"><div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start"><a href="/get-a-quote.html" style="display:inline-flex;align-items:center;gap:10px;background:#5E2D89;color:#ffffff;font-size:15px;font-weight:600;padding:14px 22px;border-radius:999px;box-shadow:0 10px 28px rgba(107,79,187,.28);white-space:nowrap" style-hover="background:#5E2D89;color:#ffffff">Get a quote · 45 seconds <span aria-hidden="true">→</span></a><p style="font-size:13.5px;line-height:1.7;color:rgba(43,21,80,.68);margin:0;max-width:40ch">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" target="_blank" style="color:#5E2D89;text-decoration:underline;text-underline-offset:3px">earthedhv.au</a>.</p></div><div style="display:flex;flex-direction:column;font-size:14px"><a href="/residential.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Residential</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">01</span></a><a href="/commercial.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">02</span></a><a href="/knowledge.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">03</span></a><a href="/about-earthed-energy.html" style="color:#2b1550;padding:9px 0;display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>About</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">04</span></a></div><div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(43,21,80,.68)"><div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#2b1550">Company</div><a href="tel:0433839284" style="color:#2b1550;font-weight:600" style-hover="color:#5E2D89">0433 839 284</a><a href="mailto:calebvears@earthedhv.au" style="color:#5E2D89" style-hover="color:#2b1550">calebvears@earthedhv.au</a><span>PO Box 4111<br>Norwood South SA 5067</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(43,21,80,.18)"><span style="font-size:12.5px;color:rgba(43,21,80,.68)">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co</span><div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;width:auto;display:block;opacity:.9" width="268" height="78"><img src="/images/partner-nec-seller.webp" alt="New Energy Tech Approved Seller" style="height:32px;width:auto;display:block;opacity:.95" width="508" height="507"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;width:auto;display:block;opacity:.9" width="745" height="185"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;width:auto;display:block;opacity:.9" width="421" height="143"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;width:auto;display:block;opacity:.9" width="284" height="67"></div></div></div></div>
+<div style="position:relative;z-index:1;overflow:hidden"><div style="display:grid;grid-template-columns:minmax(0,1fr)"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery beside a modern house at dusk, solar roof and purple sky" style="width:100%;max-width:100%;min-width:0;height:auto;display:block;grid-area:1/1" width="2400" height="1030"><a class="ee-ehv-card" href="https://earthedhv.au"><img class="ee-ehv-logo" src="/images/ehv-logo.webp" alt="" width="520" height="135" loading="lazy" decoding="async"><span class="ee-ehv-kicker">Earthed High Voltage</span><span class="ee-ehv-line">Wind, battery and grid connections</span></a><div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329"><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span></div></div><div style="max-width:1280px;margin:0 auto;padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px 48px;align-items:start"><div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start"><a href="/get-a-quote.html" style="display:inline-flex;align-items:center;gap:10px;background:#5E2D89;color:#ffffff;font-size:15px;font-weight:600;padding:14px 22px;border-radius:999px;box-shadow:0 10px 28px rgba(107,79,187,.28);white-space:nowrap" style-hover="background:#5E2D89;color:#ffffff">Calculate savings <span aria-hidden="true">→</span></a><p style="font-size:13.5px;line-height:1.7;color:rgba(43,21,80,.68);margin:0;max-width:40ch">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" target="_blank" style="color:#5E2D89;text-decoration:underline;text-underline-offset:3px">earthedhv.au</a>.</p></div><div style="display:flex;flex-direction:column;font-size:14px"><a href="/residential.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Residential</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">01</span></a><a href="/commercial.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">02</span></a><a href="/knowledge.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>Knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">03</span></a><a href="/about-earthed-energy.html" style="color:#2b1550;padding:9px 0;display:flex;justify-content:space-between" style-hover="color:#5E2D89"><span>About</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.78)">04</span></a></div><div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(43,21,80,.68)"><div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#2b1550">Company</div><a href="tel:0433839284" style="color:#2b1550;font-weight:600" style-hover="color:#5E2D89">0433 839 284</a><a href="mailto:calebvears@earthedhv.au" style="color:#5E2D89" style-hover="color:#2b1550">calebvears@earthedhv.au</a><span>PO Box 4111<br>Norwood South SA 5067</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(43,21,80,.18)"><span style="font-size:12.5px;color:rgba(43,21,80,.68)">Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co</span><div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;width:auto;display:block;opacity:.9" width="268" height="78"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;width:auto;display:block;opacity:.9" width="745" height="185"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;width:auto;display:block;opacity:.9" width="421" height="143"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;width:auto;display:block;opacity:.9" width="284" height="67"></div></div></div></div>
 </x-dc>
 </main>
 <div class="ee-sticky-cta"><a href="tel:0433839284">Call</a><a href="/get-a-quote.html">Calculate savings</a></div>
