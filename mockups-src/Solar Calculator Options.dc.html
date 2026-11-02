@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F1E8;color:#2b1550;font-family:'Open Sans',sans-serif}
+a{color:#5E2D89;text-decoration:none}
+a:hover{color:#f5a04a}
+input::placeholder{color:rgba(43,21,80,.38)}
+#\31 b input::placeholder{color:rgba(255,255,255,.45)}
+</style>
+</helmet>
+<section style="padding:56px 48px;display:flex;flex-direction:column;gap:28px">
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5E2D89">Turn 1 · Solar calculator card</div>
+    <h1 style="font-family:'Open Sans',sans-serif;font-weight:300;font-weight:400;font-size:40px;line-height:1.1;margin:0;color:#2b1550">Five card treatments</h1>
+    <p style="font-size:15px;line-height:1.5;color:rgba(43,21,80,.75);margin:0;max-width:60ch">Question 1 shown in each: title only, no helper line, suburb input. Pick one and I'll roll it into the live calculator.</p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+
+    <div id="1a" style="width:560px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:#2b1550;color:#ffffff;padding:4px 9px;border-radius:4px">1a</span><span style="font-size:14px;font-weight:600;color:#2b1550">Open line · no card, underline input</span></div>
+      <div style="padding:40px 8px;display:flex;flex-direction:column;gap:36px">
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px"><span style="height:3px;border-radius:2px;background:#5E2D89"></span><span style="height:3px;border-radius:2px;background:rgba(107,79,187,.2)"></span><span style="height:3px;border-radius:2px;background:rgba(107,79,187,.2)"></span><span style="height:3px;border-radius:2px;background:rgba(107,79,187,.2)"></span><span style="height:3px;border-radius:2px;background:rgba(107,79,187,.2)"></span></div>
+        <h3 style="font-family:'Open Sans',sans-serif;font-weight:300;font-weight:400;font-size:44px;line-height:1.05;margin:0;color:#2b1550">Where do you live?</h3>
+        <div style="display:flex;align-items:flex-end;gap:16px">
+          <input type="text" placeholder="e.g. Stirling" style="flex:1;min-width:0;background:transparent;border:0;border-bottom:2px solid #2b1550;padding:10px 0;font-family:'Open Sans',sans-serif;font-size:28px;color:#2b1550;outline:none">
+          <button style="flex:none;width:56px;height:56px;border-radius:50%;border:0;background:#5E2D89;color:#ffffff;font-size:22px;cursor:pointer" style-hover="background:#2b1550">→</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="1b" style="width:560px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:#2b1550;color:#ffffff;padding:4px 9px;border-radius:4px">1b</span><span style="font-size:14px;font-weight:600;color:#2b1550">After dark · plum card, orange action</span></div>
+      <div style="background:#2A1B4A;border-radius:18px;padding:32px 36px 36px;display:flex;flex-direction:column;gap:28px;box-shadow:0 24px 60px rgba(43,21,80,.28)">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#c4a5ff">01 / 05</span><div style="display:flex;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#f5a04a"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22)"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22)"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22)"></span><span style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22)"></span></div></div>
+        <h3 style="font-family:'Open Sans',sans-serif;font-weight:300;font-weight:400;font-size:36px;line-height:1.1;margin:0;color:#ffffff">Where do you live?</h3>
+        <input type="text" placeholder="e.g. Stirling" style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:16px 18px;font-family:'Open Sans',sans-serif;font-size:22px;color:#ffffff;outline:none;min-height:60px" style-focus="border-color:#f5a04a">
+        <button style="align-self:flex-end;min-height:56px;padding:0 30px;border:0;border-radius:999px;background:#f5a04a;color:#1a0b2e;font-size:15px;font-weight:700;cursor:pointer" style-hover="background:#ffb86b">Next →</button>
+      </div>
+    </div>
+
+    <div id="1c" style="width:640px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:#2b1550;color:#ffffff;padding:4px 9px;border-radius:4px">1c</span><span style="font-size:14px;font-weight:600;color:#2b1550">Split · step list on the left</span></div>
+      <div style="display:grid;grid-template-columns:200px minmax(0,1fr);background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(43,21,80,.12)">
+        <div style="background:#5E2D89;padding:28px 24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'Open Sans',sans-serif;font-size:48px;line-height:1;color:#ffffff">01</span>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+            <span style="color:#ffffff;font-weight:600">Location</span><span style="color:rgba(255,255,255,.6)">Power bill</span><span style="color:rgba(255,255,255,.6)">Main goal</span><span style="color:rgba(255,255,255,.6)">Battery</span><span style="color:rgba(255,255,255,.6)">Usage</span>
+          </div>
+        </div>
+        <div style="padding:36px 32px;display:flex;flex-direction:column;gap:24px;justify-content:center">
+          <h3 style="font-family:'Open Sans',sans-serif;font-weight:300;font-weight:400;font-size:32px;line-height:1.1;margin:0;color:#2b1550">Where do you live?</h3>
+          <input type="text" placeholder="e.g. Stirling" style="width:100%;box-sizing:border-box;border:2px solid rgba(124,58,237,.3);border-radius:10px;padding:14px 16px;font-family:'Open Sans',sans-serif;font-size:20px;color:#2b1550;outline:none;min-height:56px" style-focus="border-color:#7c3aed">
+          <button style="align-self:flex-start;min-height:52px;padding:0 26px;border:0;border-radius:6px;background:#2A1B4A;color:#F1EDF9;font-family:'Open Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#5E2D89">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="1d" style="width:560px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:#2b1550;color:#ffffff;padding:4px 9px;border-radius:4px">1d</span><span style="font-size:14px;font-weight:600;color:#2b1550">Sentence · fill in the blank</span></div>
+      <div style="background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:16px;padding:40px 36px;display:flex;flex-direction:column;gap:30px">
+        <span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5E2D89">Step 1 of 5</span>
+        <div style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:40px;line-height:1.25;color:#2b1550;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px"><span>I live in</span><input type="text" placeholder="Stirling" style="width:220px;background:transparent;border:0;border-bottom:2px dashed #5E2D89;padding:0 4px;font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:40px;color:#5E2D89;outline:none"><span>.</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;color:rgba(43,21,80,.6)">← Back</span><button style="min-height:52px;padding:0 26px;border:0;border-radius:999px;background:#5E2D89;color:#ffffff;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:#5E2D89">Continue</button></div>
+      </div>
+    </div>
+
+    <div id="1e" style="width:560px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:center"><span style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;background:#2b1550;color:#ffffff;padding:4px 9px;border-radius:4px">1e</span><span style="font-size:14px;font-weight:600;color:#2b1550">Chips · labelled steps, full-width action</span></div>
+      <div style="background:#ffffff;border:2px solid #4B345B;border-radius:18px;padding:26px 30px 30px;display:flex;flex-direction:column;gap:26px;box-shadow:0 24px 60px rgba(43,21,80,.12)">
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span style="font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:#5E2D89;color:#ffffff">Location</span><span style="font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;background:#f6f2fd;color:rgba(43,21,80,.55)">Bill</span><span style="font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;background:#f6f2fd;color:rgba(43,21,80,.55)">Goal</span><span style="font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;background:#f6f2fd;color:rgba(43,21,80,.55)">Battery</span><span style="font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;background:#f6f2fd;color:rgba(43,21,80,.55)">Usage</span>
+        </div>
+        <h3 style="font-family:'Open Sans',sans-serif;font-weight:300;font-weight:400;font-size:32px;line-height:1.1;margin:0;color:#2b1550">Where do you live?</h3>
+        <div style="display:flex;align-items:center;gap:12px;border:2px solid rgba(124,58,237,.3);border-radius:12px;padding:0 16px;min-height:60px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5E2D89" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <input type="text" placeholder="e.g. Stirling" style="flex:1;min-width:0;border:0;background:transparent;font-family:'Open Sans',sans-serif;font-size:20px;color:#2b1550;outline:none;padding:14px 0">
+        </div>
+        <button style="width:100%;min-height:56px;border:0;border-radius:8px;background:#2A1B4A;color:#F1EDF9;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer" style-hover="background:#5E2D89">Next</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

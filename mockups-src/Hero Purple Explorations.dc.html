@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <style>@keyframes drift1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(6%,4%) scale(1.12)}100%{transform:translate(0,0) scale(1)}}@keyframes drift2{0%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-7%,-3%) scale(1)}100%{transform:translate(0,0) scale(1.1)}}@keyframes breathe{0%{opacity:.35;transform:scale(.92)}50%{opacity:.8;transform:scale(1.08)}100%{opacity:.35;transform:scale(.92)}}@keyframes sheen{0%{transform:translateX(-70%) skewX(-18deg);opacity:0}15%{opacity:1}60%{opacity:1}100%{transform:translateX(170%) skewX(-18deg);opacity:0}}@keyframes tide{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes shimmer{0%{opacity:.25}50%{opacity:.6}100%{opacity:.25}}
+body{margin:0;background:#0d0716;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#fff}a{color:#f5a04a;text-decoration:none}a:hover{color:#ffb968}</style>
+</helmet>
+<section style="padding:48px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;border-bottom:1px solid rgba(196,165,255,.2)">
+  <div style="width:100%;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#c4a5ff;font-weight:700">Turn 6 · <a href="#5b">5b</a> treatment on the three new renders</div>
+  <sc-for list="{{ variants6 }}" as="v" hint-placeholder-count="3">
+    <div id="{{ v.id }}" style="width:1280px;flex:0 0 auto;position:relative">
+      <div style="position:absolute;left:0;top:-30px;display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c4a5ff"><span style="background:#5e2d89;color:#fff;padding:3px 9px;border-radius:6px">{{ v.id }}</span>{{ v.name }}</div>
+      <div style="position:relative;width:1280px;aspect-ratio:16/9;overflow:hidden;background:#2b1550">
+        <div style="position:absolute;inset:0;background-image:{{ v.imgUrl }};background-size:cover;background-position:{{ v.imgPos }}"></div>
+        <div style="position:absolute;inset:0;background:{{ v.overlayA }};mix-blend-mode:{{ v.blendA }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:{{ v.overlayB }};mix-blend-mode:{{ v.blendB }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none;overflow:hidden">
+          <div style="position:absolute;inset:{{ v.insetC }};background:{{ v.overlayC }};mix-blend-mode:{{ v.blendC }};animation:{{ v.animC }};filter:{{ v.filterC }};border-radius:50%"></div>
+        </div>
+        <sc-if value="{{ v.showLogo }}" hint-placeholder-val="{{ true }}"><a href="#top" style="position:absolute;left:3.2%;top:4%;width:22%;z-index:6;display:block">
+          <img src="img/earthed-energy-logo-purple.png" alt="Earthed Energy" style="width:100%;height:auto;display:block;filter:{{ v.logoFilter }}"></a></sc-if>
+        <nav style="position:absolute;right:4%;top:4.6%;height:4.6%;display:flex;align-items:center;gap:32px;z-index:5">
+          <a href="./Residential.dc.html" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Residential</a>
+          <a href="#commercial" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Commercial</a>
+          <a href="#rebates" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Rebate Explained</a>
+          <a href="#about" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Why Earthed?</a>
+        </nav>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:110px 36px 40px;background:{{ v.copyGrad }};z-index:3">
+          <div style="position:relative">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:{{ v.kickerFg }};background:{{ v.kickerBg }};backdrop-filter:blur(6px);display:inline-block;padding:7px 14px;border-radius:8px;margin-bottom:12px;border:1px solid {{ v.kickerBorder }}">Home Energy Specialists · South Australia</div>
+            <h1 style="font-size:44px;line-height:1.1;font-weight:800;margin:0 0 24px;color:#ffffff;max-width:20ch;text-wrap:pretty;text-shadow:{{ v.h1Shadow }}">Build your equation that eliminates your power bill for good.</h1>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <a href="#quote" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:13px 24px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Free energy assessment</a>
+              <a href="./Residential.dc.html" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffffff;border:1px solid rgba(255,255,255,.6);padding:12px 24px;border-radius:999px;display:inline-block" style-hover="background:rgba(255,255,255,.14)">What we install</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:{{ v.ribbonBg }};background-size:{{ v.ribbonSize }};animation:{{ v.ribbonAnim }};border-top:1px solid {{ v.ribbonLine }};padding:16px 36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffffff">Solar · Battery · EV · Heat Pump · Aircon</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">10–20% of all systems covered by Gov rebates</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">$0 upfront · green finance options</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">Learn your payback time today</span>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;line-height:1.5;color:rgba(255,255,255,.7);max-width:70ch">{{ v.note }}</p>
+    </div>
+  </sc-for>
+</section>
+<section style="padding:48px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;border-bottom:1px solid rgba(196,165,255,.2)">
+  <div style="width:100%;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#c4a5ff;font-weight:700">Turn 5 · Cherry ground, subtle transition · from <a href="#4e">4e</a>, <a href="#4a">4a</a>, <a href="#4b">4b</a></div>
+  <sc-for list="{{ variants5 }}" as="v" hint-placeholder-count="6">
+    <div id="{{ v.id }}" style="width:1280px;flex:0 0 auto;position:relative">
+      <div style="position:absolute;left:0;top:-30px;display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c4a5ff"><span style="background:#5e2d89;color:#fff;padding:3px 9px;border-radius:6px">{{ v.id }}</span>{{ v.name }}</div>
+      <div style="position:relative;width:1280px;aspect-ratio:16/9;overflow:hidden;background:#2b1550">
+        <img src="img/earthed-energy-hero-nologo-nonav.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:{{ v.overlayA }};background-size:{{ v.sizeA }};animation:{{ v.animA }};mix-blend-mode:{{ v.blendA }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:{{ v.overlayB }};mix-blend-mode:{{ v.blendB }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none;overflow:hidden">
+          <div style="position:absolute;inset:{{ v.insetC }};background:{{ v.overlayC }};background-size:{{ v.sizeC }};mix-blend-mode:{{ v.blendC }};animation:{{ v.animC }};filter:{{ v.filterC }};border-radius:50%"></div>
+          <div style="position:absolute;inset:{{ v.insetD }};background:{{ v.overlayD }};mix-blend-mode:{{ v.blendD }};animation:{{ v.animD }};filter:{{ v.filterD }}"></div>
+        </div>
+        <a href="#top" style="position:absolute;left:3.2%;top:4%;width:22%;z-index:6;display:block">
+          <img src="img/earthed-energy-logo-purple.png" alt="Earthed Energy" style="width:100%;height:auto;display:block;filter:{{ v.logoFilter }}"></a>
+        <nav style="position:absolute;right:4%;top:4.6%;height:4.6%;display:flex;align-items:center;gap:32px;z-index:5">
+          <a href="./Residential.dc.html" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Residential</a>
+          <a href="#commercial" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Commercial</a>
+          <a href="#rebates" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Rebate Explained</a>
+          <a href="#about" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Why Earthed?</a>
+        </nav>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:110px 36px 40px;background:{{ v.copyGrad }};z-index:3">
+          <div style="position:relative">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:{{ v.kickerFg }};background:{{ v.kickerBg }};backdrop-filter:blur(6px);display:inline-block;padding:7px 14px;border-radius:8px;margin-bottom:12px;border:1px solid {{ v.kickerBorder }}">Home Energy Specialists · South Australia</div>
+            <h1 style="font-size:44px;line-height:1.1;font-weight:800;margin:0 0 24px;color:#ffffff;max-width:20ch;text-wrap:pretty;text-shadow:{{ v.h1Shadow }}">Build your equation that eliminates your power bill for good.</h1>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <a href="#quote" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:13px 24px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Free energy assessment</a>
+              <a href="./Residential.dc.html" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffffff;border:1px solid rgba(255,255,255,.6);padding:12px 24px;border-radius:999px;display:inline-block" style-hover="background:rgba(255,255,255,.14)">What we install</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:{{ v.ribbonBg }};background-size:{{ v.ribbonSize }};animation:{{ v.ribbonAnim }};border-top:1px solid {{ v.ribbonLine }};padding:16px 36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffffff">Solar · Battery · EV · Heat Pump · Aircon</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">10–20% of all systems covered by Gov rebates</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">$0 upfront · green finance options</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">Learn your payback time today</span>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;line-height:1.5;color:rgba(255,255,255,.7);max-width:70ch">{{ v.note }}</p>
+    </div>
+  </sc-for>
+</section>
+<section style="padding:48px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;border-bottom:1px solid rgba(196,165,255,.2)">
+  <div style="width:100%;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#c4a5ff;font-weight:700">Turn 4 · Builds on <a href="#3j">3j</a> lavender and <a href="#3h">3h</a> plum &amp; copper (lighter mark)</div>
+  <sc-for list="{{ variants4 }}" as="v" hint-placeholder-count="5">
+    <div id="{{ v.id }}" style="width:1280px;flex:0 0 auto;position:relative">
+      <div style="position:absolute;left:0;top:-30px;display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c4a5ff"><span style="background:#5e2d89;color:#fff;padding:3px 9px;border-radius:6px">{{ v.id }}</span>{{ v.name }}</div>
+      <div style="position:relative;width:1280px;aspect-ratio:16/9;overflow:hidden;background:#2b1550">
+        <img src="img/earthed-energy-hero-nologo-nonav.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:{{ v.overlayA }};background-size:{{ v.sizeA }};animation:{{ v.animA }};mix-blend-mode:{{ v.blendA }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:{{ v.overlayB }};mix-blend-mode:{{ v.blendB }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none;overflow:hidden">
+          <div style="position:absolute;inset:{{ v.insetC }};background:{{ v.overlayC }};background-size:{{ v.sizeC }};mix-blend-mode:{{ v.blendC }};animation:{{ v.animC }};filter:{{ v.filterC }};border-radius:50%"></div>
+          <div style="position:absolute;inset:{{ v.insetD }};background:{{ v.overlayD }};mix-blend-mode:{{ v.blendD }};animation:{{ v.animD }};filter:{{ v.filterD }}"></div>
+        </div>
+        <a href="#top" style="position:absolute;left:3.2%;top:4%;width:22%;z-index:6;display:block">
+          <img src="img/earthed-energy-logo-purple.png" alt="Earthed Energy" style="width:100%;height:auto;display:block;filter:{{ v.logoFilter }}"></a>
+        <nav style="position:absolute;right:4%;top:4.6%;height:4.6%;display:flex;align-items:center;gap:32px;z-index:5">
+          <a href="./Residential.dc.html" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Residential</a>
+          <a href="#commercial" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Commercial</a>
+          <a href="#rebates" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Rebate Explained</a>
+          <a href="#about" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Why Earthed?</a>
+        </nav>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:110px 36px 40px;background:{{ v.copyGrad }};z-index:3">
+          <div style="position:relative">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:{{ v.kickerFg }};background:{{ v.kickerBg }};backdrop-filter:blur(6px);display:inline-block;padding:7px 14px;border-radius:8px;margin-bottom:12px;border:1px solid {{ v.kickerBorder }}">Home Energy Specialists · South Australia</div>
+            <h1 style="font-size:44px;line-height:1.1;font-weight:800;margin:0 0 24px;color:#ffffff;max-width:20ch;text-wrap:pretty;text-shadow:{{ v.h1Shadow }}">Build your equation that eliminates your power bill for good.</h1>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <a href="#quote" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:13px 24px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Free energy assessment</a>
+              <a href="./Residential.dc.html" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffffff;border:1px solid rgba(255,255,255,.6);padding:12px 24px;border-radius:999px;display:inline-block" style-hover="background:rgba(255,255,255,.14)">What we install</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:{{ v.ribbonBg }};background-size:{{ v.ribbonSize }};animation:{{ v.ribbonAnim }};border-top:1px solid {{ v.ribbonLine }};padding:16px 36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffffff">Solar · Battery · EV · Heat Pump · Aircon</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">10–20% of all systems covered by Gov rebates</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">$0 upfront · green finance options</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">Learn your payback time today</span>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;line-height:1.5;color:rgba(255,255,255,.7);max-width:70ch">{{ v.note }}</p>
+    </div>
+  </sc-for>
+</section>
+<section style="padding:48px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;border-bottom:1px solid rgba(196,165,255,.2)">
+  <div style="width:100%;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#c4a5ff;font-weight:700">Turn 3 · Batteries kept clear of overlays · flat purple logo (light/dark only) · builds on <a href="#2c">2c</a>, <a href="#2d">2d</a>, <a href="#2e">2e</a></div>
+  <sc-for list="{{ variants3 }}" as="v" hint-placeholder-count="10">
+    <div id="{{ v.id }}" style="width:1280px;flex:0 0 auto;position:relative">
+      <div style="position:absolute;left:0;top:-30px;display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c4a5ff"><span style="background:#5e2d89;color:#fff;padding:3px 9px;border-radius:6px">{{ v.id }}</span>{{ v.name }}</div>
+      <div style="position:relative;width:1280px;aspect-ratio:16/9;overflow:hidden;background:#2b1550">
+        <img src="img/earthed-energy-hero-nologo-nonav.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:{{ v.overlayA }};background-size:{{ v.sizeA }};animation:{{ v.animA }};mix-blend-mode:{{ v.blendA }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:{{ v.overlayB }};mix-blend-mode:{{ v.blendB }};mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;mask-image:{{ v.mask }};-webkit-mask-image:{{ v.mask }};pointer-events:none;overflow:hidden">
+          <div style="position:absolute;inset:{{ v.insetC }};background:{{ v.overlayC }};background-size:{{ v.sizeC }};mix-blend-mode:{{ v.blendC }};animation:{{ v.animC }};filter:{{ v.filterC }};border-radius:50%"></div>
+          <div style="position:absolute;inset:{{ v.insetD }};background:{{ v.overlayD }};mix-blend-mode:{{ v.blendD }};animation:{{ v.animD }};filter:{{ v.filterD }}"></div>
+        </div>
+        <a href="#top" style="position:absolute;left:3.2%;top:4%;width:22%;z-index:6;display:block">
+          <img src="img/earthed-energy-logo-purple.png" alt="Earthed Energy" style="width:100%;height:auto;display:block;filter:{{ v.logoFilter }}"></a>
+        <nav style="position:absolute;right:4%;top:4.6%;height:4.6%;display:flex;align-items:center;gap:32px;z-index:5">
+          <a href="./Residential.dc.html" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Residential</a>
+          <a href="#commercial" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Commercial</a>
+          <a href="#rebates" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Rebate Explained</a>
+          <a href="#about" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Why Earthed?</a>
+        </nav>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:110px 36px 40px;background:{{ v.copyGrad }};z-index:3">
+          <div style="position:relative">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:{{ v.kickerFg }};background:{{ v.kickerBg }};backdrop-filter:blur(6px);display:inline-block;padding:7px 14px;border-radius:8px;margin-bottom:12px;border:1px solid {{ v.kickerBorder }}">Home Energy Specialists · South Australia</div>
+            <h1 style="font-size:44px;line-height:1.1;font-weight:800;margin:0 0 24px;color:#ffffff;max-width:20ch;text-wrap:pretty;text-shadow:{{ v.h1Shadow }}">Build your equation that eliminates your power bill for good.</h1>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <a href="#quote" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:13px 24px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Free energy assessment</a>
+              <a href="./Residential.dc.html" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffffff;border:1px solid rgba(255,255,255,.6);padding:12px 24px;border-radius:999px;display:inline-block" style-hover="background:rgba(255,255,255,.14)">What we install</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:{{ v.ribbonBg }};background-size:{{ v.ribbonSize }};animation:{{ v.ribbonAnim }};border-top:1px solid {{ v.ribbonLine }};padding:16px 36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffffff">Solar · Battery · EV · Heat Pump · Aircon</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">10–20% of all systems covered by Gov rebates</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">$0 upfront · green finance options</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">Learn your payback time today</span>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;line-height:1.5;color:rgba(255,255,255,.7);max-width:70ch">{{ v.note }}</p>
+    </div>
+  </sc-for>
+</section>
+<section style="padding:48px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;border-bottom:1px solid rgba(196,165,255,.2)">
+  <div style="width:100%;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#c4a5ff;font-weight:700">Turn 2 · Dark purple logo · effects &amp; motion (<a href="#2a">2a</a> is <a href="#1i">1i</a> with the purple mark)</div>
+  <sc-for list="{{ variants2 }}" as="v" hint-placeholder-count="6">
+    <div id="{{ v.id }}" style="width:1280px;flex:0 0 auto;position:relative">
+      <div style="position:absolute;left:0;top:-30px;display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c4a5ff"><span style="background:#5e2d89;color:#fff;padding:3px 9px;border-radius:6px">{{ v.id }}</span>{{ v.name }}</div>
+      <div style="position:relative;width:1280px;aspect-ratio:16/9;overflow:hidden;background:#2b1550">
+        <img src="img/earthed-energy-hero-nologo-nonav.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:{{ v.overlayA }};mix-blend-mode:{{ v.blendA }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:{{ v.overlayB }};mix-blend-mode:{{ v.blendB }};pointer-events:none"></div>
+        <div style="position:absolute;inset:{{ v.insetC }};background:{{ v.overlayC }};background-size:{{ v.sizeC }};mix-blend-mode:{{ v.blendC }};animation:{{ v.animC }};filter:{{ v.filterC }};pointer-events:none;border-radius:50%"></div>
+        <div style="position:absolute;inset:{{ v.insetD }};background:{{ v.overlayD }};mix-blend-mode:{{ v.blendD }};animation:{{ v.animD }};filter:{{ v.filterD }};pointer-events:none"></div>
+        <a href="#top" style="position:absolute;left:3.2%;top:4%;width:22%;z-index:6;display:block">
+          <img src="img/earthed-energy-logo-purple.png" alt="Earthed Energy" style="width:100%;height:auto;display:block;filter:{{ v.logoFilter }}"></a>
+        <nav style="position:absolute;right:4%;top:4.6%;height:4.6%;display:flex;align-items:center;gap:32px;z-index:5">
+          <a href="./Residential.dc.html" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Residential</a>
+          <a href="#commercial" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Commercial</a>
+          <a href="#rebates" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Rebate Explained</a>
+          <a href="#about" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Why Earthed?</a>
+        </nav>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:110px 36px 40px;background:{{ v.copyGrad }};z-index:3">
+          <div style="position:relative">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:{{ v.kickerFg }};background:{{ v.kickerBg }};backdrop-filter:blur(6px);display:inline-block;padding:7px 14px;border-radius:8px;margin-bottom:12px;border:1px solid {{ v.kickerBorder }}">Home Energy Specialists · South Australia</div>
+            <h1 style="font-size:44px;line-height:1.1;font-weight:800;margin:0 0 24px;color:#ffffff;max-width:20ch;text-wrap:pretty;text-shadow:{{ v.h1Shadow }}">Build your equation that eliminates your power bill for good.</h1>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <a href="#quote" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:13px 24px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Free energy assessment</a>
+              <a href="./Residential.dc.html" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffffff;border:1px solid rgba(255,255,255,.6);padding:12px 24px;border-radius:999px;display:inline-block" style-hover="background:rgba(255,255,255,.14)">What we install</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:{{ v.ribbonBg }};background-size:{{ v.ribbonSize }};animation:{{ v.ribbonAnim }};border-top:1px solid {{ v.ribbonLine }};padding:16px 36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffffff">Solar · Battery · EV · Heat Pump · Aircon</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">10–20% of all systems covered by Gov rebates</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">$0 upfront · green finance options</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">Learn your payback time today</span>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;line-height:1.5;color:rgba(255,255,255,.7);max-width:70ch">{{ v.note }}</p>
+    </div>
+  </sc-for>
+</section>
+<section style="padding:48px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+  <div style="width:100%;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#c4a5ff;font-weight:700">Turn 1 · Hero purple treatments · content and positions fixed, only colour, tint and logo vary</div>
+  <sc-for list="{{ variants }}" as="v" hint-placeholder-count="10">
+    <div id="{{ v.id }}" style="width:1280px;flex:0 0 auto;position:relative">
+      <div style="position:absolute;left:0;top:-30px;display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c4a5ff"><span style="background:#5e2d89;color:#fff;padding:3px 9px;border-radius:6px">{{ v.id }}</span>{{ v.name }}</div>
+      <div style="position:relative;width:1280px;aspect-ratio:16/9;overflow:hidden;background:#2b1550">
+        <img src="img/earthed-energy-hero-nologo-nonav.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:{{ v.overlayA }};mix-blend-mode:{{ v.blendA }};pointer-events:none"></div>
+        <div style="position:absolute;inset:0;background:{{ v.overlayB }};mix-blend-mode:{{ v.blendB }};pointer-events:none"></div>
+        <a href="#top" style="position:absolute;left:3.2%;top:4%;width:22%;z-index:6;display:block">
+          <img src="{{ v.logo }}" alt="Earthed Energy" style="width:100%;height:auto;display:block;filter:{{ v.logoFilter }}"></a>
+        <nav style="position:absolute;right:4%;top:4.6%;height:4.6%;display:flex;align-items:center;gap:32px;z-index:5">
+          <a href="./Residential.dc.html" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Residential</a>
+          <a href="#commercial" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Commercial</a>
+          <a href="#rebates" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Rebate Explained</a>
+          <a href="#about" style="font-size:16px;font-weight:700;letter-spacing:.02em;color:{{ v.navFg }};text-shadow:{{ v.navShadow }};padding:6px 4px;border-bottom:2px solid transparent" style-hover="color:#f5a04a;border-bottom-color:#f5a04a">Why Earthed?</a>
+        </nav>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:110px 36px 40px;background:{{ v.copyGrad }};z-index:3">
+          <div style="position:relative">
+            <div style="font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:{{ v.kickerFg }};background:{{ v.kickerBg }};backdrop-filter:blur(6px);display:inline-block;padding:7px 14px;border-radius:8px;margin-bottom:12px;border:1px solid {{ v.kickerBorder }}">Home Energy Specialists · South Australia</div>
+            <h1 style="font-size:44px;line-height:1.1;font-weight:800;margin:0 0 24px;color:#ffffff;max-width:20ch;text-wrap:pretty;text-shadow:{{ v.h1Shadow }}">Build your equation that eliminates your power bill for good.</h1>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+              <a href="#quote" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:13px 24px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Free energy assessment</a>
+              <a href="./Residential.dc.html" style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffffff;border:1px solid rgba(255,255,255,.6);padding:12px 24px;border-radius:999px;display:inline-block" style-hover="background:rgba(255,255,255,.14)">What we install</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:{{ v.ribbonBg }};border-top:1px solid {{ v.ribbonLine }};padding:16px 36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#ffffff">Solar · Battery · EV · Heat Pump · Aircon</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">10–20% of all systems covered by Gov rebates</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">$0 upfront · green finance options</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:{{ v.accent }}">Learn your payback time today</span>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;line-height:1.5;color:rgba(255,255,255,.7);max-width:70ch">{{ v.note }}</p>
+    </div>
+  </sc-for>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const W = 'img/earthed-energy-logo-white.png', P = 'img/earthed-energy-logo-purple.png';
+    const whiteGlow = 'drop-shadow(0 2px 14px rgba(94,45,137,.85)) drop-shadow(0 0 2px rgba(43,21,80,.6))';
+    const brown = 'brightness(.62) sepia(1) saturate(2.2) hue-rotate(-18deg) drop-shadow(0 1px 6px rgba(255,255,255,.35))';
+    const shadow = '0 1px 10px rgba(43,21,80,.7),0 0 2px rgba(43,21,80,.9)';
+    const base = { navFg:'#ffffff', navShadow:shadow, h1Shadow:'0 2px 18px rgba(20,8,38,.5)', kickerFg:'#1a0b2e', kickerBg:'rgba(255,255,255,.88)', kickerBorder:'transparent', ribbonLine:'rgba(124,58,237,.18)', accent:'#c4a5ff', logo:W, logoFilter:whiteGlow };
+    const variants = [
+      { id:'1a', name:'Deep Plum Veil', overlayA:'linear-gradient(180deg,rgba(75,52,91,.55) 0%,rgba(75,52,91,.15) 45%,rgba(43,21,80,0) 70%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(43,21,80,.5) 0%,rgba(43,21,80,0) 40%)', blendB:'normal', copyGrad:'linear-gradient(0deg,rgba(30,14,52,.9) 0%,rgba(30,14,52,.55) 55%,rgba(30,14,52,0) 100%)', ribbonBg:'linear-gradient(90deg,#1c0e30,#2b1550,#1c0e30)', note:'EHV plum (#4B345B) multiplied into the sky — quieter, more brand-faithful purple. Sunset stays warm.' },
+      { id:'1b', name:'Royal Violet Wash', overlayA:'linear-gradient(135deg,rgba(94,45,137,.6) 0%,rgba(94,45,137,.25) 50%,rgba(94,45,137,.45) 100%)', blendA:'soft-light', overlayB:'radial-gradient(60% 70% at 72% 45%,rgba(196,165,255,.22) 0%,rgba(196,165,255,0) 70%)', blendB:'screen', copyGrad:'linear-gradient(0deg,rgba(28,10,56,.92) 0%,rgba(28,10,56,.5) 55%,rgba(28,10,56,0) 100%)', ribbonBg:'linear-gradient(90deg,#24103f,#3a1a5c,#24103f)', note:'EE purple (#5E2D89) as a soft-light wash with a lilac glow behind the batteries so the white units lift off the sky.' },
+      { id:'1c', name:'Twilight Indigo', overlayA:'linear-gradient(200deg,rgba(59,42,122,.65) 0%,rgba(59,42,122,.25) 50%,rgba(20,8,38,0) 80%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(18,8,38,.55) 0%,rgba(18,8,38,0) 45%)', blendB:'normal', copyGrad:'linear-gradient(0deg,rgba(14,6,30,.94) 0%,rgba(14,6,30,.55) 55%,rgba(14,6,30,0) 100%)', ribbonBg:'linear-gradient(90deg,#100822,#1e1240,#100822)', accent:'#b9a6ff', note:'Cooler, bluer purple from the top-right. Higher contrast against the orange sunset; headline sits on near-black.' },
+      { id:'1d', name:'Dusk Mauve · brown mark', overlayA:'linear-gradient(180deg,rgba(122,75,127,.5) 0%,rgba(122,75,127,.2) 50%,rgba(122,75,127,0) 75%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(58,36,24,.35) 0%,rgba(58,36,24,0) 40%)', blendB:'multiply', copyGrad:'linear-gradient(0deg,rgba(38,18,40,.9) 0%,rgba(38,18,40,.5) 55%,rgba(38,18,40,0) 100%)', ribbonBg:'linear-gradient(90deg,#22101f,#3a1d3a,#22101f)', accent:'#e8c3a0', logo:W, logoFilter:'brightness(.9) sepia(.9) saturate(1.6) hue-rotate(-20deg) drop-shadow(0 2px 10px rgba(20,8,20,.7))', ribbonLine:'rgba(232,195,160,.2)', note:'Warm mauve that meets the sunset halfway; logo shifted to a warm tan/brown so it reads as part of the timber-and-dusk palette.' },
+      { id:'1e', name:'Amethyst Glass', overlayA:'linear-gradient(180deg,rgba(94,45,137,.35) 0%,rgba(94,45,137,.1) 40%,rgba(94,45,137,0) 60%)', blendA:'multiply', overlayB:'linear-gradient(90deg,rgba(94,45,137,.55) 0%,rgba(94,45,137,.3) 42%,rgba(94,45,137,0) 60%)', blendB:'normal', copyGrad:'linear-gradient(0deg,rgba(40,18,70,.8) 0%,rgba(40,18,70,.35) 55%,rgba(40,18,70,0) 100%)', ribbonBg:'#3b1a63', kickerBg:'rgba(255,255,255,.14)', kickerFg:'#ffffff', kickerBorder:'rgba(255,255,255,.35)', ribbonLine:'rgba(196,165,255,.3)', note:'A translucent purple pane over the left half behind the copy; frosted kicker chip instead of solid white. Lighter overall.' },
+      { id:'1f', name:'Grape Duotone', overlayA:'linear-gradient(180deg,rgba(74,20,120,.85) 0%,rgba(74,20,120,.55) 60%,rgba(74,20,120,.35) 100%)', blendA:'color', overlayB:'linear-gradient(180deg,rgba(43,21,80,.3) 0%,rgba(20,8,38,.55) 100%)', blendB:'multiply', copyGrad:'linear-gradient(0deg,rgba(16,6,32,.92) 0%,rgba(16,6,32,.5) 55%,rgba(16,6,32,0) 100%)', ribbonBg:'linear-gradient(90deg,#14061f,#2a0f46,#14061f)', accent:'#d4b8ff', note:'Whole scene recoloured toward grape — sunset becomes violet. Boldest brand statement; batteries stay white.' },
+      { id:'1g', name:'Lavender Haze · purple mark', overlayA:'linear-gradient(180deg,rgba(196,165,255,.45) 0%,rgba(196,165,255,.15) 40%,rgba(196,165,255,0) 60%)', blendA:'screen', overlayB:'linear-gradient(180deg,rgba(94,45,137,.15) 0%,rgba(94,45,137,0) 50%)', blendB:'multiply', copyGrad:'linear-gradient(0deg,rgba(26,11,46,.94) 0%,rgba(26,11,46,.6) 55%,rgba(26,11,46,0) 100%)', ribbonBg:'#1a0b2e', logo:P, logoFilter:'drop-shadow(0 2px 10px rgba(255,255,255,.55))', navFg:'#2b1550', navShadow:'0 1px 8px rgba(255,255,255,.6)', kickerBg:'rgba(94,45,137,.92)', kickerFg:'#ffffff', note:'Sky lifted to pale lavender so the purple logo and dark-plum nav can sit on it; the copy block goes deep to compensate.' },
+      { id:'1h', name:'Midnight Orchid', overlayA:'radial-gradient(75% 90% at 55% 45%,rgba(20,8,38,0) 30%,rgba(20,8,38,.75) 100%)', blendA:'normal', overlayB:'radial-gradient(38% 55% at 74% 48%,rgba(160,90,255,.35) 0%,rgba(160,90,255,0) 70%)', blendB:'screen', copyGrad:'linear-gradient(0deg,rgba(10,4,22,.95) 0%,rgba(10,4,22,.55) 55%,rgba(10,4,22,0) 100%)', ribbonBg:'#0d0716', ribbonLine:'rgba(160,90,255,.3)', accent:'#c9a4ff', note:'Heavy vignette to near-black at the edges, with an orchid glow behind the batteries. Cinematic; strongest text legibility.' },
+      { id:'1i', name:'Plum & Copper · brown mark', overlayA:'linear-gradient(180deg,rgba(75,52,91,.6) 0%,rgba(75,52,91,.2) 45%,rgba(75,52,91,0) 60%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(92,54,30,.55) 0%,rgba(92,54,30,.2) 30%,rgba(92,54,30,0) 50%)', blendB:'multiply', copyGrad:'linear-gradient(0deg,rgba(36,20,22,.92) 0%,rgba(36,20,22,.5) 55%,rgba(36,20,22,0) 100%)', ribbonBg:'linear-gradient(90deg,#2a1414,#4b345b,#2a1414)', accent:'#f0c9a5', logoFilter:brown, ribbonLine:'rgba(240,201,165,.22)', note:'Plum sky, copper-brown ground — bridges the purple brand and the timber house. Logo in brown with a faint white halo.' },
+      { id:'1j', name:'Ultraviolet Edge', overlayA:'linear-gradient(100deg,rgba(124,58,237,.7) 0%,rgba(124,58,237,.35) 35%,rgba(124,58,237,0) 62%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(30,10,60,.6) 0%,rgba(30,10,60,0) 45%)', blendB:'normal', copyGrad:'linear-gradient(0deg,rgba(24,8,50,.9) 0%,rgba(24,8,50,.45) 55%,rgba(24,8,50,0) 100%)', ribbonBg:'linear-gradient(90deg,#3b1a8a,#5b2bd1,#3b1a8a)', accent:'#ffffff', ribbonLine:'rgba(255,255,255,.25)', note:'Vivid electric violet sweeping in from the left behind the copy, fading to the untouched sunset on the right. Ribbon goes saturated.' }
+    ].map(v => Object.assign({}, base, v));
+    const darkLogo = 'brightness(.7) saturate(1.4) drop-shadow(0 0 2px #fff) drop-shadow(0 0 3px rgba(255,255,255,.95)) drop-shadow(0 2px 18px rgba(255,255,255,.85))';
+    const none = { insetC:'0', overlayC:'none', sizeC:'auto', blendC:'normal', animC:'none', filterC:'none', insetD:'0', overlayD:'none', blendD:'normal', animD:'none', filterD:'none', ribbonSize:'auto', ribbonAnim:'none', logoFilter:darkLogo };
+    const variants2 = [
+      { id:'2a', name:'Plum & Copper · dark purple mark', overlayA:'linear-gradient(180deg,rgba(75,52,91,.6) 0%,rgba(75,52,91,.2) 45%,rgba(75,52,91,0) 60%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(92,54,30,.55) 0%,rgba(92,54,30,.2) 30%,rgba(92,54,30,0) 50%)', blendB:'multiply', copyGrad:'linear-gradient(0deg,rgba(36,20,22,.92) 0%,rgba(36,20,22,.5) 55%,rgba(36,20,22,0) 100%)', ribbonBg:'linear-gradient(90deg,#2a1414,#4b345b,#2a1414)', accent:'#f0c9a5', ribbonLine:'rgba(240,201,165,.22)', note:'1i as requested with the dark purple mark on a soft white halo so it holds against the plum sky.' },
+      { id:'2b', name:'Aurora Drift', overlayA:'linear-gradient(200deg,rgba(59,42,122,.6) 0%,rgba(59,42,122,.2) 50%,rgba(20,8,38,0) 80%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(18,8,38,.5) 0%,rgba(18,8,38,0) 45%)', blendB:'normal', insetC:'-20% 20% 30% -10%', overlayC:'radial-gradient(closest-side,rgba(150,90,255,.55),rgba(150,90,255,0))', blendC:'screen', animC:'drift1 18s ease-in-out infinite', filterC:'blur(30px)', insetD:'-10% -15% 40% 45%', overlayD:'radial-gradient(closest-side,rgba(240,140,220,.4),rgba(240,140,220,0))', blendD:'screen', animD:'drift2 24s ease-in-out infinite', filterD:'blur(40px)', copyGrad:'linear-gradient(0deg,rgba(14,6,30,.94) 0%,rgba(14,6,30,.55) 55%,rgba(14,6,30,0) 100%)', ribbonBg:'linear-gradient(90deg,#100822,#1e1240,#100822)', accent:'#b9a6ff', note:'1c indigo base with two soft aurora blobs — violet and pink — slowly drifting through the sky over ~20s.' },
+      { id:'2c', name:'Breathing Orchid', overlayA:'radial-gradient(75% 90% at 55% 45%,rgba(20,8,38,0) 30%,rgba(20,8,38,.75) 100%)', blendA:'normal', overlayB:'linear-gradient(180deg,rgba(94,45,137,.3) 0%,rgba(94,45,137,0) 50%)', blendB:'multiply', insetC:'10% 5% 20% 50%', overlayC:'radial-gradient(closest-side,rgba(170,100,255,.7),rgba(170,100,255,0))', blendC:'screen', animC:'breathe 7s ease-in-out infinite', filterC:'blur(20px)', copyGrad:'linear-gradient(0deg,rgba(10,4,22,.95) 0%,rgba(10,4,22,.55) 55%,rgba(10,4,22,0) 100%)', ribbonBg:'#0d0716', ribbonLine:'rgba(160,90,255,.3)', accent:'#c9a4ff', note:'Midnight vignette; an orchid glow behind the batteries breathes in and out like a charge indicator (7s cycle).' },
+      { id:'2d', name:'Dusk Sheen', overlayA:'linear-gradient(180deg,rgba(122,75,127,.5) 0%,rgba(122,75,127,.2) 50%,rgba(122,75,127,0) 75%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(58,36,24,.35) 0%,rgba(58,36,24,0) 40%)', blendB:'multiply', insetD:'0 60% 0 0', overlayD:'linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,220,255,.18) 45%,rgba(255,255,255,.28) 50%,rgba(255,220,255,.18) 55%,rgba(255,255,255,0) 100%)', blendD:'soft-light', animD:'sheen 9s ease-in-out infinite', copyGrad:'linear-gradient(0deg,rgba(38,18,40,.9) 0%,rgba(38,18,40,.5) 55%,rgba(38,18,40,0) 100%)', ribbonBg:'linear-gradient(90deg,#22101f,#3a1d3a,#22101f)', accent:'#e8c3a0', ribbonLine:'rgba(232,195,160,.2)', note:'1d mauve base; a diagonal light band sweeps across the scene every 9s — a subtle sun-on-glass moment.' },
+      { id:'2e', name:'Gradient Tide', overlayA:'linear-gradient(120deg,#4b345b,#5e2d89,#3b2a7a,#7a4b7f,#4b345b)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(20,8,38,.5) 0%,rgba(20,8,38,0) 45%)', blendB:'normal', insetC:'0', overlayC:'linear-gradient(120deg,rgba(94,45,137,.5),rgba(59,42,122,.2),rgba(122,75,127,.5),rgba(94,45,137,.5))', sizeC:'300% 300%', blendC:'overlay', animC:'tide 30s ease-in-out infinite', copyGrad:'linear-gradient(0deg,rgba(24,10,44,.92) 0%,rgba(24,10,44,.5) 55%,rgba(24,10,44,0) 100%)', ribbonBg:'linear-gradient(90deg,#4b345b,#5e2d89,#3b2a7a,#5e2d89,#4b345b)', ribbonSize:'300% 100%', ribbonAnim:'tide 30s ease-in-out infinite', accent:'#ffffff', ribbonLine:'rgba(255,255,255,.2)', note:'The purple itself moves: a wide plum→violet→indigo→mauve gradient slides across the scene and the ribbon over 30s.' },
+      { id:'2f', name:'Halo & Grain', overlayA:'linear-gradient(180deg,rgba(94,45,137,.55) 0%,rgba(94,45,137,.2) 45%,rgba(43,21,80,0) 70%)', blendA:'multiply', overlayB:'repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,rgba(0,0,0,0) 1px 3px),repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,rgba(0,0,0,0) 1px 3px)', blendB:'overlay', insetC:'-30% -20% -10% 25%', overlayC:'conic-gradient(from 0deg,rgba(196,165,255,0) 0deg,rgba(196,165,255,.35) 60deg,rgba(196,165,255,0) 120deg,rgba(245,160,74,.18) 200deg,rgba(196,165,255,0) 260deg,rgba(196,165,255,.3) 320deg,rgba(196,165,255,0) 360deg)', blendC:'screen', animC:'spin 60s linear infinite', filterC:'blur(28px)', insetD:'0', overlayD:'radial-gradient(45% 60% at 74% 48%,rgba(196,165,255,.25) 0%,rgba(196,165,255,0) 70%)', blendD:'screen', animD:'shimmer 5s ease-in-out infinite', copyGrad:'linear-gradient(0deg,rgba(26,11,46,.92) 0%,rgba(26,11,46,.5) 55%,rgba(26,11,46,0) 100%)', ribbonBg:'linear-gradient(90deg,#1c0e30,#2b1550,#1c0e30)', note:'Fine film grain over a royal purple sky, with a slow-rotating lilac/orange halo behind the batteries and a soft shimmer.' }
+    ].map(v => Object.assign({}, base, none, v));
+    // feathered cut-out over the two battery units (~57–97% x, 21–78% y)
+    const batMask = 'radial-gradient(ellipse 26% 36% at 77% 50%, transparent 78%, #000 100%)';
+    const dark = 'brightness(.6) saturate(1.3)', mid = 'brightness(.8) saturate(1.2)', light = 'brightness(1.75) saturate(.75)', pale = 'brightness(2.4) saturate(.5)';
+    const n3 = Object.assign({}, none, { sizeA:'auto', animA:'none', mask:batMask, logoFilter:dark });
+    const tideCopy = 'linear-gradient(0deg,rgba(24,10,44,.92) 0%,rgba(24,10,44,.5) 55%,rgba(24,10,44,0) 100%)';
+    const orchidCopy = 'linear-gradient(0deg,rgba(10,4,22,.95) 0%,rgba(10,4,22,.55) 55%,rgba(10,4,22,0) 100%)';
+    const mauveCopy = 'linear-gradient(0deg,rgba(38,18,40,.9) 0%,rgba(38,18,40,.5) 55%,rgba(38,18,40,0) 100%)';
+    const sheenBand = 'linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,220,255,.18) 45%,rgba(255,255,255,.28) 50%,rgba(255,220,255,.18) 55%,rgba(255,255,255,0) 100%)';
+    const variants3 = [
+      { id:'3a', name:'Gradient Tide · batteries clear', overlayA:'linear-gradient(120deg,#4b345b,#5e2d89,#3b2a7a,#7a4b7f,#4b345b)', sizeA:'300% 300%', animA:'tide 30s ease-in-out infinite', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(20,8,38,.5) 0%,rgba(20,8,38,0) 45%)', blendB:'normal', copyGrad:tideCopy, ribbonBg:'linear-gradient(90deg,#4b345b,#5e2d89,#3b2a7a,#5e2d89,#4b345b)', ribbonSize:'300% 100%', ribbonAnim:'tide 30s ease-in-out infinite', accent:'#ffffff', ribbonLine:'rgba(255,255,255,.2)', logoFilter:light, note:'2e with the moving gradient masked off the two batteries — they stay clean white. Light lilac mark.' },
+      { id:'3b', name:'Plum Tide · slow', overlayA:'linear-gradient(110deg,#3a2448,#4b345b,#5e2d89,#4b345b,#3a2448)', sizeA:'300% 300%', animA:'tide 48s ease-in-out infinite', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(20,8,38,.45) 0%,rgba(20,8,38,0) 45%)', blendB:'normal', copyGrad:tideCopy, ribbonBg:'linear-gradient(90deg,#2b1550,#4b345b,#2b1550)', ribbonSize:'300% 100%', ribbonAnim:'tide 48s ease-in-out infinite', logoFilter:pale, note:'Tighter plum-only palette, half speed — barely perceptible movement. Pale lilac mark for maximum contrast.' },
+      { id:'3c', name:'Orchid Halo', overlayA:'radial-gradient(75% 90% at 55% 45%,rgba(20,8,38,0) 30%,rgba(20,8,38,.75) 100%)', blendA:'normal', overlayB:'linear-gradient(180deg,rgba(94,45,137,.3) 0%,rgba(94,45,137,0) 50%)', blendB:'multiply', insetC:'2% -2% 12% 46%', overlayC:'radial-gradient(closest-side,rgba(170,100,255,.75),rgba(170,100,255,0))', blendC:'screen', animC:'breathe 7s ease-in-out infinite', filterC:'blur(22px)', copyGrad:orchidCopy, ribbonBg:'#0d0716', ribbonLine:'rgba(160,90,255,.3)', accent:'#c9a4ff', logoFilter:light, note:'2c — but the breathing glow is cut out over the batteries, so it becomes a halo around them rather than a tint on them.' },
+      { id:'3d', name:'Dusk Sheen · batteries clear', overlayA:'linear-gradient(180deg,rgba(122,75,127,.5) 0%,rgba(122,75,127,.2) 50%,rgba(122,75,127,0) 75%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(58,36,24,.35) 0%,rgba(58,36,24,0) 40%)', blendB:'multiply', insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 9s ease-in-out infinite', copyGrad:mauveCopy, ribbonBg:'linear-gradient(90deg,#22101f,#3a1d3a,#22101f)', accent:'#e8c3a0', ribbonLine:'rgba(232,195,160,.2)', logoFilter:dark, note:'2d with the sweeping band masked off the batteries. Dark plum mark on the warm mauve sky.' },
+      { id:'3e', name:'Mauve Tide + Sheen', overlayA:'linear-gradient(120deg,#5a3a5e,#7a4b7f,#5e2d89,#7a4b7f,#5a3a5e)', sizeA:'300% 300%', animA:'tide 36s ease-in-out infinite', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(58,36,24,.3) 0%,rgba(58,36,24,0) 40%)', blendB:'multiply', insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 12s ease-in-out infinite', copyGrad:mauveCopy, ribbonBg:'linear-gradient(90deg,#3a1d3a,#5e2d89,#3a1d3a)', ribbonSize:'300% 100%', ribbonAnim:'tide 36s ease-in-out infinite', accent:'#e8c3a0', ribbonLine:'rgba(232,195,160,.2)', logoFilter:dark, note:'2d and 2e together: warm mauve gradient drifting underneath, sheen sweeping over the top every 12s.' },
+      { id:'3f', name:'Aurora Drift · batteries clear', overlayA:'linear-gradient(200deg,rgba(59,42,122,.6) 0%,rgba(59,42,122,.2) 50%,rgba(20,8,38,0) 80%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(18,8,38,.5) 0%,rgba(18,8,38,0) 45%)', blendB:'normal', insetC:'-20% 20% 30% -10%', overlayC:'radial-gradient(closest-side,rgba(150,90,255,.55),rgba(150,90,255,0))', blendC:'screen', animC:'drift1 18s ease-in-out infinite', filterC:'blur(30px)', insetD:'-10% -15% 40% 45%', overlayD:'radial-gradient(closest-side,rgba(240,140,220,.4),rgba(240,140,220,0))', blendD:'screen', animD:'drift2 24s ease-in-out infinite', filterD:'blur(40px)', copyGrad:'linear-gradient(0deg,rgba(14,6,30,.94) 0%,rgba(14,6,30,.55) 55%,rgba(14,6,30,0) 100%)', ribbonBg:'linear-gradient(90deg,#100822,#1e1240,#100822)', accent:'#b9a6ff', logoFilter:light, note:'2b aurora, masked off the batteries. Light mark on the indigo sky.' },
+      { id:'3g', name:'Indigo Pulse', overlayA:'linear-gradient(200deg,rgba(59,42,122,.65) 0%,rgba(59,42,122,.25) 50%,rgba(20,8,38,0) 80%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(18,8,38,.55) 0%,rgba(18,8,38,0) 45%)', blendB:'normal', insetC:'0 -6% 8% 44%', overlayC:'radial-gradient(closest-side,rgba(120,80,255,.6),rgba(120,80,255,0))', blendC:'screen', animC:'breathe 10s ease-in-out infinite', filterC:'blur(26px)', copyGrad:'linear-gradient(0deg,rgba(14,6,30,.94) 0%,rgba(14,6,30,.55) 55%,rgba(14,6,30,0) 100%)', ribbonBg:'linear-gradient(90deg,#100822,#1e1240,#100822)', accent:'#b9a6ff', logoFilter:pale, note:'1c twilight indigo (static) with a slow 10s blue-violet pulse ringing the batteries. Pale mark.' },
+      { id:'3h', name:'Plum & Copper Sheen', overlayA:'linear-gradient(180deg,rgba(75,52,91,.6) 0%,rgba(75,52,91,.2) 45%,rgba(75,52,91,0) 60%)', blendA:'multiply', overlayB:'linear-gradient(0deg,rgba(92,54,30,.55) 0%,rgba(92,54,30,.2) 30%,rgba(92,54,30,0) 50%)', blendB:'multiply', insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 11s ease-in-out infinite', copyGrad:'linear-gradient(0deg,rgba(36,20,22,.92) 0%,rgba(36,20,22,.5) 55%,rgba(36,20,22,0) 100%)', ribbonBg:'linear-gradient(90deg,#2a1414,#4b345b,#2a1414)', accent:'#f0c9a5', ribbonLine:'rgba(240,201,165,.22)', logoFilter:dark, note:'2a plum-and-copper with the sheen sweep added. Dark mark.' },
+      { id:'3i', name:'Royal Wash · ribbon tide', overlayA:'linear-gradient(135deg,rgba(94,45,137,.6) 0%,rgba(94,45,137,.25) 50%,rgba(94,45,137,.45) 100%)', blendA:'soft-light', overlayB:'linear-gradient(180deg,rgba(94,45,137,.3) 0%,rgba(94,45,137,0) 55%)', blendB:'multiply', insetD:'0', overlayD:'radial-gradient(45% 60% at 74% 48%,rgba(196,165,255,.3) 0%,rgba(196,165,255,0) 70%)', blendD:'screen', animD:'shimmer 6s ease-in-out infinite', copyGrad:'linear-gradient(0deg,rgba(28,10,56,.92) 0%,rgba(28,10,56,.5) 55%,rgba(28,10,56,0) 100%)', ribbonBg:'linear-gradient(90deg,#24103f,#5e2d89,#3a1a5c,#5e2d89,#24103f)', ribbonSize:'300% 100%', ribbonAnim:'tide 24s ease-in-out infinite', logoFilter:mid, note:'1b royal violet wash kept still on the image; movement lives only in the ribbon and a soft shimmer around the batteries. Mid-tone mark.' },
+      { id:'3j', name:'Lavender Sky · dark mark', overlayA:'linear-gradient(180deg,rgba(196,165,255,.45) 0%,rgba(196,165,255,.15) 40%,rgba(196,165,255,0) 60%)', blendA:'screen', overlayB:'linear-gradient(180deg,rgba(94,45,137,.15) 0%,rgba(94,45,137,0) 50%)', blendB:'multiply', insetC:'0 -6% 8% 44%', overlayC:'radial-gradient(closest-side,rgba(255,255,255,.45),rgba(255,255,255,0))', blendC:'soft-light', animC:'breathe 9s ease-in-out infinite', filterC:'blur(24px)', copyGrad:'linear-gradient(0deg,rgba(26,11,46,.94) 0%,rgba(26,11,46,.6) 55%,rgba(26,11,46,0) 100%)', ribbonBg:'#1a0b2e', navFg:'#2b1550', navShadow:'0 1px 8px rgba(255,255,255,.6)', kickerBg:'rgba(94,45,137,.92)', kickerFg:'#ffffff', logoFilter:dark, note:'1g pale lavender sky — the one treatment where a dark plum mark and dark nav sit naturally, plus a gentle soft-light breathe around the batteries.' }
+    ].map(v => Object.assign({}, base, n3, v));
+    const lavA = 'linear-gradient(180deg,rgba(196,165,255,.45) 0%,rgba(196,165,255,.15) 40%,rgba(196,165,255,0) 60%)';
+    const lavCopy = 'linear-gradient(0deg,rgba(26,11,46,.94) 0%,rgba(26,11,46,.6) 55%,rgba(26,11,46,0) 100%)';
+    const lavNav = { navFg:'#2b1550', navShadow:'0 1px 8px rgba(255,255,255,.6)', kickerBg:'rgba(94,45,137,.92)', kickerFg:'#ffffff' };
+    const pcA = 'linear-gradient(180deg,rgba(75,52,91,.6) 0%,rgba(75,52,91,.2) 45%,rgba(75,52,91,0) 60%)';
+    const pcB = 'linear-gradient(0deg,rgba(92,54,30,.55) 0%,rgba(92,54,30,.2) 30%,rgba(92,54,30,0) 50%)';
+    const pcCopy = 'linear-gradient(0deg,rgba(36,20,22,.92) 0%,rgba(36,20,22,.5) 55%,rgba(36,20,22,0) 100%)';
+    const pc = { ribbonBg:'linear-gradient(90deg,#2a1414,#4b345b,#2a1414)', accent:'#f0c9a5', ribbonLine:'rgba(240,201,165,.22)' };
+    const variants4 = [
+      Object.assign({ id:'4a', name:'Plum & Copper Sheen · light mark', overlayA:pcA, blendA:'multiply', overlayB:pcB, blendB:'multiply', insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 11s ease-in-out infinite', copyGrad:pcCopy, logoFilter:light, note:'3h exactly, with the mark lifted to light lilac.' }, pc),
+      Object.assign({ id:'4b', name:'Plum & Copper · pale mark, ribbon tide', overlayA:pcA, blendA:'multiply', overlayB:pcB, blendB:'multiply', insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 11s ease-in-out infinite', copyGrad:pcCopy, logoFilter:pale, ribbonBg:'linear-gradient(90deg,#2a1414,#4b345b,#6a4a3a,#4b345b,#2a1414)', ribbonSize:'300% 100%', ribbonAnim:'tide 40s ease-in-out infinite', note:'3h with the palest mark, and the copper-plum ribbon slowly drifting to echo the sky.' }, pc),
+      Object.assign({ id:'4c', name:'Lavender Sky · sheen', overlayA:lavA, blendA:'screen', overlayB:'linear-gradient(180deg,rgba(94,45,137,.15) 0%,rgba(94,45,137,0) 50%)', blendB:'multiply', insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 10s ease-in-out infinite', copyGrad:lavCopy, ribbonBg:'#1a0b2e', logoFilter:dark, note:'3j lavender with the 2d sheen sweep instead of the breathe — one gentle pass every 10s.' }, lavNav),
+      Object.assign({ id:'4d', name:'Lavender Tide', overlayA:'linear-gradient(120deg,rgba(196,165,255,.5),rgba(230,200,255,.3),rgba(170,140,255,.5),rgba(196,165,255,.5))', sizeA:'300% 300%', animA:'tide 34s ease-in-out infinite', blendA:'screen', overlayB:'linear-gradient(180deg,rgba(94,45,137,.18) 0%,rgba(94,45,137,0) 55%)', blendB:'multiply', copyGrad:lavCopy, ribbonBg:'linear-gradient(90deg,#1a0b2e,#4b345b,#1a0b2e)', ribbonSize:'300% 100%', ribbonAnim:'tide 34s ease-in-out infinite', logoFilter:dark, note:'3j palette with the 2e tide: the lavender itself drifts slowly across the sky; batteries stay clear.' }, lavNav),
+      Object.assign({ id:'4e', name:'Lavender → Copper', overlayA:lavA, blendA:'screen', overlayB:pcB, blendB:'multiply', insetC:'0 -6% 8% 44%', overlayC:'radial-gradient(closest-side,rgba(255,255,255,.45),rgba(255,255,255,0))', blendC:'soft-light', animC:'breathe 9s ease-in-out infinite', filterC:'blur(24px)', copyGrad:pcCopy, ribbonBg:'linear-gradient(90deg,#2a1414,#4b345b,#2a1414)', accent:'#f0c9a5', ribbonLine:'rgba(240,201,165,.22)', logoFilter:dark, note:'Hybrid: 3j lavender sky and breathe on top, 3h copper ground and ribbon below — cool above, warm beneath.' }, lavNav)
+    ].map(v => Object.assign({}, base, n3, v));
+    // cherry ground: long soft ramp so plum sky → wine → cherry reads as one gradient
+    const chB = 'linear-gradient(0deg,rgba(120,28,52,.6) 0%,rgba(120,28,52,.4) 22%,rgba(110,34,70,.2) 42%,rgba(90,40,90,.06) 58%,rgba(90,40,90,0) 70%)';
+    const chB2 = 'linear-gradient(0deg,rgba(140,26,48,.62) 0%,rgba(130,30,58,.42) 20%,rgba(115,34,74,.22) 40%,rgba(90,40,90,.06) 58%,rgba(90,40,90,0) 70%)';
+    const chCopy = 'linear-gradient(0deg,rgba(40,12,28,.92) 0%,rgba(40,12,28,.5) 55%,rgba(40,12,28,0) 100%)';
+    const ch = { ribbonBg:'linear-gradient(90deg,#3a0f22,#4b345b,#3a0f22)', accent:'#f2c4cf', ribbonLine:'rgba(242,196,207,.22)' };
+    const breatheC = { insetC:'0 -6% 8% 44%', overlayC:'radial-gradient(closest-side,rgba(255,255,255,.45),rgba(255,255,255,0))', blendC:'soft-light', animC:'breathe 9s ease-in-out infinite', filterC:'blur(24px)' };
+    const sheenD = { insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 11s ease-in-out infinite' };
+    const variants5 = [
+      Object.assign({ id:'5a', name:'Lavender → Cherry', overlayA:lavA, blendA:'screen', overlayB:chB, blendB:'multiply', copyGrad:chCopy, logoFilter:dark, note:'4e with the copper swapped for a deep cherry, ramped over the lower half so the lavender sky melts into wine then cherry.' }, lavNav, breatheC, ch),
+      Object.assign({ id:'5b', name:'Lavender → Cherry · rose ribbon', overlayA:lavA, blendA:'screen', overlayB:chB2, blendB:'multiply', copyGrad:chCopy, logoFilter:dark, ribbonBg:'linear-gradient(90deg,#3a0f22,#6a1e3a,#4b345b,#6a1e3a,#3a0f22)', ribbonSize:'300% 100%', ribbonAnim:'tide 40s ease-in-out infinite', note:'Slightly redder cherry with a rose-plum ribbon drifting slowly underneath.' }, lavNav, breatheC, ch),
+      Object.assign({ id:'5c', name:'Plum & Cherry Sheen · light mark', overlayA:pcA, blendA:'multiply', overlayB:chB, blendB:'multiply', copyGrad:chCopy, logoFilter:light, note:'4a with the brown ground turned cherry. Light mark.' }, sheenD, ch),
+      Object.assign({ id:'5d', name:'Plum & Cherry Sheen · pale mark, tide', overlayA:pcA, blendA:'multiply', overlayB:chB2, blendB:'multiply', copyGrad:chCopy, logoFilter:pale, ribbonBg:'linear-gradient(90deg,#3a0f22,#6a1e3a,#4b345b,#6a1e3a,#3a0f22)', ribbonSize:'300% 100%', ribbonAnim:'tide 40s ease-in-out infinite', note:'4b with cherry ground and drifting rose-plum ribbon. Palest mark.' }, sheenD, ch),
+      Object.assign({ id:'5e', name:'Fresh · Wine Dusk', overlayA:'linear-gradient(180deg,rgba(210,180,255,.4) 0%,rgba(160,120,220,.25) 30%,rgba(120,60,140,.15) 50%,rgba(120,60,140,0) 62%)', blendA:'screen', overlayB:'linear-gradient(0deg,rgba(105,20,60,.62) 0%,rgba(105,20,60,.4) 22%,rgba(100,30,80,.2) 42%,rgba(90,40,90,0) 66%)', blendB:'multiply', copyGrad:chCopy, logoFilter:dark, insetD:'0 60% 0 0', overlayD:sheenBand, blendD:'soft-light', animD:'sheen 14s ease-in-out infinite', ribbonBg:'linear-gradient(90deg,#2c0a1c,#5e2d89,#2c0a1c)', note:'Fresh: lavender-violet sky ramping straight into a deep wine ground with no plum midband; slow 14s sheen. Dark mark.' }, lavNav, ch),
+      Object.assign({ id:'5f', name:'Fresh · Rosé Glow', overlayA:'linear-gradient(180deg,rgba(196,165,255,.42) 0%,rgba(196,165,255,.15) 40%,rgba(196,165,255,0) 58%)', blendA:'screen', overlayB:'linear-gradient(0deg,rgba(150,40,70,.55) 0%,rgba(150,40,70,.35) 22%,rgba(130,50,100,.18) 42%,rgba(90,40,90,0) 66%)', blendB:'multiply', copyGrad:chCopy, logoFilter:mid, insetC:'20% -10% -10% 30%', overlayC:'radial-gradient(closest-side,rgba(255,120,150,.4),rgba(255,120,150,0))', blendC:'screen', animC:'breathe 12s ease-in-out infinite', filterC:'blur(40px)', ribbonBg:'linear-gradient(90deg,#3a0f22,#7a2a4a,#3a0f22)', accent:'#ffd6dd', note:'Fresh: lavender sky, warmer rosé-cherry ground with a slow pink glow breathing low-right behind the house. Mid-tone mark.' }, lavNav, ch)
+    ].map(v => Object.assign({}, base, n3, v));
+    const fiveB = Object.assign({}, base, n3, { overlayA:lavA, blendA:'screen', overlayB:chB2, blendB:'multiply', copyGrad:chCopy, logoFilter:dark, ribbonBg:'linear-gradient(90deg,#3a0f22,#6a1e3a,#4b345b,#6a1e3a,#3a0f22)', ribbonSize:'300% 100%', ribbonAnim:'tide 40s ease-in-out infinite' }, lavNav, ch);
+    const glow = (inset) => ({ insetC:inset, overlayC:'radial-gradient(closest-side,rgba(255,255,255,.45),rgba(255,255,255,0))', blendC:'soft-light', animC:'breathe 9s ease-in-out infinite', filterC:'blur(24px)' });
+    const variants6 = [
+      Object.assign({}, fiveB, glow('16% 14% 4% 46%'), { id:'6a', showLogo:false, name:'Lounge · SigenStor', imgUrl:'url(img/render-lounge.png)', imgPos:'50% 50%', mask:'radial-gradient(ellipse 13% 32% at 66% 55%,transparent 78%,#000 100%)', note:'Interior render. Lavender screen lifts the plaster wall; cherry ramps into the slate floor. Battery masked clear. No placed mark — the wall-painted logo in the render carries the brand.' }),
+      Object.assign({}, fiveB, glow('44% 30% -6% 44%'), { id:'6b', showLogo:true, name:'House · EV at dusk', imgUrl:'url(img/render-house-ev-clean.png)', imgPos:'50% 40%', mask:'radial-gradient(ellipse 7% 18% at 59% 73%,transparent 78%,#000 100%)', note:'Dusk house with purple energy line and EV. Baked-in logo painted out of the render; placed mark stands alone. Closest to the original scene; the render\u2019s own violet line sits naturally in the lavender→cherry wash.' }),
+      Object.assign({}, fiveB, glow('16% 10% 0% 46%'), { id:'6c', showLogo:true, name:'Night · switchboard', imgUrl:'url(img/render-night-switchboard-clean.png)', logoFilter:pale, imgPos:'50% 50%', mask:'radial-gradient(ellipse 13% 34% at 66% 60%,transparent 78%,#000 100%)', navFg:'#ffffff', navShadow:shadow, note:'Night render, baked-in logo painted out — already deep indigo, so the lavender screen reads as a soft glow rather than a lift; nav back to white for contrast. Cherry warms the concrete floor.' })
+    ];
+    return { variants, variants2, variants3, variants4, variants5, variants6 };
+  }
+}
+</script>
+</body>
+</html>

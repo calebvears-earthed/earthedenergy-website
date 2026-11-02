@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Footer Options · Earthed Energy</title>
+<meta name="description" content="Footer Options from the Earthed Energy design archive.">
+<link rel="canonical" href="https://www.earthedenergy.au/design/footer-options.html">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Footer Options · Earthed Energy">
+<meta property="og:description" content="Footer Options from the Earthed Energy design archive.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.earthedenergy.au/design/footer-options.html">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="Earthed Energy">
+<meta name="theme-color" content="#2B1550">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/open-sans-variable.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2013, U+2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2039-203A, U+2122, U+2191, U+2193;
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/open-sans-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2013, U+2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2039-203A, U+2122, U+2191, U+2193;
+}
+
+/* Shared chrome. Mockup palette, header placement aligned with earthedhv.au. */
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: #2b1550;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font: 600 14px/1 "Open Sans", sans-serif;
+}
+.skip-link:focus { top: 12px; }
+
+html { scroll-padding-top: 5.75rem; }
+h1, h2, [data-screen-label] { scroll-margin-top: 5.75rem; }
+[data-screen-label]:not(#top) { padding-top: 88px !important; }
+
+.ee-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.8vw, 32px);
+  padding: 14px clamp(16px, 3vw, 48px);
+  background: transparent;
+  color: #2b1550;
+  border-bottom: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.ee-header a { color: inherit; text-decoration: none; }
+.ee-logo { margin-right: auto; width: 148px; letter-spacing: 0; text-transform: none; display: block; }
+.ee-logo img { width: 100%; height: auto; display: block; }
+.ee-links { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 28px); }
+.ee-links a, .ee-sister {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.ee-sister { color: #5e2d89; }
+.ee-header a[aria-current="page"] { box-shadow: inset 0 -2px 0 #f5a04a; }
+.ee-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid currentColor;
+  color: inherit;
+  white-space: nowrap;
+}
+.ee-cta:hover, .ee-links a:hover, .ee-sister:hover { color: #5e2d89; }
+
+body.page-home .ee-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: transparent;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(25, 10, 40, 0.75);
+}
+body.page-home .ee-logo { display: none; }
+body.page-home .ee-cta:hover,
+body.page-home .ee-links a:hover { color: #e9ddff; }
+body.page-home #top > a[aria-label="Earthed Energy home"] { top: 16% !important; }
+body.page-home [data-hero-copy] { top: 36% !important; }
+#solar picture, #battery picture, #ev picture, #aircon picture, #heatpump picture,
+#solar img, #battery img, #ev img, #aircon img, #heatpump img {
+  background: transparent !important;
+}
+.ee-ehv-logo {
+  width: min(240px, 78%);
+  height: auto;
+  display: block;
+  margin-bottom: 4px;
+}
+.ee-ehv-card {
+  grid-area: 1 / 1;
+  align-self: start;
+  justify-self: start;
+  z-index: 2;
+  margin: 28px 32px;
+  max-width: min(420px, calc(100% - 64px));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: #2b1550;
+  color: #fff;
+  text-decoration: none;
+}
+.ee-ehv-kicker {
+  font: 600 11px/1 "Open Sans", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ee-ehv-line {
+  font: 400 15px/1.45 "Open Sans", sans-serif;
+  color: rgba(255, 255, 255, 0.92);
+}
+body.page-quote .ee-sticky-cta { display: none; }
+body.page-quote { padding-bottom: 0; }
+
+.ee-mob, .ee-sticky-cta { display: none; }
+
+.ee-ph p { margin: 0; }
+
+[data-reveal] { transition: transform 0.6s ease; }
+html.js [data-reveal] { transform: translateY(14px); }
+html.js [data-reveal].is-in { transform: none; }
+
+[data-step] { transition: box-shadow 0.35s ease; border-radius: 12px; }
+[data-step].is-active { box-shadow: inset 3px 0 0 #c9a6f2; }
+
+.ee-fold,
+[data-collage] {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 880px;
+}
+[data-collage] a > div { transition: opacity 0.35s ease; }
+[data-collage] a:hover > div,
+[data-collage] a:focus-visible > div { opacity: 1 !important; }
+
+@media (max-width: 720px) {
+  body.page-home [data-hero-copy] { top: 34% !important; }
+  .ee-header { display: none; }
+  .ee-mob {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(43, 21, 80, 0.96);
+    color: #fff;
+    backdrop-filter: blur(12px);
+  }
+  .ee-mob a { color: #fff; text-decoration: none; }
+  .ee-mob-logo { width: 120px; display: block; }
+  .ee-mob-logo img { width: 100%; height: auto; display: block; }
+  .ee-mob-tools { display: flex; align-items: center; gap: 6px; }
+  .ee-iconbtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    color: #fff;
+    font: 700 12px/1 "Open Sans", sans-serif;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+  .ee-drawer[hidden] { display: none !important; }
+  .ee-drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #2b1550;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(20, 5, 40, 0.5);
+  }
+  .ee-drawer a {
+    padding: 18px 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 44px;
+  }
+  .ee-drawer a[aria-current="page"] { color: #e9ddff; }
+  .ee-sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(245, 241, 232, 0.96);
+    border-top: 1px solid #d8d0c0;
+    backdrop-filter: blur(10px);
+  }
+  .ee-sticky-cta a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 8px;
+    font: 600 14px/1 "Open Sans", sans-serif;
+    text-decoration: none;
+  }
+  .ee-sticky-cta a:first-child {
+    padding: 0 18px;
+    border: 1px solid #4b345b;
+    color: #4b345b;
+  }
+  .ee-sticky-cta a:last-child {
+    flex: 1;
+    background: #4b345b;
+    color: #f5f1e8;
+  }
+  body { padding-bottom: 76px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.js [data-reveal] { transform: none; }
+}
+
+.ee-form {
+  display: grid;
+  gap: 14px;
+  max-width: 640px;
+}
+.ee-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: #2b1550; }
+.ee-form input, .ee-form textarea, .ee-form select {
+  min-height: 48px;
+  border: 1px solid rgba(43, 21, 80, 0.25);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: 400 16px/1.4 "Open Sans", sans-serif;
+  color: #2b1550;
+  background: #fff;
+}
+.ee-form textarea { min-height: 120px; }
+.ee-form button, .ee-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #5e2d89;
+  color: #fff;
+  font: 600 15px/1 "Open Sans", sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+.ee-note { font-size: 15px; line-height: 1.6; color: #3a2947; max-width: 62ch; }
+
+/* Mockup meta colours sit under 4.5:1 on cream. Lift them without changing the ink. */
+[style*="rgba(43,21,80,.4)"],
+[style*="rgba(43,21,80,.45)"],
+[style*="rgba(43,21,80,.5)"],
+[style*="rgba(43,21,80,.55)"],
+[style*="#8B6B9E"],
+[style*="#8b6b9e"],
+[style*="#867894"] {
+  color: #3a275c !important;
+}
+main a[href="https://earthedhv.au"][style*="color:#ffffff"] {
+  background: #2b1550 !important;
+}
+
+
+body{margin:0;background:#E4DBF5;color:#2b1550;font-family:'Open Sans',sans-serif}
+a{color:#c4a5ff;text-decoration:none}
+a:hover{color:#ffffff}
+
+</style>
+</head>
+<body class="page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="ee-header"><a class="ee-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-purple.webp" alt="" width="1234" height="329"></a><nav class="ee-links" aria-label="Primary"><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a></nav><a class="ee-cta" href="/get-a-quote.html">Calculate savings</a></header>
+<nav class="ee-mob" aria-label="Primary mobile"><a class="ee-mob-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-white.webp" alt="" width="1234" height="329"></a><div class="ee-mob-tools"><a class="ee-iconbtn" href="tel:0433839284" aria-label="Call 0433 839 284">☎</a><button class="ee-iconbtn" type="button" data-ee-menu aria-expanded="false" aria-controls="ee-drawer">MENU</button></div><div class="ee-drawer" id="ee-drawer" hidden><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a><a href="/get-a-quote.html">Calculate savings</a></div></nav>
+<main id="main">
+
+<section style="display:flex;flex-direction:column;gap:56px;padding:48px 40px;border-bottom:1px solid rgba(60,30,110,.25)">
+<div style="font-family:'Open Sans',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6B4FBB">Turn 2 · five purple takes on <a href="#1c" style="color:#6B4FBB">1c</a></div>
+<div id="2a" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#2a" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">2a</a><span style="font-size:14px;color:#5B5078">Deep plum · EHV plum #2b1550 band, lavender accents</span></div>
+<div style="background:#2b1550;overflow:hidden">
+  <div style="display:grid;grid-template-columns:minmax(0,1fr)">
+    <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:auto;display:block;grid-area:1/1" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+    
+    <div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span>
+    </div>
+  </div>
+  <div style="padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px;">
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="tel:0433839284" style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1;color:#ffffff">0433 839 284</a>
+        <a href="mailto:calebvears@earthedhv.au" style="font-size:16px;color:#c4a5ff;font-weight:600">calebvears@earthedhv.au</a>
+        <p style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.62);margin:6px 0 0;max-width:40ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" style="color:#c4a5ff">earthedhv.au</a>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;font-size:14px"><a href="/knowledge.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>SA knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">01</span></a><a href="/#how" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>How we work</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">03</span></a><a href="/commercial.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">04</span></a><a href="/credentials-and-licences.html" style="color:rgba(255,255,255,.82);padding:9px 0;display:flex;justify-content:space-between"><span>Credentials</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">06</span></a></div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(255,255,255,.62)">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#ffffff">Company</div>
+        <span>PO Box 4111<br>Norwood South SA 5067</span>
+        <span>ACN 679 180 879<br>ABN 99 679 180 879</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14)">
+      <span style="font-size:12.5px;color:rgba(255,255,255,.62)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:32px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;filter:brightness(0) invert(1);opacity:.85" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;filter:brightness(0) invert(1);opacity:.85" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="2b" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#2b" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">2b</a><span style="font-size:14px;color:#5B5078">EE purple · brand #5E2D89 band, white type, gold-tinged accents</span></div>
+<div style="background:#5E2D89;overflow:hidden">
+  <div style="display:grid;grid-template-columns:minmax(0,1fr)">
+    <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:auto;display:block;grid-area:1/1" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+    
+    <div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span>
+    </div>
+  </div>
+  <div style="padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px;">
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="tel:0433839284" style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1;color:#ffffff">0433 839 284</a>
+        <a href="mailto:calebvears@earthedhv.au" style="font-size:16px;color:#F3ECFF;font-weight:600">calebvears@earthedhv.au</a>
+        <p style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.72);margin:6px 0 0;max-width:40ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" style="color:#F3ECFF">earthedhv.au</a>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;font-size:14px"><a href="/knowledge.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.22);display:flex;justify-content:space-between"><span>SA knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.5)">01</span></a><a href="/#how" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.22);display:flex;justify-content:space-between"><span>How we work</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.5)">03</span></a><a href="/commercial.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.22);display:flex;justify-content:space-between"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.5)">04</span></a><a href="/credentials-and-licences.html" style="color:rgba(255,255,255,.82);padding:9px 0;display:flex;justify-content:space-between"><span>Credentials</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.5)">06</span></a></div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(255,255,255,.72)">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#ffffff">Company</div>
+        <span>PO Box 4111<br>Norwood South SA 5067</span>
+        <span>ACN 679 180 879<br>ABN 99 679 180 879</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.22)">
+      <span style="font-size:12.5px;color:rgba(255,255,255,.72)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:32px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;filter:brightness(0) invert(1);opacity:.85" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;filter:brightness(0) invert(1);opacity:.85" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="2c" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#2c" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">2c</a><span style="font-size:14px;color:#5B5078">Fade · render dissolves into a #1a0f2e plum band, no hard edge</span></div>
+<div style="background:#1a0f2e;overflow:hidden">
+  <div style="display:grid;grid-template-columns:minmax(0,1fr)">
+    <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:auto;display:block;grid-area:1/1" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+    <div style="grid-area:1/1;background:linear-gradient(0deg,#1a0f2e 0%,rgba(0,0,0,0) 38%)"></div>
+    <div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span>
+    </div>
+  </div>
+  <div style="padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px;">
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="tel:0433839284" style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1;color:#ffffff">0433 839 284</a>
+        <a href="mailto:calebvears@earthedhv.au" style="font-size:16px;color:#c4a5ff;font-weight:600">calebvears@earthedhv.au</a>
+        <p style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.62);margin:6px 0 0;max-width:40ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" style="color:#c4a5ff">earthedhv.au</a>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;font-size:14px"><a href="/knowledge.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>SA knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">01</span></a><a href="/#how" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>How we work</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">03</span></a><a href="/commercial.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">04</span></a><a href="/credentials-and-licences.html" style="color:rgba(255,255,255,.82);padding:9px 0;display:flex;justify-content:space-between"><span>Credentials</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">06</span></a></div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(255,255,255,.62)">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#ffffff">Company</div>
+        <span>PO Box 4111<br>Norwood South SA 5067</span>
+        <span>ACN 679 180 879<br>ABN 99 679 180 879</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14)">
+      <span style="font-size:12.5px;color:rgba(255,255,255,.62)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:32px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;filter:brightness(0) invert(1);opacity:.85" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;filter:brightness(0) invert(1);opacity:.85" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="2d" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#2d" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">2d</a><span style="font-size:14px;color:#5B5078">Lavender · the site background continues, dark type; footer feels part of the page</span></div>
+<div style="background:#E4DBF5;overflow:hidden">
+  <div style="display:grid;grid-template-columns:minmax(0,1fr)">
+    <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:auto;display:block;grid-area:1/1" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+    
+    <div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span>
+    </div>
+  </div>
+  <div style="padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px;background-image:linear-gradient(rgba(94,45,137,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(94,45,137,.07) 1px,transparent 1px);background-size:64px 64px">
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="tel:0433839284" style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1;color:#2b1550">0433 839 284</a>
+        <a href="mailto:calebvears@earthedhv.au" style="font-size:16px;color:#5E2D89;font-weight:600">calebvears@earthedhv.au</a>
+        <p style="font-size:13.5px;line-height:1.7;color:rgba(43,21,80,.68);margin:6px 0 0;max-width:40ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" style="color:#5E2D89">earthedhv.au</a>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;font-size:14px"><a href="/knowledge.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between"><span>SA knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">01</span></a><a href="/#how" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between"><span>How we work</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">02</span></a><a href="/commercial.html" style="color:#2b1550;padding:9px 0;border-bottom:1px solid rgba(43,21,80,.18);display:flex;justify-content:space-between"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">03</span></a><a href="/credentials-and-licences.html" style="color:#2b1550;padding:9px 0;display:flex;justify-content:space-between"><span>Credentials</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(43,21,80,.4)">04</span></a></div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(43,21,80,.68)">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#2b1550">Company</div>
+        <span>PO Box 4111<br>Norwood South SA 5067</span>
+        <span>ACN 679 180 879<br>ABN 99 679 180 879</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(43,21,80,.18)">
+      <span style="font-size:12.5px;color:rgba(43,21,80,.68)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;filter:none;opacity:.9" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:32px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;filter:none;opacity:.9" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;filter:none;opacity:.9" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;filter:none;opacity:.9" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="2e" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#2e" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">2e</a><span style="font-size:14px;color:#5B5078">Violet glow · #3B1F6E band with a radial purple bloom behind the phone number</span></div>
+<div style="background:#3B1F6E;overflow:hidden">
+  <div style="display:grid;grid-template-columns:minmax(0,1fr)">
+    <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:auto;display:block;grid-area:1/1" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+    
+    <div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span>
+    </div>
+  </div>
+  <div style="padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px;background:radial-gradient(ellipse 60% 80% at 18% 30%,rgba(168,120,255,.35),transparent 60%),#3B1F6E">
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="tel:0433839284" style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1;color:#ffffff">0433 839 284</a>
+        <a href="mailto:calebvears@earthedhv.au" style="font-size:16px;color:#c4a5ff;font-weight:600">calebvears@earthedhv.au</a>
+        <p style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.62);margin:6px 0 0;max-width:40ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" style="color:#c4a5ff">earthedhv.au</a>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;font-size:14px"><a href="/knowledge.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>SA knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">01</span></a><a href="/#how" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>How we work</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">03</span></a><a href="/commercial.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">04</span></a><a href="/credentials-and-licences.html" style="color:rgba(255,255,255,.82);padding:9px 0;display:flex;justify-content:space-between"><span>Credentials</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">06</span></a></div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(255,255,255,.62)">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#ffffff">Company</div>
+        <span>PO Box 4111<br>Norwood South SA 5067</span>
+        <span>ACN 679 180 879<br>ABN 99 679 180 879</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14)">
+      <span style="font-size:12.5px;color:rgba(255,255,255,.62)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:32px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;filter:brightness(0) invert(1);opacity:.85" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;filter:brightness(0) invert(1);opacity:.85" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<section style="display:flex;flex-direction:column;gap:56px;padding:48px 40px">
+
+<!-- 1a · Image left, panel right -->
+<div id="1a" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#1a" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">1a</a><span style="font-size:14px;color:#5B5078">Split · render uncropped on the left, dark panel on the right holds everything</span></div>
+<div style="background:#0F1421;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);overflow:hidden">
+  <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:100%;object-fit:cover;display:block;min-height:420px" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+  <div style="padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between;gap:36px;background:linear-gradient(90deg,#0F1421 0%,#160f26 100%)">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.92" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,.72);margin:0;max-width:38ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au" style="font-weight:600">earthedhv.au</a>.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14px"><a href="/knowledge.html" style="color:rgba(255,255,255,.78)">SA knowledge</a><a href="/#how" style="color:rgba(255,255,255,.78)">How we work</a><a href="/commercial.html" style="color:rgba(255,255,255,.78)">Commercial</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:rgba(255,255,255,.78)"><a href="tel:0433839284" style="color:#ffffff;font-weight:600">0433 839 284</a><a href="mailto:calebvears@earthedhv.au" style="color:rgba(255,255,255,.78)">calebvears@earthedhv.au</a><span>PO Box 4111 Norwood South SA 5067</span><span style="font-family:'Open Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.55)">ACN 679 180 879 · ABN 99 679 180 879</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18)">
+      <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:22px;filter:brightness(0) invert(1);opacity:.85" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:30px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:18px;filter:brightness(0) invert(1);opacity:.85" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:22px;filter:brightness(0) invert(1);opacity:.85" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:15px;filter:brightness(0) invert(1);opacity:.85" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+      <span style="font-size:12px;color:rgba(255,255,255,.55)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 1b · Clean image, single glass bar -->
+<div id="1b" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#1b" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">1b</a><span style="font-size:14px;color:#5B5078">Poster · the render stays clean, one frosted bar carries a horizontal link row, phone number as the hero</span></div>
+<div style="background:#0F1421;display:grid;grid-template-columns:minmax(0,1fr);overflow:hidden">
+  <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:auto;display:block;grid-area:1/1" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+  <div style="grid-area:1/1;display:flex;flex-direction:column;justify-content:space-between;padding:36px 40px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <a href="tel:0433839284" style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:34px;line-height:1;color:#ffffff;text-shadow:0 2px 14px rgba(0,0,0,.6)">0433 839 284</a>
+    </div>
+    <div style="background:rgba(10,4,19,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:22px 28px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;justify-content:space-between;gap:20px 36px;flex-wrap:wrap;align-items:center">
+        <div style="display:flex;gap:26px;flex-wrap:wrap;font-size:14px;font-weight:500"><a href="/knowledge.html" style="color:#ffffff">SA knowledge</a><a href="/#how" style="color:#ffffff">How we work</a><a href="/commercial.html" style="color:#ffffff">Commercial</a></div>
+        <a href="mailto:calebvears@earthedhv.au" style="color:#c4a5ff;font-size:14px;font-weight:600">calebvears@earthedhv.au</a>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:16px 36px;flex-wrap:wrap;align-items:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.14)">
+        <span style="font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.65);max-width:60ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd · PO Box 4111 Norwood South SA 5067 · ACN 679 180 879 · ABN 99 679 180 879 · © 2026 · Utility-scale work at <a href="https://earthedhv.au">earthedhv.au</a></span>
+        <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:22px;filter:brightness(0) invert(1);opacity:.85" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:30px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:18px;filter:brightness(0) invert(1);opacity:.85" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:22px;filter:brightness(0) invert(1);opacity:.85" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:15px;filter:brightness(0) invert(1);opacity:.85" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 1c · Image full, then editorial band -->
+<div id="1c" style="display:flex;flex-direction:column;gap:14px;max-width:1280px">
+<div style="display:flex;align-items:center;gap:12px"><a href="#1c" style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:600;background:#2b1550;color:#ffffff;padding:4px 10px;border-radius:4px">1c</a><span style="font-size:14px;color:#5B5078">Editorial · render untouched with a single sign-off line, then a navy band with a big statement and a mono index</span></div>
+<div style="background:#0F1421;overflow:hidden">
+  <div style="display:grid;grid-template-columns:minmax(0,1fr)">
+    <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery at dusk" style="width:100%;height:auto;display:block;grid-area:1/1" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+    <div style="grid-area:1/1;align-self:end;padding:0 40px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+      <picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:170px;height:auto;display:block;opacity:.95;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))" width="1234" height="329" loading="lazy" decoding="async"></picture>
+      <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:22px;color:#ffffff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Solar by day. Battery by night.</span>
+    </div>
+  </div>
+  <div style="padding:44px 40px 26px;display:flex;flex-direction:column;gap:34px">
+    <div style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:32px 48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="tel:0433839284" style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(30px,3.4vw,44px);line-height:1;color:#ffffff">0433 839 284</a>
+        <a href="mailto:calebvears@earthedhv.au" style="font-size:16px;color:#c4a5ff;font-weight:600">calebvears@earthedhv.au</a>
+        <p style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.62);margin:6px 0 0;max-width:40ch">Earthed Energy, trading as Earthed High Voltage Pty Ltd. Adelaide Hills based. All of South Australia covered. Utility-scale work at <a href="https://earthedhv.au">earthedhv.au</a>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;font-size:14px">
+        <a href="/knowledge.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between"><span>SA knowledge</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">01</span></a>
+        
+        <a href="/#how" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between"><span>How we work</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">03</span></a>
+        <a href="/commercial.html" style="color:rgba(255,255,255,.82);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between"><span>Commercial</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">04</span></a>
+        
+        <a href="/credentials-and-licences.html" style="color:rgba(255,255,255,.82);padding:9px 0;display:flex;justify-content:space-between"><span>Credentials</span><span style="font-family:'Open Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.4)">06</span></a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-family:'Open Sans',sans-serif;font-size:12px;line-height:1.7;color:rgba(255,255,255,.62)">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#ffffff">Company</div>
+        <span>PO Box 4111<br>Norwood South SA 5067</span>
+        <span>ACN 679 180 879<br>ABN 99 679 180 879</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px 32px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18)">
+      <span style="font-size:12.5px;color:rgba(255,255,255,.55)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:wrap"><picture style="display:contents"><img src="/images/partner-solar-accred.webp" alt="Solar Accreditation Australia" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="268" height="78" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-nec-seller.webp" alt="NETCC Approved Seller" style="height:32px;opacity:.95" width="508" height="507" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-28watt.webp" alt="28Watt" style="height:20px;filter:brightness(0) invert(1);opacity:.85" width="745" height="185" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-greendeal.webp" alt="GreenDeal" style="height:24px;filter:brightness(0) invert(1);opacity:.85" width="421" height="143" loading="lazy" decoding="async"></picture><picture style="display:contents"><img src="/images/partner-elevant.webp" alt="Elevant" style="height:16px;filter:brightness(0) invert(1);opacity:.85" width="284" height="67" loading="lazy" decoding="async"></picture></div>
+    </div>
+  </div>
+</div>
+</div>
+
+</section>
+
+
+</main>
+<div class="ee-sticky-cta"><a href="tel:0433839284">Call</a><a href="/get-a-quote.html">Calculate savings</a></div>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>

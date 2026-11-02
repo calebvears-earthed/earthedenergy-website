@@ -1,0 +1,45 @@
+export const groups = [
+  { id: 'basics', label: 'The basics', blurb: 'Start here if solar and batteries are new to you.', items: [
+    ['What Solar Does', 'What solar actually does for a South Australian home', 'Six plain-terms outcomes: lower bills, less grid, property value, rebates, cleaner power, 25-year panels.'],
+    ['What a Battery Does', 'Six things a battery does for an Adelaide home', 'Day and night solar, less grid reliance, stop exporting for cents, blackout backup, lower bills.'],
+    ['Reading Your Power Bill', 'Reading your power bill', 'The five numbers on any SA electricity bill that decide your solar design.'],
+    ['How Much You Save', 'How much you save', 'Honest payback brackets by quarterly bill size. When solar-only makes sense and when the battery joins.'],
+    ['Battery Sizing', 'Battery sizing', 'How many kWh you actually need: 40 to 70 percent of daily use, plus EV, pool and heat pump headroom.'],
+  ]},
+  { id: 'grid', label: 'Your grid connection', blurb: 'SA Power Networks rules that shape what we can install at your address.', items: [
+    ['SAPN Flexible Export', 'SAPN Flexible Exports', 'How the 10 kW throttle really behaves, how often it drops, and why an oversized inverter still pays.'],
+    ['SA Export Limits', 'SA export limits', 'Fixed 1.5 kW cap or Flexible Exports. How we check which one your address gets before we quote.'],
+    ['Three-phase vs Single-phase', 'Three-phase vs single-phase', 'How your supply changes inverter choice, export limits and battery backup.'],
+    ['SWER Lines', 'SWER lines', 'Single wire earth return supplies in the Hills and rural SA. The 5 kVA cap lifted to 10 kVA in July 2025.'],
+    ['Shade and Roof Orientation', 'Shade and roof orientation', 'Trees, sun angle and roof direction on treed Hills blocks. String layout as a design decision.'],
+    ['Bushfire Prone Areas', 'Bushfire prone areas', 'How BAL ratings change component selection, cable routing, isolation and battery placement.'],
+  ]},
+  { id: 'backup', label: 'Backup and off-grid', blurb: 'What keeps running when the grid drops, and when to leave it altogether.', items: [
+    ['Outage Backup', 'Outage backup', 'Standard solar shuts down with the grid. Only a backup-specified battery with a wired switchboard keeps the house up.'],
+    ['Whole-home Backup Explained', 'Whole-home backup explained', 'GoodWe ESA built-in transfer switch with motor derate versus Sigenergy Gateway with zero-millisecond switchover.'],
+    ['Off-grid vs Grid-connect', 'Off-grid vs grid-connect', 'Grid-connect sizes for payback. Off-grid sizes for autonomy. Two different design disciplines.'],
+  ]},
+  { id: 'money', label: 'Rebates and finance', blurb: 'The real maths on what comes off the invoice and how people pay.', items: [
+    ['Federal Rebates Explained', 'Federal rebates explained', 'STCs on panels, Cheaper Home Batteries on batteries, SA feed-in tariff. Zone 3, five-year deeming, spot price.'],
+    ['Finance Options', 'Finance options', 'Elevant interest-free under $10k, 28Watt for larger green loans, 7% off for cash. How dealer fees really work.'],
+  ]},
+  { id: 'equipment', label: 'Equipment', blurb: 'Every product line we install, with real specs and warranties.', items: [
+    ['What We Install', 'What we install', 'Panels, inverters, batteries, racking, cable, EV, aircon and hot water in one place.'],
+    ['Solar Panels', 'Solar panels', 'Trina Vertex S+ 475 W as default, Astronergy 470 W as the budget alternative.'],
+    ['Inverters', 'Inverters', 'GoodWe ESA, GoodWe ET Plus, Sigenergy SigenStor SP and TP. When each one fits.'],
+    ['Battery Storage', 'Batteries', 'GoodWe Lynx Home and Sigenergy SigenStor BAT modules. Usable kWh and why modular beats fixed-size.'],
+    ['GoodWe vs Sigenergy', 'GoodWe vs Sigenergy', 'An honest comparison of the two platforms we install. Neither is better; they suit different homes.'],
+    ['EV Charging', 'EV charging', 'GoodWe HCA AC charger and Sigenergy integrated DC charger. Solar-priority, off-peak, pre-wired.'],
+    ['Aircon Hot Water', 'Air conditioning and heat pump hot water', 'Daikin reverse-cycle and Reclaim CO2 heat pump, sized and timed to run on your solar.'],
+    ['Racking and Cable', 'Racking and cable', 'Clenergy racking, Nexans and Prysmian cable. The boring parts, done properly.'],
+    ['Monitoring Apps', 'Monitoring apps', 'GoodWe SEMS and Sigenergy mySigen. What each shows and what to actually check.'],
+  ]},
+  { id: 'process', label: 'How we work', blurb: 'From the first phone call to year seven.', items: [
+    ['How We Quote', 'How we quote', 'Free 45-minute site visit, CEC-signed design and written quote back in three to five days.'],
+    ['Typical Timeline', 'Typical timeline', 'Realistic timing from sign day to handover: materials, SAPN approval, install, commissioning.'],
+    ['Installation Day', 'Installation day', 'One to two days on the roof. Who comes, what we bring, what you need to do.'],
+    ['Commissioning and Handover', 'Commissioning and handover', 'Testing, monitoring on your phone, warranty documents in hand, how to reach us after.'],
+    ['Warranty and Aftercare', 'Warranty and aftercare', '10-year workmanship, 25-year panels, 10-year inverter and battery. What happens in year seven.'],
+    ['Credentials and Licences', 'Credentials and licences', 'Every accreditation, explained in plain English.'],
+  ]},
+];

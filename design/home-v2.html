@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earthed Energy Home v2 · Earthed Energy</title>
+<meta name="description" content="Earthed Energy Home v2 from the Earthed Energy design archive.">
+<link rel="canonical" href="https://www.earthedenergy.au/design/home-v2.html">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Earthed Energy Home v2 · Earthed Energy">
+<meta property="og:description" content="Earthed Energy Home v2 from the Earthed Energy design archive.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.earthedenergy.au/design/home-v2.html">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="Earthed Energy">
+<meta name="theme-color" content="#2B1550">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/open-sans-variable.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2013, U+2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2039-203A, U+2122, U+2191, U+2193;
+}
+@font-face {
+  font-family: "Open Sans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/open-sans-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2013, U+2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2039-203A, U+2122, U+2191, U+2193;
+}
+
+/* Shared chrome. Mockup palette, header placement aligned with earthedhv.au. */
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: #2b1550;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font: 600 14px/1 "Open Sans", sans-serif;
+}
+.skip-link:focus { top: 12px; }
+
+html { scroll-padding-top: 5.75rem; }
+h1, h2, [data-screen-label] { scroll-margin-top: 5.75rem; }
+[data-screen-label]:not(#top) { padding-top: 88px !important; }
+
+.ee-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(12px, 1.8vw, 32px);
+  padding: 14px clamp(16px, 3vw, 48px);
+  background: transparent;
+  color: #2b1550;
+  border-bottom: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.ee-header a { color: inherit; text-decoration: none; }
+.ee-logo { margin-right: auto; width: 148px; letter-spacing: 0; text-transform: none; display: block; }
+.ee-logo img { width: 100%; height: auto; display: block; }
+.ee-links { display: flex; align-items: center; gap: clamp(12px, 1.5vw, 28px); }
+.ee-links a, .ee-sister {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.ee-sister { color: #5e2d89; }
+.ee-header a[aria-current="page"] { box-shadow: inset 0 -2px 0 #f5a04a; }
+.ee-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid currentColor;
+  color: inherit;
+  white-space: nowrap;
+}
+.ee-cta:hover, .ee-links a:hover, .ee-sister:hover { color: #5e2d89; }
+
+body.page-home .ee-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: transparent;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(25, 10, 40, 0.75);
+}
+body.page-home .ee-logo { display: none; }
+body.page-home .ee-cta:hover,
+body.page-home .ee-links a:hover { color: #e9ddff; }
+body.page-home #top > a[aria-label="Earthed Energy home"] { top: 16% !important; }
+body.page-home [data-hero-copy] { top: 36% !important; }
+#solar picture, #battery picture, #ev picture, #aircon picture, #heatpump picture,
+#solar img, #battery img, #ev img, #aircon img, #heatpump img {
+  background: transparent !important;
+}
+.ee-ehv-logo {
+  width: min(240px, 78%);
+  height: auto;
+  display: block;
+  margin-bottom: 4px;
+}
+.ee-ehv-card {
+  grid-area: 1 / 1;
+  align-self: start;
+  justify-self: start;
+  z-index: 2;
+  margin: 28px 32px;
+  max-width: min(420px, calc(100% - 64px));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: #2b1550;
+  color: #fff;
+  text-decoration: none;
+}
+.ee-ehv-kicker {
+  font: 600 11px/1 "Open Sans", sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ee-ehv-line {
+  font: 400 15px/1.45 "Open Sans", sans-serif;
+  color: rgba(255, 255, 255, 0.92);
+}
+body.page-quote .ee-sticky-cta { display: none; }
+body.page-quote { padding-bottom: 0; }
+
+.ee-mob, .ee-sticky-cta { display: none; }
+
+.ee-ph p { margin: 0; }
+
+[data-reveal] { transition: transform 0.6s ease; }
+html.js [data-reveal] { transform: translateY(14px); }
+html.js [data-reveal].is-in { transform: none; }
+
+[data-step] { transition: box-shadow 0.35s ease; border-radius: 12px; }
+[data-step].is-active { box-shadow: inset 3px 0 0 #c9a6f2; }
+
+.ee-fold,
+[data-collage] {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 880px;
+}
+[data-collage] a > div { transition: opacity 0.35s ease; }
+[data-collage] a:hover > div,
+[data-collage] a:focus-visible > div { opacity: 1 !important; }
+
+@media (max-width: 720px) {
+  body.page-home [data-hero-copy] { top: 34% !important; }
+  .ee-header { display: none; }
+  .ee-mob {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(43, 21, 80, 0.96);
+    color: #fff;
+    backdrop-filter: blur(12px);
+  }
+  .ee-mob a { color: #fff; text-decoration: none; }
+  .ee-mob-logo { width: 120px; display: block; }
+  .ee-mob-logo img { width: 100%; height: auto; display: block; }
+  .ee-mob-tools { display: flex; align-items: center; gap: 6px; }
+  .ee-iconbtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    color: #fff;
+    font: 700 12px/1 "Open Sans", sans-serif;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+  }
+  .ee-drawer[hidden] { display: none !important; }
+  .ee-drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #2b1550;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(20, 5, 40, 0.5);
+  }
+  .ee-drawer a {
+    padding: 18px 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 44px;
+  }
+  .ee-drawer a[aria-current="page"] { color: #e9ddff; }
+  .ee-sticky-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(245, 241, 232, 0.96);
+    border-top: 1px solid #d8d0c0;
+    backdrop-filter: blur(10px);
+  }
+  .ee-sticky-cta a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 8px;
+    font: 600 14px/1 "Open Sans", sans-serif;
+    text-decoration: none;
+  }
+  .ee-sticky-cta a:first-child {
+    padding: 0 18px;
+    border: 1px solid #4b345b;
+    color: #4b345b;
+  }
+  .ee-sticky-cta a:last-child {
+    flex: 1;
+    background: #4b345b;
+    color: #f5f1e8;
+  }
+  body { padding-bottom: 76px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.js [data-reveal] { transform: none; }
+}
+
+.ee-form {
+  display: grid;
+  gap: 14px;
+  max-width: 640px;
+}
+.ee-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: #2b1550; }
+.ee-form input, .ee-form textarea, .ee-form select {
+  min-height: 48px;
+  border: 1px solid rgba(43, 21, 80, 0.25);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: 400 16px/1.4 "Open Sans", sans-serif;
+  color: #2b1550;
+  background: #fff;
+}
+.ee-form textarea { min-height: 120px; }
+.ee-form button, .ee-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: #5e2d89;
+  color: #fff;
+  font: 600 15px/1 "Open Sans", sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+}
+.ee-note { font-size: 15px; line-height: 1.6; color: #3a2947; max-width: 62ch; }
+
+/* Mockup meta colours sit under 4.5:1 on cream. Lift them without changing the ink. */
+[style*="rgba(43,21,80,.4)"],
+[style*="rgba(43,21,80,.45)"],
+[style*="rgba(43,21,80,.5)"],
+[style*="rgba(43,21,80,.55)"],
+[style*="#8B6B9E"],
+[style*="#8b6b9e"],
+[style*="#867894"] {
+  color: #3a275c !important;
+}
+main a[href="https://earthedhv.au"][style*="color:#ffffff"] {
+  background: #2b1550 !important;
+}
+
+
+body{margin:0;background:#ece5fb;color:#2b1550;font-family:'Open Sans',sans-serif}
+html{scroll-behavior:smooth}
+a{color:#7c3aed;text-decoration:none}
+a:hover{color:#5b21b6}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(168,85,247,.65)}70%{box-shadow:0 0 0 14px rgba(168,85,247,0)}100%{box-shadow:0 0 0 0 rgba(168,85,247,0)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes glowdrift{0%,100%{opacity:.55}50%{opacity:.95}}
+@media(max-width:700px){h1{white-space:normal!important}}
+
+</style>
+</head>
+<body class="page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="ee-header"><a class="ee-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-purple.webp" alt="" width="1234" height="329"></a><nav class="ee-links" aria-label="Primary"><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a></nav><a class="ee-cta" href="/get-a-quote.html">Calculate savings</a></header>
+<nav class="ee-mob" aria-label="Primary mobile"><a class="ee-mob-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-white.webp" alt="" width="1234" height="329"></a><div class="ee-mob-tools"><a class="ee-iconbtn" href="tel:0433839284" aria-label="Call 0433 839 284">☎</a><button class="ee-iconbtn" type="button" data-ee-menu aria-expanded="false" aria-controls="ee-drawer">MENU</button></div><div class="ee-drawer" id="ee-drawer" hidden><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a><a href="/get-a-quote.html">Calculate savings</a></div></nav>
+<main id="main">
+
+
+<!-- ================= HERO ================= -->
+<div data-hero="1" id="top" style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#ece5fb">
+  <picture style="display:contents"><img src="/assets/placeholder.svg" alt="Earthed Energy product line: heat pump, battery, solar panels, air conditioning and EV charger" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" loading="lazy" decoding="async"></picture>
+
+  <!-- top nav -->
+  <div style="position:absolute;top:0;left:0;right:0;display:flex;justify-content:flex-end;align-items:center;gap:4px;padding:10px 32px 0;background:linear-gradient(180deg,rgba(13,6,24,.6),rgba(13,6,24,0));z-index:5">
+    <a href="/battery-storage.html" style="font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#ffffff;padding:8px 13px;border-radius:999px;border:1px solid rgba(124,58,237,0)" style-hover="color:#2b1550;background:rgba(124,58,237,.35);border:1px solid rgba(124,58,237,.5)">Battery</a>
+    <a href="/ev-charging.html" style="font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#ffffff;padding:8px 13px;border-radius:999px;border:1px solid rgba(124,58,237,0)" style-hover="color:#2b1550;background:rgba(124,58,237,.35);border:1px solid rgba(124,58,237,.5)">EV</a>
+    <a href="/solar-panels.html" style="font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#ffffff;padding:8px 13px;border-radius:999px;border:1px solid rgba(124,58,237,0)" style-hover="color:#2b1550;background:rgba(124,58,237,.35);border:1px solid rgba(124,58,237,.5)">Solar</a>
+    <a href="#aircon" style="font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#ffffff;padding:8px 13px;border-radius:999px;border:1px solid rgba(124,58,237,0)" style-hover="color:#2b1550;background:rgba(124,58,237,.35);border:1px solid rgba(124,58,237,.5)">Aircon</a>
+    <a href="#heatpump" style="font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#ffffff;padding:8px 13px;border-radius:999px;border:1px solid rgba(124,58,237,0)" style-hover="color:#2b1550;background:rgba(124,58,237,.35);border:1px solid rgba(124,58,237,.5)">Hot Water</a>
+    <a href="#solarcare" style="font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#ffffff;padding:8px 13px;border-radius:999px;border:1px solid rgba(124,58,237,0)" style-hover="color:#2b1550;background:rgba(124,58,237,.35);border:1px solid rgba(124,58,237,.5)">Aftercare</a>
+    <a href="#quote" style="font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:#1a0b2e;background:#f5a04a;padding:9px 18px;border-radius:999px;margin-left:8px" style-hover="background:#ffb968;color:#120722">Get a quote</a>
+  </div>
+
+  <!-- hotspots -->
+  
+    <a href="#heatpump" aria-label="Heat pump hot water" style="position:absolute;left:6.5%;top:28%;width:15%;height:60%;border-radius:14px;border:2px solid rgba(124,58,237,0);z-index:4;display:block" style-hover="border:2px solid rgba(124,58,237,.85);background:rgba(124,58,237,.14);box-shadow:0 0 40px rgba(139,92,246,.45), inset 0 0 30px rgba(139,92,246,.18)">
+      
+        <span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#c4a5ff;border:2px solid #ffffff;animation:pulse 2.4s ease-out infinite;pointer-events:none;opacity:0;transition:opacity .2s" class="hs-dot"></span>
+      
+      <span style="position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:rgba(26,11,46,.9);border:1px solid rgba(124,58,237,.5);padding:7px 16px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .18s;pointer-events:none" class="hs-label">Heat pump hot water</span>
+    </a>
+  
+    <a href="#battery" aria-label="Battery storage" style="position:absolute;left:23.5%;top:21%;width:17%;height:63%;border-radius:14px;border:2px solid rgba(124,58,237,0);z-index:4;display:block" style-hover="border:2px solid rgba(124,58,237,.85);background:rgba(124,58,237,.14);box-shadow:0 0 40px rgba(139,92,246,.45), inset 0 0 30px rgba(139,92,246,.18)">
+      
+        <span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#c4a5ff;border:2px solid #ffffff;animation:pulse 2.4s ease-out infinite;pointer-events:none;opacity:0;transition:opacity .2s" class="hs-dot"></span>
+      
+      <span style="position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:rgba(26,11,46,.9);border:1px solid rgba(124,58,237,.5);padding:7px 16px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .18s;pointer-events:none" class="hs-label">Battery storage</span>
+    </a>
+  
+    <a href="#solar" aria-label="Solar panels" style="position:absolute;left:49%;top:36%;width:24%;height:55%;border-radius:14px;border:2px solid rgba(124,58,237,0);z-index:4;display:block" style-hover="border:2px solid rgba(124,58,237,.85);background:rgba(124,58,237,.14);box-shadow:0 0 40px rgba(139,92,246,.45), inset 0 0 30px rgba(139,92,246,.18)">
+      
+        <span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#c4a5ff;border:2px solid #ffffff;animation:pulse 2.4s ease-out infinite;pointer-events:none;opacity:0;transition:opacity .2s" class="hs-dot"></span>
+      
+      <span style="position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:rgba(26,11,46,.9);border:1px solid rgba(124,58,237,.5);padding:7px 16px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .18s;pointer-events:none" class="hs-label">Solar panels</span>
+    </a>
+  
+    <a href="#aircon" aria-label="Air conditioning" style="position:absolute;left:75%;top:10%;width:23%;height:19%;border-radius:14px;border:2px solid rgba(124,58,237,0);z-index:4;display:block" style-hover="border:2px solid rgba(124,58,237,.85);background:rgba(124,58,237,.14);box-shadow:0 0 40px rgba(139,92,246,.45), inset 0 0 30px rgba(139,92,246,.18)">
+      
+        <span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#c4a5ff;border:2px solid #ffffff;animation:pulse 2.4s ease-out infinite;pointer-events:none;opacity:0;transition:opacity .2s" class="hs-dot"></span>
+      
+      <span style="position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:rgba(26,11,46,.9);border:1px solid rgba(124,58,237,.5);padding:7px 16px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .18s;pointer-events:none" class="hs-label">Air conditioning</span>
+    </a>
+  
+    <a href="#ev" aria-label="EV charging" style="position:absolute;left:82.5%;top:40%;width:7.5%;height:51%;border-radius:14px;border:2px solid rgba(124,58,237,0);z-index:4;display:block" style-hover="border:2px solid rgba(124,58,237,.85);background:rgba(124,58,237,.14);box-shadow:0 0 40px rgba(139,92,246,.45), inset 0 0 30px rgba(139,92,246,.18)">
+      
+        <span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#c4a5ff;border:2px solid #ffffff;animation:pulse 2.4s ease-out infinite;pointer-events:none;opacity:0;transition:opacity .2s" class="hs-dot"></span>
+      
+      <span style="position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffffff;background:rgba(26,11,46,.9);border:1px solid rgba(124,58,237,.5);padding:7px 16px;border-radius:999px;white-space:nowrap;opacity:0;transition:opacity .18s;pointer-events:none" class="hs-label">EV charging</span>
+    </a>
+  
+
+  <!-- hero copy -->
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:0 40px 36px;display:flex;justify-content:space-between;align-items:flex-end;background:linear-gradient(0deg,rgba(236,229,251,.94) 30%,rgba(236,229,251,0));z-index:3;pointer-events:none">
+    <div style="max-width:58%;min-width:min(620px,80%);margin-left:10vw">
+      <div style="font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#000000;margin-bottom:10px">Renewable Energy Specialists · South Australia</div>
+      <h1 style="font-size:clamp(17px,2vw,40px);line-height:1.15;font-weight:800;margin:0 0 10px;color:#000000;white-space:nowrap">Build the equation that eliminates your power bill.</h1>
+      <p style="font-size:17px;line-height:1.55;font-weight:600;color:rgba(0,0,0,.85);margin:0">Earthed brings extensive experience and deep knowledge to the renewable energy field, and we take pride in being a high-quality, full service for all renewable electrical needs. A boutique team with honest advice and strict start-to-finish processes that cut out the common sales silliness in the industry.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(43,21,80,.75);font-size:12px;letter-spacing:.14em;text-transform:uppercase;animation:bob 2.6s ease-in-out infinite">
+      <span>Hover a product</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14m0 0l-6-6m6 6l6-6" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HOME SYSTEM BAND ================= -->
+<div style="position:relative;background:#e4dafa">
+  <picture style="display:contents"><img src="/assets/placeholder.svg" alt="Earthed Energy home: solar, battery storage and EV charging connected on one system" style="width:100%;display:block" loading="lazy" decoding="async"></picture>
+</div>
+
+<!-- glow ribbon -->
+<div style="background:linear-gradient(90deg,#150a26,#241040,#150a26);border-top:1px solid rgba(124,58,237,.18);border-bottom:1px solid rgba(124,58,237,.18);padding:18px 40px">
+  <div style="max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <span style="font-size:13.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c4a5ff">10–20% of all systems covered by Gov rebates</span>
+    <span style="font-size:13.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c4a5ff">$0 upfront · green finance options</span>
+    <span style="font-size:13.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c4a5ff">One team, one number, for good</span>
+  </div>
+</div>
+
+<!-- ================= PRODUCT SECTIONS ================= -->
+
+  <div id="battery" style="background:#ece5fb;padding:96px 40px;scroll-margin-top:0px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.16),transparent);pointer-events:none;animation:glowdrift 7s ease-in-out infinite"></div>
+    <div style="max-width:1840px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:80px;align-items:center;direction:ltr;position:relative">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Battery storage</span>
+          
+        </div>
+        <h2 style="font-size:30px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;white-space:nowrap">All-in-one technology, 10 kWh up to 300 kWh+.</h2>
+        <p style="font-size:19px;line-height:1.7;color:rgba(43,21,80,.78);margin:0 0 32px;max-width:70ch">All-in-one battery technology in a single-cabinet install, easy to service, engineered to run itself for 10+ years. With a high-voltage background, Earthed builds systems from 5 kWh to 50 kW, with the experience to install, operate and manage all sizes of BESS, with hands-on experience on projects up to 111 MW. Start where you are today and add modules as you go. LFP cells, sub-20 ms backup switchover and lifetime Wi-Fi + 4G monitoring come standard on every install.</p>
+        <div style="display:flex;flex-direction:column;gap:15px;margin-bottom:36px">
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Whole-home backup with sub-20 ms switchover when the SA grid drops</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">10 + 10 warranty: product plus performance to 10,000 cycles</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">LFP chemistry · no thermal-runaway risk · safer than NMC</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">One app: solar, battery, backup and EV · Wi-Fi + 4G lifetime access</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Start at 10 kWh, add modules any time up to 300 kWh+</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">GoodWe ESA All-in-One · Sigenergy SigenStor · on or off-grid</span>
+            </div>
+          
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative;display:flex;gap:16px;justify-content:flex-end">
+        <div style="position:absolute;inset:-28px;background:radial-gradient(closest-side,rgba(139,92,246,.22),transparent);pointer-events:none"></div>
+        <div class="ee-ph" style="flex:1;min-width:0;height:600px;color:#b9a8d8;background:{{ p.slotBgVal }};display:flex;align-items:center;justify-content:center;background:#e4dfd6;color:#3a2947;text-align:center;padding:28px;min-height:180px"><p style="margin:0;max-width:36ch;font:500 15px/1.45 'Open Sans',sans-serif">battery product</p></div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="retrofit" style="background:#c9b2ee;padding:96px 40px;scroll-margin-top:0px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-180px;left:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.16),transparent);pointer-events:none;animation:glowdrift 7s ease-in-out infinite"></div>
+    <div style="max-width:1840px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:80px;align-items:center;direction:ltr;position:relative">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Battery-only retrofit</span>
+          
+        </div>
+        <h2 style="font-size:29px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;white-space:nowrap">Already have solar? Add a battery from $5,999.</h2>
+        <p style="font-size:19px;line-height:1.7;color:rgba(43,21,80,.78);margin:0 0 32px;max-width:70ch">If you’ve got a working solar system without storage, you’re exporting most of it at 5 cents a kWh and buying it back at 42 cents when you get home. A battery retrofit closes that gap in one afternoon. AC-coupled to your existing inverter, no roof work. The federal Cheaper Home Batteries rebate comes off the price upfront, and most installs are handed over the same day.</p>
+        <div style="display:flex;flex-direction:column;gap:15px;margin-bottom:36px">
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">From $5,999 installed: 8.32 kWh GoodWe Lynx + AC-coupled inverter</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Cheaper Home Batteries rebate applied upfront, paperwork handled</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">No solar rework: bolts onto Sungrow, Fronius, Solis or any inverter</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Whole-home backup capable, same sub-20 ms switchover</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">10-year product + 10-year performance warranty on the cells</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Scale later: add up to six modules (50 kWh) with no rework</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Install day is 4–6 hours · same-day handover and app walk-through</span>
+            </div>
+          
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative;display:flex;gap:16px;justify-content:flex-end">
+        <div style="position:absolute;inset:-28px;background:radial-gradient(closest-side,rgba(139,92,246,.22),transparent);pointer-events:none"></div>
+        <div class="ee-ph" style="flex:1;min-width:0;height:600px;color:#b9a8d8;background:{{ p.slotBgVal }};display:flex;align-items:center;justify-content:center;background:#e4dfd6;color:#3a2947;text-align:center;padding:28px;min-height:180px"><p style="margin:0;max-width:36ch;font:500 15px/1.45 'Open Sans',sans-serif">battery module</p></div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="solar" style="background:#dccffa;padding:96px 40px;scroll-margin-top:0px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.16),transparent);pointer-events:none;animation:glowdrift 7s ease-in-out infinite"></div>
+    <div style="max-width:1840px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:80px;align-items:center;direction:ltr;position:relative">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Solar PV</span>
+          
+        </div>
+        <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;white-space:nowrap">Sized to your load, not your roof.</h2>
+        <p style="font-size:19px;line-height:1.7;color:rgba(43,21,80,.78);margin:0 0 32px;max-width:70ch">Rooftop and ground-mount design from 6.6 kW to 30 kW+, sized to your actual power bill, not the space you happen to have. Full-black Tier-1 panels engineered for Hills wind zones and shading. Every string is designed against the shade profile of your site, with 25-year product and performance warranties registered on install day.</p>
+        <div style="display:flex;flex-direction:column;gap:15px;margin-bottom:36px">
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Trina Vertex S+ 475W · 22.5% efficiency · N-type TOPCon</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">25-year product + 25-year performance warranty</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Best-in-class temp coefficient (−0.29%/°C) for summer heat</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">CEC-approved · warranty registered to your address on install day</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">STC rebate calculated and applied upfront, no reimbursement chasing</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Clenergy PV-ezRack · Hills wind-zone engineered · 15-yr structural</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Every string designed against your site’s shade profile</span>
+            </div>
+          
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative;display:flex;gap:16px;justify-content:flex-end">
+        <div style="position:absolute;inset:-28px;background:radial-gradient(closest-side,rgba(139,92,246,.22),transparent);pointer-events:none"></div>
+        <picture style="flex:1;min-width:0;height:600px;color:#b9a8d8;background:{{ p.slotBgVal }};display:block;overflow:hidden"><img src="/images/slot-img-solar.webp" alt="solar install" width="1070" height="1070" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:{{ p.fit }};border-radius:0px;display:block"></picture>
+        
+      </div>
+    </div>
+  </div>
+  
+  <!-- ================= SCENARIO ================= -->
+<div id="scenario" style="background:#dccffa;padding:96px 40px 104px;border-top:1px solid rgba(124,58,237,.1)">
+  <div style="max-width:1360px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">A real scenario · Adelaide Hills family home</span>
+      
+    </div>
+    <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 0 10px;color:#2b1550;text-wrap:pretty">10 kW solar + 25 kWh battery</h2>
+    <p style="font-size:20px;font-weight:600;font-style:italic;color:#7c3aed;margin:0 0 32px">“A $500 quarterly bill, fully offset.”</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:26px">
+      <div style="background:#ffffff;border:2px solid rgba(124,58,237,.16);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:30px;font-weight:700;color:#2b1550">~20 kWh</div>
+        <p style="font-size:14.5px;line-height:1.55;color:rgba(43,21,80,.72);margin:0">daily usage, covered by the sun, day and night</p>
+      </div>
+      <div style="background:#ffffff;border:2px solid rgba(124,58,237,.16);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:30px;font-weight:700;color:#2b1550">$500 → $0</div>
+        <p style="font-size:14.5px;line-height:1.55;color:rgba(43,21,80,.72);margin:0">predicted quarterly bill, fully offset (excl. daily supply charge)</p>
+      </div>
+      <div style="background:#ffffff;border:2px solid rgba(124,58,237,.16);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:30px;font-weight:700;color:#2b1550">Winter ✓</div>
+        <p style="font-size:14.5px;line-height:1.55;color:rgba(43,21,80,.72);margin:0">summer export credits carry the months the sun doesn’t</p>
+      </div>
+    </div>
+    <p style="font-size:16px;line-height:1.65;color:rgba(43,21,80,.78);margin:0 0 30px;max-width:70ch">Surplus solar pushes back into the grid all summer, banking credits that offset the winter months when production dips. Grid stays connected as backup, you just rarely touch it.</p>
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <span style="font-size:15px;color:rgba(43,21,80,.7)">Starting from</span>
+      <span style="font-size:40px;font-weight:700;color:#2b1550">$16,666*</span>
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:10px 18px;border-radius:999px">$0 upfront · green finance options</span>
+    </div>
+    <p style="font-size:13.5px;line-height:1.5;color:rgba(43,21,80,.55);margin:16px 0 0">*Indicative, after applicable federal battery rebate. Exact figure on your written quote.</p>
+  </div>
+</div>
+  
+
+  <div id="ev" style="background:#ece5fb;padding:96px 40px;scroll-margin-top:0px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.16),transparent);pointer-events:none;animation:glowdrift 7s ease-in-out infinite"></div>
+    <div style="max-width:1840px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:80px;align-items:center;direction:ltr;position:relative">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">EV charger · Home</span>
+          
+        </div>
+        <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;white-space:nowrap">One app for solar, battery, EV.</h2>
+        <p style="font-size:19px;line-height:1.7;color:rgba(43,21,80,.78);margin:0 0 32px;max-width:70ch">The GoodWe HCA slots into the same SEMS platform your solar and battery already run on. Solar-only charging means every kilometre you drive is one you didn’t pay for. Dynamic load balancing protects your main switch, and the 7.4 kW unit adds around 40 km of range per hour on single-phase.</p>
+        <div style="display:flex;flex-direction:column;gap:15px;margin-bottom:36px">
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Native GoodWe SEMS: solar, battery, EV and home use in one app</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Solar-only mode charges purely from surplus solar, never grid</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Hybrid mode tops up from grid when solar is short</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Dynamic load balancing so a busy 6pm never trips the main</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">7.4 kW single-phase ~40 km/hr · 11 kW three-phase ~60 km/hr</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">5 years parts + labour warranty · IP65 outdoor rated</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Type 2 plug · 5m tethered cable · from $1,700–2,300 installed</span>
+            </div>
+          
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative;display:flex;gap:16px;justify-content:flex-end">
+        <div style="position:absolute;inset:-28px;background:radial-gradient(closest-side,rgba(139,92,246,.22),transparent);pointer-events:none"></div>
+        <picture style="flex:1;min-width:0;height:600px;color:#b9a8d8;background:{{ p.slotBgVal }};display:block;overflow:hidden"><img src="/images/slot-img-ev.webp" alt="EV charger" width="1070" height="1070" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:{{ p.fit }};border-radius:0px;display:block"></picture>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="aircon" style="background:#dccffa;padding:96px 40px;scroll-margin-top:0px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-180px;left:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.16),transparent);pointer-events:none;animation:glowdrift 7s ease-in-out infinite"></div>
+    <div style="max-width:1840px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:80px;align-items:center;direction:ltr;position:relative">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Aircon · Split systems</span>
+          
+        </div>
+        <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;white-space:nowrap">Daikin air conditioning.</h2>
+        <p style="font-size:19px;line-height:1.7;color:rgba(43,21,80,.78);margin:0 0 32px;max-width:70ch">Best-in-class inverter compressor, 5.5-star rated, Wi-Fi standard across the range. Pair it with a battery-charged home during the summer peak and the running cost sits at the bottom of your bill for years. Sizes run from 2.5 kW bedrooms to 9.4 kW open-plan living, all covered by a 5-year full parts and labour warranty.</p>
+        <div style="display:flex;flex-direction:column;gap:15px;margin-bottom:36px">
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">5.5-star cooling · 6.0-star heating · top-of-class inverter</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Half the running cost of a 3-star unit</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Operates −15°C to +46°C: Hills mornings and 40°C days covered</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Wi-Fi standard: pre-cool on solar peak, coast on battery</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Titanium apatite filter captures particles, kills bacteria</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Coanda airflow along the ceiling, no cold blast in the face</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">19 dB minimum indoor noise · bedroom safe</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">5 years full parts + labour warranty, best in class</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">2.5 kW bedroom to 9.4 kW open-plan · multi-head to 5 rooms</span>
+            </div>
+          
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative;display:flex;gap:16px;justify-content:flex-end">
+        <div style="position:absolute;inset:-28px;background:radial-gradient(closest-side,rgba(139,92,246,.22),transparent);pointer-events:none"></div>
+        <picture style="flex:1;min-width:0;height:600px;color:#b9a8d8;background:{{ p.slotBgVal }};display:block;overflow:hidden"><img src="/images/slot-img-aircon.webp" alt="aircon install" width="1070" height="1070" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:{{ p.fit }};border-radius:0px;display:block"></picture>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="heatpump" style="background:#ece5fb;padding:96px 40px;scroll-margin-top:0px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.16),transparent);pointer-events:none;animation:glowdrift 7s ease-in-out infinite"></div>
+    <div style="max-width:1840px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:80px;align-items:center;direction:ltr;position:relative">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Hot water · Heat pump</span>
+          
+        </div>
+        <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;white-space:nowrap">Reclaim the sun for your hot water.</h2>
+        <p style="font-size:19px;line-height:1.7;color:rgba(43,21,80,.78);margin:0 0 32px;max-width:70ch">The Reclaim Energy CO₂ heat pump uses natural refrigerant to lift heat from the outdoor air into your tank, even at minus ten. Australian-designed, top-down heating, quieter than your fridge. Solar surplus goes to hot water instead of to the grid at 5c/kWh. Expect around 80% off water-heating energy, backed by a 6-year full warranty and a 10-year stainless tank.</p>
+        <div style="display:flex;flex-direction:column;gap:15px;margin-bottom:36px">
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">80% energy savings: up to 5× more efficient than electric</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Top-down heating: usable hot water in 30–40 min, not hours</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">CO₂ (R744) refrigerant · GWP of 1 · high COP at −10°C</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">37 dB average noise, quieter than the fridge in your kitchen</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">6-year full parts + labour warranty · 10-year stainless tank</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Diverts excess solar into the tank via CT clamp</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Works natively with GoodWe SEMS + SigenStor</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">250L for a family of 3–4 · 315L for larger households</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Net ~$4,000–6,000 installed after STC rebate</span>
+            </div>
+          
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative;display:flex;gap:16px;justify-content:flex-end">
+        <div style="position:absolute;inset:-28px;background:radial-gradient(closest-side,rgba(139,92,246,.22),transparent);pointer-events:none"></div>
+        <picture style="flex:1;min-width:0;height:600px;color:#b9a8d8;background:{{ p.slotBgVal }};display:block;overflow:hidden"><img src="/images/reclaim-energy-co2-heat-pump-hot-water-system-product.webp" alt="heat pump" width="800" height="1093" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:{{ p.fit }};border-radius:0px;display:block"></picture>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="solarcare" style="background:#dccffa;padding:96px 40px;scroll-margin-top:0px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-180px;left:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.16),transparent);pointer-events:none;animation:glowdrift 7s ease-in-out infinite"></div>
+    <div style="max-width:1840px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:80px;align-items:center;direction:ltr;position:relative">
+      <div style="direction:ltr">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Aftercare</span>
+          
+        </div>
+        <h2 style="font-size:34px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;white-space:nowrap">We become your energy point of contact.</h2>
+        <p style="font-size:19px;line-height:1.7;color:rgba(43,21,80,.78);margin:0 0 32px;max-width:70ch">6-month revisit for complimentary panel cleaning and a system health assessment, a round of physical checks to make sure everything is running smoothly. You also get lifetime monitoring with off-site troubleshooting, a 10-year workmanship warranty, and a real person on the phone when you call.</p>
+        <div style="display:flex;flex-direction:column;gap:15px;margin-bottom:36px">
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">10-year workmanship warranty</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Lifetime monitoring, with off-site troubleshooting by Earthed</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">First-year check-in and tune-up included at no cost</span>
+            </div>
+          
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.4);display:grid;place-items:center;margin-top:1px">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#7c3aed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span style="font-size:16.5px;line-height:1.5;color:rgba(43,21,80,.82);white-space:nowrap">Real phone. Real person.</span>
+            </div>
+          
+        </div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <a href="#quote" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;display:inline-block" style-hover="background:#ffb968">Get a quote</a>
+          <a href="#top" style="font-size:14px;color:#7c3aed;padding:14px 6px" style-hover="color:#5b21b6">Back to top ↑</a>
+        </div>
+      </div>
+      <div style="direction:ltr;position:relative;display:flex;gap:16px;justify-content:flex-end">
+        <div style="position:absolute;inset:-28px;background:radial-gradient(closest-side,rgba(139,92,246,.22),transparent);pointer-events:none"></div>
+        <div class="ee-ph" style="flex:1;min-width:0;height:600px;color:#b9a8d8;background:{{ p.slotBgVal }};display:flex;align-items:center;justify-content:center;background:#e4dfd6;color:#3a2947;text-align:center;padding:28px;min-height:180px"><p style="margin:0;max-width:36ch;font:500 15px/1.45 'Open Sans',sans-serif">panel cleaning</p></div>
+        
+      </div>
+    </div>
+  </div>
+  
+
+
+<!-- ================= GALLERY ================= -->
+<div id="gallery" style="background:#e4dafa;padding:96px 0 0;border-top:1px solid rgba(124,58,237,.1)">
+  <div>
+    <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 auto 36px;max-width:1360px;padding:0 40px;color:#2b1550;text-wrap:pretty">Our Previous Works</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0">
+      <picture style="display:contents"><img src="/images/img-2361.webp" alt="Rooftop solar install" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1900-2-3.webp" alt="Happy customer with new home battery" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1721-3.webp" alt="Outdoor battery and inverter install" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-2785-3.webp" alt="Inverter cabling and conduit work" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/78843149537-82cdadad-0e4f-41d4-bff3-b8d3a8684ed1-3.webp" alt="WHES hybrid inverter and battery stack in shed" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1397-3-e4934cc5.webp" alt="Solar panel close-up on rooftop" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-0869.webp" alt="Sigenergy battery and switchboard install under carport" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1095-3-5d4a17a7.webp" alt="Fox ESS battery and inverter in garage" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1713-3.webp" alt="All-black solar array on red corrugated roof" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-0145-2.webp" alt="Outdoor battery system beside weatherboard home" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1675-3.webp" alt="Earthed electrician wiring on site" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/copy-ccb34186-a430-4825-993c-4fd1cdcfdbc6-2.webp" alt="Battery and inverter install" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="2400" height="1800" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1718-3-270ad98b.webp" alt="PV array DC isolator wiring" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1902.webp" alt="GoodWe battery tower install" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-1929.webp" alt="SolaX Power hybrid inverter" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+      <picture style="display:contents"><img src="/images/img-2554.webp" alt="SolaX inverter and Triple Power battery in garage" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" width="1800" height="2400" loading="lazy" decoding="async"></picture>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FINANCE ================= -->
+<div id="finance" style="background:#ece5fb;padding:96px 40px 104px;border-top:1px solid rgba(124,58,237,.1)">
+  <div style="max-width:1360px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c96a12">Finance</span>
+      
+    </div>
+    <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 0 16px;color:#2b1550;max-width:26ch;text-wrap:pretty">Real finance. Real options.</h2>
+    <p style="font-size:18px;line-height:1.6;font-style:italic;color:rgba(43,21,80,.75);margin:0 0 32px;max-width:60ch">“Green loans, interest-free options up to $10k, with 4–8% options beyond that. Usually cheaper than adding it to your home loan.”</p>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px">
+      <div style="background:#ffffff;border:2px solid rgba(124,58,237,.16);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="border:2px solid #a855f7;background:rgba(124,58,237,.1)">
+        <div style="font-size:21px;font-weight:700;line-height:1.2;color:#2b1550">Elevant</div>
+        <p style="font-size:14.5px;line-height:1.55;color:rgba(43,21,80,.72);margin:0;flex:1">A solar-native lender built for energy upgrades. Interest-free terms up to $10k, flexible repayment schedules, and fast online approval, usually same day.</p>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#7c3aed">INTEREST-FREE GREEN LOAN · UP TO $10K</div>
+      </div>
+      <div style="background:#ffffff;border:2px solid rgba(124,58,237,.16);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="border:2px solid #a855f7;background:rgba(124,58,237,.1)">
+        <div style="font-size:21px;font-weight:700;line-height:1.2;color:#2b1550">28Watt</div>
+        <p style="font-size:14.5px;line-height:1.55;color:rgba(43,21,80,.72);margin:0;flex:1">Interest-free finance designed specifically around solar and battery systems, so repayments can be sized to sit near what your power bill used to be.</p>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#7c3aed">SOLAR + BATTERY SPECIALIST</div>
+      </div>
+      <div style="background:#ffffff;border:2px solid rgba(124,58,237,.16);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="border:2px solid #a855f7;background:rgba(124,58,237,.1)">
+        <div style="font-size:21px;font-weight:700;line-height:1.2;color:#2b1550">Cash</div>
+        <p style="font-size:14.5px;line-height:1.55;color:rgba(43,21,80,.72);margin:0;flex:1">Settle the invoice in full and we take 7% off the total. The simplest path to the shortest payback period.</p>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.07em;color:#7c3aed">PAY UPFRONT · 7% OFF THE TOTAL</div>
+      </div>
+    </div>
+    <p style="font-size:15px;line-height:1.6;color:rgba(43,21,80,.65);margin:26px 0 0">Approval subject to standard checks. Weekly, fortnightly or monthly repayment options. Your written quote shows exact repayment against your package.</p>
+  </div>
+</div>
+
+<!-- ================= APPROACH ================= -->
+<div id="approach" style="background:#e4dafa;padding:96px 40px 104px;border-top:1px solid rgba(124,58,237,.1)">
+  <div style="max-width:1360px;margin:0 auto">
+    <div style="text-align:center;max-width:640px;margin:0 auto 44px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#c96a12;margin-bottom:14px">Our process · Seven steps</div>
+      <h2 style="font-size:38px;font-weight:700;line-height:1.15;margin:0 0 14px;color:#2b1550;text-wrap:pretty">We size to what you use, not what fits your roof.</h2>
+      <p style="font-size:17px;line-height:1.6;color:rgba(43,21,80,.72);margin:0">We listen first, do the maths second, and walk every site in person before a single number lands on paper. No call-centre quoting, no roof-size guesswork.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px">
+      
+        <div style="background:#ffffff;border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1 1 290px;max-width:400px;box-sizing:border-box" style-hover="border:1px solid rgba(168,85,247,.6);background:rgba(124,58,237,.08)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">01</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Listen</div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(43,21,80,.7);margin:0">Where you’re located, and your main interests and concerns.</p>
+        </div>
+      
+        <div style="background:#ffffff;border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1 1 290px;max-width:400px;box-sizing:border-box" style-hover="border:1px solid rgba(168,85,247,.6);background:rgba(124,58,237,.08)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">02</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Study</div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(43,21,80,.7);margin:0">We gather all the info possible and do some maths, then provide product info and indications, and plan the site visit.</p>
+        </div>
+      
+        <div style="background:#ffffff;border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1 1 290px;max-width:400px;box-sizing:border-box" style-hover="border:1px solid rgba(168,85,247,.6);background:rgba(124,58,237,.08)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">03</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Walk</div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(43,21,80,.7);margin:0">We visit every single client onsite, no sales stream, with honest advice. Photos, roof measurements, shading and any site irregularities, and a run-through of the Earthed ecosystem.</p>
+        </div>
+      
+        <div style="background:#ffffff;border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1 1 290px;max-width:400px;box-sizing:border-box" style-hover="border:1px solid rgba(168,85,247,.6);background:rgba(124,58,237,.08)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">04</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Solve</div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(43,21,80,.7);margin:0">Sized to what you use, your financial situation and long-term energy plans.</p>
+        </div>
+      
+        <div style="background:#ffffff;border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1 1 290px;max-width:400px;box-sizing:border-box" style-hover="border:1px solid rgba(168,85,247,.6);background:rgba(124,58,237,.08)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">05</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Propose</div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(43,21,80,.7);margin:0">Price, clearly outlined terms and conditions, warranty information and signing. Materials ordered the same day the deposit lands.</p>
+        </div>
+      
+        <div style="background:#ffffff;border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1 1 290px;max-width:400px;box-sizing:border-box" style-hover="border:1px solid rgba(168,85,247,.6);background:rgba(124,58,237,.08)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">06</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Coordinate the build</div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(43,21,80,.7);margin:0">SAPN, STC, CEC-accredited team managed by Caleb under HSEQ procedures. 1–3 days depending on location and build, with a handover walk-down so you learn how to use and care for your new system.</p>
+        </div>
+      
+        <div style="background:#ffffff;border:1px solid rgba(124,58,237,.15);border-radius:16px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;flex:1 1 290px;max-width:400px;box-sizing:border-box" style-hover="border:1px solid rgba(168,85,247,.6);background:rgba(124,58,237,.08)">
+          <div style="font-size:12px;font-weight:600;letter-spacing:.1em;color:#7c3aed">07</div>
+          <div style="font-size:18px;font-weight:700;line-height:1.25;color:#2b1550">Aftercare</div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(43,21,80,.7);margin:0">6-month revisit for complimentary panel cleaning and a system health assessment. We become your energy point of contact.</p>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- ================= QUOTE ================= -->
+<div id="quote" style="background:#ece5fb;padding:100px 40px 110px;position:relative;overflow:hidden;border-top:1px solid rgba(124,58,237,.1)">
+  <div style="position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:760px;height:760px;border-radius:50%;background:radial-gradient(closest-side,rgba(124,58,237,.2),transparent);pointer-events:none"></div>
+  <div style="max-width:860px;margin:0 auto;position:relative">
+    <div style="text-align:center;margin-bottom:44px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#c96a12;margin-bottom:14px">No obligation</div>
+      <h2 style="font-size:38px;font-weight:700;line-height:1.12;margin:0 0 16px;color:#2b1550">Free energy assessment.</h2>
+      <p style="font-size:17px;line-height:1.6;color:rgba(43,21,80,.75);margin:0">Register below.</p>
+    </div>
+    <div style="background:#ffffff;border-radius:20px;padding:40px;box-shadow:0 24px 70px rgba(0,0,0,.5);border:1px solid rgba(124,58,237,.22)">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7c3aed;margin-bottom:16px">What are you looking for?</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px">
+        
+          <button style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid rgba(124,58,237,.3);background:#f0eafc;color:#2b1550;cursor:pointer" data-ee-on="click:0">Solar</button>
+        
+          <button style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid rgba(124,58,237,.3);background:#f0eafc;color:#2b1550;cursor:pointer" data-ee-on="click:1">Battery</button>
+        
+          <button style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid #a855f7;background:#7c3aed;color:#ffffff;cursor:pointer" data-ee-on="click:2">Solar + Battery</button>
+        
+          <button style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid rgba(124,58,237,.3);background:#f0eafc;color:#2b1550;cursor:pointer" data-ee-on="click:3">EV Charger</button>
+        
+          <button style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid rgba(124,58,237,.3);background:#f0eafc;color:#2b1550;cursor:pointer" data-ee-on="click:4">Aircon</button>
+        
+          <button style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid rgba(124,58,237,.3);background:#f0eafc;color:#2b1550;cursor:pointer" data-ee-on="click:5">Heat Pump</button>
+        
+          <button style="font-family:'Open Sans',sans-serif;font-size:14.5px;font-weight:600;padding:11px 20px;border-radius:999px;border:1px solid rgba(124,58,237,.3);background:#f0eafc;color:#2b1550;cursor:pointer" data-ee-on="click:6">Energy Audit Only</button>
+        
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 20px;margin-bottom:18px">
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,21,80,.65);margin-bottom:8px">Name</div><input type="text" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(124,58,237,.28);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#f7f4fd"></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,21,80,.65);margin-bottom:8px">Phone</div><input type="tel" placeholder="04XX XXX XXX" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(124,58,237,.28);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#f7f4fd"></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,21,80,.65);margin-bottom:8px">Email</div><input type="email" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(124,58,237,.28);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#f7f4fd"></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,21,80,.65);margin-bottom:8px">Suburb</div><input type="text" placeholder="e.g. Wattle Park" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(124,58,237,.28);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#f7f4fd"></div>
+      </div>
+      <div style="margin-bottom:18px"><div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,21,80,.65);margin-bottom:8px">Average quarterly bill</div><input type="text" placeholder="e.g. $850 / quarter" style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(124,58,237,.28);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#f7f4fd"></div>
+      <div style="margin-bottom:28px"><div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(43,21,80,.65);margin-bottom:8px">Anything we should know? (optional)</div><textarea rows="3" placeholder="Roof type, EV plans, off-peak schedule, anything that helps us prep." style="width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(124,58,237,.28);border-radius:10px;font-family:'Open Sans',sans-serif;font-size:15px;color:#2b1550;background:#f7f4fd;resize:vertical"></textarea></div>
+      
+        <button style="width:100%;font-family:'Open Sans',sans-serif;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:17px 32px;border-radius:999px;border:none;cursor:pointer" style-hover="background:#ffb968" data-ee-on="click:7">Send my enquiry</button>
+      
+      
+      <p style="text-align:center;font-size:13.5px;line-height:1.5;color:rgba(43,21,80,.5);margin:18px 0 0">We reply within one business day. Your details stay with Earthed. Never shared.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= STUDIO BAND + FOOTER ================= -->
+<div style="position:relative;background:#e4dafa">
+  <picture style="display:contents"><img src="/images/hf-20260930-035759-4a402687-b7e5-42d2-aee4-93a2a37a9b9c-97f59e25.webp" alt="Earthed home battery beside a modern house at dusk, solar roof and purple sky" style="width:100%;height:auto;display:block" width="2400" height="1030" loading="lazy" decoding="async"></picture>
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:120px 40px 26px;background:linear-gradient(0deg,rgba(10,4,19,.92) 0%,rgba(10,4,19,.72) 55%,rgba(10,4,19,0) 100%)">
+    <div style="max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px">
+      <div style="font-size:26px;font-weight:700;color:#ffffff;max-width:30ch;line-height:1.25;text-wrap:pretty">Prefer to talk it through? Real phone. Real person.</div>
+      <a href="tel:0433839284" style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a0b2e;background:#f5a04a;padding:14px 26px;border-radius:999px;white-space:nowrap" style-hover="background:#ffb968">Call 0433 839 284</a>
+    </div>
+    <div style="max-width:1360px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:64px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.22)">
+      <div>
+        <span style="font-weight:700;letter-spacing:.12em;color:#c4a5ff;font-size:16px">EARTHED <span style="font-weight:400;color:rgba(255,255,255,.8)">ENERGY</span></span>
+        <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,.75);margin:14px 0 0;max-width:34ch">Renewable energy experts. Visit the <a href="https://earthedhv.au" target="_blank" style="color:#c4a5ff;font-weight:600">Earthed High Voltage website</a> for our commercial and utility-scale work.</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ffffff;margin-bottom:14px">Company</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="#top" style="font-size:14px;color:rgba(255,255,255,.75)" style-hover="color:#c4a5ff">About</a>
+          <a href="#approach" style="font-size:14px;color:rgba(255,255,255,.75)" style-hover="color:#c4a5ff">Our Process</a>
+          <a href="#gallery" style="font-size:14px;color:rgba(255,255,255,.75)" style-hover="color:#c4a5ff">Recent Installs</a>
+          <a href="https://earthedhv.au" target="_blank" style="font-size:14px;color:rgba(255,255,255,.75)" style-hover="color:#c4a5ff">Earthed High Voltage</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#ffffff;margin-bottom:14px">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="mailto:calebvears@earthedhv.au" style="font-size:14px;color:rgba(255,255,255,.75)" style-hover="color:#c4a5ff">calebvears@earthedhv.au</a>
+          <a href="tel:0433839284" style="font-size:14px;color:rgba(255,255,255,.75)" style-hover="color:#c4a5ff">0433 839 284</a>
+          <span style="font-size:14px;color:rgba(255,255,255,.75)">PO Box 4111 Norwood South SA 5067</span>
+          <span style="font-size:14px;color:rgba(255,255,255,.75)">Postal only. We operate from the Adelaide Hills</span>
+          <span style="font-size:14px;color:rgba(255,255,255,.75)">ACN 679 180 879 · ABN 99 679 180 879</span>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:18px 0 0">
+      <span style="font-size:13px;color:rgba(255,255,255,.6)">© 2026 Earthed Energy · A division of Earthed High Voltage Pty Ltd</span>
+      <span style="font-size:13px;color:rgba(255,255,255,.6)">Electrical Licence PGE 336477 · CEC Accredited Installer · SAPN Accredited · Fully insured</span>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+<div class="ee-sticky-cta"><a href="tel:0433839284">Call</a><a href="/get-a-quote.html">Calculate savings</a></div>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>
