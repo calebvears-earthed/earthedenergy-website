@@ -377,6 +377,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": ["Electrician", "LocalBusiness"], "@id": "https://www.earthedenergy.au/#business", "name": "Earthed Energy", "legalName": "Earthed High Voltage Pty Ltd", "url": "https://www.earthedenergy.au/", "logo": "https://www.earthedenergy.au/images/earthed-energy-logo-purple.webp", "image": "https://www.earthedenergy.au/images/og-home.jpg", "email": "calebvears@earthedhv.au", "telephone": "+61433839284", "address": {"@type": "PostalAddress", "postOfficeBoxNumber": "4111", "addressLocality": "Norwood South", "addressRegion": "SA", "postalCode": "5067", "addressCountry": "AU"}, "areaServed": {"@type": "AdministrativeArea", "name": "South Australia"}, "parentOrganization": {"@type": "Organization", "name": "Earthed High Voltage", "url": "https://earthedhv.au"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.earthedenergy.au/"}, {"@type": "ListItem", "position": 2, "name": "Get a Quote", "item": "https://www.earthedenergy.au/get-a-quote.html"}]}</script>
+<link rel="stylesheet" href="/assets/css/mobile-fixes.css">
 </head>
 <body class="page page-quote">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -414,7 +415,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
         <button disabled="disabled" style="align-self:stretch;padding:16px 24px;border-radius:10px;border:none;background:#C8C0B4;color:#F5F1E8;font-size:15px;font-weight:600;letter-spacing:.02em;cursor:not-allowed;transition:background .2s" data-ee-on="click:2">Continue →</button>
         </div>
         </div>
-        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-yr workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
+        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-year workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
       
 
       <!-- STEP 2 · PROPERTY TYPE -->
@@ -479,7 +480,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
         <button onClick="{{ next }}" disabled="{{ pcInvalid }}" style="align-self:stretch;padding:16px 24px;border-radius:10px;border:none;background:{{ pcBtnBg }};color:#F5F1E8;font-size:15px;font-weight:600;letter-spacing:.02em;cursor:{{ pcCursor }};transition:background .2s">Continue →</button>
         </div>
         </div>
-        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-yr workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
+        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-year workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
       </sc-if>
 
       <!-- STEP 2 · PROPERTY TYPE -->
@@ -564,7 +565,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
             <sc-if value="{{ isOffgrid }}" hint-placeholder-val="{{ false }}">
               <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
                 <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Days of autonomy</span><span style="font-weight:600;color:#2b1550">{{ autonomyDays }} days</span></span>
-                <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Cloudy-week backup</span><span style="font-weight:600;color:#2b1550">Sigenergy Gateway + generator input</span></span>
+                <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Cloudy-week backup</span><span style="font-weight:600;color:#2b1550">GoodWe whole-home backup and generator input</span></span>
                 <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Grid connection fee</span><span style="font-weight:600;color:#2b1550">$0 · none</span></span>
               </div>
             </sc-if>
@@ -729,8 +730,8 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     const town = c.z[2];
     const texts = ['Looking up your postcode zone...', `Pulling SA Power Networks consumption patterns for ${town}...`, `Running SA Zone ${c.z[3]} solar irradiance (${c.z[4]} peak sun hrs/day)...`, 'Modelling your household against 10,000+ comparable SA installs...', 'Calculating your optimal system...'];
     const loadLines = texts.slice(0, Math.min(5, s.loadIdx + 1)).map((text, i) => ({ text, done: i < s.loadIdx, busy: i === s.loadIdx, color: i < s.loadIdx ? '#2b1550' : '#5E2D89' }));
-    const sysLabel = c.off ? `${c.kw} kW solar + ${c.bat} kWh Sigenergy stack` : `${c.kw} kW solar + ${c.bat} kWh battery`;
-    const recLines = (c.off ? [`Generates ~${this.fmt(c.gen)} kWh/year`, 'REC panels · SigenStor + Gateway', `${c.autonomy} days of autonomy at your usage`, 'Generator input + whole-home backup'] : [`Generates ~${this.fmt(c.gen)} kWh/year`, `Covers ${c.cover}% of your usage`, `${c.surplus}% surplus for winter buffer`, 'Whole-home backup included']).map((text, i) => ({ text, delay: `${520 + i * 120}ms` }));
+    const sysLabel = c.off ? `${c.kw} kW solar + ${c.bat} kWh GoodWe Lynx stack` : `${c.kw} kW solar + ${c.bat} kWh GoodWe battery`;
+    const recLines = (c.off ? [`Generates ~${this.fmt(c.gen)} kWh/year`, 'GoodWe Lynx modules and whole-home backup', `${c.autonomy} days of autonomy at your usage`, 'Generator input and whole-home backup'] : [`Generates ~${this.fmt(c.gen)} kWh/year`, `Covers ${c.cover}% of your usage`, `${c.surplus}% surplus for winter buffer`, 'Whole-home backup included']).map((text, i) => ({ text, delay: `${520 + i * 120}ms` }));
     const seasons = ['Summer', 'Autumn', 'Winter', 'Spring'].map((name, i) => ({ name, delay: `${780 + i * 100}ms` }));
     const finances = [['full', 'Pay in full', `$${this.fmt(c.price)} one-time · best price`], ['loan', '28Watt green loan', `$${this.fmt(c.loan)}/month over 60 months · ~4% p.a. · no deposit`], ['elevant', 'Elevant', `$0 deposit · $${this.fmt(c.elevant)}/month over 60 months`]].map(([id, label, sub], i) => { const sel = s.finance === id; return { id, label, sub, delay: `${150 + i * 150}ms`, border: sel ? '#5E2D89' : '#D8D0C0', bg: sel ? '#ffffff' : 'rgba(255,255,255,.55)', dot: sel ? '#5E2D89' : '#C8C0B4', dotFill: sel ? '#5E2D89' : 'transparent', pick: () => this.setState({ finance: id }) }; });
     const pcOk = this.validPc(), leadBad = this.leadInvalid();
