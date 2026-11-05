@@ -1,0 +1,135 @@
+/* Small-screen overrides. Loaded after inlined page CSS. */
+
+@media (max-width: 720px) {
+  [data-glow],
+  [style*="width:900px"] {
+    display: none !important;
+  }
+
+  html.js [data-reveal] {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .ee-fold,
+  [data-collage] {
+    content-visibility: visible !important;
+    contain-intrinsic-size: none !important;
+  }
+
+  [data-collage] {
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    max-width: 100vw !important;
+  }
+
+  [style*="min-width:260px"] {
+    min-width: 0 !important;
+    flex-basis: 100% !important;
+  }
+
+  [style*="max-width:320px"] {
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+
+  [style*="white-space:nowrap"] {
+    white-space: normal !important;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  body:not(.page-quote) {
+    padding-bottom: calc(128px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  body:not(.page-quote) main > .ee-fold:last-of-type {
+    scroll-margin-bottom: calc(128px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.page-home #top {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    gap: 14px !important;
+    padding: 12px 16px 28px !important;
+  }
+
+  body.page-home #top > picture {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: 200px !important;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  body.page-home #top > picture img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  body.page-home #top [data-hero-scrim] {
+    display: none !important;
+  }
+
+  body.page-home #top > a[aria-label="Earthed Energy home"] {
+    position: absolute !important;
+    left: 50% !important;
+    top: 28px !important;
+    transform: translateX(-50%) !important;
+    width: 132px !important;
+  }
+
+  body.page-home #top [data-hero-copy] {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 2px 6px 0 !important;
+    transform: none !important;
+  }
+
+  body.page-home #top [data-hero-product] {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    height: 150px !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+
+  body.page-home #top [data-hero-product] img {
+    height: 150px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  body.page-home #top [data-hero-rebate] {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    gap: 10px !important;
+  }
+}

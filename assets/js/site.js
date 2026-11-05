@@ -2,6 +2,50 @@
   document.documentElement.classList.add("js");
   window.EE_LEAD = "https://formspree.io/f/mvkzjdwe";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var narrow = window.matchMedia("(max-width: 720px)").matches;
+
+  function promoteImage(img, eager) {
+    var src = img.getAttribute("data-src");
+    if (!src) return;
+    img.decoding = "async";
+    if (eager) {
+      img.loading = "eager";
+      img.setAttribute("fetchpriority", "high");
+    }
+    img.src = src;
+    img.removeAttribute("data-src");
+  }
+
+  function loadDeferredImages() {
+    var nodes = Array.prototype.slice.call(document.querySelectorAll("img[data-src]"));
+    if (!nodes.length) return;
+    if (narrow || !("IntersectionObserver" in window)) {
+      nodes.forEach(function (img, index) { promoteImage(img, index < 8); });
+      return;
+    }
+    var view = window.innerHeight || 800;
+    var soon = [];
+    var later = [];
+    nodes.forEach(function (img) {
+      if (img.getBoundingClientRect().top < view * 1.35) soon.push(img);
+      else later.push(img);
+    });
+    soon.forEach(function (img, index) { promoteImage(img, index < 4); });
+    if (!later.length) return;
+    var imageIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        promoteImage(entry.target, false);
+        imageIO.unobserve(entry.target);
+      });
+    }, { rootMargin: "600px 0px" });
+    later.forEach(function (img) { imageIO.observe(img); });
+  }
+  loadDeferredImages();
+
+  if (narrow || reduce) {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("is-in"); });
+  }
 
   var legacyToggle = document.querySelector(".nav-toggle");
   var legacyPanel = document.getElementById("mobile-nav");
@@ -104,7 +148,7 @@
   }
 
   var glow = document.querySelector("[data-glow]");
-  if (glow && window.matchMedia("(hover: hover)").matches && !reduce) {
+  if (glow && !narrow && window.matchMedia("(hover: hover)").matches && !reduce) {
     window.addEventListener("mousemove", function (event) {
       glow.style.opacity = "1";
       glow.style.transform = "translate(" + event.clientX + "px," + event.clientY + "px)";
@@ -112,7 +156,7 @@
     document.addEventListener("mouseleave", function () { glow.style.opacity = "0"; });
   }
 
-  if (!reduce && "IntersectionObserver" in window) {
+  if (!narrow && !reduce && "IntersectionObserver" in window) {
     var reveal = document.querySelectorAll("[data-reveal]");
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
