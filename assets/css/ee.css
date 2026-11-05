@@ -168,7 +168,6 @@ html.js [data-reveal].is-in { transform: none; }
 [data-collage] a:focus-visible > div { opacity: 1 !important; }
 
 @media (max-width: 720px) {
-  body.page-home [data-hero-copy] { top: 34% !important; }
   .ee-header { display: none; }
   .ee-mob {
     position: static;
