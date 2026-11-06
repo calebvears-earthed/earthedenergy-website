@@ -980,7 +980,7 @@ def main() -> None:
             f"<p class=\"ee-note\"><a href=\"mailto:{EMAIL}\">{EMAIL}</a><br><a href=\"tel:{PHONE_TEL}\">0433 839 284</a></p>"
             "<p class=\"ee-note\">PO Box 4111<br>Norwood South SA 5067</p>"
             f"<p class=\"ee-note\">{LEGAL}</p>"
-            "<p class=\"ee-note\">SA electrical contractor licence PGE 336477</p>"
+            "<p class=\"ee-note\">SA electrical contractor licence PGE 363823</p>"
             "<p class=\"ee-note\"><a href=\"https://earthedhv.au\">Utility and high voltage work · Earthed High Voltage</a></p>"
             f"""<form class="ee-form" data-ee-lead action="{FORMSPREE}" method="POST">
 <input type="hidden" name="form" value="contact">
@@ -1093,7 +1093,7 @@ def main() -> None:
             "The site, the indicative price, and the written proposal.",
             f"""
 <h2>The business</h2>
-<p>{LEGAL}. PO Box 4111, Norwood South SA 5067. <a href="mailto:{EMAIL}">{EMAIL}</a>. <a href="tel:{PHONE_TEL}">0433 839 284</a>. SA electrical contractor licence PGE 336477.</p>
+<p>{LEGAL}. PO Box 4111, Norwood South SA 5067. <a href="mailto:{EMAIL}">{EMAIL}</a>. <a href="tel:{PHONE_TEL}">0433 839 284</a>. SA electrical contractor licence PGE 363823.</p>
 <h2>The indicative price</h2>
 <p>Calculate savings and the scenario pages are guides. They are not an offer. The written proposal is the document that sets the equipment, the price and what is included. Nothing on this website adds a cost after you sign for work that was already in that proposal.</p>
 <h2>Warranties</h2>
