@@ -137,7 +137,7 @@ The group column always cross-links:
 - High Voltage footer links to `https://earthedenergy.au` as Earthed Energy, with the line "Part of the Earthed Energy group" and "Solar and battery".
 - Energy footer links back to `https://www.earthedhv.au` as Earthed High Voltage, with "High voltage electrical".
 
-Licence line on this site, verbatim structure: `SA electrical contractor licence PGE 336477 · ABN 99 679 180 879 · ACN 679 180 879`. The Energy site should show its own licence if it has one, in the same position, not this number.
+Licence line on this site, verbatim structure: `SA electrical contractor licence PGE 363823 · ABN 99 679 180 879 · ACN 679 180 879`. The Energy site should show its own licence if it has one, in the same position, not this number.
 
 ## Forms
 
