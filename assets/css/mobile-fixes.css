@@ -1,3 +1,44 @@
+/* Quote wizard sits on the plum field. The cream site header is a second logo and a white bar. */
+body.page-quote .ee-header,
+body.page-quote .ee-mob { display: none !important; }
+body.page-quote { background: #2b1550; }
+.ee-quote-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 16px 20px 4px;
+}
+.ee-quote-logo { width: 112px; display: block; flex: none; }
+.ee-quote-logo img { width: 100%; height: auto; display: block; }
+.ee-quote-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin-left: auto;
+}
+.ee-quote-nav a {
+  color: rgba(255, 255, 255, 0.92);
+  font: 600 12px/1 "Open Sans", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.ee-quote-nav a:hover { color: #e9ddff; }
+.ee-quote-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(43, 21, 80, 0.55);
+  padding: 10px 12px;
+  border-radius: 999px;
+}
+
 /* Small-screen overrides. Loaded after inlined page CSS. */
 
 @media (max-width: 720px) {
