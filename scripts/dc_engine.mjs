@@ -607,7 +607,7 @@ export function mountInteractive(root, template, script) {
   inst.props = {};
   inst.draw = () => {
     const focus = document.activeElement;
-    const focusKey = focus && root.contains(focus) ? (focus.getAttribute("name") || focus.getAttribute("aria-label") || focus.id) : "";
+    const focusKey = focus && root.contains(focus) ? (focus.id || focus.getAttribute("name") || focus.getAttribute("autocomplete") || focus.getAttribute("aria-label") || "") : "";
     const caret = focus && typeof focus.selectionStart === "number" ? focus.selectionStart : null;
     const scope = inst.renderVals() || {};
     const rendered = expand(template, scope, ctx);
@@ -630,7 +630,10 @@ export function mountInteractive(root, template, script) {
       });
     });
     if (focusKey) {
-      const next = root.querySelector(`[name="${CSS.escape(focusKey)}"], [aria-label="${CSS.escape(focusKey)}"], #${CSS.escape(focusKey)}`);
+      const next = root.querySelector(`#${CSS.escape(focusKey)}`)
+        || root.querySelector(`[name="${CSS.escape(focusKey)}"]`)
+        || root.querySelector(`[autocomplete="${CSS.escape(focusKey)}"]`)
+        || root.querySelector(`[aria-label="${CSS.escape(focusKey)}"]`);
       if (next) {
         next.focus();
         if (caret != null && next.setSelectionRange) {
