@@ -154,6 +154,11 @@ body.page-home .ee-iconbtn {
 /* Small-screen overrides. Loaded after inlined page CSS. */
 
 @media (max-width: 720px) {
+  /* Portrait cover has to crop this wide photo. The panels are on the left roofs, so keep that edge. */
+  body.page-home #top > picture img {
+    object-position: left center !important;
+  }
+
   body.page-home #top {
     padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)) !important;
   }
