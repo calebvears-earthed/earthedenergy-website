@@ -377,6 +377,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": ["Electrician", "LocalBusiness"], "@id": "https://www.earthedenergy.au/#business", "name": "Earthed Energy", "legalName": "Earthed High Voltage Pty Ltd", "url": "https://www.earthedenergy.au/", "logo": "https://www.earthedenergy.au/images/earthed-energy-logo-purple.webp", "image": "https://www.earthedenergy.au/images/og-home.jpg", "email": "calebvears@earthedhv.au", "telephone": "+61433839284", "address": {"@type": "PostalAddress", "postOfficeBoxNumber": "4111", "addressLocality": "Norwood South", "addressRegion": "SA", "postalCode": "5067", "addressCountry": "AU"}, "areaServed": {"@type": "AdministrativeArea", "name": "South Australia"}, "parentOrganization": {"@type": "Organization", "name": "Earthed High Voltage", "url": "https://earthedhv.au"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.earthedenergy.au/"}, {"@type": "ListItem", "position": 2, "name": "Get a Quote", "item": "https://www.earthedenergy.au/get-a-quote.html"}]}</script>
+<link rel="stylesheet" href="/assets/css/mobile-fixes.css">
 </head>
 <body class="page page-quote">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -387,9 +388,10 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#2b1550;position:relative;overflow:hidden">
   <picture style="display:contents"><img fetchpriority="high" decoding="sync" loading="eager" src="/images/quote-backdrop-960.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></picture>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,21,80,.9) 0%,rgba(43,21,80,.15) 40%,rgba(43,21,80,.45) 100%)"></div>
-  <div style="position:relative;z-index:2;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px">
-    <a href="/" aria-label="Earthed Energy" style="width:120px;display:block"><picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:100%;height:auto;display:block" width="1234" height="329" loading="lazy" decoding="async"></picture></a>
-    <div aria-hidden="true" style="display:flex;gap:8px;align-items:center;background:rgba(43,21,80,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 14px;border-radius:999px">
+  <div class="ee-quote-bar">
+    <a class="ee-quote-logo" href="/" aria-label="Earthed Energy home"><picture style="display:contents"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:100%;height:auto;display:block" width="1234" height="329"></picture></a>
+    <nav class="ee-quote-nav" aria-label="Primary"><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a><a href="/contact.html">Contact</a></nav>
+    <div class="ee-quote-dots" aria-hidden="true">
       <span style="width:22px;height:8px;border-radius:999px;background:#ffffff;transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.4);transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span>
     </div>
   </div>
@@ -414,7 +416,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
         <button disabled="disabled" style="align-self:stretch;padding:16px 24px;border-radius:10px;border:none;background:#C8C0B4;color:#F5F1E8;font-size:15px;font-weight:600;letter-spacing:.02em;cursor:not-allowed;transition:background .2s" data-ee-on="click:2">Continue →</button>
         </div>
         </div>
-        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-yr workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
+        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-year workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
       
 
       <!-- STEP 2 · PROPERTY TYPE -->
@@ -452,9 +454,10 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 <div style="min-height:100vh;display:flex;flex-direction:column;background:#2b1550;position:relative;overflow:hidden">
   <img fetchpriority="high" decoding="sync" loading="eager" src="/images/quote-backdrop-960.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"><sc-if value="{{ isBattery }}" hint-placeholder-val="{{ false }}"><img src="/images/hf-20260930-041538-f9f74015-db11-4b4d-97f6-df92ce245c66-8008173a.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2400" height="1029"></sc-if><sc-if value="{{ isOriginal }}" hint-placeholder-val="{{ false }}"><img src="/images/hf-20260826-054652-ec41eb79-c0fb-4fc8-84ae-2dde6e5b3ff5-517604cf.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%" width="2048" height="1360"></sc-if>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,21,80,.9) 0%,rgba(43,21,80,.15) 40%,rgba(43,21,80,.45) 100%)"></div>
-  <div style="position:relative;z-index:2;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px">
-    <a href="/" aria-label="Earthed Energy" style="width:120px;display:block"><img src="/images/earthed-energy-logo-white.webp" alt="Earthed Energy" style="width:100%;height:auto;display:block" width="1234" height="329"></a>
-    <div aria-hidden="true" style="display:flex;gap:8px;align-items:center;background:rgba(43,21,80,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:10px 14px;border-radius:999px">
+  <div class="ee-quote-bar">
+    <a class="ee-quote-logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-white.webp" alt="" style="width:100%;height:auto;display:block" width="1234" height="329"></a>
+    <nav class="ee-quote-nav" aria-label="Primary"><a href="/residential.html">Residential</a><a href="/commercial.html">Commercial</a><a href="/knowledge.html">Knowledge</a><a href="/about-earthed-energy.html">About</a><a href="/contact.html">Contact</a></nav>
+    <div class="ee-quote-dots" aria-hidden="true">
       <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6"><span style="width:{{ d.w }};height:8px;border-radius:999px;background:{{ d.bg }};transition:width .4s cubic-bezier(.2,.8,.2,1),background .4s"></span></sc-for>
     </div>
   </div>
@@ -479,7 +482,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
         <button onClick="{{ next }}" disabled="{{ pcInvalid }}" style="align-self:stretch;padding:16px 24px;border-radius:10px;border:none;background:{{ pcBtnBg }};color:#F5F1E8;font-size:15px;font-weight:600;letter-spacing:.02em;cursor:{{ pcCursor }};transition:background .2s">Continue →</button>
         </div>
         </div>
-        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-yr workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
+        <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6378;text-align:center"><span>7-year workmanship warranty</span><span>·</span><span>SA owned &amp; operated</span><span>·</span><span>Rebates up to 40%</span></div>
       </sc-if>
 
       <!-- STEP 2 · PROPERTY TYPE -->
@@ -538,6 +541,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
       <!-- STEP 5B · REVEAL -->
       <sc-if value="{{ is5reveal }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;flex-direction:column;gap:20px;animation:fadeIn 420ms both">
+          <span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#5E2D89">Step 4 of 6</span>
           <div style="background:#ffffff;border:1px solid #D8D0C0;border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;animation:fadeUp 360ms both">
             <span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5E2D89">Your household</span>
             <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(38px,8vw,52px);line-height:1;color:#2b1550">~{{ kwhCount }} <span style="font-size:.45em;color:#5E2D89">kWh / year</span></span>
@@ -553,24 +557,22 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
           <div style="background:#ffffff;border:1px solid #D8D0C0;border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:12px;animation:fadeUp 360ms 600ms both">
             <span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#5E2D89">{{ projKicker }}</span>
             <sc-if value="{{ notOffgrid }}" hint-placeholder-val="{{ true }}">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 20px">
-                <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4"><span style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #EEE8DC;font-size:15px;animation:fadeUp 260ms {{ s.delay }} both"><span style="color:#6B6378">{{ s.name }}</span><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:20px;color:#2b1550">$0</span></span></sc-for>
-              </div>
+              <p style="margin:0;font-size:15px;line-height:1.5;color:#3A2947">This sizes a system from the quarterly bill you entered. It is not a quote, and it is not a promise of a $0 bill. The daily supply charge stays.</p>
               <div style="display:flex;flex-direction:column;gap:8px;padding-top:6px;font-size:15px">
-                <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Annual bill with Earthed</span><span style="font-weight:600;color:#2b1550">$0</span></span>
-                <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Annual bill without</span><span style="position:relative;color:#6B6378;display:inline-block">~${{ annualBill }}<span style="position:absolute;left:0;top:52%;height:2px;background:#B4322A;animation:drawLine 400ms 1.1s both"></span></span></span>
+                <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Annual bill you entered</span><span style="font-weight:600;color:#2b1550">~${{ annualBill }}</span></span>
               </div>
             </sc-if>
             <sc-if value="{{ isOffgrid }}" hint-placeholder-val="{{ false }}">
               <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
                 <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Days of autonomy</span><span style="font-weight:600;color:#2b1550">{{ autonomyDays }} days</span></span>
-                <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Cloudy-week backup</span><span style="font-weight:600;color:#2b1550">Sigenergy Gateway + generator input</span></span>
+                <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Cloudy-week backup</span><span style="font-weight:600;color:#2b1550">GoodWe whole-home backup and generator input</span></span>
                 <span style="display:flex;justify-content:space-between;gap:12px"><span style="color:#6B6378">Grid connection fee</span><span style="font-weight:600;color:#2b1550">$0 · none</span></span>
               </div>
             </sc-if>
             <div style="border-top:1px solid #D8D0C0;padding-top:14px;display:flex;flex-direction:column;gap:4px">
-              <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(22px,5vw,30px);line-height:1.1;color:#2b1550">Over 25 years, you save ~${{ saveCount }}</span>
-              <span style="font-size:14px;color:#6B6378">Payback: {{ payback }} years</span>
+              <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:clamp(22px,5vw,30px);line-height:1.1;color:#2b1550">Over 25 years, this model saves ~${{ saveCount }}</span>
+              <span style="font-size:14px;color:#6B6378">Payback in this model: {{ payback }} years</span>
+              <span style="font-size:13px;line-height:1.45;color:#6B6378">Worked from the bill you entered and the published package prices. Not a savings guarantee. The daily supply charge stays.</span>
             </div>
           </div>
           <button onClick="{{ next }}" style="margin-top:8px;padding:18px 24px;border-radius:10px;border:none;background:#2b1550;color:#F5F1E8;font-size:16px;font-weight:600;cursor:pointer;animation:fadeIn 400ms 1.2s both">See the price →</button>
@@ -597,7 +599,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
               <span style="display:flex;flex-direction:column;gap:3px"><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-size:20px;line-height:1.1">{{ f.label }}</span><span style="font-size:13.5px;color:#6B6378">{{ f.sub }}</span></span>
             </button>
           </sc-for>
-          <span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:17px;color:#6B6378">No obligation · just here for info</span>
+          <span style="font-size:13px;line-height:1.45;color:#6B6378">Amount shown is inc GST. Elevant is 0% interest for amounts under $10,000. 28Watt is for amounts over $10,000. Subject to lender approval and credit criteria. Fees and terms apply.</span><span style="font-family:'Open Sans',sans-serif;font-weight:300;font-style:italic;font-size:17px;color:#6B6378">No obligation · just here for info</span>
         </div>
         <button onClick="{{ next }}" style="margin-top:auto;padding:18px 24px;border-radius:10px;border:none;background:#2b1550;color:#F5F1E8;font-size:16px;font-weight:600;cursor:pointer;animation:fadeIn 400ms 850ms both,ctaPulse 3s 1.3s infinite">Send me the full quote →</button>
       </sc-if>
@@ -609,14 +611,15 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
           <h1 style="font-size:clamp(32px,6.5vw,44px);line-height:1.05;margin:0;color:#2b1550;text-wrap:balance">Great. Let's get the full quote to you.</h1>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px">
-          <label style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6378">First name</span><input ref="{{ nameRef }}" value="{{ name }}" onChange="{{ onName }}" autoComplete="given-name" style="font-size:18px;padding:14px 16px;border:1px solid #D8D0C0;border-radius:10px;background:#F5F1E8;color:#2b1550"></label>
-          <label style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6378">Mobile phone</span><input value="{{ phone }}" onChange="{{ onPhone }}" inputMode="tel" autoComplete="tel" placeholder="04XX XXX XXX" style="font-size:18px;padding:14px 16px;border:1px solid {{ phoneBorder }};border-radius:10px;background:#F5F1E8;color:#2b1550"></label>
-          <label style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6378">Email</span><input value="{{ email }}" onChange="{{ onEmail }}" inputMode="email" autoComplete="email" style="font-size:18px;padding:14px 16px;border:1px solid {{ emailBorder }};border-radius:10px;background:#F5F1E8;color:#2b1550"></label>
+          <label style="display:flex;flex-direction:column;gap:6px" for="ee-name"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6378">First name</span><input id="ee-name" ref="{{ nameRef }}" value="{{ name }}" onChange="{{ onName }}" autoComplete="given-name" style="font-size:18px;padding:14px 16px;border:1px solid #D8D0C0;border-radius:10px;background:#F5F1E8;color:#2b1550"></label>
+          <label style="display:flex;flex-direction:column;gap:6px" for="ee-phone"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6378">Mobile phone</span><input id="ee-phone" value="{{ phone }}" onChange="{{ onPhone }}" inputMode="tel" autoComplete="tel" placeholder="04XX XXX XXX" style="font-size:18px;padding:14px 16px;border:1px solid {{ phoneBorder }};border-radius:10px;background:#F5F1E8;color:#2b1550"></label>
+          <label style="display:flex;flex-direction:column;gap:6px" for="ee-email"><span style="font-family:'Open Sans',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6B6378">Email</span><input id="ee-email" value="{{ email }}" onChange="{{ onEmail }}" inputMode="email" autoComplete="email" style="font-size:18px;padding:14px 16px;border:1px solid {{ emailBorder }};border-radius:10px;background:#F5F1E8;color:#2b1550"></label>
         </div>
         <button onClick="{{ submit }}" disabled="{{ leadInvalid }}" style="padding:18px 24px;border-radius:10px;border:none;background:{{ leadBtnBg }};color:#F5F1E8;font-size:16px;font-weight:600;cursor:{{ leadCursor }};display:flex;align-items:center;justify-content:center;gap:10px;animation:{{ leadAnim }};transition:background .2s">
           <sc-if value="{{ sending }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(245,241,232,.3);border-top-color:#F5F1E8;animation:spin .8s linear infinite"></span></sc-if>
           <span>{{ submitLabel }}</span>
         </button>
+        <sc-if value="{{ leadError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;font-size:14px;line-height:1.45;color:#B4322A">The quote was not sent. Nothing left this page. Call 0433 839 284 or use the contact page.</p></sc-if>
         <div style="display:flex;flex-direction:column;gap:10px;text-align:center">
           <a href="/contact.html">Book a call</a> or <a href="tel:0433839284">0433 839 284</a>
         </div>
@@ -658,7 +661,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
 </x-dc>
 </template>
 <script type="text/plain" id="ee-logic">class Component extends DCLogic {
-  state = { step: 1, dir: 1, postcode: '', pcError: false, ptype: null, billQ: 600, tapped: null, loadIdx: -1, reveal: false, finance: 'loan', name: '', phone: '', email: '', sending: false, counts: { kwh: 0, save: 0, price: 0 } };
+  state = { step: 1, dir: 1, postcode: '', pcError: false, ptype: null, billQ: 600, tapped: null, loadIdx: -1, reveal: false, finance: 'loan', name: '', phone: '', email: '', sending: false, leadError: false, counts: { kwh: 0, save: 0, price: 0 } };
   pcRef = React.createRef(); nameRef = React.createRef();
   timers = [];
   ZONES = [[5000,5099,'Adelaide',3,4.9],[5100,5199,'Northern Adelaide',3,4.9],[5200,5299,'the Adelaide Hills',3,4.9],[5300,5399,'Murray Bridge',3,5.0],[5400,5499,'the Yorke Peninsula',3,5.1],[5500,5599,'the Clare Valley',3,5.1],[5600,5699,'the Eyre Peninsula',2,5.2],[5700,5799,'the Flinders Ranges',2,5.4],[5800,5999,'outback SA',1,5.6]];
@@ -666,7 +669,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
   PRICES = [[6,10,9888],[8,16,12888],[10,24,15888],[10,48,18444],[15,40,24888],[20,50,32888]];
   componentDidMount() { this.focus(); this.onKey = e => { if (e.key === 'Escape' && this.state.step > 1 && this.state.step !== 4 && this.state.step !== 8) this.back(); }; window.addEventListener('keydown', this.onKey); try { const q = new URLSearchParams(location.search); this.utm = {}; q.forEach((v, k) => { if (k.startsWith('utm_')) this.utm[k] = v; }); const p = q.get('path'); if (p === 'battery') { this.utm.path = 'battery'; this.setState({ ptype: 'large', tapped: 'large', hasSolar: true }); } } catch (e) {} }
   componentWillUnmount() { this.clear(); window.removeEventListener('keydown', this.onKey); }
-  focus() { this.later(() => { const r = this.state.step === 1 ? this.pcRef : this.state.step === 6 ? this.nameRef : null; r && r.current && r.current.focus(); }, 380); }
+  focus() { this.later(() => { const active = document.activeElement; if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.tagName === "SELECT")) return; const r = this.state.step === 1 ? this.pcRef : this.state.step === 6 ? this.nameRef : null; if (r && r.current) r.current.focus(); }, 380); }
   clear() { this.timers.forEach(clearTimeout); this.timers = []; }
   later(fn, ms) { this.timers.push(setTimeout(fn, ms)); }
   zone() { const pc = parseInt(this.state.postcode, 10); return this.ZONES.find(z => pc >= z[0] && pc <= z[1]) || this.ZONES[0]; }
@@ -688,7 +691,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     const payback = Math.max(1, Math.round(price / annual * 10) / 10);
     return { z, kwh, kw, bat, price, gen, cover, surplus: Math.max(0, cover - 100 + 15), annual, save25, payback, off, commercial, loan: Math.round(price * Math.pow(1.04, 5) / 60), elevant: Math.round(price * Math.pow(1.045, 5) / 60), autonomy: Math.round(bat / (kwh / 365) * 10) / 10 };
   }
-  countUp(key, target, ms) { const t0 = performance.now(); const tick = now => { const p = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - p, 3); this.setState(s => ({ counts: { ...s.counts, [key]: Math.round(target * e) } })); if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }
+  countUp(key, target) { this.setState(s => ({ counts: { ...s.counts, [key]: target } })); }
   runLoading() { this.clear(); this.setState({ loadIdx: 0, reveal: false, counts: { kwh: 0, save: 0, price: 0 } }); [600, 1300, 2000, 2700, 3300].forEach((t, i) => this.later(() => this.setState({ loadIdx: i + 1 }), t)); this.later(() => { this.setState({ reveal: true }); const c = this.calc(); this.countUp('kwh', c.kwh, 1200); this.countUp('save', c.save25, 1200); }, 3700); }
   go(step, dir) { this.setState({ step, dir, tapped: null }); this.focus(); if (step === 4) this.runLoading(); if (step === 5) this.later(() => this.countUp('price', this.calc().price, 800), 300); }
   next = () => { const s = this.state.step; if (s === 1 && !this.validPc()) return; this.go(s === 1 && this.state.hasSolar && this.state.ptype ? 3 : s + 1, 1); };
@@ -701,21 +704,18 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     const c = this.calc(), s = this.state;
     const payload = { postcode: s.postcode, type: s.ptype, quarterlyBill: s.billQ, recommended: `${c.kw}kW + ${c.bat}kWh`, price: c.price, finance: s.finance, firstName: s.name, phone: s.phone, email: s.email, timestamp: new Date().toISOString(), utm: this.utm || {} };
     const summary = `Quote request, ${s.name}, ${s.postcode}, $${c.price}, ${s.finance}, ${c.kw}kW + ${c.bat}kWh`;
-    this.setState({ sending: true });
-    const err = document.getElementById('ee-lead-error');
-    if (err) err.hidden = true;
+    this.setState({ sending: true, leadError: false });
     const body = new FormData();
     body.append('form', 'quote');
     body.append('email', s.email);
     body.append('name', s.name);
     body.append('phone', s.phone);
     body.append('_subject', 'Earthed Energy quote request');
-    body.append('message', summary + '
-' + JSON.stringify(payload, null, 2));
+    body.append('message', summary + '\n' + JSON.stringify(payload, null, 2));
     const endpoint = (window.EE_LEAD || 'https://formspree.io/f/mvkzjdwe');
     fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' } })
-      .then((res) => { if (!res.ok) throw new Error(String(res.status)); this.setState({ sending: false }); this.go(8, 1); })
-      .catch(() => { this.setState({ sending: false }); if (err) err.hidden = false; });
+      .then((res) => { if (!res.ok) throw new Error(String(res.status)); this.setState({ sending: false, leadError: false }); this.go(8, 1); })
+      .catch(() => { this.setState({ sending: false, leadError: true }); });
   };
   leadInvalid() { const s = this.state; return !(s.name.trim() && /^0[4-5]\d{2}\s?\d{3}\s?\d{3}$/.test(s.phone.trim()) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim())); }
   renderVals() {
@@ -729,8 +729,8 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     const town = c.z[2];
     const texts = ['Looking up your postcode zone...', `Pulling SA Power Networks consumption patterns for ${town}...`, `Running SA Zone ${c.z[3]} solar irradiance (${c.z[4]} peak sun hrs/day)...`, 'Modelling your household against 10,000+ comparable SA installs...', 'Calculating your optimal system...'];
     const loadLines = texts.slice(0, Math.min(5, s.loadIdx + 1)).map((text, i) => ({ text, done: i < s.loadIdx, busy: i === s.loadIdx, color: i < s.loadIdx ? '#2b1550' : '#5E2D89' }));
-    const sysLabel = c.off ? `${c.kw} kW solar + ${c.bat} kWh Sigenergy stack` : `${c.kw} kW solar + ${c.bat} kWh battery`;
-    const recLines = (c.off ? [`Generates ~${this.fmt(c.gen)} kWh/year`, 'REC panels · SigenStor + Gateway', `${c.autonomy} days of autonomy at your usage`, 'Generator input + whole-home backup'] : [`Generates ~${this.fmt(c.gen)} kWh/year`, `Covers ${c.cover}% of your usage`, `${c.surplus}% surplus for winter buffer`, 'Whole-home backup included']).map((text, i) => ({ text, delay: `${520 + i * 120}ms` }));
+    const sysLabel = c.off ? `${c.kw} kW solar + ${c.bat} kWh GoodWe Lynx stack` : `${c.kw} kW solar + ${c.bat} kWh GoodWe battery`;
+    const recLines = (c.off ? [`Generates ~${this.fmt(c.gen)} kWh/year`, 'GoodWe Lynx modules and whole-home backup', `${c.autonomy} days of autonomy at your usage`, 'Generator input and whole-home backup'] : [`Generates ~${this.fmt(c.gen)} kWh/year`, `Covers ${c.cover}% of your usage`, `${c.surplus}% surplus for winter buffer`, 'Whole-home backup included']).map((text, i) => ({ text, delay: `${520 + i * 120}ms` }));
     const seasons = ['Summer', 'Autumn', 'Winter', 'Spring'].map((name, i) => ({ name, delay: `${780 + i * 100}ms` }));
     const finances = [['full', 'Pay in full', `$${this.fmt(c.price)} one-time · best price`], ['loan', '28Watt green loan', `$${this.fmt(c.loan)}/month over 60 months · ~4% p.a. · no deposit`], ['elevant', 'Elevant', `$0 deposit · $${this.fmt(c.elevant)}/month over 60 months`]].map(([id, label, sub], i) => { const sel = s.finance === id; return { id, label, sub, delay: `${150 + i * 150}ms`, border: sel ? '#5E2D89' : '#D8D0C0', bg: sel ? '#ffffff' : 'rgba(255,255,255,.55)', dot: sel ? '#5E2D89' : '#C8C0B4', dotFill: sel ? '#5E2D89' : 'transparent', pick: () => this.setState({ finance: id }) }; });
     const pcOk = this.validPc(), leadBad = this.leadInvalid();
@@ -751,7 +751,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
       onName: e => this.setState({ name: e.target.value }), onPhone: e => this.setState({ phone: e.target.value }), onEmail: e => this.setState({ email: e.target.value }),
       phoneBorder: s.phone && !/^0[4-5]\d{2}\s?\d{3}\s?\d{3}$/.test(s.phone.trim()) ? '#B4322A' : '#D8D0C0',
       emailBorder: s.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim()) ? '#B4322A' : '#D8D0C0',
-      submit: this.submit, leadInvalid: leadBad || s.sending, leadBtnBg: leadBad ? '#C8C0B4' : '#2b1550', leadCursor: leadBad ? 'not-allowed' : 'pointer', leadAnim: leadBad ? 'none' : 'pulse 1.6s ease-in-out infinite', sending: s.sending, submitLabel: s.sending ? 'Sending...' : 'Send me the full quote',
+      submit: this.submit, leadInvalid: leadBad || s.sending, leadBtnBg: leadBad ? '#C8C0B4' : '#2b1550', leadCursor: leadBad ? 'not-allowed' : 'pointer', leadAnim: leadBad ? 'none' : 'pulse 1.6s ease-in-out infinite', sending: s.sending, leadError: s.leadError, submitLabel: s.sending ? 'Sending...' : 'Send me the full quote',
     };
   }
 }</script>
