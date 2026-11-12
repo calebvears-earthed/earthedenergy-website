@@ -39,9 +39,125 @@ body.page-quote { background: #2b1550; }
   border-radius: 999px;
 }
 
+/* Homepage hero: full-bleed photo, one header logo, batteries clear of the type. */
+body.page-home #top {
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: center;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100svh !important;
+  height: 100svh !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+  gap: clamp(12px, 2vh, 28px) !important;
+  padding: calc(76px + env(safe-area-inset-top, 0px)) 20px calc(28px + env(safe-area-inset-bottom, 0px)) !important;
+}
+body.page-home #top > picture,
+body.page-home #top [data-hero-scrim] {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  pointer-events: none;
+}
+body.page-home #top > picture img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+body.page-home #top > a[aria-label="Earthed Energy home"],
+body.page-home [data-hero-pin] {
+  display: none !important;
+}
+body.page-home #top [data-hero-copy] {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  box-sizing: border-box !important;
+  width: min(100%, 40rem) !important;
+  max-width: 100% !important;
+  padding: 0 8px !important;
+  align-self: end;
+  z-index: 2;
+}
+body.page-home #top [data-hero-copy] h1 {
+  font-size: clamp(28px, 4.6vw, 56px) !important;
+  line-height: 1.08 !important;
+  max-width: 18ch;
+}
+body.page-home #top [data-hero-copy] p {
+  font-size: clamp(12px, 1.4vw, 16px) !important;
+  letter-spacing: 0.12em !important;
+  line-height: 1.45 !important;
+}
+body.page-home #top [data-hero-product] {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  transform: none !important;
+  height: auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  align-self: center;
+  z-index: 2;
+}
+body.page-home #top [data-hero-product] img {
+  height: clamp(88px, 20vh, 210px) !important;
+  width: auto !important;
+  max-width: 42vw !important;
+}
+body.page-home #top [data-hero-rebate] {
+  position: relative !important;
+  inset: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  box-sizing: border-box !important;
+  width: min(100%, 40rem) !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  gap: 12px !important;
+  align-self: end;
+  z-index: 2;
+}
+body.page-home .ee-hero-more,
+body.page-home #top [data-hero-rebate] a {
+  color: #f5f1e8 !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  box-shadow: none !important;
+}
+body.page-home .ee-mob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+body.page-home .ee-iconbtn {
+  background: rgba(43, 21, 80, 0.28);
+  border-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+}
+
 /* Small-screen overrides. Loaded after inlined page CSS. */
 
 @media (max-width: 720px) {
+  body.page-home #top {
+    padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
   [data-glow],
   [style*="width:900px"] {
     display: none !important;
@@ -91,86 +207,4 @@ body.page-quote { background: #2b1550; }
     scroll-margin-bottom: calc(128px + env(safe-area-inset-bottom, 0px));
   }
 
-  body.page-home #top {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    aspect-ratio: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-    gap: 14px !important;
-    padding: 12px 16px 28px !important;
-  }
-
-  body.page-home #top > picture {
-    position: relative !important;
-    inset: auto !important;
-    display: block !important;
-    width: 100% !important;
-    height: 200px !important;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  body.page-home #top > picture img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-  }
-
-  body.page-home #top [data-hero-scrim] {
-    display: none !important;
-  }
-
-  body.page-home #top > a[aria-label="Earthed Energy home"] {
-    position: absolute !important;
-    left: 50% !important;
-    top: 28px !important;
-    transform: translateX(-50%) !important;
-    width: 132px !important;
-  }
-
-  body.page-home #top [data-hero-copy] {
-    position: relative !important;
-    inset: auto !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 2px 6px 0 !important;
-    transform: none !important;
-  }
-
-  body.page-home #top [data-hero-product] {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    height: 150px !important;
-    width: auto !important;
-    margin: 0 !important;
-  }
-
-  body.page-home #top [data-hero-product] img {
-    height: 150px !important;
-    width: auto !important;
-    max-width: none !important;
-  }
-
-  body.page-home #top [data-hero-rebate] {
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    gap: 10px !important;
-  }
 }
