@@ -105,13 +105,27 @@
           if (message) message.value = "Rebate estimate\n" + bits.join("\n");
         }
         if (button) button.disabled = true;
+        var data = new FormData(form);
+        try {
+          var params = new URLSearchParams(window.location.search);
+          ["utm_source", "utm_medium", "utm_campaign", "source"].forEach(function (key) {
+            var value = params.get(key);
+            if (value && !data.get(key)) data.set(key, value);
+          });
+        } catch (e) {}
         fetch(window.EE_LEAD, {
           method: "POST",
-          body: new FormData(form),
+          body: data,
           headers: { Accept: "application/json" }
         }).then(function (res) {
           if (!res.ok) throw new Error(String(res.status));
           if (ok) ok.hidden = false;
+          if (String(data.get("form") || "") === "contact" && typeof window.fbq === "function") {
+            var lead = { content_name: "contact" };
+            var utmSource = data.get("utm_source");
+            if (utmSource) lead.utm_source = String(utmSource);
+            window.fbq("track", "Lead", lead);
+          }
         }).catch(function () {
           if (err) err.hidden = false;
           if (button) button.disabled = false;

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adelaide Hills solar and battery · Earthed Energy</title>
+<meta name="description" content="Adelaide Hills solar and battery specialists, based in Strathalbyn. Build your numbers in 60 seconds. SA Electrical Contractor Licence PGE 363823.">
+<link rel="canonical" href="https://www.earthedenergy.au/start">
+<meta property="og:title" content="Adelaide Hills solar and battery · Earthed Energy">
+<meta property="og:description" content="Adelaide Hills solar and battery specialists, based in Strathalbyn. Build your numbers in 60 seconds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.earthedenergy.au/start">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="Earthed Energy">
+<meta property="og:image" content="https://www.earthedenergy.au/images/og-home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.earthedenergy.au/images/og-home.jpg">
+<meta name="theme-color" content="#2B1550">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/open-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #F5F1E8;
+    color: #2b1550;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid #F5A04A; outline-offset: 3px; }
+  .skip {
+    position: absolute;
+    left: 12px;
+    top: -60px;
+    z-index: 100;
+    background: #2b1550;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font: 600 14px/1 "Open Sans", sans-serif;
+  }
+  .skip:focus { top: 12px; }
+
+  .hero {
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(168, 120, 255, 0.45), transparent 55%),
+      linear-gradient(165deg, #3d2170 0%, #2b1550 58%, #241244 100%);
+    color: #F5F1E8;
+    padding: calc(18px + env(safe-area-inset-top)) 20px 36px;
+  }
+  .hero-inner, .band, .foot-inner { width: min(1040px, 100%); margin: 0 auto; }
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .logo { width: 148px; display: block; }
+  .logo img { width: 100%; height: auto; }
+  .top-call {
+    display: none;
+    min-height: 44px;
+    align-items: center;
+    color: #F5F1E8;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 650;
+  }
+  .eyebrow {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #F3E9FF;
+  }
+  h1 {
+    margin: 0;
+    max-width: 14ch;
+    font-size: clamp(34px, 8vw, 58px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .hero-grid {
+    display: grid;
+    gap: 18px 36px;
+    align-items: start;
+    grid-template-areas:
+      "eye"
+      "title"
+      "actions";
+  }
+  .eyebrow { grid-area: eye; }
+  h1 { grid-area: title; }
+  .actions { grid-area: actions; }
+  html[data-offer="on"] .hero-grid {
+    grid-template-areas:
+      "eye"
+      "title"
+      "offer"
+      "actions";
+  }
+  .start-offer { grid-area: offer; }
+  .start-offer { display: none; margin: 0; }
+  html[data-offer="on"] .start-offer {
+    display: block;
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: rgba(245, 241, 232, 0.96);
+    color: #2b1550;
+  }
+  .start-offer strong {
+    display: block;
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 650;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .start-offer span {
+    display: block;
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 650;
+    color: #5E2D89;
+  }
+  .actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 4px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: #F5F1E8;
+    color: #2b1550;
+    font: 700 16px/1 "Open Sans", sans-serif;
+    text-decoration: none;
+    text-align: center;
+  }
+  .btn:hover { background: #fff; }
+  .secondary { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+  .secondary a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #F5F1E8;
+    font-weight: 650;
+    font-size: 15px;
+    text-underline-offset: 3px;
+  }
+
+  .band { padding: 28px 20px 8px; }
+  h2 {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5E2D89;
+  }
+  .points, .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .points li, .steps li {
+    margin: 0;
+    padding: 16px 16px 16px 18px;
+    border: 1px solid #E4DCCE;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .points strong, .steps strong { display: block; font-size: 17px; font-weight: 650; line-height: 1.35; color: #2b1550; }
+  .points span, .steps span { display: block; margin-top: 4px; font-size: 15px; line-height: 1.45; color: #3A2947; }
+  .steps { counter-reset: step; }
+  .steps li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; }
+  .steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #2b1550;
+    color: #F5F1E8;
+    font-size: 15px;
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+  }
+  .again { margin: 18px 0 8px; }
+  .again .btn { background: #5E2D89; color: #fff; }
+  .again .btn:hover { background: #2b1550; }
+
+  .foot { padding: 8px 20px 28px; }
+  .foot-inner {
+    padding-top: 16px;
+    border-top: 1px solid #E4DCCE;
+    display: grid;
+    gap: 6px;
+  }
+  .foot p { margin: 0; font-size: 14px; line-height: 1.5; color: #3A2947; }
+  .foot a { color: #5E2D89; font-weight: 650; }
+
+  .dock {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    gap: 10px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(245, 241, 232, 0.96);
+    border-top: 1px solid #E4DCCE;
+    backdrop-filter: blur(10px);
+  }
+  .dock a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .dock a:first-child { padding: 0 16px; border: 1px solid #2b1550; color: #2b1550; }
+  .dock a:last-child { flex: 1; background: #5E2D89; color: #fff; }
+
+  @media (max-width: 759px) {
+    body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+    .dock { display: flex; }
+    .again { display: none; }
+  }
+  @media (min-width: 760px) {
+    .hero { padding: 22px 40px 56px; }
+    .top { margin-bottom: 48px; }
+    .top-call { display: inline-flex; }
+    html[data-offer="on"] .hero-grid {
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      grid-template-areas:
+        "eye offer"
+        "title offer"
+        "actions offer";
+      align-items: center;
+    }
+    .actions { margin-top: 8px; }
+    .band { padding: 36px 40px 8px; }
+    .points, .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .foot { padding: 12px 40px 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+<script>
+/* Dated offer. One place to change or retire it.
+   ENDS is the first moment the offer is gone, Adelaide daylight time,
+   so 2026-12-12T00:00 means it shows through 11 December 2026.
+   Delete #start-offer, and this script, to remove the block entirely. */
+(function () {
+  var OFFER_ENDS = "2026-12-12T00:00:00+10:30";
+  if (Date.now() < Date.parse(OFFER_ENDS)) {
+    document.documentElement.setAttribute("data-offer", "on");
+  }
+})();
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2416604039096469');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2416604039096469&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="top">
+        <a class="logo" href="/" aria-label="Earthed Energy home"><img src="/images/earthed-energy-logo-white.webp" alt="" width="1234" height="329"></a>
+        <a class="top-call" href="tel:0433839284">0433 839 284</a>
+      </div>
+      <div class="hero-grid">
+          <p class="eyebrow">Earthed Energy</p>
+          <h1>Adelaide Hills solar and battery specialists</h1>
+          <p class="start-offer" id="start-offer">
+            <strong>Free 9 kWh module when booked before 11 December 2026.</strong>
+            <span>Conditions apply.</span>
+          </p>
+          <div class="actions">
+            <a class="btn" data-carry href="/get-a-quote.html">Build my numbers</a>
+            <div class="secondary">
+              <a href="tel:0433839284">Call 0433 839 284</a>
+              <a data-carry href="/contact.html">Contact form</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="band" aria-labelledby="trust-title">
+    <div class="hero-inner">
+      <h2 id="trust-title">Straight answers</h2>
+      <ul class="points">
+        <li><strong>Local and based in Strathalbyn</strong></li>
+        <li><strong>Open pricing, with straight answers and no pushy salespeople</strong></li>
+        <li><strong>Licensed</strong><span>SA Electrical Contractor Licence PGE 363823</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="how-title">
+    <div class="hero-inner">
+      <h2 id="how-title">How it works</h2>
+      <ol class="steps">
+        <li><strong>Build your numbers in 60 seconds</strong></li>
+        <li><strong>We check your roof and bills</strong></li>
+        <li><strong>You get a fixed price</strong></li>
+      </ol>
+      <p class="again"><a class="btn" data-carry href="/get-a-quote.html">Build my numbers</a></p>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <p>Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy.</p>
+    <p>SA Electrical Contractor Licence PGE 363823</p>
+    <p><a href="tel:0433839284">0433 839 284</a> · <a href="/privacy.html">Privacy</a></p>
+  </div>
+</footer>
+<div class="dock">
+  <a href="tel:0433839284">Call</a>
+  <a data-carry href="/get-a-quote.html">Build my numbers</a>
+</div>
+<script>
+(function () {
+  var keep = ["utm_source", "utm_medium", "utm_campaign"];
+  var incoming = new URLSearchParams(window.location.search);
+  var outgoing = new URLSearchParams();
+  var any = false;
+  keep.forEach(function (key) {
+    var value = incoming.get(key);
+    if (value) { outgoing.set(key, value); any = true; }
+  });
+  if (!any) outgoing.set("source", "flyer");
+  document.querySelectorAll("[data-carry]").forEach(function (link) {
+    var url = new URL(link.getAttribute("href"), window.location.origin);
+    outgoing.forEach(function (value, key) { url.searchParams.set(key, value); });
+    link.setAttribute("href", url.pathname + url.search + url.hash);
+  });
+})();
+</script>
+</body>
+</html>
