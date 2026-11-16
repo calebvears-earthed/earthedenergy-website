@@ -1176,7 +1176,7 @@ def main() -> None:
         write(ROOT / filename, page)
         urls.append("/" + filename)
 
-    urls.extend(["/solarcare/", "/walkthrough/"])
+    urls.extend(["/solarcare/", "/start", "/walkthrough/"])
     write(ROOT / "sitemap.xml", sitemap(sorted(set(urls), key=lambda item: (item != "/", item))))
     (ROOT / "robots.txt").write_text(
         "User-agent: *\nAllow: /\nDisallow: /design/\nDisallow: /thanks.html\n\nSitemap: https://www.earthedenergy.au/sitemap.xml\n",

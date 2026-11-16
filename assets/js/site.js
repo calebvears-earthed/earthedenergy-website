@@ -105,9 +105,17 @@
           if (message) message.value = "Rebate estimate\n" + bits.join("\n");
         }
         if (button) button.disabled = true;
+        var data = new FormData(form);
+        try {
+          var params = new URLSearchParams(window.location.search);
+          ["utm_source", "utm_medium", "utm_campaign", "source"].forEach(function (key) {
+            var value = params.get(key);
+            if (value && !data.get(key)) data.set(key, value);
+          });
+        } catch (e) {}
         fetch(window.EE_LEAD, {
           method: "POST",
-          body: new FormData(form),
+          body: data,
           headers: { Accept: "application/json" }
         }).then(function (res) {
           if (!res.ok) throw new Error(String(res.status));

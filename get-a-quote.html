@@ -666,7 +666,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
   ZONES = [[5000,5099,'Adelaide',3,4.9],[5100,5199,'Northern Adelaide',3,4.9],[5200,5299,'the Adelaide Hills',3,4.9],[5300,5399,'Murray Bridge',3,5.0],[5400,5499,'the Yorke Peninsula',3,5.1],[5500,5599,'the Clare Valley',3,5.1],[5600,5699,'the Eyre Peninsula',2,5.2],[5700,5799,'the Flinders Ranges',2,5.4],[5800,5999,'outback SA',1,5.6]];
   TYPES = [['small','Small family','1-2 bedroom · couple or singles · modest appliance use',0.9,false,false],['large','Large family','3-5 bedroom · likely pool, aircon, or EV',1.15,false,false],['commercial','Commercial','Shop, office, factory or farm shed · usually 3-phase',1.6,true,false],['rural','Rural','Grid-connected but on a long or unreliable SWER line',1.0,false,false],['offgrid','Off-grid','Not grid-connected · full independence',0.7,false,true]];
   PRICES = [[6,10,9888],[8,16,12888],[10,24,15888],[10,48,18444],[15,40,24888],[20,50,32888]];
-  componentDidMount() { this.focus(); this.onKey = e => { if (e.key === 'Escape' && this.state.step > 1 && this.state.step !== 4 && this.state.step !== 8) this.back(); }; window.addEventListener('keydown', this.onKey); try { const q = new URLSearchParams(location.search); this.utm = {}; q.forEach((v, k) => { if (k.startsWith('utm_')) this.utm[k] = v; }); const p = q.get('path'); if (p === 'battery') { this.utm.path = 'battery'; this.setState({ ptype: 'large', tapped: 'large', hasSolar: true }); } } catch (e) {} }
+  componentDidMount() { this.focus(); this.onKey = e => { if (e.key === 'Escape' && this.state.step > 1 && this.state.step !== 4 && this.state.step !== 8) this.back(); }; window.addEventListener('keydown', this.onKey); try { const q = new URLSearchParams(location.search); this.utm = {}; q.forEach((v, k) => { if (k.startsWith('utm_') || k === 'source') this.utm[k] = v; }); const p = q.get('path'); if (p === 'battery') { this.utm.path = 'battery'; this.setState({ ptype: 'large', tapped: 'large', hasSolar: true }); } } catch (e) {} }
   componentWillUnmount() { this.clear(); window.removeEventListener('keydown', this.onKey); }
   focus() { this.later(() => { const active = document.activeElement; if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.tagName === "SELECT")) return; const r = this.state.step === 1 ? this.pcRef : this.state.step === 6 ? this.nameRef : null; if (r && r.current) r.current.focus(); }, 380); }
   clear() { this.timers.forEach(clearTimeout); this.timers = []; }
@@ -701,7 +701,9 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     submit = () => {
     if (this.leadInvalid() || this.state.sending) return;
     const c = this.calc(), s = this.state;
-    const payload = { postcode: s.postcode, type: s.ptype, quarterlyBill: s.billQ, recommended: `${c.kw}kW + ${c.bat}kWh`, price: c.price, finance: s.finance, firstName: s.name, phone: s.phone, email: s.email, timestamp: new Date().toISOString(), utm: this.utm || {} };
+    const attr = this.utm || {};
+    const payload = { postcode: s.postcode, type: s.ptype, quarterlyBill: s.billQ, recommended: `${c.kw}kW + ${c.bat}kWh`, price: c.price, finance: s.finance, firstName: s.name, phone: s.phone, email: s.email, timestamp: new Date().toISOString(), utm: attr };
+    if (attr.source) payload.source = attr.source;
     const summary = `Quote request, ${s.name}, ${s.postcode}, $${c.price}, ${s.finance}, ${c.kw}kW + ${c.bat}kWh`;
     this.setState({ sending: true, leadError: false });
     const body = new FormData();
@@ -710,6 +712,7 @@ a{color:#5E2D89;text-decoration:none}a:hover{color:#7c3aed}
     body.append('name', s.name);
     body.append('phone', s.phone);
     body.append('_subject', 'Earthed Energy quote request');
+    ['utm_source', 'utm_medium', 'utm_campaign', 'source'].forEach((key) => { if (attr[key]) body.append(key, attr[key]); });
     body.append('message', summary + '\n' + JSON.stringify(payload, null, 2));
     const endpoint = (window.EE_LEAD || 'https://formspree.io/f/mvkzjdwe');
     fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' } })
