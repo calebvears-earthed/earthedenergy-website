@@ -491,7 +491,9 @@ SHORT_TITLES = {
 QUOTE_SUBMIT = """  submit = () => {
     if (this.leadInvalid() || this.state.sending) return;
     const c = this.calc(), s = this.state;
-    const payload = { postcode: s.postcode, type: s.ptype, quarterlyBill: s.billQ, recommended: `${c.kw}kW + ${c.bat}kWh`, price: c.price, finance: s.finance, firstName: s.name, phone: s.phone, email: s.email, timestamp: new Date().toISOString(), utm: this.utm || {} };
+    const attr = this.utm || {};
+    const payload = { postcode: s.postcode, type: s.ptype, quarterlyBill: s.billQ, recommended: `${c.kw}kW + ${c.bat}kWh`, price: c.price, finance: s.finance, firstName: s.name, phone: s.phone, email: s.email, timestamp: new Date().toISOString(), utm: attr };
+    if (attr.source) payload.source = attr.source;
     const summary = `Quote request, ${s.name}, ${s.postcode}, $${c.price}, ${s.finance}, ${c.kw}kW + ${c.bat}kWh`;
     this.setState({ sending: true });
     const err = document.getElementById('ee-lead-error');
@@ -502,6 +504,7 @@ QUOTE_SUBMIT = """  submit = () => {
     body.append('name', s.name);
     body.append('phone', s.phone);
     body.append('_subject', 'Earthed Energy quote request');
+    ['utm_source', 'utm_medium', 'utm_campaign', 'source'].forEach((key) => { if (attr[key]) body.append(key, attr[key]); });
     body.append('message', summary + '\\n' + JSON.stringify(payload, null, 2));
     const endpoint = (window.EE_LEAD || 'https://formspree.io/f/mvkzjdwe');
     fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' } })
@@ -774,7 +777,12 @@ def prioritise_lcp(text: str, src: str) -> str:
 
 
 def patch_quote(text: str) -> str:
-    text = re.sub(r"submit = \(\) => \{.*?\n  \};", QUOTE_SUBMIT, text, count=1, flags=re.S)
+    # A function replacement, so the \n inside the message string stays a JS escape.
+    text = re.sub(r"submit = \(\) => \{.*?\n  \};", lambda _match: QUOTE_SUBMIT, text, count=1, flags=re.S)
+    text = text.replace(
+        "if (k.startsWith('utm_')) this.utm[k] = v;",
+        "if (k.startsWith('utm_') || k === 'source') this.utm[k] = v;",
+    )
     text = text.replace(
         '<button onClick="{{ goCal }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:\'Open Sans\',sans-serif;font-size:14px;color:#5E2D89;text-decoration:underline;text-underline-offset:3px">Or reserve a time for a free energy assessment in our live calendar →</button>',
         f'<a href="/contact.html">Book a call</a> or <a href="tel:{PHONE_TEL}">0433 839 284</a>',
