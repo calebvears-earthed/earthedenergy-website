@@ -9,7 +9,7 @@ Left on purpose:
 
 A test POST to Formspree `mvkzjdwe` returned HTTP 200. Caleb may see one message titled as a website form check. The Formspree dashboard is what sets the destination inbox.
 
-Checked and clear on the rebuilt pages (Home and the mockup pages, not SolarCare or the walkthrough): no em dashes, workmanship warranty is 7 years, no "SAPN Accredited" and no "CEC accredited", email is calebvears@earthedhv.au, phone is 0433 839 284, footer legal line is "Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co". Internal links on those pages resolve. `robots.txt` disallows `/design/` and `/thanks.html`. Design explorations stay noindex.
+Checked and clear on the rebuilt pages (Home and the mockup pages, not SolarCare or the walkthrough): no em dashes, workmanship warranty is 7 years, no "SAPN Accredited" and no "CEC accredited", email is calebvears@earthedhv.au, phone is 0433 839 284, footer legal line is "Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy". Internal links on those pages resolve. `robots.txt` disallows `/design/` and `/thanks.html`. Design explorations stay noindex.
 
 ## Critical
 
@@ -17,7 +17,7 @@ Checked and clear on the rebuilt pages (Home and the mockup pages, not SolarCare
 
 2. **Both booking links 404.** Page: `/get-a-quote.html`. Fix: "Book a call" points at `https://calendly.com/earthedenergy/15min`, and the calendar step points at `https://calendly.com/earthedenergy/energy-assessment`. Both returned 404 on 2 November 2026. Replace them with a live Calendly event, or remove the buttons until one exists.
 
-3. **Wrong legal identity on the old pages.** Pages: `/solarcare/` and `/walkthrough/`. Fix: the footer says "Earthed Energy Co Pty Ltd", ABN 92 691 065 460, ACN 691 065 460, and the street address "26 Wanbrow Ave, Wattle Park". The rest of the site says Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co, post to PO Box 4111, Norwood South SA 5067. Replace the footer, or take these two URLs out of the sitemap until they match.
+3. **Wrong legal identity on the old pages.** Pages: `/solarcare/` and `/walkthrough/`. Fix: the footer says "Earthed Energy Co Pty Ltd", ABN 92 691 065 460, ACN 691 065 460, and the street address "26 Wanbrow Ave, Wattle Park". The rest of the site says Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy, post to PO Box 4111, Norwood South SA 5067. Replace the footer, or take these two URLs out of the sitemap until they match.
 
 4. **Walkthrough claims "SAPN approved".** Page: `/walkthrough/`. Fix: the trust line lists "SAPN approved" and "NETCC approved seller". That is the accreditation wording the rest of the site was built to avoid. Credentials (`/credentials-and-licences.html`) says the NETCC seller application is "in progress", and SAPN wording elsewhere is "designs to SAPN requirements". Delete or rewrite those two chips.
 
