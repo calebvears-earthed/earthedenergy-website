@@ -28,6 +28,29 @@ NAV = [
 ]
 CTA_LABEL = "Calculate savings"
 CTA_HREF = "/get-a-quote.html"
+META_PIXEL_ID = "2416604039096469"
+META_PIXEL = """<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2416604039096469');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2416604039096469&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel Code -->"""
+
+
+def ensure_meta_pixel(text: str) -> str:
+    """Standard Meta base code. No advanced matching."""
+    if META_PIXEL_ID in text or "</head>" not in text:
+        return text
+    return text.replace("</head>", META_PIXEL + "\n</head>", 1)
 
 
 def esc(value: str) -> str:
@@ -384,7 +407,8 @@ def shell(
 {ee_css}
 {css}
 </style>
-{ld}</head>
+{ld}{META_PIXEL}
+</head>
 <body class="{" ".join(classes)}">
 <a class="skip-link" href="#main">Skip to content</a>
 {header_html(section, home=home)}
@@ -508,7 +532,7 @@ QUOTE_SUBMIT = """  submit = () => {
     body.append('message', summary + '\\n' + JSON.stringify(payload, null, 2));
     const endpoint = (window.EE_LEAD || 'https://formspree.io/f/mvkzjdwe');
     fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' } })
-      .then((res) => { if (!res.ok) throw new Error(String(res.status)); this.setState({ sending: false }); this.go(8, 1); })
+      .then((res) => { if (!res.ok) throw new Error(String(res.status)); if (typeof fbq === 'function') { const lead = { content_name: 'quote' }; if (attr.utm_source) lead.utm_source = attr.utm_source; fbq('track', 'Lead', lead); } this.setState({ sending: false }); this.go(8, 1); })
       .catch(() => { this.setState({ sending: false }); if (err) err.hidden = false; });
   };"""
 
@@ -879,7 +903,14 @@ def scrub_legacy() -> None:
         if any(part in skip for part in path.parts):
             continue
         original = path.read_text(encoding="utf-8", errors="replace")
-        updated = apply_compliance(original, strict=True)
+        updated = ensure_meta_pixel(apply_compliance(original, strict=True))
+        if updated != original:
+            path.write_text(updated, encoding="utf-8")
+    for path in ROOT.rglob("*.html"):
+        if any(part in {"mockups-src", "build", ".git"} for part in path.parts):
+            continue
+        original = path.read_text(encoding="utf-8", errors="replace")
+        updated = ensure_meta_pixel(original)
         if updated != original:
             path.write_text(updated, encoding="utf-8")
 
@@ -1145,7 +1176,7 @@ def main() -> None:
 <h2>Why</h2>
 <p>We use that information to reply, prepare a quote, design and install a system, and handle warranty calls. We do not sell lists.</p>
 <h2>Who else sees it</h2>
-<p>Form messages are sent through Formspree to {EMAIL}. Formspree processes the submission so it can be delivered. We do not run analytics and we do not set advertising cookies. A Google Business profile is not linked from this site, because none has been confirmed.</p>
+<p>Form messages are sent through Formspree to {EMAIL}. Formspree processes the submission so it can be delivered. The site uses the Meta Pixel to measure ad performance. It records a page view, and a lead after a quote or contact form is sent. It does not receive your name, email, phone or address. A Google Business profile is not linked from this site, because none has been confirmed.</p>
 <h2>Access and correction</h2>
 <p>Email {EMAIL} to ask what we hold, or to correct it. If you are not happy with the reply, you can contact the Office of the Australian Information Commissioner. We handle personal information in line with the Australian Privacy Principles.</p>
 """,

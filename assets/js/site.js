@@ -120,6 +120,12 @@
         }).then(function (res) {
           if (!res.ok) throw new Error(String(res.status));
           if (ok) ok.hidden = false;
+          if (String(data.get("form") || "") === "contact" && typeof window.fbq === "function") {
+            var lead = { content_name: "contact" };
+            var utmSource = data.get("utm_source");
+            if (utmSource) lead.utm_source = String(utmSource);
+            window.fbq("track", "Lead", lead);
+          }
         }).catch(function () {
           if (err) err.hidden = false;
           if (button) button.disabled = false;
