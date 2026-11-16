@@ -142,7 +142,7 @@ const groups = rawGroups.map((group) => ({
   items: group.items.map(([file, title, blurb]) => [
     file,
     title,
-    blurb.replaceAll("10-year workmanship", "7-year workmanship"),
+    blurb.replaceAll("7-year workmanship", "7-year workmanship"),
   ]),
 }));
 

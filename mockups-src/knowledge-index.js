@@ -39,7 +39,7 @@ export const groups = [
     ['Typical Timeline', 'Typical timeline', 'Realistic timing from sign day to handover: materials, SAPN approval, install, commissioning.'],
     ['Installation Day', 'Installation day', 'One to two days on the roof. Who comes, what we bring, what you need to do.'],
     ['Commissioning and Handover', 'Commissioning and handover', 'Testing, monitoring on your phone, warranty documents in hand, how to reach us after.'],
-    ['Warranty and Aftercare', 'Warranty and aftercare', '10-year workmanship, 25-year panels, 10-year inverter and battery. What happens in year seven.'],
+    ['Warranty and Aftercare', 'Warranty and aftercare', '7-year workmanship, 25-year panels, 10-year inverter and battery. What happens in year seven.'],
     ['Credentials and Licences', 'Credentials and licences', 'Every accreditation, explained in plain English.'],
   ]},
 ];

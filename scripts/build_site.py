@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPANDED = ROOT / "build" / "expanded"
 BASE = "https://www.earthedenergy.au"
 EMAIL = "calebvears@earthedhv.au"
-LEGAL = "Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy Co"
+LEGAL = "Earthed High Voltage Pty Ltd (ABN 99 679 180 879) trading as Earthed Energy"
 PHONE_TEL = "0433839284"
 
 NAV = [
@@ -112,10 +112,8 @@ def add_ehv_card(footer: str) -> str:
 
 
 def partner_strip_html() -> str:
-    """Logos only. No accreditation wording beside them."""
+    """Lender logos only. SAA and NETCC marks are not shown as company badges."""
     logos = [
-        ("/images/partner-solar-accred.webp", "Solar Accreditation Australia"),
-        ("/images/partner-nec-seller.webp", "New Energy Tech"),
         ("/images/partner-28watt.webp", "28Watt"),
         ("/images/partner-greendeal.webp", "GreenDeal"),
         ("/images/partner-elevant.webp", "Elevant"),
@@ -141,6 +139,59 @@ def apply_compliance(text: str, *, strict: bool) -> str:
     text = re.sub(r"(Earthed workmanship</td><td[^>]*>)10 years", r"\g<1>7 years", text)
     text = text.replace("10-year workmanship", "7-year workmanship")
     text = text.replace("10-yr workmanship", "7-yr workmanship")
+    text = text.replace("trading as Earthed Energy Co", "trading as Earthed Energy")
+    text = text.replace("<span>10-yr warranty</span>", "<span>7-yr workmanship</span>")
+    text = text.replace(
+        "Sign up to the Earthed Family before Caleb's birthday and he'll add an 8.3kW module completely free.",
+        "Book before 11 December 2026 and we include a free 9 kWh module. Conditions apply.",
+    )
+    text = text.replace(
+        "Book a GoodWe Lynx install before 11 December and we add an extra 8 kWh module at no charge, plus free whole-home backup.",
+        "Book a GoodWe Lynx install before 11 December 2026 and we include a free 9 kWh module, plus whole-home backup. Conditions apply.",
+    )
+    text = text.replace(
+        "10-year warranty · 8 kWh module free",
+        "GoodWe 10-year product warranty. 7-year workmanship. Free 9 kWh module. Conditions apply.",
+    )
+    text = text.replace("Full design and CEC sign-off", "Full design and sign-off by SAA-accredited, licensed subcontractors we engage")
+    text = text.replace("Full design, CEC sign-off and", "Full design, sign-off by SAA-accredited, licensed subcontractors we engage, and")
+    text = text.replace(
+        "The same crew that fits your home battery builds utility-scale.",
+        "Installed by SAA-accredited, licensed subcontractors we engage.",
+    )
+    text = text.replace(
+        "Same crew that runs on 111 MW BESS and 5 MW solar farms.",
+        "Installs and sign-off are by SAA-accredited, licensed subcontractors we engage.",
+    )
+    text = text.replace(
+        "Installs are Caleb's crew with Troy checking the commissioning data.",
+        "Installs and sign-off are by SAA-accredited, licensed subcontractors we engage. Troy checks the commissioning data.",
+    )
+    text = text.replace("the same crew used at 33 kV", "the same standard used at 33 kV")
+    text = text.replace(
+        "Installed by the same crew as the solar.",
+        "Installed by SAA-accredited, licensed subcontractors we engage.",
+    )
+    text = text.replace(
+        "Caleb or Troy meets the crew on site and walks the job with you.",
+        "Caleb or Troy meets the installers on site and walks the job with you.",
+    )
+    text = text.replace("Troy is ours.", "Troy, an SAA-accredited designer we engage, signs it.")
+    text = text.replace(
+        "Check your email for the full breakdown and your 4D home demo.",
+        "Check your email for the full breakdown.",
+    )
+    text = re.sub(
+        r'\s*<a href="https://home\.earthedenergy\.au/demo"[^>]*>.*?</a>',
+        "",
+        text,
+        flags=re.I,
+    )
+    text = text.replace("GoodWe GoodWe ", "GoodWe ")
+    text = text.replace(
+        "Sigenergy 12-year inverter and 15-year battery, Sigenergy 12-year inverter and 15-year battery",
+        "Sigenergy 12-year inverter and 15-year battery",
+    )
     text = text.replace("CEC-accredited designer", "designer")
     text = text.replace("CEC-Accredited Designer", "Designer")
     text = re.sub(r"CEC.accredited", "licensed electrical contractor", text, flags=re.I)
@@ -548,10 +599,6 @@ def align_claims(text: str) -> str:
             "Battery, GoodWe Lynx",
         ),
         (
-            "10-year inverter and battery",
-            "GoodWe 10-year inverter and battery, Sigenergy 12-year inverter and 15-year battery",
-        ),
-        (
             "GoodWe Lynx and Sigenergy SigenStor modules. LFP, modular, 10 years to 70 percent.",
             "GoodWe Lynx, 10 years to 70 percent. Sigenergy SigenStor, 15 years.",
         ),
@@ -577,6 +624,16 @@ def align_claims(text: str) -> str:
     ]
     for old, new in swaps:
         text = text.replace(old, new)
+    text = text.replace("GoodWe GoodWe ", "GoodWe ")
+    text = text.replace(
+        "Sigenergy 12-year inverter and 15-year battery, Sigenergy 12-year inverter and 15-year battery",
+        "Sigenergy 12-year inverter and 15-year battery",
+    )
+    text = re.sub(
+        r"(?<!GoodWe )10-year inverter and battery",
+        "GoodWe 10-year inverter and battery, Sigenergy 12-year inverter and 15-year battery",
+        text,
+    )
     text = re.sub(
         r'href="/warranty-and-aftercare.html"([^>]*)>Full terms',
         r'href="/terms.html"\1>Full terms',
@@ -689,7 +746,7 @@ def footer_links(text: str) -> str:
     )
     if legal in text and "/privacy.html" not in text:
         text = text.replace(legal, links, 1)
-    text = re.sub(r'<img[^>]*partner-nec-seller\.webp[^>]*>', "", text)
+    text = re.sub(r'<img[^>]*partner-(?:nec-seller|solar-accred)\.(?:webp|png)[^>]*>', "", text)
     return text
 
 
@@ -824,7 +881,7 @@ def main() -> None:
     pages = load_pages()
     about = next(page for page in pages if page["name"] == "About Caleb Vears")
     shared_footer = add_ehv_card(apply_compliance(about["footer"], strict=True))
-    if "partner-solar-accred" not in shared_footer:
+    if "partner-28watt" not in shared_footer and "partner-elevant" not in shared_footer:
         shared_footer += partner_strip_html()
     sample_css = utility_css(about["css"])
     urls = ["/"]
@@ -980,7 +1037,7 @@ def main() -> None:
             f"<p class=\"ee-note\"><a href=\"mailto:{EMAIL}\">{EMAIL}</a><br><a href=\"tel:{PHONE_TEL}\">0433 839 284</a></p>"
             "<p class=\"ee-note\">PO Box 4111<br>Norwood South SA 5067</p>"
             f"<p class=\"ee-note\">{LEGAL}</p>"
-            "<p class=\"ee-note\">SA electrical contractor licence PGE 336477</p>"
+            "<p class=\"ee-note\">SA electrical contractor licence PGE 363823</p>"
             "<p class=\"ee-note\"><a href=\"https://earthedhv.au\">Utility and high voltage work · Earthed High Voltage</a></p>"
             f"""<form class="ee-form" data-ee-lead action="{FORMSPREE}" method="POST">
 <input type="hidden" name="form" value="contact">
@@ -1093,7 +1150,7 @@ def main() -> None:
             "The site, the indicative price, and the written proposal.",
             f"""
 <h2>The business</h2>
-<p>{LEGAL}. PO Box 4111, Norwood South SA 5067. <a href="mailto:{EMAIL}">{EMAIL}</a>. <a href="tel:{PHONE_TEL}">0433 839 284</a>. SA electrical contractor licence PGE 336477.</p>
+<p>{LEGAL}. PO Box 4111, Norwood South SA 5067. <a href="mailto:{EMAIL}">{EMAIL}</a>. <a href="tel:{PHONE_TEL}">0433 839 284</a>. SA electrical contractor licence PGE 363823.</p>
 <h2>The indicative price</h2>
 <p>Calculate savings and the scenario pages are guides. They are not an offer. The written proposal is the document that sets the equipment, the price and what is included. Nothing on this website adds a cost after you sign for work that was already in that proposal.</p>
 <h2>Warranties</h2>
